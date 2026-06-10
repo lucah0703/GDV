@@ -52,14 +52,14 @@ body {
 }
 
 .selectors {
-  display: flex;
-  align-items: flex-end;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) minmax(320px, 1fr) minmax(220px, 280px);
+  align-items: end;
+  gap: 14px;
 }
 
 .selectors label {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
   gap: 6px;
   font-size: 12px;
   color: #64748b;
@@ -68,18 +68,19 @@ body {
 
 select,
 button {
-  height: 42px;
+  width: 100%;
+  min-height: 46px;
   border: 1px solid #d1d5db;
   background: white;
   color: #0f172a;
   border-radius: 11px;
-  padding: 0 12px;
+  padding: 0 16px;
   font-size: 14px;
   outline: none;
 }
 
 select {
-  min-width: 190px;
+  min-width: 0;
 }
 
 button {
