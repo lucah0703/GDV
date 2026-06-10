@@ -1,0 +1,4013 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-06-10T13:17:30Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/28300387",
+        "leisure": "sports_centre",
+        "name": "Sportpark Pfeifferswörth",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5059573,
+          49.4877656
+        ]
+      },
+      "id": "way/28300387"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/28441422",
+        "leisure": "sports_centre",
+        "name": "Sportpark Neckarplatt",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.51598,
+          49.4853584
+        ]
+      },
+      "id": "way/28441422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/28442113",
+        "leisure": "sports_centre",
+        "name": "Schützengesellschaft 1744 Mannheim",
+        "sport": "multi",
+        "website": "http://www.sg1744mannheim.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5111199,
+          49.4904648
+        ]
+      },
+      "id": "way/28442113"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/35148670",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "17",
+        "addr:postcode": "68165",
+        "addr:street": "Theodor-Heuss-Anlage",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Rhein-Neckar-Sporthalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4999382,
+          49.4785092
+        ]
+      },
+      "id": "way/35148670"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/35148682",
+        "leisure": "sports_centre",
+        "source": "Amtsblatt Mannheim Nr. 41/ WMS: http://warper.geothings.net/maps/wms/789?request=GetMap&version=1.1.1&styles=&format=image/png&srs=epsg:4326&exceptions=application/vnd.ogc.se_inimage",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5036147,
+          49.4786042
+        ]
+      },
+      "id": "way/35148682"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/35200336",
+        "leisure": "sports_centre",
+        "source": "Amtsblatt Mannheim Nr. 41/ WMS: http://warper.geothings.net/maps/wms/789?request=GetMap&version=1.1.1&styles=&format=image/png&srs=epsg:4326&exceptions=application/vnd.ogc.se_inimage",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5020714,
+          49.4783941
+        ]
+      },
+      "id": "way/35200336"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/38444448",
+        "leisure": "sports_centre",
+        "name": "Maimarktgelände Turnierplatz",
+        "sport": "equestrian",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5272461,
+          49.4667089
+        ]
+      },
+      "id": "way/38444448"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/41837036",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "18",
+        "addr:postcode": "68199",
+        "addr:street": "Pfingstweidstraße",
+        "building": "yes",
+        "leisure": "fitness_centre",
+        "name": "VeniceBeach Mannheim Neckarau",
+        "opening_hours": "Mo-Fr 07:00-23:00; Sa-Su 09:00-20:00",
+        "website": "https://www.venicebeach-fitness.de/studios/lifestyle-fitness/mannheim-neckarau.html",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5005283,
+          49.4605517
+        ]
+      },
+      "id": "way/41837036"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/42383519",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "35",
+        "addr:postcode": "68167",
+        "addr:street": "August-Kuhn-Straße",
+        "building": "sports_centre",
+        "leisure": "sports_centre",
+        "name": "GBG Halle am Herzogenried",
+        "note": "Name ohne Bindestrich angegeben wie an Hallenwand und auf Infotafel vor der Halle (Name mit Rechtschreibfehler übernommen).",
+        "old_name": "MWS-Halle Am Herzogenried",
+        "operator": "Stadt Mannheim",
+        "operator:type": "public",
+        "roof:shape": "flat",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4808766,
+          49.5016307
+        ]
+      },
+      "id": "way/42383519"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/42469210",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "11",
+        "addr:postcode": "68199",
+        "addr:street": "Marguerrestraße",
+        "building": "civic",
+        "building:levels": "1",
+        "check_date": "2025-04-13",
+        "leisure": "sports_centre",
+        "name": "Gartenhallenbad Neckarau",
+        "opening_hours": "Mo 12:00-18:00; Tu,Th 10:00-22:00; We 10:00-18:00; Fr 06:00-08:00,10:00-22:00; Sa 11:00-22:00; Su 09:00-20:00",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "roof:levels": "0",
+        "sport": "swimming",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4895095,
+          49.4474046
+        ]
+      },
+      "id": "way/42469210"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/48426343",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "90",
+        "addr:postcode": "67061",
+        "addr:street": "Erich-Reimann-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Leichtathletikhalle",
+        "source:building": "OpenData Rheinland-Pfalz",
+        "sport": "athletics",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4398545,
+          49.466885
+        ]
+      },
+      "id": "way/48426343"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/49214620",
+        "leisure": "sports_centre",
+        "name": "Ludwigshafener Ruderverein - Hugo-Rothstein-Gelände",
+        "operator": "Ludwigshafener Ruderverein von 1878 e.V.",
+        "sport": "rowing",
+        "website": "https://www.ludwigshafener-rv.de/i",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4620413,
+          49.4384327
+        ]
+      },
+      "id": "way/49214620"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/49214621",
+        "leisure": "sports_centre",
+        "name": "Wasserskiclub Kurpfalz",
+        "operator": "Wasserskiclub Kurpfalz e.V.",
+        "sport": "water_ski",
+        "website": "https://www.wsk-kurpfalz.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4630388,
+          49.4384912
+        ]
+      },
+      "id": "way/49214621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/51854390",
+        "canoe:service": "boathouse",
+        "leisure": "sports_centre",
+        "name": "Paddler-Gilde Ludwigshafen",
+        "sport": "canoe",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4632686,
+          49.4415252
+        ]
+      },
+      "id": "way/51854390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/51854391",
+        "canoe:service": "boathouse",
+        "leisure": "sports_centre",
+        "name": "Eisenbahnersportverein von 1927, Abteilung Kanu",
+        "sport": "canoe",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.464448,
+          49.44143
+        ]
+      },
+      "id": "way/51854391"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/52562773",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "89",
+        "addr:postcode": "67063",
+        "addr:street": "Erzbergerstraße",
+        "amenity": "community_centre",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Friedrich-Ebert-Halle",
+        "source": "estimation",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "wikidata": "Q929868",
+        "wikipedia": "en:Friedrich-Ebert-Halle",
+        "wikipedia:de": "Friedrich-Ebert-Halle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4129977,
+          49.4913611
+        ]
+      },
+      "id": "way/52562773"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/61691778",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "27-29",
+        "addr:postcode": "68309",
+        "addr:street": "Heppenheimer Straße",
+        "building": "yes",
+        "leisure": "fitness_centre",
+        "name": "FitBase Mannheim Käfertal",
+        "opening_hours": "24/7",
+        "phone": "+49 621 391816012",
+        "sport": "fitness",
+        "website": "https://fitbase.fitness/locations/mannheim-kaefertal/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5208919,
+          49.5088707
+        ]
+      },
+      "id": "way/61691778"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/88307389",
+        "leisure": "sports_centre",
+        "name": "TSV Badenia Feudenheim 1889",
+        "operator": "TSV Badenia Feudenheim 1889 e.V.",
+        "sport": "multi",
+        "website": "https://www.tsvbadenia.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5166968,
+          49.4850468
+        ]
+      },
+      "id": "way/88307389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/96752375",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "90",
+        "addr:postcode": "68199",
+        "addr:street": "Neckarauer Straße",
+        "branch": "Mannheim Almenhof",
+        "brand": "McFit",
+        "brand:wikidata": "Q871302",
+        "brand:wikipedia": "en:McFit",
+        "building": "yes",
+        "leisure": "fitness_centre",
+        "name": "McFit",
+        "opening_hours": "24/7",
+        "operator": "McFIT",
+        "phone": "+49 621 8109030",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4900069,
+          49.4623032
+        ]
+      },
+      "id": "way/96752375"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/101984648",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "43",
+        "addr:postcode": "67061",
+        "addr:street": "Parkstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "TFC - 1861 e.V. Ludwigshafen",
+        "source:building": "OpenData Rheinland-Pfalz",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4598745,
+          49.469031
+        ]
+      },
+      "id": "way/101984648"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/103639720",
+        "leisure": "sports_centre",
+        "name": "Städt. Sportanlage Speckweg",
+        "source": "Bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4981542,
+          49.5213972
+        ]
+      },
+      "id": "way/103639720"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/122352744",
+        "leisure": "sports_centre",
+        "name": "SC 1910 Mannheim Käfertal",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5055387,
+          49.5158244
+        ]
+      },
+      "id": "way/122352744"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/133355532",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "85",
+        "addr:postcode": "67063",
+        "addr:street": "Eschenbachstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Günter-Braun-Sporthalle",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4128914,
+          49.5023384
+        ]
+      },
+      "id": "way/133355532"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/135267388",
+        "leisure": "sports_centre",
+        "name": "Tennisclub Gelb-Weiß Ludwigshafen e.V.",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4178049,
+          49.4774831
+        ]
+      },
+      "id": "way/135267388"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/143374851",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "LGL, www.lgl-bw.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4653991,
+          49.4935867
+        ]
+      },
+      "id": "way/143374851"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/149758120",
+        "building": "yes",
+        "building:colour": "#d4c9a1",
+        "building:levels": "2",
+        "leisure": "sports_centre",
+        "name:signed": "no",
+        "roof:colour": "maroon",
+        "roof:shape": "hipped",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4791564,
+          49.4856642
+        ]
+      },
+      "id": "way/149758120"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/150893557",
+        "amenity": "school",
+        "building": "school",
+        "building:levels": "1",
+        "leisure": "sports_centre",
+        "name": "Sporthalle",
+        "nohousenumber": "yes",
+        "roof:levels": "0",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.470722,
+          49.4614464
+        ]
+      },
+      "id": "way/150893557"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/151894729",
+        "leisure": "sports_centre",
+        "name": "TV 1880 Käfertal e. V.",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5153404,
+          49.5038825
+        ]
+      },
+      "id": "way/151894729"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/151895138",
+        "fenced": "yes",
+        "leisure": "sports_centre",
+        "name": "Sportanlage Käfertal-Süd",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5141039,
+          49.5039516
+        ]
+      },
+      "id": "way/151895138"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/154663740",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "21-25",
+        "addr:postcode": "68165",
+        "addr:street": "Keplerstraße",
+        "building": "yes",
+        "building:levels": "3",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Schwetzingerstadt",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4743822,
+          49.4797671
+        ]
+      },
+      "id": "way/154663740"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/154982889",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "14",
+        "addr:postcode": "68167",
+        "addr:street": "Christian-Friedrich-Schwan-Straße",
+        "brand": "A.W.Niemeyer",
+        "building": "industrial",
+        "climbing:boulder": "yes",
+        "climbing:toprope": "no",
+        "contact:email": "mannheim@studiobloc.de",
+        "contact:phone": "+49 621 78993755",
+        "contact:website": "https://mannheim.studiobloc.de/",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Studio Bloc GmbH Mannheim",
+        "opening_hours": "Mo-Su 10:00-23:00",
+        "operator": "Kai Pohatschka",
+        "sport": "climbing",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.503239,
+          49.4963858
+        ]
+      },
+      "id": "way/154982889"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/160071355",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "56",
+        "addr:postcode": "68309",
+        "addr:street": "Weinheimer Straße",
+        "branch": "Mannheim",
+        "brand": "Fitness Champ",
+        "building": "yes",
+        "email": "mannheim@fitnesschamp.club",
+        "leisure": "fitness_centre",
+        "name": "Fitness Champ Mannheim",
+        "opening_hours": "Mo-Su 06:00-00:00",
+        "phone": "+49 155 662 948 21",
+        "removed:name": "Trendfabrik",
+        "removed:opening_hours": "Mo-Sa 10:00-20:00",
+        "removed:shop": "clothes",
+        "removed:website": "http://www.trendfabrik.de/de/filialen/trendfabrik-ma-kaefertal.html",
+        "roof:shape": "flat",
+        "website": "https://www.fitnesschamp.club/mannheim",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5205522,
+          49.5070669
+        ]
+      },
+      "id": "way/160071355"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/160092536",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "50",
+        "addr:postcode": "68169",
+        "addr:street": "Herzogenriedstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle IGMH",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4782094,
+          49.5062894
+        ]
+      },
+      "id": "way/160092536"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/161631374",
+        "addr:housenumber": "15",
+        "addr:postcode": "68165",
+        "addr:street": "Theodor-Heuss-Anlage",
+        "amenity": "university",
+        "building": "yes",
+        "email": "sport@uni-mannheim.de",
+        "leisure": "sports_centre",
+        "name": "Sporthalle der Universität",
+        "phone": "+49 621 1813419",
+        "website": "https://www.uni-mannheim.de/sport/informationen/sportstaetten/#c35504",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4992394,
+          49.4785265
+        ]
+      },
+      "id": "way/161631374"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/161939441",
+        "club": "sport",
+        "leisure": "sports_centre",
+        "name": "ESC Blau-Weiß Mannheim 1928",
+        "operator": "ESC Blau-Weiß Mannheim 1928 e.V.",
+        "sport": "multi",
+        "website": "https://www.escblauweiss.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5147226,
+          49.4879375
+        ]
+      },
+      "id": "way/161939441"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/161939463",
+        "animal": "sport",
+        "leisure": "sports_centre",
+        "name": "Verein für Deutsche Schäferhunde SV OG Feudenheim",
+        "operator": "Verein für Deutsche Schäferhunde SV OG Feudenheim e.V.",
+        "phone": "+49 621 793078",
+        "sport": "dog",
+        "website": "https://www.svogfeudenheim.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5148603,
+          49.486605
+        ]
+      },
+      "id": "way/161939463"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/162053856",
+        "leisure": "sports_centre",
+        "name": "PSV Schützenabteilung Pistolenstand",
+        "sport": "shooting",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5063971,
+          49.4872651
+        ]
+      },
+      "id": "way/162053856"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/162359068",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "39",
+        "addr:postcode": "68169",
+        "addr:street": "Industriestraße",
+        "building": "yes",
+        "climbing:boulder": "yes",
+        "climbing:sport": "yes",
+        "email": "team@boulderisland.de",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Boulder Island",
+        "opening_hours": "Mo-Fr 10:00-23:00; Sa,Su,PH 09:00-22:00",
+        "operator": "Boulder Island GmbH & Co. KG",
+        "phone": "+49 621 39187898",
+        "sport": "climbing",
+        "website": "https://boulder-island.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4693874,
+          49.5135724
+        ]
+      },
+      "id": "way/162359068"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/163099656",
+        "leisure": "sports_centre",
+        "name": "Radsportzentrum Ludwigshafen am Rhein e.V.",
+        "sport": "cycling",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4037526,
+          49.4976823
+        ]
+      },
+      "id": "way/163099656"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/163099657",
+        "leisure": "sports_centre",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4047162,
+          49.4992193
+        ]
+      },
+      "id": "way/163099657"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/163099679",
+        "leisure": "sports_centre",
+        "name": "Eulenpark-Stadion",
+        "sport": "soccer",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4057011,
+          49.5007539
+        ]
+      },
+      "id": "way/163099679"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/163099681",
+        "leisure": "sports_centre",
+        "name": "BASF Tennisclub",
+        "sport": "tennis",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3999587,
+          49.4974018
+        ]
+      },
+      "id": "way/163099681"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/163979325",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "166",
+        "addr:postcode": "68163",
+        "addr:street": "Seckenheimer Landstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Pfitzenmeier Wellness & Fitness Park Mannheim City Airport",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5214752,
+          49.4770854
+        ]
+      },
+      "id": "way/163979325"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/164296282",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "26",
+        "addr:postcode": "68259",
+        "addr:street": "Spessartstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle",
+        "roof:shape": "flat",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5290181,
+          49.4850014
+        ]
+      },
+      "id": "way/164296282"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/164425052",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "14",
+        "addr:postcode": "68199",
+        "addr:street": "Siegmund-Schuckert-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Badminton-Center Neckarau",
+        "sport": "badminton",
+        "website": "http://www.badminton-neckarau.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5059353,
+          49.4582781
+        ]
+      },
+      "id": "way/164425052"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/165051866",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "25",
+        "addr:postcode": "67071",
+        "addr:street": "Saarburger Straße",
+        "building": "yes",
+        "contact:fax": "+49 621 528374",
+        "contact:phone": "+49 621 511287",
+        "contact:website": "http://kletterzentrum.de/",
+        "leisure": "sports_centre",
+        "name": "EXTREM Kletterzentrum Ludwigshafen",
+        "opening_hours": "Mo-Fr 10:00-23:00; Sa-Su,PH 10:00-21:00",
+        "source:building": "OpenData Rheinland-Pfalz",
+        "sport": "climbing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4073615,
+          49.486471
+        ]
+      },
+      "id": "way/165051866"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/165051878",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "67071",
+        "addr:street": "Saarburger Straße",
+        "building": "yes",
+        "contact:email": "booknow@lufun.de",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "LuFUN. Soccer und Indoorspielplatz",
+        "opening_hours": "Mo-Fr 15:00-24:00, Sa-Su 10:00-24:00",
+        "operator": "Lorin Sarialtun, LuFUN Soccer und Indoorspielplatz",
+        "phone": "+49 621 523030",
+        "source:building": "OpenData Rheinland-Pfalz",
+        "sport": "soccer",
+        "website": "https://lufun.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.409199,
+          49.4861507
+        ]
+      },
+      "id": "way/165051878"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/165075501",
+        "addr:housenumber": "1",
+        "addr:street": "Spinelliplatz",
+        "building": "sports_hall",
+        "building:levels": "1",
+        "height": "8",
+        "leisure": "sports_centre",
+        "loc_name": "Spinelli Gym",
+        "roof:colour": "brown",
+        "roof:height": "4",
+        "roof:shape": "gabled",
+        "short_name": "Gym",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.521782,
+          49.4961538
+        ]
+      },
+      "id": "way/165075501"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/166580361",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "26",
+        "addr:postcode": "68309",
+        "addr:street": "Elisabeth-Altmann-Gottheiner-Straße",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Sporthalle-Bertha-Hirsch-Schule",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5247756,
+          49.5036644
+        ]
+      },
+      "id": "way/166580361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/168562625",
+        "building": "sports_hall",
+        "source": "Bing",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4709674,
+          49.5056811
+        ]
+      },
+      "id": "way/168562625"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/169202791",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "70",
+        "addr:postcode": "67061",
+        "addr:street": "Saarlandstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Eisstadion Ludwigshafen",
+        "sport": "skating",
+        "website": "www.ercl.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4365441,
+          49.4690382
+        ]
+      },
+      "id": "way/169202791"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/169202815",
+        "leisure": "sports_centre",
+        "name": "Polizeisportverein Grün-Weiß Ludwigshafen eV",
+        "sport": "multi",
+        "website": "http://www.psvgw-lu.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4351234,
+          49.4665307
+        ]
+      },
+      "id": "way/169202815"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170065453",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "38",
+        "addr:postcode": "67059",
+        "addr:street": "Franz-Zang-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Franz-Zang-Halle",
+        "sport": "multi",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4236147,
+          49.4699741
+        ]
+      },
+      "id": "way/170065453"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170309166",
+        "leisure": "sports_centre",
+        "name": "Tennis-Club Rot-Weiß",
+        "sport": "tennis",
+        "website": "http://tennis-rot-weiss-lu.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4192008,
+          49.4679055
+        ]
+      },
+      "id": "way/170309166"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/172002159",
+        "addr:housenumber": "51-53",
+        "addr:street": "Sandhofer Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "VWM Mannheim e.V. Bootshaus",
+        "phone": "+49 621 757410",
+        "sport": "rowing",
+        "website": "https://www.vwm-wassersport.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4718871,
+          49.5198138
+        ]
+      },
+      "id": "way/172002159"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/213373274",
+        "fax": "+49 621 853990",
+        "leisure": "sports_centre",
+        "name": "TC SW Neckarau",
+        "phone": "+49 621 853919",
+        "sport": "tennis",
+        "website": "https://www.sw-neckarau.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4827783,
+          49.4511596
+        ]
+      },
+      "id": "way/213373274"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/213373276",
+        "email": "info@vflkurpfalz.de",
+        "leisure": "sports_centre",
+        "name": "VfL Kurpfalz Mannheim-Neckarau",
+        "phone": "+49 172 6900925",
+        "website": "https://www.vflkurpfalz.de/",
+        "wheelchair": "no",
+        "wikipedia": "de:VfL Neckarau",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4777154,
+          49.4470098
+        ]
+      },
+      "id": "way/213373276"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/218000242",
+        "addr:housenumber": "4, 6, 8",
+        "addr:street": "Am Neckarkanal",
+        "club": "sport",
+        "leisure": "sports_centre",
+        "name": "Mannheimer Hockeyclub",
+        "sport": "field_hockey",
+        "website": "https://www.mannheimerhc.de/",
+        "wikidata": "Q1860256",
+        "wikipedia": "en:Mannheimer HC",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5162806,
+          49.4837598
+        ]
+      },
+      "id": "way/218000242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/218431732",
+        "addr:housenumber": "68-70",
+        "addr:postcode": "68169",
+        "addr:street": "Waldhofstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Bertha-Benz-Halle",
+        "source": "LGL, www.lgl-bw.de",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4708197,
+          49.5030022
+        ]
+      },
+      "id": "way/218431732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/224523774",
+        "leisure": "sports_centre",
+        "name": "MFC 08 Lindenhof eV.",
+        "sport": "multi",
+        "website": "https://mfc08.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4659095,
+          49.4572291
+        ]
+      },
+      "id": "way/224523774"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/234813885",
+        "leisure": "sports_centre",
+        "name": "Tennisklub Grün-Weiß Mannheim",
+        "sport": "tennis",
+        "website": "https://www.gruen-weiss-mannheim.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5137814,
+          49.4861957
+        ]
+      },
+      "id": "way/234813885"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/236700957",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "1-5",
+        "addr:postcode": "67063",
+        "addr:street": "Industriestraße",
+        "brand": "McFit",
+        "brand:wikidata": "Q871302",
+        "brand:wikipedia": "en:McFit",
+        "building": "commercial",
+        "leisure": "fitness_centre",
+        "name": "McFit",
+        "opening_hours": "24/7",
+        "operator": "RSG Group GmbH",
+        "phone": "+49 621 6349441",
+        "sport": "fitness",
+        "website": "https://www.mcfit.com/de/studiodetail/info/ludwigshafen.html",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4229183,
+          49.4850653
+        ]
+      },
+      "id": "way/236700957"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/246009384",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "24",
+        "addr:postcode": "67065",
+        "addr:street": "Erich-Reimann-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Schulzentrum Mundenheim",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4356004,
+          49.4651793
+        ]
+      },
+      "id": "way/246009384"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/246009386",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "24",
+        "addr:postcode": "67065",
+        "addr:street": "Erich-Reimann-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Schulzentrum Ludwigshafen-Mundenheim mT",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4361634,
+          49.4648636
+        ]
+      },
+      "id": "way/246009386"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/273997208",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Post Sport Halle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4221816,
+          49.4752918
+        ]
+      },
+      "id": "way/273997208"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/278779564",
+        "check_date": "2025-02-22",
+        "leisure": "sports_centre",
+        "name": "MTG Mannheim",
+        "sport": "athletics",
+        "website": "https://www.mtg-mannheim.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5087911,
+          49.4876108
+        ]
+      },
+      "id": "way/278779564"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/291743236",
+        "leisure": "sports_centre",
+        "name": "Sportanlage Sandgewann",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.487703,
+          49.5100517
+        ]
+      },
+      "id": "way/291743236"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/292292731",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "6",
+        "addr:postcode": "68163",
+        "addr:street": "Lochgärtenweg",
+        "leisure": "sports_centre",
+        "name": "DJK Sportanlage",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5041062,
+          49.4708327
+        ]
+      },
+      "id": "way/292292731"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/292292732",
+        "building": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5038034,
+          49.4707982
+        ]
+      },
+      "id": "way/292292732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/292292733",
+        "building": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5038953,
+          49.470706
+        ]
+      },
+      "id": "way/292292733"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/296310823",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "7A",
+        "addr:postcode": "67063",
+        "addr:street": "Pettenkoferstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Heinrich-Ries-Halle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4265076,
+          49.4872426
+        ]
+      },
+      "id": "way/296310823"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/298342890",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "67063",
+        "addr:street": "Bürgermeister-Grünzweig-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Women Vital",
+        "sport": "fitness",
+        "website": "https://women-vital.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4363959,
+          49.4847374
+        ]
+      },
+      "id": "way/298342890"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/299677072",
+        "leisure": "sports_centre",
+        "name": "Vegla Sportpark Schlammloch - SV Harmonia Waldhof",
+        "start_date": "1948",
+        "website": "https://www.wikiwaldhof.de/index.php/Schlammloch",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4766399,
+          49.5260589
+        ]
+      },
+      "id": "way/299677072"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/310735901",
+        "access": "private",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4796046,
+          49.5116143
+        ]
+      },
+      "id": "way/310735901"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/320512368",
+        "leisure": "sports_centre",
+        "name": "DJK Feudenheim",
+        "operator": "DJK Feudenheim e.V.",
+        "sport": "multi",
+        "website": "https://www.djk-feudenheim.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5160307,
+          49.4869657
+        ]
+      },
+      "id": "way/320512368"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/330229198",
+        "leisure": "sports_centre",
+        "name": "Sportplatz Moll-Gymnasium",
+        "sport": "athletics",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4713279,
+          49.4618072
+        ]
+      },
+      "id": "way/330229198"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/332856361",
+        "leisure": "sports_centre",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4380008,
+          49.4685047
+        ]
+      },
+      "id": "way/332856361"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/334126583",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Turnhalle Tulla-Realschule",
+        "source:geometry": "LGL, www.lgl-bw.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4796672,
+          49.485849
+        ]
+      },
+      "id": "way/334126583"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/341190575",
+        "building": "sports_hall",
+        "building:levels": "1",
+        "leisure": "sports_hall",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4192725,
+          49.4674043
+        ]
+      },
+      "id": "way/341190575"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/343399432",
+        "building": "sports_centre",
+        "description": "Hockeyhalle",
+        "leisure": "sports_centre",
+        "sport": "ice_hockey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.496543,
+          49.4845521
+        ]
+      },
+      "id": "way/343399432"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/351143412",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "4a",
+        "addr:postcode": "68165",
+        "addr:street": "Hans-Reschke-Ufer",
+        "building": "yes",
+        "building:colour": "white",
+        "height": "4",
+        "leisure": "sports_centre",
+        "name": "TSV Mannheim",
+        "opening_hours": "Mo-Fr 08:30-22:00; Sa,Su 10:00-18:00",
+        "roof:colour": "white",
+        "roof:shape": "flat",
+        "wikidata": "Q955250",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4949208,
+          49.4858172
+        ]
+      },
+      "id": "way/351143412"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/352366184",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "67063",
+        "addr:street": "Teichgartenweg",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "KSC-Sporthalle",
+        "sport": "multi;martial_arts;wrestling",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4100087,
+          49.4992185
+        ]
+      },
+      "id": "way/352366184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/352373253",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Carl Bosch Gymnasium",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4411828,
+          49.4831992
+        ]
+      },
+      "id": "way/352373253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/353288143",
+        "access": "private",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "6",
+        "addr:postcode": "68161",
+        "addr:street": "Bismarckstraße",
+        "barrier": "fence",
+        "description": "Mit der Alfred-Delp-Sportanlage steht dem Hochschul­sport ein Kleinspielfeld und Beachvolleyballplatz für den Spielbetrieb zur Verfügung. Für Studierende, insbesondere für studentische Gruppen wie Initiativen, Hochschul­gruppen, Fach­schaften, aber auch L",
+        "leisure": "sports_centre",
+        "name": "Alfred-Delp-Sportanlage",
+        "opening_hours": "Mo-Fr 14:00-23:00",
+        "operator": "Universität Mannheim, Institut für Sport",
+        "sport": "multi",
+        "website": "https://www.uni-mannheim.de/sport/sportstaetten/#c35499",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4570205,
+          49.4862475
+        ]
+      },
+      "id": "way/353288143"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/355081646",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "8",
+        "addr:postcode": "67065",
+        "addr:street": "Abteistraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Anpfiff ins Leben Förderzentrum Ludwigshafen",
+        "operator": "Anpfiff ins Leben e.V.",
+        "operator:type": "private_non_profit",
+        "sport": "soccer",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4078745,
+          49.4690523
+        ]
+      },
+      "id": "way/355081646"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/378701493",
+        "leisure": "sports_centre",
+        "name": "VeniceBeach",
+        "opening_hours": "Mo-Fr 06:00-23:30; Sa-Su 08:00-22:00",
+        "phone": "+49 621 4004270",
+        "sport": "gymnastics",
+        "website": "https://www.venicebeach-fitness.de/studios/premium-fitness/mannheim/fahrlach.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4991556,
+          49.4737013
+        ]
+      },
+      "id": "node/378701493"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/385104896",
+        "building": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4280435,
+          49.4781251
+        ]
+      },
+      "id": "way/385104896"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/394606371",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "67065",
+        "addr:street": "Niederfeldstraße",
+        "leisure": "sports_centre",
+        "name": "Bezirkssportanlage Gartenstadt",
+        "operator": "Ludwigshafener Sport-Club 1925 e.V.",
+        "operator:type": "private",
+        "sport": "soccer",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4094861,
+          49.4703356
+        ]
+      },
+      "id": "way/394606371"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/404432578",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "21",
+        "addr:postcode": "68159",
+        "addr:street": "Böckstraße",
+        "building": "yes",
+        "building:levels": "1",
+        "fee": "no",
+        "leisure": "sports_centre",
+        "name": "muskeltiere",
+        "phone": "+49 163 7809077",
+        "roof:shape": "flat",
+        "sport": "functional_fitness",
+        "url": "https://www.muskeltiere-sport.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.457724,
+          49.4946932
+        ]
+      },
+      "id": "way/404432578"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/411935479",
+        "addr:housenumber": "5",
+        "addr:street": "Am Neckarkanal",
+        "animal": "sport",
+        "club": "sport",
+        "leisure": "sports_centre",
+        "name": "Verein der Hundefreunde Feudenheim",
+        "sport": "dog",
+        "website": "http://www.vdh-feudenheim.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5159408,
+          49.4848729
+        ]
+      },
+      "id": "way/411935479"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/982838259",
+        "leisure": "sports_centre",
+        "name": "Ludwigshafener Kanu Club",
+        "sport": "canoe",
+        "website": "https://www.ludwigshafener-kanu-club.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4489017,
+          49.4638811
+        ]
+      },
+      "id": "way/982838259"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/993698455",
+        "email": "mannheim.neckarau@venicebeach-fitness.de",
+        "leisure": "sports_centre",
+        "level": "1",
+        "name": "Venice Beach Mannheim Neckarau",
+        "opening_hours": "Mo-Fr 06:30-22:30; Sa-Su 09:00-21:00",
+        "phone": "+49621 3069630",
+        "website": "https://www.venicebeach-fitness.de/clubs/venicebeach-plus/mannheim-neckarau/",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4960968,
+          49.4519505
+        ]
+      },
+      "id": "node/993698455"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1079361830",
+        "leisure": "sports_centre",
+        "name": "Bezirkssportanlage Mundenheim",
+        "sport": "multi",
+        "website": "https://www.ludwigshafen.de/lebenswert/sport/hallen-und-anlagen/bezirkssportanlagen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4227358,
+          49.4546161
+        ]
+      },
+      "id": "way/1079361830"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1085518491",
+        "leisure": "sports_centre",
+        "name": "MSV 1903 e.V.",
+        "sport": "soccer;dart",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4205399,
+          49.4591303
+        ]
+      },
+      "id": "way/1085518491"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1115418213",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4604053,
+          49.4691491
+        ]
+      },
+      "id": "way/1115418213"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1124341621",
+        "leisure": "sports_centre",
+        "name": "Skiclub Ludwigshafen",
+        "sport": "skiing;tennis;soccer;beachvolleyball",
+        "website": "https://www.sclu.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.414943,
+          49.469093
+        ]
+      },
+      "id": "way/1124341621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1142121167",
+        "leisure": "sports_centre",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4785849,
+          49.5060063
+        ]
+      },
+      "id": "way/1142121167"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1161685765",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "1",
+        "addr:place": "U3",
+        "addr:postcode": "68161",
+        "building": "yes",
+        "building:levels": "2",
+        "check_date:opening_hours": "2022-01-09",
+        "email": "fb52@mannheim.de",
+        "fee": "yes",
+        "heritage": "yes",
+        "image": "https://commons.wikimedia.org/wiki/File:Herschelbad_Mannheim_Front.jpg",
+        "leisure": "sports_centre",
+        "name": "Herschelbad",
+        "opening_hours": "Mo 13:00-21:00; Tu,We 06:15-21:00; Th,Fr 08:00-21:00; Sa 08:00-21:00; Su 09:00-20:00; Jun-Aug Sa 08:00-18:00; Su 09:00-18:00",
+        "operator": "Stadt Mannheim",
+        "operator:type": "government",
+        "payment:cash": "yes",
+        "payment:notes": "yes",
+        "phone": "+49 621 2937116",
+        "sport": "swimming",
+        "website": "https://www.mannheim.de/buerger-sein/willkommen-im-herschelbad-0",
+        "wheelchair": "no",
+        "wikidata": "Q22734",
+        "wikimedia_commons": "Category:Herschelbad",
+        "wikipedia": "de:Herschelbad",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4721042,
+          49.4909442
+        ]
+      },
+      "id": "way/1161685765"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1164128137",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "117-127",
+        "addr:postcode": "68167",
+        "addr:street": "Käfertaler Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle LFG",
+        "sport": "multi",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4864346,
+          49.4947991
+        ]
+      },
+      "id": "way/1164128137"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1215011788",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4317747,
+          49.4729413
+        ]
+      },
+      "id": "way/1215011788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1223906254",
+        "addr:place": "E7",
+        "building": "yes",
+        "building:colour": "#F8F8F8",
+        "building:levels": "1",
+        "leisure": "sports_centre",
+        "name": "Gesundheitszentrum E7",
+        "operator": "Institut für Sport, Universität Mannheim",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4607286,
+          49.4902152
+        ]
+      },
+      "id": "way/1223906254"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1256080738",
+        "club": "sport",
+        "leisure": "sports_centre",
+        "name": "TV 1884 Mannheim-Neckarau",
+        "operator": "TV 1884 e.V. Mannheim-Neckarau",
+        "sport": "multi",
+        "website": "https://tv-neckarau.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4754541,
+          49.4463205
+        ]
+      },
+      "id": "way/1256080738"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1256101057",
+        "club": "sport",
+        "leisure": "sports_centre",
+        "name": "Sport-Schützenvereinigung Neckarau 1900/09/51",
+        "operator": "Sport-Schützenvereinigung Neckarau 1900/09/51 e.V.",
+        "sport": "shooting",
+        "website": "https://ssv-neckarau.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4748061,
+          49.4462815
+        ]
+      },
+      "id": "way/1256101057"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1271759177",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "75-77",
+        "addr:postcode": "68309",
+        "addr:street": "Auf dem Sand",
+        "leisure": "sports_centre",
+        "name": "Rehazentrum Auf dem Sand",
+        "phone": "+49 621 3289960",
+        "website": "http://www.reha-ma.de/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5080344,
+          49.5147582
+        ]
+      },
+      "id": "node/1271759177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1297362571",
+        "addr:city": "Mannheim",
+        "addr:postcode": "68169",
+        "addr:street": "Erlenstraße",
+        "leisure": "sports_centre",
+        "name": "Sportanlage »Erlenhof«",
+        "operator": "Stadt Mannheim",
+        "operator:type": "public",
+        "phone": "+49 621 2937106",
+        "website": "https://www.mannheim.de/de/service-bieten/sport/sportstaetten/freisportanlagen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4669669,
+          49.506674
+        ]
+      },
+      "id": "way/1297362571"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1456980618",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "23",
+        "addr:postcode": "68163",
+        "addr:street": "Hermsheimer Straße",
+        "leisure": "sports_centre",
+        "name": "SpVgg 07 Mannheim",
+        "sport": "soccer",
+        "website": "https://www.spvgg07mannheim.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5028993,
+          49.4714971
+        ]
+      },
+      "id": "way/1456980618"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1458155606",
+        "leisure": "sports_centre",
+        "name": "TC Rot-Weiß Waldpark",
+        "operator": "Tennisclub Rot-Weiß Waldpark Mannheim e.V.",
+        "sport": "tennis",
+        "website": "https://tcrww.club/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4694518,
+          49.4461101
+        ]
+      },
+      "id": "way/1458155606"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1480586423",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4794187,
+          49.446006
+        ]
+      },
+      "id": "way/1480586423"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1480692317",
+        "leisure": "sports_centre",
+        "name": "Tennisanlage im Schlossgarten",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.464678,
+          49.4793468
+        ]
+      },
+      "id": "way/1480692317"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1546009525",
+        "leisure": "sports_centre",
+        "name": "Budokan Karate",
+        "phone": "+49 1511 2744896",
+        "sport": "Karate",
+        "website": "https://www.budokan-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4591372,
+          49.4892125
+        ]
+      },
+      "id": "node/1546009525"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1566905831",
+        "brand": "Bodystreet",
+        "brand:wikidata": "Q117880186",
+        "check_date": "2023-09-19",
+        "leisure": "fitness_centre",
+        "name": "Bodystreet",
+        "old_name": "Günzel Pelzmoden",
+        "opening_hours": "Mo-Fr 08:00-20:00, Sa 10:00-16:00",
+        "website": "https://www.bodystreet.com/de/standorte/deutschland/bodystreet-mannheim-wasserturm/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4739715,
+          49.4832956
+        ]
+      },
+      "id": "node/1566905831"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1566905838",
+        "leisure": "fitness_centre",
+        "name": "Backfit EMS",
+        "opening_hours": "Mo,Fr 08:00-16:00, Tu,Th 12:00-20:00, We 10:00-18:00; Sa,Su,PH off",
+        "phone": "+49 621 43726684",
+        "website": "https://www.backfit-ems.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4739254,
+          49.483246
+        ]
+      },
+      "id": "node/1566905838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1607853403",
+        "leisure": "sports_centre",
+        "name": "Ki und Aikido Dojo Mannheim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4760327,
+          49.4975497
+        ]
+      },
+      "id": "node/1607853403"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1621222762",
+        "leisure": "sports_centre",
+        "name": "Qi Gong Institut"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.48164,
+          49.4771498
+        ]
+      },
+      "id": "node/1621222762"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1631644425",
+        "email": "info@mannheimer-billardcafe.com",
+        "leisure": "sports_centre",
+        "name": "Mannheimer Billardcafe",
+        "opening_hours": "Su-Th 16:00-01:00, Fr,Sa 16:00-03:00",
+        "phone": "+49 621 40170823",
+        "sport": "billiards",
+        "website": "http://www.mannheimer-billardcafe.com/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4729187,
+          49.4822743
+        ]
+      },
+      "id": "node/1631644425"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1632759599",
+        "leisure": "sports_centre",
+        "name": "Moksha Yoga Center",
+        "sport": "yoga",
+        "website": "https://www.mokshayogastudio.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4742593,
+          49.4865712
+        ]
+      },
+      "id": "node/1632759599"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1643932796",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "2",
+        "addr:place": "E1",
+        "addr:postcode": "68159",
+        "leisure": "fitness_centre",
+        "name": "Fit Base Mannheim City E1",
+        "opening_hours": "Mo-Fr 06:00-23:00; Sa, Su 08:00-22:00",
+        "phone": "+49 621 1782790",
+        "sport": "fitness",
+        "website": "https://fitbase.fitness/locations/mannheim-city-e1/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4662477,
+          49.4881794
+        ]
+      },
+      "id": "node/1643932796"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1732653930",
+        "leisure": "sports_centre",
+        "name": "Power Planet Mannheim",
+        "sport": "fitness",
+        "website": "https://www.powerplanet-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.505553,
+          49.4474897
+        ]
+      },
+      "id": "node/1732653930"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1736051918",
+        "leisure": "sports_centre",
+        "name": "KSV 1884 Mannheim e.V.",
+        "sport": "Boxen, Gewichtheben, Fitness",
+        "website": "https://www.ksv1884mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4996382,
+          49.4784035
+        ]
+      },
+      "id": "node/1736051918"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1739991802",
+        "leisure": "sports_centre",
+        "name": "BewegungsLOUNGE – Gyrotonic®",
+        "website": "http://www.bewegungs-lounge.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.498399,
+          49.4886899
+        ]
+      },
+      "id": "node/1739991802"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1795367375",
+        "leisure": "sports_centre",
+        "name": "Mannerz Sport",
+        "sport": "Kickboxen",
+        "website": "http://www.mannerz-sport.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4479339,
+          49.4762392
+        ]
+      },
+      "id": "node/1795367375"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1836365220",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "101",
+        "addr:postcode": "67061",
+        "addr:street": "Mundenheimer Straße",
+        "leisure": "sports_centre",
+        "name": "SV Südwest Ludwigshafen - Hauptverein",
+        "sport": "soccer"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4377182,
+          49.4651483
+        ]
+      },
+      "id": "node/1836365220"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1836366039",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:street": "Erich-Reimann-Straße",
+        "leisure": "sports_centre",
+        "name": "SV Südwest Ludwigshafen - Jugendfußball",
+        "sport": "soccer"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4383057,
+          49.4670034
+        ]
+      },
+      "id": "node/1836366039"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1963465094",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "77",
+        "addr:postcode": "68163",
+        "addr:street": "John-Deere-Straße",
+        "check_date:opening_hours": "2025-04-27",
+        "leisure": "fitness_centre",
+        "name": "VeniceBeach Mannheim Glückstein",
+        "opening_hours": "Mo-Fr 07:00-23:00; Sa,Su 09:00-20:00",
+        "phone": "+49 621 8281422",
+        "sport": "fitness",
+        "website": "https://www.venicebeach-fitness.de/clubs/venicebeach/mannheim-glueckstein.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4776325,
+          49.4731651
+        ]
+      },
+      "id": "node/1963465094"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2165966560",
+        "leisure": "fitness_centre",
+        "name": "VAYOGA Yoga & Pilates Studio",
+        "opening_hours": "\"Wir öffnen immer 15 Minuten vor Kursbeginn\"",
+        "sport": "yoga"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4705429,
+          49.4701152
+        ]
+      },
+      "id": "node/2165966560"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2282127869",
+        "check_date:opening_hours": "2026-03-29",
+        "email": "mannheim-gontardplatz@bodystreet.com",
+        "leisure": "sports_centre",
+        "name": "Body street",
+        "opening_hours": "Mo-Fr 10:00-19:00, Sa 10:00-16:00",
+        "opening_hours:signed": "no",
+        "phone": "+49 621 43760061",
+        "sport": "gymnastics",
+        "website": "https://www.bodystreet.com/standorte/mannheim-gontardplatz.html",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4677546,
+          49.4761308
+        ]
+      },
+      "id": "node/2282127869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2371534058",
+        "leisure": "sports_centre",
+        "name": "Gymnastikstudio",
+        "phone": "+49 621 858611",
+        "sport": "gymnastics",
+        "website": "http://www.gymnastikstudio.de/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4942955,
+          49.453479
+        ]
+      },
+      "id": "node/2371534058"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2534717126",
+        "leisure": "sports_centre",
+        "name": "ABC Ludwigshafen (Kraftraum)",
+        "sport": "soccer"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.438419,
+          49.4670572
+        ]
+      },
+      "id": "node/2534717126"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2537571094",
+        "brand": "Kieser Training",
+        "brand:wikidata": "Q1112367",
+        "brand:wikipedia": "de:Kieser Training",
+        "fax": "+49 621 1567802",
+        "image": "https://commons.wikimedia.org/wiki/File:Kieser_Training_Mannhein_E2.jpg",
+        "last_check": "2018-4",
+        "leisure": "fitness_centre",
+        "name": "Kieser Training",
+        "opening_hours": "Mo-Fr 07:30-21:00; Sa,Su 09:00-16:00",
+        "operator": "Kieser Training",
+        "phone": "+49 621 1567800",
+        "sport": "fitness",
+        "website": "https://www.kieser-training.de/standorte/detail/kieser-training-mannheim/",
+        "wheelchair": "limited",
+        "wheelchair:description": "zweiter Stocj nur über Treppe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4652422,
+          49.4888924
+        ]
+      },
+      "id": "node/2537571094"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2716767471",
+        "email": "joachim@thaiboxen-mannheim.de",
+        "leisure": "sports_centre",
+        "name": "Martial Arts Academy Mannheim",
+        "phone": "+49 176 63866046",
+        "sport": "thai_boxing",
+        "website": "https://www.thaiboxen-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.457905,
+          49.4948645
+        ]
+      },
+      "id": "node/2716767471"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2778350270",
+        "leisure": "sports_centre",
+        "name": "Olympiastützpunkt Rhein-Neckar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.50978,
+          49.48777
+        ]
+      },
+      "id": "node/2778350270"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2778867788",
+        "leisure": "sports_centre",
+        "name": "Çalhanoğlu Fussballzentrum",
+        "phone": "+49 621 76225910",
+        "sport": "soccer",
+        "website": "http://www.soccerhalle-mannheim.de/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5245843,
+          49.5055042
+        ]
+      },
+      "id": "node/2778867788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2780946642",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "13",
+        "addr:postcode": "68309",
+        "addr:street": "Trierer Straße",
+        "contact:phone": "+49 621 7245686",
+        "contact:website": "http://www.american-fitness-center.de/m1_start,159.html",
+        "leisure": "fitness_centre",
+        "name": "American Fitness Club GmbH",
+        "opening_hours": "Mo-Fr 08:00-22:00; Sa,Su 09:00-18:00; PH 09:00-18:00",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.520412,
+          49.5067695
+        ]
+      },
+      "id": "node/2780946642"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2780946680",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "62b",
+        "addr:postcode": "68309",
+        "addr:street": "Weinheimer Straße",
+        "branch": "Mannheim Käfertal",
+        "brand": "McFit",
+        "brand:wikidata": "Q871302",
+        "brand:wikipedia": "en:McFit",
+        "leisure": "fitness_centre",
+        "name": "McFit",
+        "opening_hours": "24/7",
+        "operator": "McFIT",
+        "phone": "+49 621 7248000",
+        "sport": "fitness",
+        "website": "https://www.mcfit.com/de/studiodetail/info/mannheim-kaefertal.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5226446,
+          49.5077011
+        ]
+      },
+      "id": "node/2780946680"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2788564448",
+        "email": "info@prsentissimo.de",
+        "leisure": "sports_centre",
+        "name": "TSV Mannheim-Neckarau",
+        "phone": "+49 621 851864",
+        "sport": "multi",
+        "website": "www.prsentissimo.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4713555,
+          49.447113
+        ]
+      },
+      "id": "node/2788564448"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2794121258",
+        "email": "effet@billard-mannheim.de",
+        "leisure": "sports_centre",
+        "name": "Billard-Sport-Centrum Effet",
+        "opening_hours": "Mo 19:00-24:00, Tu-Th 16:00-24:00, Fr,Sa 16:00-01:00, Su 16:00-23:00",
+        "phone": "+49 621 303662",
+        "sells:alcohol": "yes",
+        "sport": "billiards",
+        "website": "https://www.billard-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4987114,
+          49.5065585
+        ]
+      },
+      "id": "node/2794121258"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2797998027",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "189",
+        "addr:postcode": "68167",
+        "addr:street": "Käfertaler Straße",
+        "email": "fit-fabrik@t-online.de",
+        "fax": "+49 621 3709889",
+        "leisure": "sports_centre",
+        "name": "Fit-Fabrik Mannheim",
+        "phone": "+49 621 3709888",
+        "sport": "fitness",
+        "website": "http://www.fit-fabrik.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.492222,
+          49.4976756
+        ]
+      },
+      "id": "node/2797998027"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2802948042",
+        "email": "info@tao-zentrum.de",
+        "leisure": "sports_centre",
+        "name": "Tao-Zentrum",
+        "phone": "+49 621 36931",
+        "sport": "tao",
+        "website": "https://taolife.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4890102,
+          49.4949872
+        ]
+      },
+      "id": "node/2802948042"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2802948044",
+        "leisure": "sports_centre",
+        "name": "Wing Chun Akademie Mannheim",
+        "phone": "+49 1577 1459565",
+        "sport": "Wing Chun",
+        "website": "https://wingchun-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4887213,
+          49.4950197
+        ]
+      },
+      "id": "node/2802948044"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2810443107",
+        "email": "info@jbo-personaltraining.de",
+        "last_check": "2018-05",
+        "leisure": "sports_centre",
+        "name": "JBO Personal Training - Jürgen Bock",
+        "old_name": "Studio Sonnenhaus",
+        "phone": "+49 171 5330203",
+        "sport": "fitness",
+        "website": "https://www.jbo-personaltraining.de/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.488684,
+          49.4556223
+        ]
+      },
+      "id": "node/2810443107"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2868007955",
+        "leisure": "sports_centre",
+        "name": "Rhein-Neckar Fussballcenter",
+        "source": "Amtsblatt Mannheim Nr. 41/ WMS: http://warper.geothings.net/maps/wms/789?request=GetMap&version=1.1.1&styles=&format=image/png&srs=epsg:4326&exceptions=application/vnd.ogc.se_inimage",
+        "website": "https://www.rhein-neckar-fussballcenter.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4998456,
+          49.4783973
+        ]
+      },
+      "id": "node/2868007955"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2982136503",
+        "email": "ludwigshafen@american-fitness-center.de",
+        "leisure": "fitness_centre",
+        "name": "American Fitness",
+        "phone": "+49 621 563590",
+        "sport": "fitness",
+        "website": "http://www.american-fitness-center.de/lu_start,158.html",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4519862,
+          49.4768466
+        ]
+      },
+      "id": "node/2982136503"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2982138357",
+        "check_date": "2025-04-02",
+        "leisure": "sports_centre",
+        "name": "Kung Fu To'a Schule",
+        "opening_hours": "Mo,We 15:30-19:30; Tu,Th-Fr 15:30-18:00; Sa 14:00-16:15",
+        "phone": "+49 621 5668005",
+        "sport": "martial_arts",
+        "website": "https://www.kungfuto-a.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4526304,
+          49.4770542
+        ]
+      },
+      "id": "node/2982138357"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3248853267",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "12",
+        "addr:postcode": "68159",
+        "addr:street": "C7",
+        "email": "sport@uni-mannheim.de",
+        "leisure": "sports_centre",
+        "level": "1",
+        "name": "Yoga Zentrum C7 - Universitaet Mannheim",
+        "phone": "+49 621 1813419",
+        "sport": "yoga",
+        "website": "https://www.uni-mannheim.de/sport/studios/yoga/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4586897,
+          49.4890723
+        ]
+      },
+      "id": "node/3248853267"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3248878393",
+        "leisure": "sports_centre",
+        "name": "Aikido Dojo Mannheim",
+        "sport": "Karate",
+        "website": "http://aikidomannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4591637,
+          49.4892419
+        ]
+      },
+      "id": "node/3248878393"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3257799974",
+        "image": "https://commons.wikimedia.org/wiki/File:Wing_Chun_Akademie_Mannheim_S6.jpg",
+        "leisure": "sports_centre",
+        "name": "Wing Chun Akademie Mannheim",
+        "phone": "+49 621 7296938",
+        "sport": "Wing Chun",
+        "website": "http://www.iaw-mannheim.com"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4740233,
+          49.4885648
+        ]
+      },
+      "id": "node/3257799974"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3257811961",
+        "image": "https://commons.wikimedia.org/wiki/File:Sportschule_Hanuman_Mannheim_S6.jpg",
+        "leisure": "sports_centre",
+        "name": "Sportschule Hanuman Mannheim",
+        "phone": "+49 174 2116142",
+        "sport": "Thaiboxen",
+        "website": "http://www.hanuman-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4735168,
+          49.488468
+        ]
+      },
+      "id": "node/3257811961"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3417789778",
+        "check_date": "2025-07",
+        "leisure": "sports_centre",
+        "name": "Dance & Health Academy",
+        "phone": "+49 178 8888258",
+        "website": "https://dance-health.de/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5267018,
+          49.4874514
+        ]
+      },
+      "id": "node/3417789778"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3421149701",
+        "leisure": "sports_centre",
+        "name": "HelliFit & Dance",
+        "phone": "+49 621 84259409",
+        "sport": "dance",
+        "website": "http://www.hellifit-und-dance.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4944274,
+          49.4534498
+        ]
+      },
+      "id": "node/3421149701"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3453474577",
+        "leisure": "sports_centre",
+        "name": "WingTsun Mannheim-Neckarau",
+        "phone": "+49 176 79798955",
+        "sport": "martial_arts",
+        "website": "http://www.mannheim-wt.de/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4826946,
+          49.4536031
+        ]
+      },
+      "id": "node/3453474577"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3499135874",
+        "check_date": "2023-10-22",
+        "leisure": "fitness_centre",
+        "name": "VeniceBeach",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4734824,
+          49.4850887
+        ]
+      },
+      "id": "node/3499135874"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3504399595",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "1-7",
+        "addr:postcode": "68167",
+        "addr:street": "Melchiorstraße",
+        "leisure": "sports_centre",
+        "level": "1",
+        "name": "DEIN SPORT mal anders",
+        "phone": "+49 621 17885726",
+        "sport": "fitness",
+        "website": "https://www.sport-ma.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4767343,
+          49.4977747
+        ]
+      },
+      "id": "node/3504399595"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3869214911",
+        "addr:city": "Mannheim",
+        "addr:country": "DE",
+        "addr:housenumber": "189",
+        "addr:postcode": "68167",
+        "addr:street": "Käfertaler Straße",
+        "leisure": "sports_centre",
+        "name": "TSOM TSOM Gym",
+        "sport": "Wing Tsun",
+        "website": "http://www.tsomtsomgym-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4922056,
+          49.4977992
+        ]
+      },
+      "id": "node/3869214911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3964382341",
+        "leisure": "sports_centre",
+        "level": "0",
+        "name": "Santosha Yoga Studio - Yoga Vidya Mannheim",
+        "phone": "+49 1575 8807404",
+        "sport": "yoga",
+        "survey:date": "2016-03",
+        "website": "https://www.yoga-vidya.de/center/mannheim/start/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4638865,
+          49.4909883
+        ]
+      },
+      "id": "node/3964382341"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4107058185",
+        "leisure": "sports_centre",
+        "name": "Bala-Shanti Yoga Zentrum",
+        "phone": "+49 621 15400347",
+        "sport": "yoga",
+        "website": "https://www.bala-shanti.de/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4760793,
+          49.4785501
+        ]
+      },
+      "id": "node/4107058185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4110427460",
+        "leisure": "fitness_centre",
+        "name": "Sportomed Fitness & Prävention",
+        "website": "http://www.sportomed.de/index.php"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.498599,
+          49.4887779
+        ]
+      },
+      "id": "node/4110427460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4231250105",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "11",
+        "addr:place": "U4",
+        "addr:postcode": "68161",
+        "check_date": "2023-09-02",
+        "email": "mail@capoeiraverein-ma.de",
+        "leisure": "sports_centre",
+        "level": "0",
+        "name": "Sport Zentrum Mannheim e.V.",
+        "opening_hours:covid19": "off",
+        "phone": "+49 176 22696722",
+        "sport": "Rehab sport;fitness;yoga;capoeira",
+        "website": "https://sportzentrum-ma.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4732184,
+          49.4915145
+        ]
+      },
+      "id": "node/4231250105"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4367450433",
+        "leisure": "sports_centre",
+        "name": "Vita Balance"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4700165,
+          49.4717451
+        ]
+      },
+      "id": "node/4367450433"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4406847541",
+        "brand": "Fitness First",
+        "brand:wikidata": "Q127120",
+        "brand:wikipedia": "en:Fitness First",
+        "check_date:opening_hours": "2023-08-19",
+        "leisure": "fitness_centre",
+        "name": "Fitness First",
+        "opening_hours": "Mo-Fr 06:30-23:00; Sa,Su,PH 09:00-20:00",
+        "sauna": "yes",
+        "swimming_pool": "yes",
+        "website": "https://www.fitnessfirst.de/clubs/mannheim",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4717815,
+          49.4872618
+        ]
+      },
+      "id": "node/4406847541"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4481178389",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "59",
+        "addr:postcode": "67063",
+        "addr:street": "Dessauer Straße",
+        "branch": "Ludwigshafen Nord",
+        "brand": "FitX",
+        "brand:wikidata": "Q29031618",
+        "check_date": "2023-09-01",
+        "leisure": "fitness_centre",
+        "name": "FitX",
+        "opening_hours": "24/7",
+        "operator": "FitX Deutschland GmbH",
+        "phone": "+49 621 68561176",
+        "sport": "fitness",
+        "website": "https://www.fitx.de/studio/ludwigshafen-nord"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4375092,
+          49.4912782
+        ]
+      },
+      "id": "node/4481178389"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4547207757",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "22-26",
+        "addr:postcode": "68163",
+        "addr:street": "Fabrikstationstraße",
+        "leisure": "sports_centre",
+        "level": "1",
+        "name": "Lasertag One",
+        "phone": "+49 621 83556111",
+        "sport": "laser_tag",
+        "website": "https://www.lasertag-one.de/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4886765,
+          49.4669032
+        ]
+      },
+      "id": "node/4547207757"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4855635621",
+        "leisure": "sports_centre",
+        "name": "YogaSpirits",
+        "sport": "yoga"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4537611,
+          49.4718325
+        ]
+      },
+      "id": "node/4855635621"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4855635825",
+        "leisure": "sports_centre",
+        "name": "Tanzschule MOHL",
+        "sport": "dancing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4538631,
+          49.471917
+        ]
+      },
+      "id": "node/4855635825"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4964537680",
+        "branch": "Mannheim",
+        "brand": "Körperformen",
+        "brand:wikidata": "Q117455940",
+        "check_date": "2024-10-30",
+        "leisure": "fitness_centre",
+        "name": "Körperformen",
+        "phone": "+49 621 39182112",
+        "website": "https://www.xn--krperformen-rfb.com/standorte/ems-training-mannheim/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4802031,
+          49.4799092
+        ]
+      },
+      "id": "node/4964537680"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5565813422",
+        "contact:email": "info@taekwondo-mannheim.de",
+        "contact:mobile": "+49 176 24859256",
+        "contact:phone": "+49 621 26792",
+        "contact:website": "http://taekwondo-mannheim.de",
+        "leisure": "sports_centre",
+        "name": "Taekwon-Do Center Mannheim",
+        "sport": "taekwondo"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4800995,
+          49.4826178
+        ]
+      },
+      "id": "node/5565813422"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5678981025",
+        "addr:housenumber": "27",
+        "addr:street": "Wattstraße",
+        "leisure": "sports_centre",
+        "name": "Wing Chun Akademie"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4970925,
+          49.4641223
+        ]
+      },
+      "id": "node/5678981025"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5867152701",
+        "email": "info@kur-pals.de",
+        "leisure": "fitness_centre",
+        "mobile": "+49 176 633 316 65",
+        "name": "CrossFit Kur-Pals",
+        "sport": "fitness",
+        "website": "https://kur-pals.de/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5279441,
+          49.4743708
+        ]
+      },
+      "id": "node/5867152701"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6813858776",
+        "brand": "JOHN REED Fitness",
+        "brand:wikidata": "Q106434148",
+        "check_date": "2025-05-16",
+        "leisure": "fitness_centre",
+        "level": "2",
+        "name": "JOHN REED Fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4699102,
+          49.491991
+        ]
+      },
+      "id": "node/6813858776"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7944973791",
+        "leisure": "fitness_centre"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4933867,
+          49.5078796
+        ]
+      },
+      "id": "node/7944973791"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8840934659",
+        "leisure": "fitness_centre",
+        "name": "Fight und Fitness Fabrik Mannheim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4622879,
+          49.5177647
+        ]
+      },
+      "id": "node/8840934659"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8849814442",
+        "leisure": "sports_centre",
+        "sport": "multi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5034842,
+          49.4874189
+        ]
+      },
+      "id": "node/8849814442"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9165685741",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "11",
+        "addr:postcode": "68199",
+        "addr:street": "Mühlweg",
+        "club": "sport",
+        "email": "kontakt@kg-neckarau.de",
+        "image": "https://kg-neckarau.de/index.php/de/verein/bootshaus",
+        "leisure": "sports_centre",
+        "name": "Kanu-Gesellschaft Neckarau e.V.",
+        "opening_hours": "Mo-Su 10:00-20:00",
+        "operator": "Kanu-Gesellschaft Neckarau e.V.",
+        "phone": "+49 177 7375079",
+        "sport": "canoe",
+        "website": "https://kg-neckarau.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.471212,
+          49.4454753
+        ]
+      },
+      "id": "node/9165685741"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9391022252",
+        "leisure": "fitness_centre",
+        "name": "XGYM",
+        "opening_hours": "Mo-Fr 06:00-23:00; PH,Sa,Su 08:00-22:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4453196,
+          49.4830497
+        ]
+      },
+      "id": "node/9391022252"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9775370097",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "69",
+        "addr:postcode": "68163",
+        "addr:street": "Meerfeldstraße",
+        "email": "empfang@casana.de",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Casana",
+        "phone": "+49 621 842550",
+        "sport": "reha",
+        "website": "https://www.casana-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.469919,
+          49.4720437
+        ]
+      },
+      "id": "node/9775370097"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9929410671",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "12",
+        "addr:postcode": "68159",
+        "addr:street": "C7",
+        "email": "sport@uni-mannheim.de",
+        "leisure": "sports_centre",
+        "level": "0",
+        "name": "Tanz Zentrum C7 - Universitaet Mannheim",
+        "phone": "+49 621 1813419",
+        "sport": "dance",
+        "website": "https://www.uni-mannheim.de/sport/studios/tanz/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4587091,
+          49.4890667
+        ]
+      },
+      "id": "node/9929410671"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9946500204",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "25",
+        "addr:postcode": "67065",
+        "addr:street": "Kalmitstraße",
+        "leisure": "sports_centre",
+        "name": "ADTV Tanzschule Weile",
+        "sport": "dance",
+        "website": "https://www.tanzschule-weile.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.420812,
+          49.4596975
+        ]
+      },
+      "id": "node/9946500204"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9972348162",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "79",
+        "addr:postcode": "68309",
+        "addr:street": "Auf dem Sand",
+        "leisure": "fitness_centre",
+        "name": "Venice Beach MA-Käfertal",
+        "phone": "+49 621 7176930",
+        "sport": "fitness",
+        "website": "https://www.venicebeach-fitness.de/clubs/premium-fitness/mannheim-kaefertal/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5087726,
+          49.5154405
+        ]
+      },
+      "id": "node/9972348162"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10120123403",
+        "addr:city": "Ludwigshafen am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "67063",
+        "addr:street": "Geibelstraße",
+        "leisure": "sports_centre",
+        "name": "BASF LuFit",
+        "operator": "BASF SE",
+        "sport": "fitness",
+        "website": "https://www.basf.com/lumit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4270949,
+          49.4936684
+        ]
+      },
+      "id": "node/10120123403"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10435617366",
+        "contact:website": "https://smartclimb.de/",
+        "leisure": "sports_centre",
+        "name": "Smart Climb",
+        "opening_hours": "Th,Fr 14:00-20:00; Sa,Su 10:00-18:00",
+        "sells:alcohol": "yes",
+        "sport": "climbing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5027716,
+          49.497036
+        ]
+      },
+      "id": "node/10435617366"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11459178869",
+        "addr:housenumber": "1",
+        "addr:postcode": "68159",
+        "addr:street": "H7",
+        "leisure": "fitness_centre",
+        "name": "Reformé Reformer Studio",
+        "old_name": "Pribce",
+        "old_name:de": "Prince House Gallery",
+        "old_name:en": "Prince House Gallery",
+        "sport": "pilates",
+        "website": "https://www.reformeactive.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4632938,
+          49.4919979
+        ]
+      },
+      "id": "node/11459178869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11465182369",
+        "addr:housenumber": "30",
+        "addr:postcode": "68159",
+        "addr:street": "G7",
+        "leisure": "fitness_centre",
+        "name": "flow - yoga and more",
+        "website": "https://www.yogaflow-mannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4604639,
+          49.4922409
+        ]
+      },
+      "id": "node/11465182369"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11801691135",
+        "leisure": "fitness_centre",
+        "name": "House of Pilates"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5188215,
+          49.5031286
+        ]
+      },
+      "id": "node/11801691135"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12383133135",
+        "addr:city": "Mannheim",
+        "addr:housenumber": "7",
+        "addr:postcode": "68169",
+        "addr:street": "Langstraße",
+        "email": "info@somayoga.space",
+        "leisure": "fitness_centre",
+        "name": "Soma Yoga",
+        "phone": "+49 170 4851862",
+        "sport": "yoga",
+        "website": "https://somayoga.space",
+        "website:booking": "https://www.eversports.de/scl/somayogaspace"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4712291,
+          49.4966556
+        ]
+      },
+      "id": "node/12383133135"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13031534380",
+        "leisure": "fitness_centre",
+        "name": "FitX",
+        "website": "https://www.fitx.de/fitnessstudios/mannheim-almenhof"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4871165,
+          49.4655244
+        ]
+      },
+      "id": "node/13031534380"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13483980201",
+        "addr:housenumber": "23",
+        "addr:postcode": "68199",
+        "addr:street": "Wattstraße",
+        "email": "info@padelmannheim.de",
+        "leisure": "sports_centre",
+        "name": "maba! Padel Mannheim",
+        "opening_hours": "Mo-We 15:00-22:30; Th 07:00-22:30; Fr 10:00-22:30; Sa 09:00-19:00; Su 09:00-18:00",
+        "website": "https://padelmannheim.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4955792,
+          49.4647162
+        ]
+      },
+      "id": "node/13483980201"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13859591850",
+        "leisure": "fitness_centre",
+        "name": "K360 Sports",
+        "sport": "fitness",
+        "website": "https://www.kings360.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4879169,
+          49.4783798
+        ]
+      },
+      "id": "node/13859591850"
+    }
+  ]
+}

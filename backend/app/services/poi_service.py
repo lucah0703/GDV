@@ -1,7 +1,10 @@
 import geopandas as gpd
 import pandas as pd
+from pathlib import Path
 
 #gdf =  GeoDataFrame
+
+POIS_DIR = Path("backend/data/pois")
 
 def ensure_column(gdf, column, default=None):
     if column not in gdf.columns:
@@ -20,10 +23,24 @@ def build_address(row):
     
     return None
 
+
+def add_metadata_from_filename(gdf, path):
+
+    parts = path.stem.split("_")
+
+    city = parts[0]
+    university = parts[1]
+    category = parts[2]
+
+    gdf["city"] = city
+    gdf["university"] = university
+    gdf["category"] = category
+
+    return gdf
+
 def load_bahnhoefe(path):
     gdf = gpd.read_file(path)
-
-    gdf["category"] = "bahnhof"
+    gdf = add_metadata_from_filename(gdf, path)
 
     gdf = ensure_column(gdf, "id")
     gdf = ensure_column(gdf, "name")
@@ -35,8 +52,7 @@ def load_bahnhoefe(path):
 
 def load_wohnheime(path):
     gdf = gpd.read_file(path)
-
-    gdf["category"] = "wohnheim"
+    gdf = add_metadata_from_filename(gdf, path)
 
     gdf = ensure_column(gdf, "id")
     gdf = ensure_column(gdf, "addr:housename")
@@ -55,10 +71,9 @@ def load_wohnheime(path):
     return gdf
 
 
-def load_sportstaetten(path):
+def load_sport(path):
     gdf = gpd.read_file(path)
-
-    gdf["category"] = "sport"
+    gdf = add_metadata_from_filename(gdf, path)
 
     gdf = ensure_column(gdf, "id")
     gdf = ensure_column(gdf, "addr:housename")
@@ -78,14 +93,32 @@ def load_sportstaetten(path):
     return gdf
 
 
-bahnhoefe = load_bahnhoefe("backend/data/pois/bahnhoefe.geojson")
-wohnheime = load_wohnheime("backend/data/pois/wohnheime.geojson")
-sportstaetten = load_sportstaetten("backend/data/pois/sportstaetten.geojson")
+all_gdfs = []
 
-pois = pd.concat(
-    [bahnhoefe, wohnheime, sportstaetten],
-    ignore_index=True
-)
+for path in POIS_DIR.glob("*.geojson"):
+    parts = path.stem.split("_")
+
+    if len(parts) != 3:
+        continue
+
+    category = parts[2]
+
+    if category == "bahnhoefe":
+        gdf = load_bahnhoefe(path)
+
+    elif category == "wohnheime":
+        gdf = load_wohnheime(path)
+
+    elif category == "sport":
+        gdf = load_sport(path)
+
+    else:
+        continue
+
+    all_gdfs.append(gdf)
+
+
+pois = pd.concat(all_gdfs, ignore_index=True)
 
 pois = gpd.GeoDataFrame(pois, geometry="geometry", crs="EPSG:4326")
 
@@ -95,6 +128,8 @@ pois["lat"] = pois.geometry.y
 pois_clean = pois[
     [
         "id",
+        "city",
+        "university",
         "category",
         "name",
         "adress",
