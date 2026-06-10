@@ -6,10 +6,12 @@ from pathlib import Path
 
 POIS_DIR = Path("backend/data/pois")
 
+
 def ensure_column(gdf, column, default=None):
     if column not in gdf.columns:
         gdf[column] = default
     return gdf
+
 
 def build_address(row):
     street = row["addr:street"]
@@ -20,27 +22,25 @@ def build_address(row):
 
     if pd.notna(street):
         return street
-    
+
     return None
 
 
-def add_metadata_from_filename(gdf, path):
-
-    parts = path.stem.split("_")
-
-    city = parts[0]
-    university = parts[1]
-    category = parts[2]
+def add_metadata(gdf, path):
+    category = path.stem
+    uni = path.parent.name
+    city = path.parent.parent.name
 
     gdf["city"] = city
-    gdf["university"] = university
+    gdf["uni"] = uni
     gdf["category"] = category
 
     return gdf
 
+
 def load_bahnhoefe(path):
     gdf = gpd.read_file(path)
-    gdf = add_metadata_from_filename(gdf, path)
+    gdf = add_metadata(gdf, path)
 
     gdf = ensure_column(gdf, "id")
     gdf = ensure_column(gdf, "name")
@@ -52,7 +52,7 @@ def load_bahnhoefe(path):
 
 def load_wohnheime(path):
     gdf = gpd.read_file(path)
-    gdf = add_metadata_from_filename(gdf, path)
+    gdf = add_metadata(gdf, path)
 
     gdf = ensure_column(gdf, "id")
     gdf = ensure_column(gdf, "addr:housename")
@@ -71,16 +71,16 @@ def load_wohnheime(path):
     return gdf
 
 
-def load_sport(path):
+def load_sporteinrichtungen(path):
     gdf = gpd.read_file(path)
-    gdf = add_metadata_from_filename(gdf, path)
+    gdf = add_metadata(gdf, path)
 
     gdf = ensure_column(gdf, "id")
     gdf = ensure_column(gdf, "addr:housename")
     gdf = ensure_column(gdf, "name")
     gdf = ensure_column(gdf, "addr:street")
     gdf = ensure_column(gdf, "addr:housenumber")
-    gdf = ensure_column(gdf, "sport")
+    gdf = ensure_column(gdf, "sportart")
 
     gdf["name"] = (
         gdf["addr:housename"]
@@ -93,28 +93,24 @@ def load_sport(path):
     return gdf
 
 
+LOADERS = {
+    "bahnhoefe": load_bahnhoefe,
+    "wohnheime": load_wohnheime,
+    "sporteinrichtungen": load_sporteinrichtungen,
+}
+
+
 all_gdfs = []
 
-for path in POIS_DIR.glob("*.geojson"):
-    parts = path.stem.split("_")
+for path in POIS_DIR.glob("*/*/*.geojson"):
+    category = path.stem
 
-    if len(parts) != 3:
+    loader = LOADERS.get(category)
+
+    if loader is None:
         continue
 
-    category = parts[2]
-
-    if category == "bahnhoefe":
-        gdf = load_bahnhoefe(path)
-
-    elif category == "wohnheime":
-        gdf = load_wohnheime(path)
-
-    elif category == "sport":
-        gdf = load_sport(path)
-
-    else:
-        continue
-
+    gdf = loader(path)
     all_gdfs.append(gdf)
 
 
@@ -125,22 +121,22 @@ pois = gpd.GeoDataFrame(pois, geometry="geometry", crs="EPSG:4326")
 pois["lon"] = pois.geometry.x
 pois["lat"] = pois.geometry.y
 
-pois_clean = pois[
+pois = pois[
     [
         "id",
         "city",
-        "university",
+        "uni",
         "category",
         "name",
         "adress",
-        "sport",
+        "sportart",
         "lon",
         "lat",
         "geometry",
     ]
 ].copy()
 
-pois_clean.to_file(
-    "backend/app/services/pois_clean.geojson",
+pois.to_file(
+    "backend/app/services/pois.geojson",
     driver="GeoJSON"
 )

@@ -9,15 +9,15 @@ PRICING_URLS = {
         "bolt": "https://api.mobidata-bw.de/sharing/gbfs/v3/bolt_stuttgart/system_pricing_plans",
         "voi":  "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/system_pricing_plans",
         "dott": "https://gbfs.api.ridedott.com/public/v2/stuttgart/system_pricing_plans.json",
-        "regioradstuttgart": "https://api.mobidata-bw.de/sharing/gbfs/v3/regiorad_stuttgart/system_pricing_plans",
-        "dbcallabike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
+        "regioRadStuttgart": "https://api.mobidata-bw.de/sharing/gbfs/v3/regiorad_stuttgart/system_pricing_plans",
+        "dbCallABike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
     },
     "karlsruhe": {
         "bolt": "https://api.mobidata-bw.de/sharing/gbfs/v3/bolt_karlsruhe/system_pricing_plans",
         "voi":  "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/system_pricing_plans",
         "dott": "https://gbfs.api.ridedott.com/public/v2/karlsruhe/system_pricing_plans.json",
-        "kvvnextbike": "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_fg/de/system_pricing_plans.json",
-        "dbcallabike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
+        "kvv.nextbike": "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_fg/de/system_pricing_plans.json",
+        "dbCallABike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
 
     },
     "mannheim": {
@@ -25,32 +25,14 @@ PRICING_URLS = {
         "voi":  "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/system_pricing_plans",
         "dott": "https://gbfs.api.ridedott.com/public/v2/mannheim/system_pricing_plans.json",
         "vrnnextbike": "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_vn/de/system_pricing_plans.json",
-        "dbcallabike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
+        "dbCallABike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
 
     }
 }
 
 
-@router.get("/pricing")
-def get_pricing(city: str, provider: str):
-    city = city.lower().strip()
-    provider = provider.lower().strip()
-
-    if city not in PRICING_URLS:
-        raise HTTPException(
-            status_code=404,
-            detail="Stadt nicht gefunden."
-        )
-
-    if provider not in PRICING_URLS[city]:
-        raise HTTPException(
-            status_code=404,
-            detail="Anbieter nicht gefunden."
-        )
-
-    pricing_url = PRICING_URLS[city][provider]
-
-    response = requests.get(pricing_url, timeout=10)
+def fetch_pricing_plans(url: str):
+    response = requests.get(url)
     response.raise_for_status()
 
     pricing_data = response.json()
@@ -68,8 +50,33 @@ def get_pricing(city: str, provider: str):
             "per_min_pricing": plan.get("per_min_pricing", [])
         })
 
+    return filtered_plans
+
+
+@router.get("/pricing")
+def get_pricing(city: str, provider: str | None = None):
+    city_providers = PRICING_URLS[city]
+
+    if provider:
+        plans = fetch_pricing_plans(city_providers[provider])
+
+        return {
+            "city": city,
+            "provider": provider,
+            "plans": plans
+        }
+
+    results = []
+
+    for provider_name, pricing_url in city_providers.items():
+        plans = fetch_pricing_plans(pricing_url)
+
+        results.append({
+            "provider": provider_name,
+            "plans": plans
+        })
+
     return {
         "city": city,
-        "provider": provider,
-        "plans": filtered_plans
+        "providers": results
     }

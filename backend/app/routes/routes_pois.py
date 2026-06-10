@@ -5,7 +5,7 @@ import json
 
 router = APIRouter()
 
-POIS_PATH = "backend/app/services/pois_clean.geojson"
+POIS_PATH = "backend/app/services/pois.geojson"
 pois_gdf = gpd.read_file(POIS_PATH)
 
 
@@ -25,7 +25,7 @@ def get_pois(
     gdf = gdf[gdf["city"] == city]
 
     if uni:
-        gdf = gdf[gdf["university"] == uni]
+        gdf = gdf[gdf["uni"] == uni]
 
     if category:
         gdf = gdf[gdf["category"] == category]
@@ -54,7 +54,7 @@ def get_summary(
     gdf = gdf[gdf["city"] == city]
 
     if uni:
-        gdf = gdf[gdf["university"] == uni]
+        gdf = gdf[gdf["uni"] == uni]
 
     if category:
         gdf = gdf[gdf["category"] == category]
@@ -77,8 +77,8 @@ def get_summary(
         "category": category,
         "total": len(gdf),
         "by_category": [
+            {"category": "bahnhoefe", "count": counts.get("bahnhoefe", 0)},
             {"category": "wohnheime", "count": counts.get("wohnheime", 0)},
-            {"category": "sport", "count": counts.get("sport", 0)},
-            {"category": "bahnhoefe", "count": counts.get("bahnhoefe", 0)}
+            {"category": "sporteinrichtungen", "count": counts.get("sporteinrichtungen", 0)}
         ]
     }
