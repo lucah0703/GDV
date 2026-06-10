@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.app.routes import routes
+from backend.app.routes import routes, routes_availability
 
 app = FastAPI()
 
