@@ -1,407 +1,676 @@
-import { useEffect, useState } from 'react';
-import './App.css';
-import Map from './Map.jsx';
+import { useEffect, useMemo, useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Circle,
+  Popup,
+  useMap,
+} from "react-leaflet";
+import "./App.css";
 
-const cityData = {
-  Mannheim: {
-    center: [49.4831, 8.4632],
-    points: [
-      { name: 'Universität Mannheim', coords: [49.4831, 8.4632] },
-      { name: 'DHBW Mannheim', coords: [49.4734, 8.5256] },
-      { name: 'Technische Hochschule Mannheim', coords: [49.4691, 8.4823] }
-    ]
-  },
-  Karlsruhe: {
-    center: [49.0095, 8.4116],
-    points: [
-      { name: 'KIT', coords: [49.0095, 8.4116] },
-      { name: 'Hochschule Karlsruhe', coords: [49.0158, 8.3916] },
-      { name: 'Pädagogische Hochschule Karlsruhe', coords: [49.0135, 8.3965] }
-    ]
-  },
-  Stuttgart: {
-    center: [48.7812, 9.1735],
-    points: [
-      { name: 'Universität Stuttgart', coords: [48.7812, 9.1735] },
-      { name: 'Universität Hohenheim', coords: [48.7112, 9.2132] },
-      { name: 'DHBW Stuttgart', coords: [48.7744, 9.1685] }
-    ]
-  }
+const cities = {
+  Mannheim: [
+    { name: "Universität Mannheim", students: "ca. 10.800", coords: [49.4831, 8.4632] },
+    { name: "DHBW Mannheim", students: "ca. 5.900", coords: [49.4734, 8.5256] },
+    { name: "Technische Hochschule Mannheim", students: "ca. 5.200", coords: [49.4691, 8.4823] },
+  ],
+  Karlsruhe: [
+    { name: "KIT", students: "ca. 24.000", coords: [49.0095, 8.4116] },
+    { name: "Hochschule Karlsruhe", students: "ca. 8.300", coords: [49.0158, 8.3916] },
+    { name: "Pädagogische Hochschule Karlsruhe", students: "ca. 3.300", coords: [49.0135, 8.3965] },
+  ],
+  Stuttgart: [
+    { name: "Universität Stuttgart", students: "ca. 20.500", coords: [48.7812, 9.1735] },
+    { name: "Universität Hohenheim", students: "ca. 9.200", coords: [48.7112, 9.2132] },
+    { name: "DHBW Stuttgart", students: "ca. 8.300", coords: [48.7744, 9.1685] },
+  ],
 };
 
-const providerData = [
-  { city: 'Mannheim', provider: 'Lime', type: 'Bike', price: 1.85 },
-  { city: 'Mannheim', provider: 'Tier', type: 'Scooter', price: 2.10 },
-  { city: 'Mannheim', provider: 'Nextbike', type: 'Bike', price: 1.60 },
-  { city: 'Mannheim', provider: 'Voi', type: 'Scooter', price: 2.00 },
-  { city: 'Mannheim', provider: 'Donkey Republic', type: 'Bike', price: 1.75 },
-  { city: 'Mannheim', provider: 'Bird', type: 'Scooter', price: 1.95 },
-  { city: 'Karlsruhe', provider: 'Bird', type: 'Scooter', price: 1.95 },
-  { city: 'Karlsruhe', provider: 'Nextbike', type: 'Bike', price: 1.60 },
-  { city: 'Karlsruhe', provider: 'Lime', type: 'Bike', price: 1.85 },
-  { city: 'Karlsruhe', provider: 'Voi', type: 'Scooter', price: 2.00 },
-  { city: 'Karlsruhe', provider: 'Tier', type: 'Scooter', price: 2.15 },
-  { city: 'Karlsruhe', provider: 'Donkey Republic', type: 'Bike', price: 1.75 },
-  { city: 'Stuttgart', provider: 'Voi', type: 'Scooter', price: 2.00 },
-  { city: 'Stuttgart', provider: 'Donkey Republic', type: 'Bike', price: 1.75 },
-  { city: 'Stuttgart', provider: 'Lime', type: 'Bike', price: 1.90 },
-  { city: 'Stuttgart', provider: 'Tier', type: 'Scooter', price: 2.10 },
-  { city: 'Stuttgart', provider: 'Bird', type: 'Scooter', price: 1.95 },
-  { city: 'Stuttgart', provider: 'Nextbike', type: 'Bike', price: 1.60 }
-];
-
-const providerLogoData = {
-  Lime: { abbrev: 'L', color: '#22c55e' },
-  Tier: { abbrev: 'T', color: '#0ea5e9' },
-  Bird: { abbrev: 'B', color: '#2563eb' },
-  Nextbike: { abbrev: 'N', color: '#7c3aed' },
-  Voi: { abbrev: 'V', color: '#f97316' },
-  'Donkey Republic': { abbrev: 'DR', color: '#f59e0b' }
-};
-
-function getProviderLogo(provider) {
-  return (
-    providerLogoData[provider] || {
-      abbrev: provider
-        .split(' ')
-        .map((word) => word[0])
-        .join('')
-        .slice(0, 2)
-        .toUpperCase(),
-      color: '#64748b'
-    }
-  );
-}
-
-function App() {
-  const [selectedCity, setSelectedCity] = useState('Mannheim');
-  const [selectedStart, setSelectedStart] = useState(null);
-  const [viewMode, setViewMode] = useState('Karte');
-  const [tariffMode, setTariffMode] = useState('Student');
-  const [selectedTypes, setSelectedTypes] = useState(['Bike', 'Scooter']);
-  const [selectedProviders, setSelectedProviders] = useState(providerData.map((item) => item.provider));
-  const [listFilter, setListFilter] = useState('all');
-
-  useEffect(() => {
-    // Effect removed - startpoint is not auto-selected
-  }, []);
-
-  const handleCityChange = (event) => {
-    setSelectedCity(event.target.value);
-    setSelectedStart(null);
-  };
-
-  const handleStartChange = (event) => {
-    const nextPoint = cityData[selectedCity].points.find(
-      (point) => point.name === event.target.value
-    );
-    if (nextPoint) {
-      setSelectedStart(nextPoint);
-    }
-  };
-
-  const handleTariffMode = (mode) => {
-    setTariffMode(mode);
-  };
-
-  const handleTypeToggle = (type) => {
-    setSelectedTypes((current) =>
-      current.includes(type) ? current.filter((item) => item !== type) : [...current, type]
-    );
-  };
-
-  const handleProviderToggle = (provider) => {
-    setSelectedProviders((current) =>
-      current.includes(provider) ? current.filter((item) => item !== provider) : [...current, provider]
-    );
-  };
-
-  const providerGroups = [
+const poisByCity = {
+  Mannheim: [
     {
-      type: 'Bike',
-      providers: Array.from(new Set(providerData.filter((item) => item.type === 'Bike').map((item) => item.provider))).sort()
+      name: "Mannheim Hbf",
+      type: "Bahnhof",
+      icon: "🚉",
+      coords: [49.479, 8.469],
+      address: "Willy-Brandt-Platz 17, 68161 Mannheim",
     },
     {
-      type: 'Scooter',
-      providers: Array.from(new Set(providerData.filter((item) => item.type === 'Scooter').map((item) => item.provider))).sort()
+      name: "Wohnheim Innenstadt",
+      type: "Wohnheim",
+      icon: "🏠",
+      coords: [49.489, 8.462],
+      address: "Innenstadt, 68159 Mannheim",
+    },
+    {
+      name: "Hochschulsport Mannheim",
+      type: "Sportanlage",
+      icon: "⚽",
+      coords: [49.492, 8.475],
+      address: "Nähe Universität Mannheim",
+    },
+  ],
+  Karlsruhe: [
+    {
+      name: "Karlsruhe Hbf",
+      type: "Bahnhof",
+      icon: "🚉",
+      coords: [48.9937, 8.4005],
+      address: "Bahnhofplatz 1a, 76137 Karlsruhe",
+    },
+    {
+      name: "Wohnheim Waldhornstraße",
+      type: "Wohnheim",
+      icon: "🏠",
+      coords: [49.0107, 8.4146],
+      address: "Waldhornstraße, Karlsruhe",
+    },
+    {
+      name: "Hochschulsport KIT",
+      type: "Sportanlage",
+      icon: "⚽",
+      coords: [49.012, 8.423],
+      address: "KIT Campus Süd, Karlsruhe",
+    },
+  ],
+  Stuttgart: [
+    {
+      name: "Stuttgart Hbf",
+      type: "Bahnhof",
+      icon: "🚉",
+      coords: [48.7834, 9.1816],
+      address: "Arnulf-Klett-Platz 2, 70173 Stuttgart",
+    },
+    {
+      name: "Wohnheim Stuttgart-Mitte",
+      type: "Wohnheim",
+      icon: "🏠",
+      coords: [48.776, 9.172],
+      address: "Stuttgart-Mitte",
+    },
+    {
+      name: "Hochschulsport Stuttgart",
+      type: "Sportanlage",
+      icon: "⚽",
+      coords: [48.781, 9.188],
+      address: "Nähe Universität Stuttgart",
+    },
+  ],
+};
+
+const tariffs = {
+  bike: {
+    name: "Bike / E-Bike",
+    unlock: 0,
+    pricePerMinute: 0.1,
+    speedKmh: 15,
+    color: "#047857",
+  },
+  scooter: {
+    name: "E-Scooter",
+    unlock: 1,
+    pricePerMinute: 0.25,
+    speedKmh: 15,
+    color: "#7c3aed",
+  },
+};
+
+function calculateRadiusMeters(budget, vehicle) {
+  const tariff = tariffs[vehicle];
+  const usableBudget = budget - tariff.unlock;
+  if (usableBudget <= 0) return 0;
+
+  const minutes = usableBudget / tariff.pricePerMinute;
+  const km = (minutes / 60) * tariff.speedKmh;
+
+  return km * 1000;
+}
+
+function distanceKm(a, b) {
+  const R = 6371;
+  const dLat = ((b[0] - a[0]) * Math.PI) / 180;
+  const dLng = ((b[1] - a[1]) * Math.PI) / 180;
+
+  const lat1 = (a[0] * Math.PI) / 180;
+  const lat2 = (b[0] * Math.PI) / 180;
+
+  const x =
+    Math.sin(dLat / 2) ** 2 +
+    Math.sin(dLng / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2);
+
+  return 2 * R * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+}
+
+function calculateCost(start, destination, vehicle) {
+  const km = distanceKm(start, destination);
+  const tariff = tariffs[vehicle];
+  const minutes = (km / tariff.speedKmh) * 60;
+  const price = tariff.unlock + minutes * tariff.pricePerMinute;
+
+  return { km, minutes, price };
+}
+
+export default function App() {
+  const [city, setCity] = useState("Mannheim");
+  const [school, setSchool] = useState(cities.Mannheim[0]);
+  const [mode] = useState("poi");
+  const [showAvailability, setShowAvailability] = useState(false);
+  const [budget, setBudget] = useState(5);
+  const [selectedPoiType, setSelectedPoiType] = useState("Bahnhof");
+  const [selectedPoi, setSelectedPoi] = useState(null);
+  const [timeSlot, setTimeSlot] = useState("morning");
+
+  const pois = poisByCity[city];
+
+  const bikeRadius = calculateRadiusMeters(budget, "bike");
+  const scooterRadius = calculateRadiusMeters(budget, "scooter");
+
+  const filteredPois = useMemo(() => {
+    return pois.filter((poi) => poi.type === selectedPoiType);
+  }, [pois, selectedPoiType]);
+
+  const poisWithCosts = useMemo(() => {
+    return filteredPois.map((poi) => {
+      const bike = calculateCost(school.coords, poi.coords, "bike");
+      const scooter = calculateCost(school.coords, poi.coords, "scooter");
+
+      return {
+        ...poi,
+        costs: { bike, scooter },
+        reachable: bike.price <= budget || scooter.price <= budget,
+      };
+    });
+  }, [filteredPois, school, budget]);
+
+  const reachablePois = poisWithCosts.filter((poi) => poi.reachable);
+
+  function changeCity(value) {
+    setCity(value);
+    setSchool(cities[value][0]);
+    setSelectedPoi(null);
+    setSelectedPoiType("Bahnhof");
+  }
+
+  function changeSchool(value) {
+    const newSchool = cities[city].find((s) => s.name === value);
+    setSchool(newSchool);
+    setSelectedPoi(null);
+  }
+
+  function handleMarkerClick(poi) {
+    const poiWithCosts = poisWithCosts.find((p) => p.name === poi.name);
+
+    if (poiWithCosts) {
+      setSelectedPoi(poiWithCosts);
+      setSelectedPoiType(poiWithCosts.type);
     }
-  ];
-
-  useEffect(() => {
-    setSelectedProviders((current) =>
-      current.filter((provider) =>
-        providerData.some((item) => item.provider === provider && selectedTypes.includes(item.type))
-      )
-    );
-  }, [selectedTypes]);
-
-  const sortedProviders = providerData
-    .filter((item) => item.city === selectedCity)
-    .filter((item) => selectedTypes.includes(item.type))
-    .filter((item) => selectedProviders.includes(item.provider))
-    .sort((a, b) => a.price - b.price);
-
-  const costProviders = sortedProviders.slice(0, 10);
-  const bikeCosts = costProviders.filter((item) => item.type === 'Bike');
-  const scooterCosts = costProviders.filter((item) => item.type === 'Scooter');
-  const allCosts = [...bikeCosts, ...scooterCosts];
-  const maxCost = allCosts.length ? Math.max(...allCosts.map((item) => item.price)) : 1;
-
-  const handleViewMode = (mode) => {
-    setViewMode(mode);
-  };
+  }
 
   return (
-    <div className="dashboard-container">
-      <header className="top-bar">
-        <div className="title-section">
-          <h1>Micromobility Dashboard</h1>
-          <p>Wähle deine Stadt und einen Startpunkt aus, um zu sehen, wie weit du in <strong>30 Minuten</strong> kommst!</p>
+    <div className="app">
+      <header className="header">
+        <div>
+          <h1>Mikromobilität für Studierende</h1>
+          <p>POI-Erreichbarkeit, Budget-Reichweite und Verfügbarkeit</p>
         </div>
-        <div className="top-controls">
-          <span className="view-label">Ansicht</span>
-          <button className={`mode-btn ${viewMode === 'Karte' ? 'active' : ''}`} onClick={() => handleViewMode('Karte')}>
-            Karte
-          </button>
-          <button className={`mode-btn ${viewMode === 'Auflistung' ? 'active' : ''}`} onClick={() => handleViewMode('Auflistung')}>
-            Auflistung
+
+        <div className="selectors">
+          <label>
+            Stadt
+            <select value={city} onChange={(e) => changeCity(e.target.value)}>
+              {Object.keys(cities).map((c) => (
+                <option key={c}>{c}</option>
+              ))}
+            </select>
+          </label>
+
+          <label>
+            Hochschule
+            <select
+              value={school.name}
+              onChange={(e) => changeSchool(e.target.value)}
+            >
+              {cities[city].map((s) => (
+                <option key={s.name}>{s.name}</option>
+              ))}
+            </select>
+          </label>
+
+          <button onClick={() => setShowAvailability(!showAvailability)}>
+            {showAvailability ? "Zur Hauptansicht" : "Verfügbarkeiten anzeigen"}
           </button>
         </div>
       </header>
 
-      <div className="main-layout">
-        <aside className="sidebar-left">
-          <div className="card">
-            <h3>1. Stadt & Startpunkt</h3>
-            <label htmlFor="city-select">Stadt wählen</label>
-            <select id="city-select" value={selectedCity} onChange={handleCityChange}>
-              {Object.keys(cityData).map((city) => (
-                <option key={city} value={city}>
-                  {city}
-                </option>
-              ))}
+      {!showAvailability ? (
+        <main className="layout main-view">
+          <aside className="panel">
+            <h3>Filter</h3>
+
+            <h4>Analysemodus</h4>
+            <div className="analysis-mode">Budget-Modus</div>
+
+            <h4>Verkehrsmittel</h4>
+            <label>
+              <input type="checkbox" defaultChecked /> Bike / E-Bike
+            </label>
+            <label>
+              <input type="checkbox" defaultChecked /> E-Scooter
+            </label>
+
+            <h4>POI-Typen</h4>
+            <label>
+              <input type="checkbox" defaultChecked /> Wohnheime
+            </label>
+            <label>
+              <input type="checkbox" defaultChecked /> Bahnhöfe
+            </label>
+            <label>
+              <input type="checkbox" defaultChecked /> Sportanlagen
+            </label>
+
+            <h4>Budget</h4>
+            <p className="muted">Preis festlegen</p>
+
+            <input
+              className="budget-input"
+              type="number"
+              min="1"
+              max="20"
+              step="0.5"
+              value={budget}
+              onChange={(e) => setBudget(Number(e.target.value))}
+            />
+
+            <input
+              type="range"
+              min="1"
+              max="20"
+              step="0.5"
+              value={budget}
+              onChange={(e) => setBudget(Number(e.target.value))}
+            />
+
+            <div className="budget-value">{budget.toFixed(2)} €</div>
+
+            <div className="budget-card">
+              <strong>Geschätzte Reichweite</strong>
+              <p>Bike / E-Bike: {(bikeRadius / 1000).toFixed(1)} km</p>
+              <p>E-Scooter: {(scooterRadius / 1000).toFixed(1)} km</p>
+            </div>
+          </aside>
+
+          <section className="map">
+            <Map
+              city={city}
+              school={school}
+              pois={poisWithCosts}
+              mode={mode}
+              budget={budget}
+              selectedPoi={selectedPoi}
+              setSelectedPoi={handleMarkerClick}
+              availability={false}
+            />
+          </section>
+
+          <aside className="panel">
+            <h3>Auswertung</h3>
+
+            <div className="school-card">
+              <span>Startpunkt</span>
+              <strong>{school.name}</strong>
+              <small>{school.students} Studierende</small>
+            </div>
+
+            <h4>POI-Typ auswählen</h4>
+
+            <select
+              value={selectedPoiType}
+              onChange={(e) => {
+                setSelectedPoiType(e.target.value);
+                setSelectedPoi(null);
+              }}
+            >
+              <option value="Bahnhof">Bahnhöfe</option>
+              <option value="Wohnheim">Wohnheime</option>
+              <option value="Sportanlage">Sportanlagen</option>
             </select>
 
-            <label htmlFor="start-select">Startpunkt wählen</label>
-            <select id="start-select" value={selectedStart?.name || ''} onChange={handleStartChange}>
-              <option value="" disabled>
-                Wähle deinen Startpunkt
-              </option>
-              {cityData[selectedCity].points.map((point) => (
-                <option key={point.name} value={point.name}>
-                  {point.name}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="card">
-            <h3>2. Tarifmodus</h3>
-            <div className="toggle-row compact">
-              <button className={`toggle-pill ${tariffMode === 'Student' ? 'active' : ''}`} onClick={() => handleTariffMode('Student')}>
-                Gratis Studententarif
-              </button>
-              <button className={`toggle-pill ${tariffMode === 'Regular' ? 'active' : ''}`} onClick={() => handleTariffMode('Regular')}>
-                Regulärer Tarif
-              </button>
-            </div>
-            <p className="card-note">30 Minuten gratis mit Studententarif, danach normale Gebühren.</p>
-          </div>
-
-          <div className="card">
-            <h3>3. Fahrzeugtyp</h3>
-            <div className="checkbox-list compact">
-              <label className="checkbox-item compact">
-                <input type="checkbox" checked={selectedTypes.includes('Bike')} onChange={() => handleTypeToggle('Bike')} />
-                <span>Bike / E-Bike</span>
-              </label>
-              <label className="checkbox-item compact">
-                <input type="checkbox" checked={selectedTypes.includes('Scooter')} onChange={() => handleTypeToggle('Scooter')} />
-                <span>E-Scooter</span>
-              </label>
-            </div>
-          </div>
-
-          <div className="card">
-            <h3>4. Anbieter</h3>
-            <div className="provider-grid compact">
-              {providerGroups.map(({ type, providers }) =>
-                selectedTypes.includes(type) ? (
-                  <div key={type} className="provider-group-filter">
-                    <div className="provider-group-title">{type}</div>
-                    {providers.map((provider) => {
-                      const logo = getProviderLogo(provider);
-                      return (
-                        <label key={provider} className="checkbox-item compact provider-filter-item">
-                          <input
-                            type="checkbox"
-                            checked={selectedProviders.includes(provider)}
-                            onChange={() => handleProviderToggle(provider)}
-                          />
-                          <span className="provider-logo provider-logo-small" style={{ background: logo.color }}>
-                            {logo.abbrev}
-                          </span>
-                          <span>{provider}</span>
-                        </label>
-                      );
-                    })}
-                  </div>
-                ) : null
-              )}
-            </div>
-          </div>
-        </aside>
-
-        <main className="map-area">
-          {viewMode === 'Auflistung' ? (
-            <div className="provider-list-view">
-              <h3>Anbieter in der 30-min-Zone</h3>
-              <p>Sortiert von günstig nach teuer. Scooter und Bike/E-Bike getrennt.</p>
-              {sortedProviders.length > 0 && (
-                <div className="provider-minimum">
-                  Niedrigster Preis: <strong>{sortedProviders[0].price.toFixed(2)} €/30 min</strong>
+            {!selectedPoi ? (
+              <>
+                <div className="poi-summary-card">
+                  <span>{selectedPoiType}</span>
+                  <strong>{filteredPois.length} insgesamt</strong>
+                  <p>{reachablePois.length} mit deinem Budget erreichbar</p>
                 </div>
-              )}
-              <div className="provider-group">
-                <h4>Scooter</h4>
-                <ol>
-                  {sortedProviders.filter((item) => item.type === 'Scooter').map((item) => (
-                    <li key={`${item.provider}-scooter`} className="provider-item">
-                      <span>
-                        <span className="provider-logo" style={{ background: getProviderLogo(item.provider).color }}>
-                          {getProviderLogo(item.provider).abbrev}
-                        </span>
-                        <span className="provider-type-icon scooter"></span>
-                        {item.provider}
-                      </span>
-                      <span>{item.price.toFixed(2)} €</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-              <div className="provider-group">
-                <h4>Bike / E-Bike</h4>
-                <ol>
-                  {sortedProviders.filter((item) => item.type === 'Bike').map((item) => (
-                    <li key={`${item.provider}-bike`} className="provider-item">
-                      <span>
-                        <span className="provider-logo" style={{ background: getProviderLogo(item.provider).color }}>
-                          {getProviderLogo(item.provider).abbrev}
-                        </span>
-                        <span className="provider-type-icon bike"></span>
-                        {item.provider}
-                      </span>
-                      <span>{item.price.toFixed(2)} €</span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </div>
-          ) : (
-            <>
-              <Map center={selectedStart?.coords || cityData[selectedCity].center} label={selectedStart?.name || null} markerCoords={selectedStart?.coords || null} />
-              <div className="map-legend">
-                <h4>Legende</h4>
-                <ul>
-                  <li>
-                    <span className="legend-icon legend-start">📍</span> Ausgewählter Startpunkt
-                  </li>
-                  <li>
-                    <span className="legend-icon">🎓</span> Studentische Wohnheime
-                  </li>
-                  <li>
-                    <span className="legend-icon">🚉</span> Bahnhöfe
-                  </li>
-                  <li>
-                    <span className="legend-icon">🏟️</span> Hochschulsportstätte
-                  </li>
-                </ul>
-              </div>
-            </>
-          )}
-        </main>
 
-        <aside className="sidebar-right">
-          <div className="card">
-            <h3>Kostenvergleich <small>(30 Minuten)</small></h3>
-            <div className="tab-buttons">
+                <h4>Erreichbare POIs</h4>
+
+                {reachablePois.length === 0 ? (
+                  <div className="hint">
+                    Mit dem aktuellen Budget ist kein POI dieses Typs erreichbar.
+                  </div>
+                ) : (
+                  reachablePois.map((poi) => (
+                    <button
+                      key={poi.name}
+                      className="poi-list-card"
+                      onClick={() => setSelectedPoi(poi)}
+                    >
+                      <div>
+                        <strong>
+                          {poi.icon} {poi.name}
+                        </strong>
+                        <small>{poi.costs.bike.km.toFixed(1)} km entfernt</small>
+                      </div>
+
+                      <span>{poi.costs.bike.price.toFixed(2)} €</span>
+                    </button>
+                  ))
+                )}
+              </>
+            ) : (
+              <>
+                <button
+                  className="back-button"
+                  onClick={() => setSelectedPoi(null)}
+                >
+                  ← Zur Übersicht
+                </button>
+
+                <div className="poi-title">
+                  <span>{selectedPoi.icon}</span>
+                  <div>
+                    <strong>{selectedPoi.name}</strong>
+                    <small>{selectedPoi.type}</small>
+                  </div>
+                </div>
+
+                <div className="poi-detail-card">
+                  <span>Adresse</span>
+                  <strong>{selectedPoi.address}</strong>
+                </div>
+
+                <div className="cost-card bike">
+                  <span>Bike / E-Bike</span>
+                  <strong>{selectedPoi.costs.bike.price.toFixed(2)} €</strong>
+                  <small>
+                    {selectedPoi.costs.bike.minutes.toFixed(0)} Min ·{" "}
+                    {selectedPoi.costs.bike.km.toFixed(1)} km
+                  </small>
+                </div>
+
+                <div className="cost-card scooter">
+                  <span>E-Scooter</span>
+                  <strong>{selectedPoi.costs.scooter.price.toFixed(2)} €</strong>
+                  <small>
+                    {selectedPoi.costs.scooter.minutes.toFixed(0)} Min ·{" "}
+                    {selectedPoi.costs.scooter.km.toFixed(1)} km
+                  </small>
+                </div>
+              </>
+            )}
+          </aside>
+        </main>
+      ) : (
+        <main className="layout availability-view">
+          <aside className="panel">
+            <h3>Verfügbarkeit</h3>
+
+            <h4>Zeitpunkt</h4>
+            <div className="time-buttons">
               <button
-                data-filter="all"
-                className={listFilter === 'all' ? 'active' : ''}
-                onClick={() => setListFilter('all')}
+                className={timeSlot === "morning" ? "active" : ""}
+                onClick={() => setTimeSlot("morning")}
               >
-                Alle
+                Morgen
               </button>
               <button
-                data-filter="bike"
-                className={listFilter === 'bike' ? 'active' : ''}
-                onClick={() => setListFilter('bike')}
+                className={timeSlot === "midday" ? "active" : ""}
+                onClick={() => setTimeSlot("midday")}
               >
-                Bikes
+                Mittag
               </button>
               <button
-                data-filter="scooter"
-                className={listFilter === 'scooter' ? 'active' : ''}
-                onClick={() => setListFilter('scooter')}
+                className={timeSlot === "evening" ? "active" : ""}
+                onClick={() => setTimeSlot("evening")}
               >
-                Scooter
+                Abend
               </button>
             </div>
-            <div className="chart-section">
-              {(listFilter === 'all' || listFilter === 'bike') && bikeCosts.length > 0 && (
-                <>
-                  <h4>Bikes</h4>
-                  {bikeCosts.map((item) => {
-                    const logo = getProviderLogo(item.provider);
-                    return (
-                      <div key={`${item.provider}-bike-chart`} className="chart-row">
-                        <span className="label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span className="provider-logo provider-logo-small" style={{ background: logo.color }}>
-                            {logo.abbrev}
-                          </span>
-                          {item.provider}
-                        </span>
-                        <div className="bar-container">
-                          <div className="bar bike-bar" style={{ width: `${(item.price / maxCost) * 100}%` }}></div>
-                        </div>
-                        <span className="price">{item.price.toFixed(2)} €</span>
-                      </div>
-                    );
-                  })}
-                </>
-              )}
-              {(listFilter === 'all' || listFilter === 'scooter') && scooterCosts.length > 0 && (
-                <>
-                  <h4 style={{ marginTop: '20px' }}>Scooter</h4>
-                  {scooterCosts.map((item) => {
-                    const logo = getProviderLogo(item.provider);
-                    return (
-                      <div key={`${item.provider}-scooter-chart`} className="chart-row">
-                        <span className="label" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span className="provider-logo provider-logo-small" style={{ background: logo.color }}>
-                            {logo.abbrev}
-                          </span>
-                          {item.provider}
-                        </span>
-                        <div className="bar-container">
-                          <div className="bar scooter-bar" style={{ width: `${(item.price / maxCost) * 100}%` }}></div>
-                        </div>
-                        <span className="price">{item.price.toFixed(2)} €</span>
-                      </div>
-                    );
-                  })}
-                </>
-              )}
+
+            <h4>Verkehrsmittel</h4>
+            <label>
+              <input type="checkbox" defaultChecked /> Bike / E-Bike
+            </label>
+            <label>
+              <input type="checkbox" defaultChecked /> E-Scooter
+            </label>
+
+            <div className="hint">
+              Die Heatmap zeigt modellhaft niedrige, mittlere und hohe
+              Fahrzeugverfügbarkeit im Umfeld der Hochschule.
             </div>
-          </div>
-          <div className="card note-card">
-            <h3>Hinweis</h3>
-            <p>Die angezeigten Kosten basieren auf den regulären Preisen der Anbieter und können je nach Tarifmodus variieren.</p>
-          </div>
-        </aside>
-      </div>
+          </aside>
+
+          <section className="map">
+            <Map
+              city={city}
+              school={school}
+              pois={poisWithCosts}
+              mode={mode}
+              budget={budget}
+              selectedPoi={selectedPoi}
+              setSelectedPoi={handleMarkerClick}
+              availability
+              timeSlot={timeSlot}
+            />
+          </section>
+
+          <aside className="panel">
+            <h3>Verfügbarkeit im Tagesverlauf</h3>
+
+            <div className="availability-percent">
+              {timeSlot === "morning" && "54 %"}
+              {timeSlot === "midday" && "68 %"}
+              {timeSlot === "evening" && "76 %"}
+            </div>
+
+            <p className="muted">mittlere Verfügbarkeit im sichtbaren Bereich</p>
+
+            <div className="mini-line-chart">
+              <svg viewBox="0 0 300 120">
+                <polyline
+                  points="0,90 35,75 70,42 105,55 140,35 175,70 210,78 245,58 300,72"
+                  fill="none"
+                  stroke="#047857"
+                  strokeWidth="5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <circle cx="175" cy="70" r="7" fill="#047857" />
+              </svg>
+            </div>
+
+            <div className="heatmap-legend">
+              <span>Niedrig</span>
+              <div></div>
+              <span>Hoch</span>
+            </div>
+
+            <div className="availability-summary">
+              <div>
+                <span>Morgen</span>
+                <strong>54 %</strong>
+              </div>
+              <div>
+                <span>Mittag</span>
+                <strong>68 %</strong>
+              </div>
+              <div>
+                <span>Abend</span>
+                <strong>76 %</strong>
+              </div>
+            </div>
+          </aside>
+        </main>
+      )}
     </div>
   );
 }
 
-export default App;
+function Map({
+  city,
+  school,
+  pois,
+  mode,
+  budget,
+  selectedPoi,
+  setSelectedPoi,
+  availability,
+  timeSlot,
+}) {
+  const bikeRadius = calculateRadiusMeters(budget, "bike");
+  const scooterRadius = calculateRadiusMeters(budget, "scooter");
+
+  return (
+    <MapContainer center={school.coords} zoom={14} className="leaflet-map">
+      <ResizeMap center={school.coords} />
+
+      <TileLayer
+        attribution="&copy; OpenStreetMap"
+        url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+
+      {!availability && mode === "budget" && (
+        <>
+          <Circle
+            center={school.coords}
+            radius={bikeRadius}
+            pathOptions={{
+              color: tariffs.bike.color,
+              fillColor: tariffs.bike.color,
+              fillOpacity: 0.08,
+              weight: 2,
+              dashArray: "8 8",
+            }}
+          />
+
+          <Circle
+            center={school.coords}
+            radius={scooterRadius}
+            pathOptions={{
+              color: tariffs.scooter.color,
+              fillColor: tariffs.scooter.color,
+              fillOpacity: 0.08,
+              weight: 2,
+              dashArray: "5 8",
+            }}
+          />
+        </>
+      )}
+
+      {!availability && mode === "poi" && selectedPoi && (
+        <Circle
+          center={school.coords}
+          radius={distanceKm(school.coords, selectedPoi.coords) * 1000}
+          pathOptions={{
+            color: "#0f766e",
+            fillColor: "#0f766e",
+            fillOpacity: 0.06,
+            weight: 2,
+          }}
+        />
+      )}
+
+      {availability && <AvailabilityHeatmap school={school} timeSlot={timeSlot} />}
+
+      <Marker position={school.coords}>
+        <Popup>
+          <strong>{school.name}</strong>
+          <br />
+          {school.students} Studierende
+        </Popup>
+      </Marker>
+
+      {pois.map((p) => (
+        <Marker
+          key={`${city}-${p.name}`}
+          position={p.coords}
+          eventHandlers={{
+            click: () => setSelectedPoi(p),
+          }}
+        >
+          <Popup>
+            {p.icon} <strong>{p.name}</strong>
+            <br />
+            {p.type}
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  );
+}
+
+function AvailabilityHeatmap({ school, timeSlot }) {
+  const opacity =
+    timeSlot === "morning" ? 0.18 : timeSlot === "midday" ? 0.24 : 0.3;
+
+  return (
+    <>
+      <Circle
+        center={school.coords}
+        radius={850}
+        pathOptions={{
+          color: "#22c55e",
+          fillColor: "#22c55e",
+          fillOpacity: opacity,
+          weight: 0,
+        }}
+      />
+      <Circle
+        center={[school.coords[0] + 0.007, school.coords[1] - 0.01]}
+        radius={720}
+        pathOptions={{
+          color: "#facc15",
+          fillColor: "#facc15",
+          fillOpacity: opacity,
+          weight: 0,
+        }}
+      />
+      <Circle
+        center={[school.coords[0] - 0.006, school.coords[1] + 0.011]}
+        radius={620}
+        pathOptions={{
+          color: "#ef4444",
+          fillColor: "#ef4444",
+          fillOpacity: opacity,
+          weight: 0,
+        }}
+      />
+      <Circle
+        center={[school.coords[0] + 0.004, school.coords[1] + 0.014]}
+        radius={540}
+        pathOptions={{
+          color: "#22c55e",
+          fillColor: "#22c55e",
+          fillOpacity: opacity - 0.04,
+          weight: 0,
+        }}
+      />
+    </>
+  );
+}
+
+function ResizeMap({ center }) {
+  const map = useMap();
+
+  useEffect(() => {
+    map.setView(center, 14);
+    setTimeout(() => map.invalidateSize(true), 100);
+    setTimeout(() => map.invalidateSize(true), 500);
+  }, [center, map]);
+
+  return null;
+}

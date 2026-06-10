@@ -1,601 +1,505 @@
-/* 1. GRUNDDESIGN & LAYOUT */
-body {
+* {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, sans-serif;
-  background-color: #f1f5f9;
-  color: #1f2937;
-}
-
-.dashboard-container {
-  display: flex;
-  flex-direction: column;
-  width: min(100%, 1900px);
-  max-width: 1900px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 20px 24px;
+  padding: 0;
   box-sizing: border-box;
 }
 
-/* --- TOPBAR --- */
-.top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 20px 28px;
-  border-radius: 20px;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
-  margin-bottom: 20px;
-}
-.title-section h1 { margin: 0; font-size: 26px; color: #0f172a; }
-.title-section p { margin: 6px 0 0; color: #475569; font-size: 14px; }
-.top-controls { display: flex; align-items: center; gap: 12px; }
-.view-label { color: #64748b; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
-
-/* --- 3-SPALTEN-GRID --- */
-.main-layout {
-  display: grid;
-  grid-template-columns: 240px minmax(540px, 1fr) 300px;
-  gap: 18px;
-  min-height: calc(100vh - 140px);
-}
-
-/* Allgemeine Karten-Boxen */
-.card {
-  background: #ffffff;
-  padding: 16px;
-  border-radius: 24px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-  margin-bottom: 16px;
-}
-.card h3 { margin-top: 0; font-size: 14px; color: #0f172a; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
-.card h3 small { font-size: 11px; color: #64748b; font-weight: 500; }
-
-/* Sidebars scrollbar machen falls Inhalt zu lang wird */
-.sidebar-left, .sidebar-right {
-  overflow-y: auto;
-  max-height: calc(100vh - 170px);
-  padding-right: 2px;
-}
-
-
-/* 2. RECHTE & LINKE SIDEBAR ELEMENTE*/
-/* Dropdowns untereinander platzieren */
-.sidebar-left select,
-.sidebar-right select {
-  display: block;
+html,
+body,
+#root {
   width: 100%;
-  margin-top: 12px;
-  padding: 12px 14px;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  background-color: #f8fafc;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f8fafc;
   color: #0f172a;
+}
+
+.app {
+  height: 100vh;
+  padding: 16px;
+  background: #f8fafc;
+}
+
+.header {
+  height: 96px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 18px 24px;
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.header h1 {
+  font-size: 25px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.header p {
+  color: #64748b;
   font-size: 14px;
 }
 
-/* Interaktive Elemente (Buttons & Checkboxen) */
-label { display: block; margin: 10px 0 6px; cursor: pointer; font-size: 13px; color: #475569; }
-button { padding: 8px 12px; margin-right: 5px; border: 1px solid #cbd5e1; background: white; border-radius: 8px; cursor: pointer; transition: all 0.2s ease; }
-button.active { background: #3b82f6; color: white; border-color: #3b82f6; }
-
-/* Buttons in the top control area */
-.mode-btn {
-  padding: 12px 18px;
-  border-radius: 12px;
-  border: 1px solid #dbeafe;
-  background: #ffffff;
-  color: #0f172a;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 110px;
-}
-.mode-btn:hover {
-  border-color: #93c5fd;
-}
-.mode-btn.active {
-  background: #2563eb;
-  color: white;
-  border-color: #2563eb;
-}
-
-.toggle-row {
-  display: grid;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.toggle-pill {
-  display: block;
-  width: 100%;
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
-  color: #0f172a;
-  text-align: left;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 13px;
-}
-
-.toggle-pill.active {
-  background: #2563eb;
-  color: white;
-  border-color: #2563eb;
-}
-
-.card-note {
-  margin-top: 12px;
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.6;
-}
-
-.checkbox-list {
-  display: grid;
-  gap: 8px;
-  margin-top: 10px;
-}
-
-.provider-grid {
-  display: grid;
-  gap: 10px;
-}
-
-.provider-group-filter {
-  display: grid;
-  gap: 8px;
-}
-
-.provider-group-title {
-  font-size: 13px;
-  font-weight: 700;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.checkbox-item {
+.selectors {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 14px;
-  border: 1px solid #e2e8f0;
-  background: #f8fafc;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.selectors label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+select,
+button {
+  height: 42px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #0f172a;
+  border-radius: 11px;
+  padding: 0 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+select {
+  min-width: 190px;
+}
+
+button {
   cursor: pointer;
-  font-size: 13px;
+  transition: 0.15s ease;
+}
+
+button:hover {
+  background: #f1f5f9;
+}
+
+button.active,
+.selectors button {
+  background: #047857;
+  color: white;
+  border-color: #047857;
+}
+
+.layout {
+  display: grid;
+  gap: 16px;
+  height: calc(100vh - 128px);
+}
+
+.main-view {
+  grid-template-columns: 270px 1fr 320px;
+}
+
+.availability-view {
+  grid-template-columns: 250px 1fr 340px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.panel h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
   color: #0f172a;
 }
 
-.checkbox-item.compact {
-  padding: 8px 10px;
-  font-size: 12px;
+.panel h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 25px;
+  margin-bottom: 15px;
 }
 
-.checkbox-item input {
-  width: 16px;
-  height: 16px;
+.panel label {
+  display: block;
+  margin: 12px 0;
+  font-size: 18px;
+  color: #334155;
+  cursor: pointer;
 }
 
-/* 3. MITTLERER KARTENBEREICH & LEAFLET-FIX*/
-.map-area {
-  background: #ffffff;
-  border-radius: 24px;
+.panel input[type="checkbox"] {
+  margin-right: 9px;
+}
+
+.panel input[type="range"] {
+  width: 100%;
+  margin: 12px 0;
+}
+
+.mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mode-switch button,
+.time-buttons button {
+  width: 100%;
+}
+
+.time-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.muted {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.map {
   position: relative;
   overflow: hidden;
-  height: 100%;
-  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
-/* Zwingt das Leaflet-Fenster die Kacheln lückenlos über die ganze Box zu rendern */
+.leaflet-map,
 .leaflet-container {
-  height: 100% !important;
-  width: 100% !important;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
 }
 
-.map-description-card {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 1100;
-  background: rgba(255,255,255,0.95);
-  padding: 14px 18px;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
-  max-width: 340px;
+.budget-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #047857;
+  margin-top: 4px;
+}
+.budget-input {
+  font-size: 24px;
+  font-weight: 600;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.analysis-mode {
+  background: #ecfdf5;
+  color: #047857;
+
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+
+  padding: 12px;
+  text-align: center;
+
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
-.map-description-card h3 {
-  margin: 0 0 8px 0;
+.budget-card hr {
+  margin: 12px 0;
+  border: none;
+  border-top: 1px solid #d1d5db;
+}
+.budget-card,
+.school-card,
+.budget-result,
+.cost-card,
+.hint {
+  border-radius: 15px;
+}
+
+.budget-card {
+  margin-top: 14px;
+  padding: 14px;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+}
+
+.budget-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.budget-card p {
+  margin: 7px 0;
+  color: #065f46;
+  font-size: 14px;
+}
+
+.school-card {
+  padding: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: grid;
+  gap: 5px;
+  margin-bottom: 18px;
+}
+
+.school-card span,
+.school-card small {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.school-card strong {
+  color: #0f172a;
   font-size: 15px;
 }
 
-.map-description-card p {
-  margin: 0;
-  font-size: 13px;
-  color: #334155;
+.poi-title {
+  margin-top: 16px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border-radius: 15px;
+  border: 1px solid #e2e8f0;
 }
 
-.provider-list-view {
-  position: absolute;
-  inset: 20px;
-  z-index: 100;
-  background: rgba(255,255,255,0.97);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15);
-  overflow: auto;
+.poi-title span {
+  font-size: 26px;
 }
 
-.provider-list-view h3 {
-  margin-top: 0;
+.poi-title strong {
+  display: block;
+}
+
+.poi-title small {
+  color: #64748b;
+}
+
+.poi-summary-card,
+.poi-detail-card {
+  margin-top: 14px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: grid;
+  gap: 6px;
+}
+
+.poi-summary-card span,
+.poi-detail-card span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.poi-summary-card strong,
+.poi-detail-card strong {
   font-size: 20px;
 }
 
-.provider-list-view p {
-  margin: 8px 0 20px;
-  color: #475569;
+.poi-summary-card p {
+  color: #047857;
+  font-size: 14px;
 }
 
-.provider-group {
-  margin-bottom: 24px;
-}
+.poi-list-card {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  padding: 14px;
 
-.provider-group h4 {
-  margin-bottom: 10px;
-  color: #0f172a;
-  font-size: 16px;
-}
-
-.provider-minimum {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  margin-bottom: 18px;
-  border-radius: 14px;
-  background: #eef2ff;
-  color: #1e3a8a;
-  font-weight: 700;
-}
-
-.provider-group ol {
-  margin: 0;
-  padding-left: 0;
-  display: grid;
-  gap: 10px;
-}
-
-.provider-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: #f8fafc;
+  border-radius: 15px;
   border: 1px solid #e2e8f0;
-  color: #0f172a;
-  font-size: 14px;
-}
 
-.provider-item span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
+  background: white;
 
-.provider-logo {
-  width: 30px;
-  min-width: 30px;
-  height: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 700;
-  color: white;
-}
-
-.provider-logo-small {
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  border-radius: 9px;
-  font-size: 11px;
-}
-
-.provider-type-icon {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #e2e8f0;
-  font-size: 12px;
-}
-
-.provider-type-icon.bike::before { content: '🚲'; }
-.provider-type-icon.scooter::before { content: '🛴'; }
-
-.provider-filter-item { gap: 8px; }
-
-.legend-icon {
-  width: 24px;
-  height: 24px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  background: #f1f5f9;
-  font-size: 14px;
-}
-
-.legend-start {
-  background: #fee2e2;
-}
-
-.provider-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.cost-card {
-  padding-bottom: 18px;
-}
-
-.card-header-row {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
+
+  text-align: left;
 }
 
-.card-header-row h3 {
-  margin: 0;
+.poi-list-card:hover {
+  background: #f8fafc;
+}
+
+.poi-list-card strong {
+  display: block;
   font-size: 15px;
 }
 
-.card-meta {
-  font-size: 12px;
+.poi-list-card small {
+  display: block;
+  margin-top: 4px;
   color: #64748b;
-  padding: 4px 8px;
-  border-radius: 999px;
+}
+
+.poi-list-card span {
+  font-weight: 700;
+  color: #047857;
+}
+
+.back-button {
+  width: 100%;
+  margin-top: 12px;
   background: #f8fafc;
 }
 
-.cost-list {
-  display: grid;
-  gap: 12px;
-  margin-top: 16px;
-  max-height: 420px;
-  overflow-y: auto;
-}
-
-.cost-section-title {
-  font-size: 12px;
-  font-weight: 700;
-  color: #64748b;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 8px;
-  margin-bottom: 4px;
-  grid-column: 1 / -1;
-}
-
-.cost-item {
-  display: grid;
-  gap: 10px;
-  padding: 14px;
-  border-radius: 16px;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-}
-
-.cost-item-meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
-}
-
-.cost-bar-wrap {
-  height: 10px;
-  background: #e2e8f0;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.cost-bar {
-  height: 100%;
-  border-radius: 999px;
-}
-
-.cost-value {
-  font-size: 13px;
-  color: #0f172a;
-  font-weight: 700;
-}
-
-.empty-state {
-  margin: 0;
-  color: #64748b;
-  font-size: 13px;
-}
-
-.note-card p {
-  margin: 0;
-  font-size: 13px;
-  color: #475569;
-  line-height: 1.6;
-}
-
-.tab-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  margin: 12px 0 16px 0;
-}
-
-.tab-buttons button {
-  padding: 10px 12px;
-  border-radius: 14px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.tab-buttons button[data-filter="all"] {
-  background: rgba(100, 116, 139, 0.1);
-  color: #64748b;
-  border: 1px solid rgba(100, 116, 139, 0.2);
-}
-
-.tab-buttons button[data-filter="bike"] {
-  background: rgba(37, 99, 235, 0.1);
-  color: #2563eb;
-  border: 1px solid rgba(37, 99, 235, 0.2);
-}
-
-.tab-buttons button[data-filter="scooter"] {
-  background: rgba(234, 88, 12, 0.1);
-  color: #ea580c;
-  border: 1px solid rgba(234, 88, 12, 0.2);
-}
-
-.tab-buttons button.active[data-filter="all"] {
-  background: #64748b;
-  color: white;
-  border-color: #64748b;
-}
-
-.tab-buttons button.active[data-filter="bike"] {
-  background: #2563eb;
-  color: white;
-  border-color: #2563eb;
-}
-
-.tab-buttons button.active[data-filter="scooter"] {
-  background: #ea580c;
-  color: white;
-  border-color: #ea580c;
-}
-
-.tab-buttons button:hover:not(.active) {
-  opacity: 0.8;
-}
-
-.chart-section {
-  display: grid;
-  gap: 12px;
+.poi-detail-card {
   margin-top: 12px;
 }
 
-.chart-section h4 {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 700;
-  color: #475569;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+.cost-card {
+  margin-top: 12px;
+  padding: 15px;
+  border: 1px solid #e5e7eb;
+  display: grid;
+  gap: 5px;
 }
 
-.chart-row {
-  display: flex;
-  align-items: center;
-  margin: 8px 0;
-  font-size: 13px;
+.cost-card span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.cost-card strong {
+  font-size: 26px;
+}
+
+.cost-card small {
+  color: #64748b;
+}
+
+.cost-card.bike strong {
+  color: #047857;
+}
+
+.cost-card.scooter strong {
+  color: #7c3aed;
+}
+
+.budget-result {
+  display: grid;
   gap: 12px;
 }
 
-.label {
-  width: 100px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 13px;
-  font-weight: 500;
-  min-width: 100px;
-}
-
-.bar-container {
-  flex: 1;
-  background: #f1f5f9;
-  height: 16px;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.bar {
-  height: 100%;
-  border-radius: 4px;
-}
-
-.bike-bar {
-  background: #2563eb;
-}
-
-.scooter-bar {
-  background: #ea580c;
-}
-
-.price {
-  min-width: 50px;
-  text-align: right;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.provider-dot.bike {
-  background: #2563eb;
-}
-
-.provider-dot.scooter {
-  background: #ea580c;
-}
-
-/* Schwebende Legende oben rechts */
-.map-legend {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: white;
+.budget-result div {
   padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-  z-index: 1000; /* Steht über der Karte */
-}
-.map-legend h4 { margin: 0 0 10px 0; font-size: 14px; }
-.map-legend ul { list-style: none; padding: 0; margin: 0; }
-.map-legend li {
-  margin: 8px 0;
-  font-size: 13px;
+  border-radius: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
 }
 
+.budget-result span {
+  color: #64748b;
+}
 
-/*4. DIAGRAMME / BALKEN-CHARTS RECHTS */
-.chart-row {
+.budget-result strong {
+  font-size: 22px;
+  color: #047857;
+}
+
+.hint {
+  margin-top: 16px;
+  padding: 13px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.availability-percent {
+  font-size: 58px;
+  font-weight: 900;
+  color: #047857;
+  line-height: 1;
+  margin: 12px 0 8px;
+}
+
+.mini-line-chart {
+  height: 140px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ecfdf5, #ffffff);
+  border: 1px solid #d1fae5;
+}
+
+.mini-line-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.heatmap-legend {
   display: flex;
   align-items: center;
-  margin: 8px 0;
+  gap: 10px;
+  margin-top: 16px;
   font-size: 13px;
+  color: #64748b;
 }
-.label { width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bar-container { flex: 1; background: #f1f5f9; height: 16px; margin: 0 10px; border-radius: 4px; overflow: hidden; }
-.bar { height: 100%; border-radius: 4px; }
-.bike-bar { background: #2563eb; }
-.scooter-bar { background: #ea580c; }
-.price { width: 50px; text-align: right; font-weight: bold; }
+
+.heatmap-legend div {
+  flex: 1;
+  height: 13px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ef4444, #facc15, #22c55e);
+}
+
+.availability-summary {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.availability-summary div {
+  padding: 12px;
+  border-radius: 13px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.availability-summary span {
+  color: #64748b;
+}
+
+.availability-summary strong {
+  color: #047857;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
