@@ -1,0 +1,560 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.app {
+  height: 100vh;
+  padding: 16px;
+  background: #f8fafc;
+}
+
+.header {
+  height: 96px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 18px 24px;
+  margin-bottom: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.header h1 {
+  font-size: 25px;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.header p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.selectors {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) minmax(320px, 1fr) minmax(220px, 280px);
+  align-items: end;
+  gap: 14px;
+}
+
+.selectors label {
+  width: 100%;
+  gap: 6px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+select,
+button {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid #d1d5db;
+  background: white;
+  color: #0f172a;
+  border-radius: 11px;
+  padding: 0 16px;
+  font-size: 14px;
+  outline: none;
+}
+
+select {
+  min-width: 0;
+}
+
+button {
+  cursor: pointer;
+  transition: 0.15s ease;
+}
+
+button:hover {
+  background: #f1f5f9;
+}
+
+button.active,
+.selectors button {
+  background: #047857;
+  color: white;
+  border-color: #047857;
+}
+
+.layout {
+  display: grid;
+  gap: 16px;
+  height: calc(100vh - 128px);
+}
+
+.main-view {
+  grid-template-columns: 270px 1fr 320px;
+}
+
+.availability-view {
+  grid-template-columns: 250px 1fr 340px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.panel h3 {
+  font-size: 18px;
+  margin-bottom: 18px;
+  color: #0f172a;
+}
+
+.panel h4 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-top: 25px;
+  margin-bottom: 15px;
+}
+
+.panel label {
+  display: block;
+  margin: 12px 0;
+  font-size: 18px;
+  color: #334155;
+  cursor: pointer;
+}
+
+.panel input[type="checkbox"] {
+  margin-right: 9px;
+}
+
+.panel input[type="range"] {
+  width: 100%;
+  margin: 12px 0;
+}
+
+.mode-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.mode-switch button,
+.time-buttons button {
+  width: 100%;
+}
+
+.time-buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.muted {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.map {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+}
+
+.leaflet-map,
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+.budget-value {
+  font-size: 32px;
+  font-weight: 800;
+  color: #047857;
+  margin-top: 4px;
+}
+.budget-input {
+  font-size: 24px;
+  font-weight: 600;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 0 12px;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.analysis-mode {
+  background: #ecfdf5;
+  color: #047857;
+
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+
+  padding: 12px;
+  text-align: center;
+
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.budget-card hr {
+  margin: 12px 0;
+  border: none;
+  border-top: 1px solid #d1d5db;
+}
+.budget-card,
+.school-card,
+.budget-result,
+.cost-card,
+.hint {
+  border-radius: 15px;
+}
+
+.budget-card {
+  margin-top: 14px;
+  padding: 14px;
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+}
+
+.budget-card strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.budget-card p {
+  margin: 7px 0;
+  color: #065f46;
+  font-size: 14px;
+}
+
+.school-card {
+  padding: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: grid;
+  gap: 5px;
+  margin-bottom: 18px;
+}
+
+.school-card span,
+.school-card small {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.school-card strong {
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.poi-title {
+  margin-top: 16px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f8fafc;
+  border-radius: 15px;
+  border: 1px solid #e2e8f0;
+}
+
+.poi-title span {
+  font-size: 26px;
+}
+
+.poi-title strong {
+  display: block;
+}
+
+.poi-title small {
+  color: #64748b;
+}
+
+.poi-summary-card,
+.poi-detail-card {
+  margin-top: 14px;
+  padding: 15px;
+  border-radius: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: grid;
+  gap: 6px;
+}
+
+.poi-summary-card span,
+.poi-detail-card span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.poi-summary-card strong,
+.poi-detail-card strong {
+  font-size: 20px;
+}
+
+.poi-summary-card p {
+  color: #047857;
+  font-size: 14px;
+}
+
+.poi-list-card {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+  padding: 14px;
+
+  border-radius: 15px;
+  border: 1px solid #e2e8f0;
+
+  background: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: left;
+}
+
+.poi-list-card:hover {
+  background: #f8fafc;
+}
+
+.poi-list-card strong {
+  display: block;
+  font-size: 15px;
+}
+
+.poi-list-card small {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+}
+
+.poi-list-card span {
+  font-weight: 700;
+  color: #047857;
+}
+
+.back-button {
+  width: 100%;
+  margin-top: 12px;
+  background: #f8fafc;
+}
+
+.poi-detail-card {
+  margin-top: 12px;
+}
+
+.cost-card {
+  margin-top: 12px;
+  padding: 15px;
+  border: 1px solid #e5e7eb;
+  display: grid;
+  gap: 5px;
+}
+
+.cost-card span {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.cost-card strong {
+  font-size: 26px;
+}
+
+.cost-card small {
+  color: #64748b;
+}
+
+.cost-card.bike strong {
+  color: #047857;
+}
+
+.cost-card.scooter strong {
+  color: #7c3aed;
+}
+
+.budget-result {
+  display: grid;
+  gap: 12px;
+}
+
+.budget-result div {
+  padding: 15px;
+  border-radius: 15px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.budget-result span {
+  color: #64748b;
+}
+
+.budget-result strong {
+  font-size: 22px;
+  color: #047857;
+}
+
+.hint {
+  margin-top: 16px;
+  padding: 13px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1e40af;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.availability-percent {
+  font-size: 58px;
+  font-weight: 900;
+  color: #047857;
+  line-height: 1;
+  margin: 12px 0 8px;
+}
+
+.mini-line-chart {
+  height: 140px;
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #ecfdf5, #ffffff);
+  border: 1px solid #d1fae5;
+}
+
+.mini-line-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.heatmap-legend div {
+  flex: 1;
+  height: 13px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ef4444, #facc15, #22c55e);
+}
+
+.availability-summary {
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.availability-summary div {
+  padding: 12px;
+  border-radius: 13px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.availability-summary span {
+  color: #64748b;
+}
+
+.availability-summary strong {
+  color: #047857;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.station-map-marker {
+  background: transparent;
+  border: none;
+}
+
+.station-map-marker-inner {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: white;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.2);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+}
+
+.station-card {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.station-card.green {
+  background: #ecfdf5;
+}
+
+.station-card.yellow {
+  background: #fefce8;
+}
+
+.station-card.red {
+  background: #fef2f2;
+}
+
+.station-card small {
+  display: block;
+  margin-top: 4px;
+  color: #64748b;
+}
+
+.traffic-light {
+  font-size: 26px;
+  flex-shrink: 0;
+}
