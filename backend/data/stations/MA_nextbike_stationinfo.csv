@@ -1,0 +1,103 @@
+station_id,name,short_name,lat,lon,region_id,is_virtual_station,capacity
+NBV:Station:121376,Lindenhof - Jugendherberge,25026,49.477082,8.463662,NBV:Region:195,False,6.0
+NBV:Station:339343,Neckarstadt - Alter Messplatz,25000,49.49707,8.473044,NBV:Region:195,False,9.0
+NBV:Station:339346,Neckarstadt-Ost - Lange Rötterstraße,25001,49.497263,8.483832,NBV:Region:195,False,6.0
+NBV:Station:339349,Neumarkt,25002,49.498946,8.467224,NBV:Region:195,False,8.0
+NBV:Station:339350,Studentensiedlung Ludwig Frank,25003,49.506903,8.492206,NBV:Region:195,False,12.0
+NBV:Station:339352,Jungbusch - Popakademie,25004,49.497225,8.457751,NBV:Region:195,False,8.0
+NBV:Station:339354,K1 - Kurpfalzbrücke,25005,49.493002,8.470325,NBV:Region:195,False,8.0
+NBV:Station:339456,Gewerkschaftshaus,25006,49.490685,8.475705,NBV:Region:195,False,8.0
+NBV:Station:339457,Theresienkrankenhaus,25007,49.489559,8.480297,NBV:Region:195,False,6.0
+NBV:Station:339459,Nationaltheater,25008,49.487939,8.478742,NBV:Region:195,False,8.0
+NBV:Station:339461,Kongresszentrum Rosengarten,25009,49.485357,8.47665,NBV:Region:195,False,12.0
+NBV:Station:339462,R1 - Marktplatz,25010,49.489761,8.468437,NBV:Region:195,False,11.0
+NBV:Station:339463,E1 - Paradeplatz,25011,49.487956,8.466007,NBV:Region:195,False,11.0
+NBV:Station:339464,E4 - Rathaus,25012,49.489012,8.462997,NBV:Region:195,False,8.0
+NBV:Station:339465,Kunsthalle,25013,49.483245,8.474793,NBV:Region:195,False,8.0
+NBV:Station:339466,G7 - Westliche Unterstadt,25014,49.491183,8.462391,NBV:Region:195,False,6.0
+NBV:Station:339468,Universität Mensa,25015,49.484576,8.459859,NBV:Region:195,False,10.0
+NBV:Station:339472,A5 - Universität West,25016,49.48711,8.456876,NBV:Region:195,True,8.0
+NBV:Station:339473,L1 - Schloss,25017,49.484705,8.463544,NBV:Region:195,False,20.0
+NBV:Station:339475,Hauptbahnhof Mannheim,25018,49.47996,8.469749,NBV:Region:195,False,60.0
+NBV:Station:339476,Jungbusch - Jungbuschstraße,25019,49.493448,8.458968,NBV:Region:195,False,0.0
+NBV:Station:339478,Technische Hochschule Mannheim,25020,49.470261,8.482255,NBV:Region:195,False,10.0
+NBV:Station:339481,Oststadt - Luisenpark,25021,49.479502,8.495221,NBV:Region:195,False,8.0
+NBV:Station:339485,Schwetzingerstadt - Pestalozzischule,25023,49.478512,8.482561,NBV:Region:195,False,8.0
+NBV:Station:339487,N5 - Kapuzinerplanken ,25025,49.485371,8.469493,NBV:Region:195,False,6.0
+NBV:Station:660939,Neckarau - Markuskirche,25030,49.464913,8.475941,NBV:Region:195,False,10.0
+NBV:Station:660943,Schwetzingerstadt - rnv Betriebshof Möhlstraße,25031,49.474329,8.486944,NBV:Region:195,False,12.0
+NBV:Station:660945,Schwetzingerstadt - Dynamostraße,25032,49.474531,8.489524,NBV:Region:195,False,8.0
+NBV:Station:660951,Universität Schloss,25033,49.48275,8.463303,NBV:Region:195,False,10.0
+NBV:Station:660971,Neckarau - Hans-Sachs-Ring,25034,49.456695,8.481027,NBV:Region:195,False,8.0
+NBV:Station:660974,MVV Hochhaus,25035,49.494114,8.4676,NBV:Region:195,False,6.0
+NBV:Station:660978,Neckarstadt-Ost  - Carl-Zuckmayer-Straße,25036,49.508376,8.476054,NBV:Region:195,False,10.0
+NBV:Station:660983,Neckarstadt-West - Riedfeldstraße,25037,49.502211,8.465255,NBV:Region:195,False,6.0
+NBV:Station:1557693,Lindenhof - Johanniskirche,25028,49.47365,8.46642,NBV:Region:195,False,6.0
+NBV:Station:4726808,DHBW Mannheim - Campus Coblitzallee,25046,49.473472,8.53399,NBV:Region:195,False,10.0
+NBV:Station:4726822,DHBW Mannheim - Campus Käfertalerstr.,25047,49.500855,8.499588,NBV:Region:195,False,0.0
+NBV:Station:4915747,P7 - Fressgasse,25024,49.485698,8.473613,NBV:Region:195,False,4.0
+NBV:Station:5582461,Oststadt Karl-Ludwig-Straße,25039,49.481997,8.483387,NBV:Region:195,False,8.0
+NBV:Station:7853258,Universitätsklinik Mannheim,25048,49.492344,8.482906,NBV:Region:195,False,0.0
+NBV:Station:9214247,Mannheimer Straße,25027,49.508189,8.512414,NBV:Region:195,False,6.0
+NBV:Station:24559076,Herzogenried - Sandgewann,25041,49.509912,8.483559,NBV:Region:195,False,6.0
+NBV:Station:24559100,Neuhermsheim - Dragonerweg,25042,49.467531,8.503804,NBV:Region:195,False,0.0
+NBV:Station:27230822,N2 – Stadthaus,25052,49.485956,8.466076,NBV:Region:195,False,0.0
+NBV:Station:27230871,Neckarstadt-Ost - Herzogenriedpark,25078,49.503921,8.477009,NBV:Region:195,False,8.0
+NBV:Station:27230961,Carl-Benz-Stadion,25079,49.478118,8.501873,NBV:Region:195,False,10.0
+NBV:Station:27231009,Neckarau - Friedrichstraße,25080,49.452873,8.495253,NBV:Region:195,False,8.0
+NBV:Station:28450242,Lindenhof - Hanns-Glückstein-Park ,25067,49.473974,8.472009,NBV:Region:195,False,0.0
+NBV:Station:28450544,Schwetzingerstadt - Krappmühlstraße,25063,49.475967,8.483157,NBV:Region:195,False,0.0
+NBV:Station:28450596,Schwetzingerstadt - Keplerstraße,25062,49.479913,8.475652,NBV:Region:195,False,0.0
+NBV:Station:28450647,Schwetzingerstadt - Richard-Wagner-Straße,25064,49.481645,8.478822,NBV:Region:195,False,8.0
+NBV:Station:28450681,Neckarstadt-Ost  - Clignetplatz,25060,49.496424,8.47725,NBV:Region:195,False,0.0
+NBV:Station:28455055,Oststadt - Beethovenstraße,25065,49.483335,8.480367,NBV:Region:195,False,0.0
+NBV:Station:29111804,S-Bahnhof Arena/Maimarkt,25043,49.459886,8.516775,NBV:Region:195,False,8.0
+NBV:Station:29794323,Turleyplatz,25077,49.501925,8.491123,NBV:Region:195,False,12.0
+NBV:Station:29964359,Am Plankenkopf,25057,49.484387,8.473963,NBV:Region:195,False,0.0
+NBV:Station:30612064,Lindenhof - Meeräckerplatz,25066,49.468919,8.470824,NBV:Region:195,False,0.0
+NBV:Station:30612140,Neuostheim - Endstelle,25070,49.47764,8.522075,NBV:Region:195,False,0.0
+NBV:Station:30612162,Neuostheim – Dürerstraße,25069,49.478184,8.506728,NBV:Region:195,False,0.0
+NBV:Station:30612203,Jungbusch - Beilstraße,25073,49.4945,8.459644,NBV:Region:195,False,0.0
+NBV:Station:30612225,Wohlgelegen - Ludolf-Krehl-Straße,25061,49.497065,8.492131,NBV:Region:195,False,0.0
+NBV:Station:30612231,Neckarstadt-West – Gartenfeldstraße,25059,49.500678,8.470904,NBV:Region:195,False,0.0
+NBV:Station:30612240,Neckarstadt-West – Marchivum,25058,49.499357,8.461822,NBV:Region:195,False,0.0
+NBV:Station:30612250,U3 – Herschelbad,25056,49.4908,8.471387,NBV:Region:195,False,0.0
+NBV:Station:30612264,B3 – Schillerplatz,25053,49.485946,8.46215,NBV:Region:195,False,0.0
+NBV:Station:31471276,R5,25055,49.487604,8.471435,NBV:Region:195,False,0.0
+NBV:Station:31471648,Almenhof August-Bebel-Park,25071,49.459715,8.487411,NBV:Region:195,False,0.0
+NBV:Station:33282192,G1 – Marktplatz,25054,49.489671,8.466929,NBV:Region:195,False,0.0
+NBV:Station:33282236,Eastsite,25068,49.476138,8.505714,NBV:Region:195,False,0.0
+NBV:Station:33282690,Niederfeld - Diakonissen-Krankenhaus,25044,49.46461,8.471902,NBV:Region:195,False,4.0
+NBV:Station:33776080,Gerd-Dehof-Platz,25045,49.4658,8.508968,NBV:Region:195,False,4.0
+NBV:Station:34525897,Roche - Tor 1,25049,49.529564,8.468378,NBV:Region:195,False,0.0
+NBV:Station:38930075,Franklin - Bensheimer Straße,25081,49.514029,8.527681,NBV:Region:195,False,0.0
+NBV:Station:38930122,Käfertal Mitte,25082,49.512469,8.517848,NBV:Region:195,False,0.0
+NBV:Station:38930131,Franklin - George-Sullivan-Ring,25083,49.525543,8.535079,NBV:Region:195,False,0.0
+NBV:Station:38930150,Franklin -  George-Washington-Straße,25085,49.518742,8.531093,NBV:Region:195,False,0.0
+NBV:Station:57585097,S-Bahnhof Waldhof,25086,49.525003,8.481472,NBV:Region:195,False,0.0
+NBV:Station:57585616,Roche - Oppauer Straße,25087,49.528227,8.476462,NBV:Region:195,False,0.0
+NBV:Station:57585948,Roche - Tor 4,25050,49.531124,8.480346,NBV:Region:195,False,0.0
+NBV:Station:58196168,HBf / Tattersallstraße,25088,49.479693,8.471489,NBV:Region:195,False,0.0
+NBV:Station:58196617,Lindenhof / NTR,25089,49.476208,8.470888,NBV:Region:195,False,0.0
+NBV:Station:95252421,Zeltfestival Rhein-Neckar,25090,49.465809,8.526249,NBV:Region:195,False,0.0
+NBV:Station:146888468,Feudenheim- Schelmenbuckel/Talstraße,25094,49.495086,8.524709,NBV:Region:195,False,0.0
+NBV:Station:146888651,Feudenheim - Neckarplatt / Sportpark,25093,49.485402,8.512012,NBV:Region:195,False,0.0
+NBV:Station:146888993,Oststadt - Unterer Luisenpark,25092,49.48489,8.487298,NBV:Region:195,False,0.0
+NBV:Station:148606240,A1 - Landgericht/Universität,25091,49.484796,8.462552,NBV:Region:195,False,0.0
+NBV:Station:195402059,Oststadt - Augusta Anlage,25051,49.478289,8.489728,NBV:Region:195,False,0.0
+NBV:Station:260511069,Waldhof -  Gartenstadt / Freilichtbühne,25074,49.534083,8.493429,NBV:Region:195,False,0.0
+NBV:Station:260511632,Waldhof -  Waldstraße / Hermann-Gutzmann-Schule,25075,49.524164,8.50109,NBV:Region:195,False,0.0
+NBV:Station:260511828,Waldhof - Taunusplatz,25076,49.524519,8.485152,NBV:Region:195,False,0.0
+NBV:Station:276163348,Tunnelstraße / Suezkanal,25095,49.480781,8.469247,NBV:Region:195,False,0.0
+NBV:Station:364019650,Lindenhofplatz / HBF Süd,25096,49.477839,8.467814,NBV:Region:195,False,0.0
+NBV:Station:378595589,Feudenheim - St. Peter & Paul Kirche,25097,49.486102,8.530755,NBV:Region:195,False,0.0
+NBV:Station:378595742,Feudenheim - Endstelle / Odenwald Straße,25098,49.483827,8.538324,NBV:Region:195,False,0.0
+NBV:Station:378596026,Seckenheim - Wasserturm / Kapellenplatz,25100,49.463125,8.555903,NBV:Region:195,False,0.0
+NBV:Station:378596121,Seckenheim - Rathaus,25101,49.467427,8.563108,NBV:Region:195,False,0.0
+NBV:Station:378596231,Seckenheim - S-Bahnhof  Seckenheim-Hochstätt,25102,49.451792,8.537525,NBV:Region:195,False,0.0
+NBV:Station:381679124,Jungbusch - Werftstraße,25103,49.495924,8.45803,NBV:Region:195,False,0.0
+NBV:Station:389143352,Taylor - Das E,25104,49.519299,8.5507,NBV:Region:195,True,0.0
+NBV:Station:393329858,Franklin - Wasserwerkstraße,25105,49.521503,8.525401,NBV:Region:195,False,0.0
+NBV:Station:450006188,Käfertal - Spinelli / Völklinger Achse,25106,49.503207,8.518642,NBV:Region:195,False,0.0
+NBV:Station:498226541,Turley - Heinrich-Wittkamp-Straße,25107,49.501747,8.493006,NBV:Region:195,True,0.0
+NBV:Station:575989610,THM Mannheim II,25108,49.472353,8.478683,NBV:Region:195,True,0.0

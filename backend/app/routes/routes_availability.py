@@ -7,7 +7,7 @@ router = APIRouter(tags=["Availability"])
 
 #TODO: URL für Karlsruhe und Stuttgart finden
 NEXTBIKE_MA_STATIONSTATUS_URL = "https://api.mobidata-bw.de/sharing/gbfs/v2/nextbike_vn/station_status"
-resource_ckan = "37b0e14c-8347-4155-a859-3754841a020f"
+
 
 #TODO: Ausgewählte Stadt vom Frontend bekommen
 @router.get("/availability/current/{station_id}")
