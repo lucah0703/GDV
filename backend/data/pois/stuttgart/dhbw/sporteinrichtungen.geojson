@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "generator": "overpass-turbo",
   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
-  "timestamp": "2026-06-10T13:11:20Z",
+  "timestamp": "2026-06-14T11:01:30Z",
   "features": [
     {
       "type": "Feature",
@@ -22,6 +22,231 @@
         ]
       },
       "id": "relation/1585528"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/7972038",
+        "building": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1128963,
+          48.7171647
+        ]
+      },
+      "id": "way/7972038"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/7979549",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "90",
+        "addr:postcode": "70563",
+        "addr:street": "Robert-Koch-Straße",
+        "building": "sports_centre",
+        "leisure": "sports_centre",
+        "name": "Neue Hegelhalle",
+        "opening_hours": "\"nach vereinbarung\"",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1051069,
+          48.7222785
+        ]
+      },
+      "id": "way/7979549"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/7979557",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Alte Hegelhalle",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1035286,
+          48.7230166
+        ]
+      },
+      "id": "way/7979557"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/7979578",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "70563",
+        "addr:street": "Vischerstraße",
+        "building": "sports_centre",
+        "leisure": "sports_centre",
+        "name": "Turnhalle RKR",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.105879,
+          48.7235164
+        ]
+      },
+      "id": "way/7979578"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/8065124",
+        "building": "yes",
+        "check_date:opening_hours": "2021-10-08",
+        "leisure": "sports_centre",
+        "name": "TC Galileo",
+        "opening_hours": "Tu-Sa 10:00-21:30; Su 10:00-20:00",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1187517,
+          48.7213742
+        ]
+      },
+      "id": "way/8065124"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/9660927",
+        "building": "public",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Gymnasium",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1144253,
+          48.8301914
+        ]
+      },
+      "id": "way/9660927"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/9661045",
+        "addr:city": "Korntal-Münchingen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "70825",
+        "addr:street": "Feuerseeweg",
+        "building": "public",
+        "building:levels": "1",
+        "leisure": "sports_centre",
+        "name": "Teichwiesenhalle",
+        "roof:levels": "0",
+        "roof:shape": "flat",
+        "source": "Bing",
+        "sport": "multi",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1234554,
+          48.8304904
+        ]
+      },
+      "id": "way/9661045"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/10266376",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "90",
+        "addr:postcode": "70565",
+        "addr:street": "Krehlstraße",
+        "addr:suburb": "Rohr",
+        "building": "apartments",
+        "building:levels": "1",
+        "leisure": "sports_centre",
+        "name": "Verbundschule Rohr",
+        "roof:shape": "flat",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1016483,
+          48.7214029
+        ]
+      },
+      "id": "way/10266376"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/12658428",
+        "leisure": "sports_centre",
+        "name": "Tennisanlage des TSV RSK-Esslingen",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.3023672,
+          48.7686207
+        ]
+      },
+      "id": "way/12658428"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/12658431",
+        "addr:city": "Esslingen am Neckar",
+        "addr:housenumber": "3",
+        "addr:postcode": "73733",
+        "addr:street": "Katharinenlinde",
+        "leisure": "sports_centre",
+        "name": "Sportcampus des TSV RSK-Esslingen",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.3005483,
+          48.7689014
+        ]
+      },
+      "id": "way/12658431"
     },
     {
       "type": "Feature",
@@ -50,6 +275,89 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/15460696",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "name": "Hoffmannhaus Reithalle",
+        "roof:colour": "brown",
+        "source": "Yahoo",
+        "sport": "equestrian",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1263908,
+          48.8291088
+        ]
+      },
+      "id": "way/15460696"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/16399460",
+        "addr:city": "Korntal-Münchingen",
+        "addr:country": "DE",
+        "addr:housenumber": "28",
+        "addr:postcode": "70825",
+        "addr:street": "Martin-Luther-Straße",
+        "building": "civic",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Martin-Luther-Straße",
+        "roof:colour": "grey",
+        "sport": "multi",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1209683,
+          48.8296785
+        ]
+      },
+      "id": "way/16399460"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/17206180",
+        "leisure": "sports_centre",
+        "name": "TSV Jahn Büsnau",
+        "type": "site",
+        "website": "https://tsv-jahn-buesnau.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0825616,
+          48.7481796
+        ]
+      },
+      "id": "relation/17206180"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/22720262",
+        "leisure": "sports_centre",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0692048,
+          48.7877345
+        ]
+      },
+      "id": "way/22720262"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/22734562",
         "leisure": "sports_centre",
         "name": "SV Heslach",
@@ -64,6 +372,31 @@
         ]
       },
       "id": "way/22734562"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/23021405",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "40",
+        "addr:postcode": "70599",
+        "addr:street": "Im Wolfer",
+        "building": "sports_centre",
+        "leisure": "sports_centre",
+        "name": "Hallenbad Plienigen",
+        "opening_hours": "Fr 07:00-22:00",
+        "sport": "swimming",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1997448,
+          48.708032
+        ]
+      },
+      "id": "way/23021405"
     },
     {
       "type": "Feature",
@@ -154,6 +487,107 @@
         ]
       },
       "id": "way/24035178"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24264873",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "40 B",
+        "addr:postcode": "70499",
+        "addr:street": "Spechtweg",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "name": "Sporthalle Solitude-Gymnasium",
+        "phone": "+49 711 861919",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1056471,
+          48.8035217
+        ]
+      },
+      "id": "way/24264873"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24536847",
+        "addr:city": "Gerlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "70839",
+        "addr:street": "Beim Brückentor",
+        "amenity": "school",
+        "building": "school",
+        "check_date": "2025-06-13",
+        "leisure": "sports_centre",
+        "name": "Brückentorhalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0596287,
+          48.7958378
+        ]
+      },
+      "id": "way/24536847"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24536849",
+        "addr:city": "Gerlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "14",
+        "addr:postcode": "70839",
+        "addr:street": "Hasenbergstraße",
+        "amenity": "public_building",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Jahnhalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0617155,
+          48.7970805
+        ]
+      },
+      "id": "way/24536849"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24549855",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "66",
+        "addr:postcode": "70499",
+        "addr:street": "Giebelstraße",
+        "club": "sport",
+        "email": "info@tsv-weilimdorf.de",
+        "leisure": "sports_centre",
+        "name": "TSV Weilimdorf",
+        "operator": "TSV Weilimdorf 1948 e.V.",
+        "website": "https://www.tsv-weilimdorf.org/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.088785,
+          48.8089609
+        ]
+      },
+      "id": "way/24549855"
     },
     {
       "type": "Feature",
@@ -261,6 +695,111 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/24695544",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "15",
+        "addr:postcode": "70563",
+        "addr:street": "Rosentalstraße",
+        "addr:suburb": "Vaihingen",
+        "building": "yes",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Hallenbad Vaihingen",
+        "sport": "swimming",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1011623,
+          48.7284024
+        ]
+      },
+      "id": "way/24695544"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24737814",
+        "addr:housenumber": "59",
+        "addr:street": "Masurenstraße",
+        "building": "sports_centre",
+        "leisure": "sports_centre",
+        "name": "AMG Sporthalle",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2465192,
+          48.8145144
+        ]
+      },
+      "id": "way/24737814"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24786480",
+        "layer": "-2",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2677757,
+          48.7878746
+        ]
+      },
+      "id": "way/24786480"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24832684",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "sport": "swimming",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1906813,
+          48.8348633
+        ]
+      },
+      "id": "way/24832684"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24833011",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "25F",
+        "addr:postcode": "70437",
+        "addr:street": "Schwabbacher Straße",
+        "building": "sports_hall",
+        "name": "Silcherturnhalle (Bau 6)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1811611,
+          48.8303584
+        ]
+      },
+      "id": "way/24833011"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/25216374",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -281,6 +820,59 @@
         ]
       },
       "id": "way/25216374"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/25344122",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "70597",
+        "addr:street": "Kremmlerstraße",
+        "building": "yes",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Hallenbad Sonnenberg",
+        "roof:shape": "flat",
+        "sport": "swimming",
+        "toilets:wheelchair": "yes",
+        "website": "https://www.stuttgarterbaeder.de/hbsonnenberg",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1511717,
+          48.7396549
+        ]
+      },
+      "id": "way/25344122"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/25743288",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "50",
+        "addr:postcode": "70734",
+        "addr:street": "Im Dietbach",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "KVU",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2566764,
+          48.7968529
+        ]
+      },
+      "id": "way/25743288"
     },
     {
       "type": "Feature",
@@ -309,6 +901,78 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/25996576",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "70567",
+        "addr:street": "Hengstäcker",
+        "alt_name": "Schule für Körperbehinderte Stuttgart",
+        "amenity": "school",
+        "building": "yes",
+        "description": "Sonderpädagogisches Bildungs- und Beratungszentrum (SBBZ) mit dem Förderschwerpunkt körperliche und motorische Entwicklung",
+        "leisure": "sports_centre",
+        "name": "Turnhalle mit Therapie-/Lehrschwimmbad",
+        "toilets:wheelchair": "yes",
+        "website": "http://www.sfk.s.bw.schule.de/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1297506,
+          48.7320431
+        ]
+      },
+      "id": "way/25996576"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26331966",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "70327",
+        "addr:street": "Gingener Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Flatow Sporthalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2484564,
+          48.7719355
+        ]
+      },
+      "id": "way/26331966"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26521273",
+        "leisure": "sports_centre",
+        "name": "Tennisclub Ruit",
+        "sport": "tennis",
+        "website": "https://tc-ruit.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2622022,
+          48.7272517
+        ]
+      },
+      "id": "way/26521273"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/26737370",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -330,6 +994,28 @@
         ]
       },
       "id": "way/26737370"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/27021335",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:postcode": "70736",
+        "building": "public",
+        "leisure": "sports_centre",
+        "name": "Friedrich-Schiller-Gymnasium",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2762382,
+          48.8170782
+        ]
+      },
+      "id": "way/27021335"
     },
     {
       "type": "Feature",
@@ -419,6 +1105,55 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/28112559",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "5A",
+        "addr:postcode": "70329",
+        "addr:street": "Am Steinenberg",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Hedelfingen",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2520375,
+          48.7540677
+        ]
+      },
+      "id": "way/28112559"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/29176052",
+        "addr:city": "Leinfelden-Echterdingen",
+        "addr:country": "DE",
+        "addr:housenumber": "15/1",
+        "addr:postcode": "70771",
+        "addr:street": "Anemonenstraße",
+        "addr:suburb": "Leinfelden",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Realschule/Gymnasium",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1353643,
+          48.6994771
+        ]
+      },
+      "id": "way/29176052"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/29841988",
         "addr:city": "Stuttgart",
         "addr:housenumber": "102-110",
@@ -444,6 +1179,47 @@
         ]
       },
       "id": "way/29841988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30098139",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1733517,
+          48.7344909
+        ]
+      },
+      "id": "way/30098139"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30098179",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "181",
+        "addr:postcode": "70597",
+        "addr:street": "Epplestraße",
+        "building": "sports_hall",
+        "description": "Hockeyhalle HTC",
+        "sport": "field_hockey",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1688072,
+          48.7334039
+        ]
+      },
+      "id": "way/30098179"
     },
     {
       "type": "Feature",
@@ -519,6 +1295,47 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/30255174",
+        "building": "sports_centre",
+        "check_date:opening_hours": "2024-08-14",
+        "leisure": "sports_centre",
+        "name": "Österfeldhalle",
+        "opening_hours:signed": "no",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1115013,
+          48.7326274
+        ]
+      },
+      "id": "way/30255174"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30689228",
+        "addr:country": "DE",
+        "building": "sports_hall",
+        "name": "Sporthalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1182405,
+          48.7312443
+        ]
+      },
+      "id": "way/30689228"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/30899552",
         "leisure": "sports_centre",
         "name": "Vereinsgelände Kraftsportverein Stuttgart",
@@ -532,6 +1349,75 @@
         ]
       },
       "id": "way/30899552"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/31794363",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "5",
+        "addr:postcode": "70499",
+        "addr:street": "Beim Fasanengarten",
+        "addr:suburb": "Hausen",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Turnhalle und Bürgertreff Hausen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0852748,
+          48.8168398
+        ]
+      },
+      "id": "way/31794363"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/32483218",
+        "addr:city": "Ditzingen",
+        "addr:housenumber": "35",
+        "addr:postcode": "71254",
+        "addr:street": "Gröninger Straße",
+        "building": "public",
+        "building:levels": "1",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Glemsaue",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0682235,
+          48.8312454
+        ]
+      },
+      "id": "way/32483218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/32514133",
+        "addr:housenumber": "1",
+        "addr:street": "Birchstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "Maps4BW, LGL, www.lgl-bw.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1767311,
+          48.7235183
+        ]
+      },
+      "id": "way/32514133"
     },
     {
       "type": "Feature",
@@ -606,6 +1492,30 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/33700518",
+        "addr:city": "Korntal-Münchingen",
+        "addr:housenumber": "3",
+        "addr:postcode": "70825",
+        "addr:street": "Kornwestheimer Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Münchingen",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1020011,
+          48.852525
+        ]
+      },
+      "id": "way/33700518"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/33823700",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -660,6 +1570,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/34885202",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2505881,
+          48.8325713
+        ]
+      },
+      "id": "way/34885202"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/35400951",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -702,6 +1630,32 @@
         ]
       },
       "id": "way/36832717"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/36907730",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "166/1",
+        "addr:postcode": "73760",
+        "addr:street": "Hedelfinger Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Vitalcenter Ruit",
+        "phone": "+49 711 415754",
+        "website": "https://www.vitalcenter-ruit.de/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2552867,
+          48.7408287
+        ]
+      },
+      "id": "way/36907730"
     },
     {
       "type": "Feature",
@@ -775,6 +1729,808 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/39353555",
+        "addr:city": "Ditzingen",
+        "addr:housenumber": "1",
+        "addr:postcode": "71254",
+        "addr:street": "Au",
+        "email": "info@tc-ditzingen.de",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Tennisclub Ditzingen",
+        "owner": "Tennisclub Ditzingen",
+        "sport": "tennis",
+        "website": "https://www.tc-ditzingen.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0647625,
+          48.8335221
+        ]
+      },
+      "id": "way/39353555"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/39870191",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1954766,
+          48.7253211
+        ]
+      },
+      "id": "way/39870191"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/40217456",
+        "addr:postcode": "70565",
+        "building": "school",
+        "building:levels": "2",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Pestalozzischule",
+        "name:en": "Gym Pestalozzi School",
+        "nohousenumber": "yes",
+        "roof:levels": "1",
+        "roof:shape": "hipped",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0996475,
+          48.7234477
+        ]
+      },
+      "id": "way/40217456"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/40324488",
+        "leisure": "sports_centre",
+        "name": "Sportplatz Albert Schweizer Schule",
+        "sport": "soccer",
+        "surface": "paved",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.096141,
+          48.7212692
+        ]
+      },
+      "id": "way/40324488"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/40983638",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "16",
+        "addr:postcode": "70563",
+        "addr:street": "Ifflandstraße",
+        "building": "sports_hall",
+        "email": "ballettschulepfennig@mail.de",
+        "leisure": "sports_centre",
+        "name": "Ballettschule Pfennig",
+        "phone": "+49 711 739516",
+        "sport": "ballet",
+        "website": "https://www.ballettschulepfennig.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1051035,
+          48.72913
+        ]
+      },
+      "id": "way/40983638"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/41109373",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "19",
+        "addr:postcode": "70736",
+        "addr:street": "Käthe-Kollwitz-Straße",
+        "addr:suburb": "Schmiden",
+        "building": "public",
+        "leisure": "sports_centre",
+        "name": "Anne-Frank-Sporthalle",
+        "sport": "multi",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2625787,
+          48.8262103
+        ]
+      },
+      "id": "way/41109373"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/41832600",
+        "addr:city": "Fellbach",
+        "addr:housenumber": "61",
+        "addr:postcode": "70734",
+        "addr:street": "Bruckstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Fitnessclub Fellbach",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2880991,
+          48.8152429
+        ]
+      },
+      "id": "way/41832600"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/42104481",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "70736",
+        "addr:street": "Blumenstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "SoccerOlymp Fellbach",
+        "sport": "soccer",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2731077,
+          48.8236277
+        ]
+      },
+      "id": "way/42104481"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/42754314",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "11/1",
+        "addr:postcode": "70567",
+        "addr:street": "Lohäckerstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Bocciadromo",
+        "operator": "Arces e.V.",
+        "sport": "boules",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1468538,
+          48.7184372
+        ]
+      },
+      "id": "way/42754314"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/43036077",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "15",
+        "addr:postcode": "70567",
+        "addr:street": "Balinger Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Tanzstelle Stuttgart",
+        "website": "https://www.tanzstelle-stuttgart.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1435825,
+          48.7291049
+        ]
+      },
+      "id": "way/43036077"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/43948058",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "17",
+        "addr:postcode": "70567",
+        "addr:street": "Hengstäcker",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle FES",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1280497,
+          48.7309661
+        ]
+      },
+      "id": "way/43948058"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/45391732",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.080411,
+          48.8018189
+        ]
+      },
+      "id": "way/45391732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/45391736",
+        "addr:city": "Gerlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "70839",
+        "addr:street": "Dieselstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "POINT Fitnessstudio",
+        "opening_hours": "Mo-Fr 06:45-24:00; Sa,Su 08:45-21:00",
+        "source": "Bing",
+        "website": "https://www.point-sports.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0758569,
+          48.803008
+        ]
+      },
+      "id": "way/45391736"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/45777709",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "40",
+        "addr:postcode": "70437",
+        "addr:street": "Adalbert-Stifter-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Freiberg",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2104064,
+          48.8394376
+        ]
+      },
+      "id": "way/45777709"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/45837428",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "76/1",
+        "addr:postcode": "70499",
+        "addr:street": "Köstlinstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Wolfbusch",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1144667,
+          48.808765
+        ]
+      },
+      "id": "way/45837428"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/47070378",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "32",
+        "addr:postcode": "70734",
+        "addr:street": "Tainer Straße",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Silcher-Turnhalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2707539,
+          48.8092266
+        ]
+      },
+      "id": "way/47070378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/47283291",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "9",
+        "addr:postcode": "70499",
+        "addr:street": "Holderäckerstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Fitness Forum",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1018647,
+          48.823341
+        ]
+      },
+      "id": "way/47283291"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/47312761",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "141",
+        "addr:postcode": "70736",
+        "addr:street": "Bühlstraße",
+        "building": "public",
+        "building:levels": "1",
+        "leisure": "sports_centre",
+        "name": "Gäuäcker-Sporthalle I",
+        "roof:levels": "0",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.283142,
+          48.8193231
+        ]
+      },
+      "id": "way/47312761"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/47312771",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "143",
+        "addr:postcode": "70736",
+        "addr:street": "Bühlstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Gäuäcker-Sporthalle II",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2843852,
+          48.8204919
+        ]
+      },
+      "id": "way/47312771"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/47478791",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "100",
+        "addr:postcode": "70734",
+        "addr:street": "Esslinger Straße",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Jugendhaus-Sporthalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2691623,
+          48.8093418
+        ]
+      },
+      "id": "way/47478791"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/47994636",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "32",
+        "addr:postcode": "70736",
+        "addr:street": "Maicklerstraße",
+        "building": "public",
+        "leisure": "sports_centre",
+        "name": "Maickler-Turnhalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2774005,
+          48.818186
+        ]
+      },
+      "id": "way/47994636"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/48432197",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "46",
+        "addr:postcode": "70437",
+        "addr:street": "Adalbert-Stifter-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Turn-und Versammlungshalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2086755,
+          48.8390436
+        ]
+      },
+      "id": "way/48432197"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/48976990",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "38",
+        "addr:postcode": "70736",
+        "addr:street": "Remstalstraße",
+        "addr:suburb": "Schmiden",
+        "building": "public",
+        "leisure": "sports_centre",
+        "name": "Sporthalle 1 Schmiden",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2676529,
+          48.8341074
+        ]
+      },
+      "id": "way/48976990"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/49291431",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "36",
+        "addr:postcode": "70599",
+        "addr:street": "Im Wolfer",
+        "building": "sports_centre",
+        "check_date:opening_hours": "2024-10-13",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Plieningen",
+        "opening_hours:signed": "no",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2003052,
+          48.7085144
+        ]
+      },
+      "id": "way/49291431"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/49857719",
+        "access": "yes",
+        "addr:city": "Ditzingen",
+        "addr:housenumber": "3",
+        "addr:street": "Gyulaer Platz",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Stadtbad Ditzingen",
+        "sport": "swimming",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0704165,
+          48.8266501
+        ]
+      },
+      "id": "way/49857719"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/50083906",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "70736",
+        "addr:street": "Albert-Eise-Weg",
+        "addr:suburb": "Oeffingen",
+        "building": "public",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Oeffingen",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2689566,
+          48.8422963
+        ]
+      },
+      "id": "way/50083906"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/51858132",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "47",
+        "addr:postcode": "70599",
+        "addr:street": "Egilolfstraße",
+        "building": "sports_centre",
+        "leisure": "sports_centre",
+        "name": "Universitätssporthalle",
+        "opening_hours:signed": "no",
+        "source": "yahoo",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2089688,
+          48.7163453
+        ]
+      },
+      "id": "way/51858132"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/51858175",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:postcode": "70599",
+        "addr:street": "Moosheimer Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "yahoo",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2067428,
+          48.7225915
+        ]
+      },
+      "id": "way/51858175"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/52092381",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1392042,
+          48.8531454
+        ]
+      },
+      "id": "way/52092381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/53177673",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "38",
+        "addr:postcode": "73760",
+        "addr:street": "Schönbergstraße",
+        "addr:suburb": "Kemnat",
+        "building": "yes",
+        "contact:phone": "+49 711 51889873",
+        "leisure": "sports_centre",
+        "name": "Top Tennis",
+        "opening_hours": "Mo-Su 08:00-23:00",
+        "sport": "tennis",
+        "website": "https://toptennis-stuttgart.de/de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2227273,
+          48.7247982
+        ]
+      },
+      "id": "way/53177673"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/53395362",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "42",
+        "addr:postcode": "73760",
+        "addr:street": "Haldenstraße",
+        "addr:suburb": "Kemnat",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2257993,
+          48.7215775
+        ]
+      },
+      "id": "way/53395362"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/53395366",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "40",
+        "addr:postcode": "73760",
+        "addr:street": "Haldenstraße",
+        "addr:suburb": "Kemnat",
+        "building": "yes",
+        "contact:website": "https://www.hik-ev.de/",
+        "leisure": "sports_centre",
+        "name": "Hallenbad Kemnat",
+        "operator": "Gemeinnützige Hallenbad-Initiative-Kemnat e.V.",
+        "phone": "+49 711 453808",
+        "sport": "swimming",
+        "toilets:wheelchair": "no",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.224977,
+          48.7215564
+        ]
+      },
+      "id": "way/53395366"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/54364870",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "equestrian",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2923517,
+          48.809735
+        ]
+      },
+      "id": "way/54364870"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/54364900",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "equestrian",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2955031,
+          48.8074098
+        ]
+      },
+      "id": "way/54364900"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/58379516",
         "access": "customers",
         "alt_name": "DAV Kletterzentrum Stuttgart",
@@ -815,6 +2571,242 @@
         ]
       },
       "id": "way/58379516"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/62110832",
+        "addr:city": "Esslingen am Neckar",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "73733",
+        "addr:street": "Auenweg",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "name": "KSV SportArena",
+        "sport": "judo",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2739345,
+          48.7453319
+        ]
+      },
+      "id": "way/62110832"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/67148946",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "6",
+        "addr:postcode": "70327",
+        "addr:street": "Im Graben",
+        "building": "house",
+        "leisure": "sports_centre",
+        "name": "Turn- und Festhalle TGV Rotenberg e.V.",
+        "operator": "TGV Rotenberg e.V.",
+        "operator:type": "association",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2734102,
+          48.7837096
+        ]
+      },
+      "id": "way/67148946"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/70585661",
+        "leisure": "sports_centre",
+        "name": "SG Weilimdorf",
+        "operator": "SG Weilimdorf e.V.",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1011712,
+          48.8062869
+        ]
+      },
+      "id": "way/70585661"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/79713897",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "58",
+        "addr:postcode": "70565",
+        "addr:street": "Heßbrühlstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "TC Blau-Weiss Vaihingen-Rohr",
+        "sport": "tennis",
+        "website": "https://www.tc-blau-weiss.com/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1174367,
+          48.7226132
+        ]
+      },
+      "id": "way/79713897"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/80770762",
+        "leisure": "sports_centre",
+        "name": "Kurt-Hägele-Haus",
+        "operator": "Cannstatter Skiclub e.V.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2281815,
+          48.8164015
+        ]
+      },
+      "id": "way/80770762"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/84509724",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "140",
+        "addr:postcode": "70378",
+        "addr:street": "Wagrainstraße",
+        "building:levels": "2",
+        "building:part": "yes",
+        "leisure": "sports_centre",
+        "name": "Stuttgart-Cannstatter Ruderclub",
+        "roof:colour": "grey",
+        "roof:direction": "204",
+        "roof:shape": "gabled",
+        "sport": "multi",
+        "website": "https://www.stuttgart-cannstatter-ruderclub.de/",
+        "wikidata": "Q76527359",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2170352,
+          48.8273037
+        ]
+      },
+      "id": "way/84509724"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/92973026",
+        "addr:city": "Kornwestheim",
+        "addr:country": "DE",
+        "addr:housenumber": "35",
+        "addr:postcode": "70806",
+        "addr:street": "Bogenstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "FunSportZentrum",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1774055,
+          48.850011
+        ]
+      },
+      "id": "way/92973026"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/93785343",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "19",
+        "addr:postcode": "70329",
+        "addr:street": "Im Dinkelacker",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Turn- und Versammlungshalle Obertürkheim",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2658011,
+          48.7688689
+        ]
+      },
+      "id": "way/93785343"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/93785444",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "581",
+        "addr:postcode": "70329",
+        "addr:street": "Augsburger Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Obertürkheim",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2648155,
+          48.7685001
+        ]
+      },
+      "id": "way/93785444"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/93889589",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "221",
+        "addr:postcode": "70329",
+        "addr:street": "Asangstraße",
+        "building": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.277805,
+          48.7744947
+        ]
+      },
+      "id": "way/93889589"
     },
     {
       "type": "Feature",
@@ -903,6 +2895,28 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/96268259",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:postcode": "70439",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1486194,
+          48.8504021
+        ]
+      },
+      "id": "way/96268259"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/99751743",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -929,6 +2943,56 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/100157127",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "60",
+        "addr:postcode": "70439",
+        "addr:street": "Münchinger Straße",
+        "addr:suburb": "Stammheim",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Stammheim",
+        "operator": "Grund- und Werkrealschule Stammheim",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1496471,
+          48.849558
+        ]
+      },
+      "id": "way/100157127"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/100479341",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "7",
+        "addr:postcode": "70437",
+        "addr:street": "Kafkaweg",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "TC Freiberg-Mönchfeld",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.215869,
+          48.8405975
+        ]
+      },
+      "id": "way/100479341"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/100549485",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -950,6 +3014,24 @@
         ]
       },
       "id": "way/100549485"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/101052620",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0679982,
+          48.7878625
+        ]
+      },
+      "id": "way/101052620"
     },
     {
       "type": "Feature",
@@ -981,6 +3063,31 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/102489864",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "55",
+        "addr:postcode": "70499",
+        "addr:street": "Am Bergheimer Hof",
+        "addr:suburb": "Bergheim",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0959155,
+          48.8021181
+        ]
+      },
+      "id": "way/102489864"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/103058929",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -1003,6 +3110,47 @@
         ]
       },
       "id": "way/103058929"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/103915539",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1228785,
+          48.8170691
+        ]
+      },
+      "id": "way/103915539"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/106576654",
+        "addr:city": "Gerlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "5",
+        "addr:postcode": "70839",
+        "addr:street": "Krummbachtal",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "Bing",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.058279,
+          48.7745312
+        ]
+      },
+      "id": "way/106576654"
     },
     {
       "type": "Feature",
@@ -1065,6 +3213,88 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/109270173",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "source": "Maps4BW, LGL, www.lgl-bw.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1955982,
+          48.8308593
+        ]
+      },
+      "id": "way/109270173"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/109270177",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "136A",
+        "addr:postcode": "70437",
+        "addr:street": "Haldenrainstraße",
+        "building": "sports_hall",
+        "building:levels": "2",
+        "leisure": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1930576,
+          48.832122
+        ]
+      },
+      "id": "way/109270177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/109629274",
+        "addr:city": "Kornwestheim",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "70806",
+        "addr:street": "Am Sportplatz",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Hanspeter-Sturm-Stadionhalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1793135,
+          48.8526382
+        ]
+      },
+      "id": "way/109629274"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/109629287",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1783177,
+          48.8511052
+        ]
+      },
+      "id": "way/109629287"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/109849916",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -1090,6 +3320,47 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/113656566",
+        "addr:city": "Fellbach",
+        "addr:housenumber": "102",
+        "addr:postcode": "70734",
+        "addr:street": "Esslinger Straße",
+        "leisure": "sports_centre",
+        "name": "F3",
+        "operator": "F3 Betriebsgesellschaft Kombibad Fellbach GmbH",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2674835,
+          48.8095871
+        ]
+      },
+      "id": "way/113656566"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/116066326",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Umkleiden SV Vaihingen",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1124681,
+          48.7218124
+        ]
+      },
+      "id": "way/116066326"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/117467059",
         "leisure": "sports_centre",
         "operator": "KuSV Rot-Weiß-Blau e.V.",
@@ -1104,6 +3375,95 @@
         ]
       },
       "id": "way/117467059"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/117965360",
+        "access": "customers",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "21",
+        "addr:postcode": "70565",
+        "addr:street": "Handwerkstraße",
+        "building": "sports_centre",
+        "check_date": "2025-05-20",
+        "climbing": "no",
+        "climbing:boulder": "yes",
+        "email": "info@vels-stuttgart.de",
+        "indoor": "yes",
+        "leisure": "sports_centre",
+        "name": "VELS Boulderhalle",
+        "opening_hours": "Mo-Su,PH 08:00-23:00; Jan 01 off; Dec 24 08:00-13:00; Dec 25-26 08:00-14:00; Dec 31 08:00-14:00",
+        "payment:cash": "yes",
+        "payment:credit_cards": "yes",
+        "payment:debit_cards": "yes",
+        "payment:girocard": "yes",
+        "payment:maestro": "yes",
+        "phone": "+49 711 99749360",
+        "sport": "climbing;bouldering",
+        "website": "https://www.vels-stuttgart.de",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.128334,
+          48.719151
+        ]
+      },
+      "id": "way/117965360"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/118581868",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "5",
+        "addr:postcode": "70435",
+        "addr:street": "Hirschsprungallee",
+        "leisure": "sports_centre",
+        "name": "Waldklettergarten Stuttgart-Zuffenhausen",
+        "opening_hours": "Tu-Fr 12:00-19:00; Sa-Su 10:00-19:00; PH 10:00-19:00",
+        "sport": "climbing_adventure",
+        "website": "https://www.waldklettergarten-stuttgart.de/",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1534895,
+          48.8274785
+        ]
+      },
+      "id": "way/118581868"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/121144845",
+        "addr:city": "Kornwestheim",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "70806",
+        "addr:street": "Theodor-Heuss-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Ost",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1969626,
+          48.8587401
+        ]
+      },
+      "id": "way/121144845"
     },
     {
       "type": "Feature",
@@ -1174,6 +3534,215 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/124342973",
+        "addr:city": "Kornwestheim",
+        "addr:country": "DE",
+        "addr:housenumber": "8",
+        "addr:postcode": "70806",
+        "addr:street": "Rechbergstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Rechberghalle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1863568,
+          48.8572093
+        ]
+      },
+      "id": "way/124342973"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/125392342",
+        "building": "yes",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2690382,
+          48.7578848
+        ]
+      },
+      "id": "way/125392342"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/125824412",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "15",
+        "addr:postcode": "70374",
+        "addr:street": "Rommelshauser Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Cannstatt",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2424492,
+          48.8029966
+        ]
+      },
+      "id": "way/125824412"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/126828986",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "70327",
+        "addr:street": "Beim Inselkraftwerk",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Untertürkheim",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2499958,
+          48.7774084
+        ]
+      },
+      "id": "way/126828986"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/127314449",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "125/23",
+        "addr:postcode": "73760",
+        "addr:street": "Kirchheimer Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2630344,
+          48.7283548
+        ]
+      },
+      "id": "way/127314449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/127314512",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "125/2",
+        "addr:postcode": "73760",
+        "addr:street": "Kirchheimer Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2647187,
+          48.7261765
+        ]
+      },
+      "id": "way/127314512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/127314614",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "125/21",
+        "addr:postcode": "73760",
+        "addr:street": "Kirchheimer Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2637464,
+          48.7283627
+        ]
+      },
+      "id": "way/127314614"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/128125238",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "1a",
+        "addr:postcode": "70499",
+        "addr:street": "Holderäckerstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Fitnessstudio Lifestyle",
+        "website": "http://www.lifestyle-wfc.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1012715,
+          48.8235351
+        ]
+      },
+      "id": "way/128125238"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/129721366",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "71",
+        "addr:postcode": "73760",
+        "addr:street": "Panoramastraße",
+        "addr:suburb": "Kemnat",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Radfahrerverein Kemnat",
+        "sport": "bicycle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2264014,
+          48.7181549
+        ]
+      },
+      "id": "way/129721366"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/135863397",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -1234,6 +3803,110 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/141572225",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "3a",
+        "addr:postcode": "70378",
+        "addr:street": "Seeadlerstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Neugereut",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2309745,
+          48.8336868
+        ]
+      },
+      "id": "way/141572225"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/141700731",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "name": "Sporthalle Hofen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.225579,
+          48.833833
+        ]
+      },
+      "id": "way/141700731"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/143062309",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "25",
+        "addr:postcode": "70376",
+        "addr:street": "Moselstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Kultur- und Sportzentrum Stuttgart-Münster",
+        "sport": "multi",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2217948,
+          48.8219206
+        ]
+      },
+      "id": "way/143062309"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/144667335",
+        "leisure": "sports_centre",
+        "name": "Sportplatz Universität Hohenheim",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2092221,
+          48.7159185
+        ]
+      },
+      "id": "way/144667335"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/144673748",
+        "leisure": "sports_centre",
+        "name": "TSV Birkach",
+        "website": "https://www.tsv-birkach.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1981542,
+          48.729569
+        ]
+      },
+      "id": "way/144673748"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/145435261",
         "building": "sports_hall",
         "building:levels": "3",
@@ -1247,6 +3920,134 @@
         ]
       },
       "id": "way/145435261"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/145829576",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "70435",
+        "addr:street": "Hirschsprungallee",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Tennishalle Schlotwiese",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1516848,
+          48.8285909
+        ]
+      },
+      "id": "way/145829576"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/145830416",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "12",
+        "addr:postcode": "70435",
+        "addr:street": "Hirschsprungallee",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Bädleshalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1517916,
+          48.8273389
+        ]
+      },
+      "id": "way/145830416"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/146626497",
+        "leisure": "sports_centre",
+        "name": "Sportzentrum Münchingen",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1014425,
+          48.8533809
+        ]
+      },
+      "id": "way/146626497"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/146861172",
+        "amenity": "public_building",
+        "building": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1941932,
+          48.8414726
+        ]
+      },
+      "id": "way/146861172"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/153844738",
+        "addr:city": "Esslingen am Neckar",
+        "addr:country": "DE",
+        "addr:housenumber": "12",
+        "addr:postcode": "73733",
+        "addr:street": "Kornhalde",
+        "building": "sports_hall",
+        "name": "Sporthalle Sulzgries",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2916269,
+          48.7589753
+        ]
+      },
+      "id": "way/153844738"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/161898196",
+        "access": "customers",
+        "fee": "no",
+        "leisure": "sports_centre",
+        "name": "Sportanlage Talwiesen",
+        "sport": "soccer;basketball;athletics;beachvolleyball;handball",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2594957,
+          48.720742
+        ]
+      },
+      "id": "way/161898196"
     },
     {
       "type": "Feature",
@@ -1270,6 +4071,164 @@
         ]
       },
       "id": "way/163282619"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/163792596",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "35",
+        "addr:postcode": "70437",
+        "addr:street": "Haldenrainstraße",
+        "alt_name": "Talwiesenhalle",
+        "building": "sports_hall",
+        "name": "Sporthalle Zuffenhausen",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1802385,
+          48.8311912
+        ]
+      },
+      "id": "way/163792596"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/171822221",
+        "building": "sports_hall",
+        "building:levels": "2",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Möhringen (Rembrandthalle)",
+        "roof:levels": "0",
+        "roof:shape": "flat",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1529998,
+          48.7312438
+        ]
+      },
+      "id": "way/171822221"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/185874635",
+        "building": "yes",
+        "fee": "yes",
+        "image": "https://commons.wikimedia.org/wiki/File:Fellbach_Sportzentrum-LOOP_Mth_7387.JPG",
+        "leisure": "sports_centre",
+        "name": "Sportzentrum Loop",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2841019,
+          48.8202692
+        ]
+      },
+      "id": "way/185874635"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/217991674",
+        "addr:city": "Ditzingen",
+        "addr:country": "DE",
+        "addr:housenumber": "14",
+        "addr:street": "Ringwiesenstraße",
+        "building": "yes",
+        "fixme": "Welche Straße?",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0704383,
+          48.8269183
+        ]
+      },
+      "id": "way/217991674"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/219447937",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "125/19",
+        "addr:postcode": "73760",
+        "addr:street": "Kirchheimer Straße",
+        "building": "yes",
+        "building:levels": "1",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2634271,
+          48.7281027
+        ]
+      },
+      "id": "way/219447937"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/235194739",
+        "addr:city": "Ostfildern",
+        "addr:country": "DE",
+        "addr:housenumber": "8",
+        "addr:postcode": "73760",
+        "addr:street": "Gerhard-Koch-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Schule im Park",
+        "phone": "+49 173 3485906",
+        "wheelchair": "limited",
+        "wheelchair:description": "Zugang nur für Zuschauer",
+        "wikidata": "Q116645536",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2734137,
+          48.7224336
+        ]
+      },
+      "id": "way/235194739"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/237733069",
+        "leisure": "sports_centre",
+        "name": "Sportplatz Münchingen",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1056176,
+          48.8494328
+        ]
+      },
+      "id": "way/237733069"
     },
     {
       "type": "Feature",
@@ -1325,6 +4284,81 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/245228184",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "50b",
+        "addr:postcode": "70736",
+        "addr:street": "Pestalozzistraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "FSG-Sporthalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2757199,
+          48.8170352
+        ]
+      },
+      "id": "way/245228184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/245228186",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "53",
+        "addr:postcode": "70734",
+        "addr:street": "Thomas-Mann-Straße",
+        "building": "sports_hall",
+        "building:levels": "2",
+        "leisure": "sports_centre",
+        "name": "Zeppelin-Sporthalle",
+        "roof:levels": "0",
+        "roof:shape": "flat",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2838156,
+          48.8130509
+        ]
+      },
+      "id": "way/245228186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/251744405",
+        "addr:city": "Esslingen",
+        "addr:country": "DE",
+        "addr:housenumber": "201",
+        "addr:postcode": "73733",
+        "addr:street": "Weilstraße",
+        "building": "sports_hall",
+        "name": "Sporthalle Weil",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2766175,
+          48.7383219
+        ]
+      },
+      "id": "way/251744405"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/252435072",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -1345,6 +4379,48 @@
         ]
       },
       "id": "way/252435072"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/252796654",
+        "addr:city": "Korntal-Münchingen",
+        "addr:country": "DE",
+        "addr:housenumber": "8",
+        "addr:postcode": "70825",
+        "addr:street": "Korntaler Straße",
+        "building": "public",
+        "leisure": "sports_centre",
+        "name": "Albert-Buddenberg-Halle",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0902452,
+          48.8518855
+        ]
+      },
+      "id": "way/252796654"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/262118795",
+        "leisure": "sports_centre",
+        "name": "Gustav-Werner-Halle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1895128,
+          48.8292619
+        ]
+      },
+      "id": "way/262118795"
     },
     {
       "type": "Feature",
@@ -1415,6 +4491,80 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/279111919",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "38",
+        "addr:postcode": "70327",
+        "addr:street": "Dietbachstraße",
+        "building": "yes",
+        "email": "ssv_untertuerkheim@web.de",
+        "leisure": "sports_centre",
+        "name": "Sportschützenverein Stuttgart-Untertürkheim e.V.",
+        "phone": "+49 711 33 01 01",
+        "sport": "shooting",
+        "website": "www.ssv-untertürkheim.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2499603,
+          48.7910749
+        ]
+      },
+      "id": "way/279111919"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/286022795",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "70565",
+        "addr:street": "Handwerkstraße",
+        "building": "office",
+        "building:levels": "4",
+        "check_date:opening_hours": "2021-08-12",
+        "leisure": "sports_centre",
+        "name": "clever fit Stuttgart Vaihingen",
+        "opening_hours": "Mo-Fr 06:00-24:00; Sa,Su,PH 09:00-22:00",
+        "roof:levels": "0",
+        "roof:shape": "flat",
+        "sport": "gymnastics",
+        "website": "https://www.clever-fit.com/fitness-studios/clever-fit-stuttgart-vaihingenmoehringen.html",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1295204,
+          48.7218798
+        ]
+      },
+      "id": "way/286022795"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/286435702",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2887134,
+          48.7368835
+        ]
+      },
+      "id": "way/286435702"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/295565089",
         "building": "sports_hall",
         "@geometry": "center"
@@ -1455,6 +4605,24 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/316142238",
+        "leisure": "sports_centre",
+        "name": "SpVgg Neuwirtshaus 1948 e.V.",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1394157,
+          48.8393765
+        ]
+      },
+      "id": "way/316142238"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/325138141",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -1477,6 +4645,82 @@
         ]
       },
       "id": "way/325138141"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/342978440",
+        "addr:city": "Kornwestheim",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "70806",
+        "addr:street": "Eichenweg",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Tennishalle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1827039,
+          48.8498685
+        ]
+      },
+      "id": "way/342978440"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/342980987",
+        "addr:city": "Kornwestheim",
+        "addr:housenumber": "43",
+        "addr:postcode": "70806",
+        "addr:street": "Jägerstraße",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Hannes-Reiber-Halle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1809891,
+          48.849584
+        ]
+      },
+      "id": "way/342980987"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/363013722",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "136",
+        "addr:postcode": "70378",
+        "addr:street": "Wagrainstraße",
+        "building:levels": "2",
+        "building:part": "yes",
+        "golf": "clubhouse",
+        "leisure": "sports_centre",
+        "name": "Citygolf Stuttgart",
+        "opening_hours": "Mo-Su 10:00-21:00; PH 10:00-20:00",
+        "outdoor_seating": "yes",
+        "roof:colour": "grey",
+        "roof:shape": "flat",
+        "start_date": "2014-10-26",
+        "website": "https://citygolf-stuttgart.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2164263,
+          48.8274816
+        ]
+      },
+      "id": "way/363013722"
     },
     {
       "type": "Feature",
@@ -1509,6 +4753,90 @@
         ]
       },
       "id": "way/372414547"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/385232347",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "60",
+        "addr:postcode": "70439",
+        "addr:street": "Münchinger Straße",
+        "fee": "no",
+        "leisure": "sports_centre",
+        "operator": "Stadt Stuttgart",
+        "operator:type": "public",
+        "sport": "soccer;athletics;basketball;table_tennis;running;fitness;gymnastics;handball;multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1497597,
+          48.8493584
+        ]
+      },
+      "id": "way/385232347"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/391123102",
+        "leisure": "sports_centre",
+        "name": "SKG Max-Eyth-See",
+        "official_name": "Sport- und Kulturgemeinschaft Stuttgart Max-Eyth-See 1898 e.V.",
+        "website": "https://www.skgmaxeythsee.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2343673,
+          48.8410446
+        ]
+      },
+      "id": "way/391123102"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/396331581",
+        "check_date:opening_hours": "2024-09-07",
+        "leisure": "sports_centre",
+        "name": "Hegel-Sportplatz",
+        "opening_hours:signed": "no",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1034418,
+          48.7223348
+        ]
+      },
+      "id": "way/396331581"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/398038239",
+        "addr:housenumber": "109",
+        "addr:street": "Solitudestraße",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1010741,
+          48.8054744
+        ]
+      },
+      "id": "way/398038239"
     },
     {
       "type": "Feature",
@@ -1554,6 +4882,91 @@
         ]
       },
       "id": "node/412871459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/431444813",
+        "leisure": "sports_centre",
+        "name": "SKS Tennisanlage Hafenbahnstraße",
+        "operator": "SportKultur Stuttgart e.V.",
+        "website": "https://www.sportkultur-stuttgart.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2695984,
+          48.7577192
+        ]
+      },
+      "id": "way/431444813"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/431444815",
+        "leisure": "sports_centre",
+        "name": "VfB Obertürkheim e.V.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2685281,
+          48.7592779
+        ]
+      },
+      "id": "way/431444815"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/436017700",
+        "barrier": "fence",
+        "club": "sport",
+        "fence_type": "chain_link",
+        "leisure": "sports_centre",
+        "name": "Tennisclub Münchingen e.V.",
+        "sport": "tennis",
+        "website": "https://www.tcmuenchingen.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0999317,
+          48.8527936
+        ]
+      },
+      "id": "way/436017700"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/436024505",
+        "addr:city": "Waiblingen",
+        "addr:country": "DE",
+        "addr:housenumber": "149",
+        "addr:postcode": "71332",
+        "addr:street": "Stuttgarter Straße",
+        "brand": "Fitness First",
+        "brand:wikidata": "Q127120",
+        "indoor": "room",
+        "leisure": "fitness_centre",
+        "level": "1",
+        "name": "Fitness First",
+        "start_date": "2016-07-29",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2949458,
+          48.8207469
+        ]
+      },
+      "id": "way/436024505"
     },
     {
       "type": "Feature",
@@ -1630,6 +5043,34 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/475269419",
+        "addr:city": "Fellbach",
+        "addr:housenumber": "21",
+        "addr:postcode": "70734",
+        "addr:street": "Kienbachstraße",
+        "description": "Tennisschule mit drei Trainern, Sport Shop, Breitensportaktivitäten, wöchentlicher Treff von Hobbyspielern, Ballspielgruppe für Kinder ab 3 Jahren, Tenniscamps, Konditionstraining, Ballwand.",
+        "email": "info@tev-fellbach.de",
+        "fax": "+49 711 5404629",
+        "leisure": "sports_centre",
+        "name": "TEV Rot-Weiß Fellbach e. V.",
+        "phone": "+49 711 582529",
+        "sport": "tennis",
+        "website": "http://www.tev-fellbach.de/",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2673517,
+          48.804098
+        ]
+      },
+      "id": "way/475269419"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/527937253",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -1647,6 +5088,162 @@
         ]
       },
       "id": "way/527937253"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/544854084",
+        "leisure": "sports_centre",
+        "name": "Point Sports Krafttrainingshalle"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0757684,
+          48.8034219
+        ]
+      },
+      "id": "node/544854084"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/556660205",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "22",
+        "addr:postcode": "70563",
+        "addr:street": "Hauptstraße",
+        "addr:suburb": "Vaihingen",
+        "contact:website": "https://physics-stuttgart.de/",
+        "leisure": "fitness_centre",
+        "name": "Physics"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.108767,
+          48.729947
+        ]
+      },
+      "id": "node/556660205"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/567589864",
+        "leisure": "sports_centre",
+        "name": "Schießsportzentrum Schmiden",
+        "sport": "shooting",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.24941,
+          48.8339393
+        ]
+      },
+      "id": "way/567589864"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/605597421",
+        "leisure": "sports_centre",
+        "name": "Activity"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2851219,
+          48.817182
+        ]
+      },
+      "id": "node/605597421"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/651695245",
+        "leisure": "sports_centre",
+        "operator": "TC Degerloch Hohe Eiche e. V.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1740105,
+          48.7341847
+        ]
+      },
+      "id": "way/651695245"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/683704723",
+        "leisure": "sports_centre",
+        "name": "Hohe Eiche",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1716207,
+          48.733418
+        ]
+      },
+      "id": "way/683704723"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/723504179",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Turn- und Versammlungshalle Stuttgart-Wangen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2465974,
+          48.7707771
+        ]
+      },
+      "id": "way/723504179"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/746586190",
+        "addr:city": "Ditzingen",
+        "addr:housenumber": "1",
+        "addr:postcode": "71254",
+        "addr:street": "Au",
+        "building": "yes",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "lit": "yes",
+        "name": "TCD-Tennishalle",
+        "operator": "Tennisclub Ditzingen e.V.",
+        "sport": "tennis",
+        "surface": "clay",
+        "website": "https://www.tc-ditzingen.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0644213,
+          48.8337156
+        ]
+      },
+      "id": "way/746586190"
     },
     {
       "type": "Feature",
@@ -1671,6 +5268,72 @@
         ]
       },
       "id": "way/798961691"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/970130898",
+        "addr:city": "Esslingen am Neckar",
+        "addr:housenumber": "199",
+        "addr:postcode": "73733",
+        "addr:street": "Weilstraße",
+        "area": "yes",
+        "leisure": "sports_centre",
+        "name": "Sportpark Weil",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2755889,
+          48.7378461
+        ]
+      },
+      "id": "way/970130898"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1042426103",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "name": "Sporthalle in den Breitwiesen",
+        "start_date": "2022-09-10",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0773912,
+          48.80175
+        ]
+      },
+      "id": "way/1042426103"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1061154212",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "15A",
+        "addr:postcode": "70565",
+        "addr:street": "Markus-Schleicher-Straße",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "roof:shape": "flat",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1556589,
+          48.7118352
+        ]
+      },
+      "id": "way/1061154212"
     },
     {
       "type": "Feature",
@@ -1705,6 +5368,129 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1106184454",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "70597",
+        "addr:street": "Bopseräcker",
+        "leisure": "sports_centre",
+        "name": "HTC Stuttgarter Kickers",
+        "sport": "field_hockey; tennis",
+        "website": "https://www.stuttgarter-htc.de/",
+        "wikidata": "Q1490097",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1698313,
+          48.7331069
+        ]
+      },
+      "id": "way/1106184454"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1152389166",
+        "building": "yes",
+        "fee": "yes",
+        "image": "https://commons.wikimedia.org/wiki/File:Fellbach_BALANCE-Sporthalle_Mth_7390.JPG",
+        "leisure": "sports_centre",
+        "name": "BALANCE",
+        "operator": "SV-Fellbach",
+        "sport": "fitness",
+        "website": "https://www.balance-svfellbach.de/willkommen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2840052,
+          48.8206268
+        ]
+      },
+      "id": "way/1152389166"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1238149881",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1529862,
+          48.825501
+        ]
+      },
+      "id": "way/1238149881"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1246034770",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "81",
+        "addr:postcode": "70619",
+        "addr:street": "Schemppstraße",
+        "email": "info@fitnesspark-sillenbuch.de",
+        "leisure": "fitness_centre",
+        "name": "Fitnesspark Sillenbuch",
+        "opening_hours": "Mo,Tu,Th 09:00-22:30; We,Fr 07:00-22:30; Sa 10:00-20:00",
+        "sport": "exercise;running;weightlifting;multi",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2191196,
+          48.7396509
+        ]
+      },
+      "id": "node/1246034770"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1297688429",
+        "addr:city": "Stuttgart",
+        "leisure": "sports_centre",
+        "name": "Elfriede-Löffler-Sportpark",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2216702,
+          48.7357523
+        ]
+      },
+      "id": "way/1297688429"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1308418100",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2885982,
+          48.7348131
+        ]
+      },
+      "id": "way/1308418100"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1332439413",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -1726,6 +5512,56 @@
         ]
       },
       "id": "way/1332439413"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1341320252",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2237494,
+          48.7375197
+        ]
+      },
+      "id": "way/1341320252"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1341322577",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2231374,
+          48.7363914
+        ]
+      },
+      "id": "way/1341322577"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1370545321",
+        "contact:website": "https://www.boxring-stuttgart.de/",
+        "leisure": "fitness_centre",
+        "name": "Boxring Stuttgart",
+        "opening_hours": "Mo-Fr 17:00-20:30"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1378094,
+          48.7269417
+        ]
+      },
+      "id": "node/1370545321"
     },
     {
       "type": "Feature",
@@ -1758,6 +5594,100 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/1393758911",
+        "leisure": "fitness_centre",
+        "name": "Yoga Studio Fox",
+        "opening_hours": "\"Je nach Kursangebot\"",
+        "sport": "yoga",
+        "website": "https://yogastudiofox.com/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1143943,
+          48.7189089
+        ]
+      },
+      "id": "node/1393758911"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1420992670",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "10-12",
+        "addr:postcode": "70499",
+        "addr:street": "Kaiserslauterer Straße",
+        "email": "info@fitpol.com",
+        "fax": "+49 711 93347759",
+        "leisure": "sports_centre",
+        "name": "FitPol",
+        "opening_hours": "Mo-Fr 09:00-22:00; Sa-Su 10:00-18:00",
+        "phone": "+49 711 93347760",
+        "website": "https://www.fitpol.com/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1200668,
+          48.812808
+        ]
+      },
+      "id": "node/1420992670"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1430466915",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2776558,
+          48.7639257
+        ]
+      },
+      "id": "way/1430466915"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1451403512",
+        "addr:city": "Ostfildern",
+        "addr:housenumber": "44",
+        "addr:postcode": "73760",
+        "addr:street": "Justinus-Kerner-Weg",
+        "building": "sports_hall",
+        "building:colour": "#f7f7f7",
+        "building:levels": "1",
+        "building:material": "plaster",
+        "height": "4.5 m",
+        "name": "Sporthalle Ruit",
+        "operator": "Stadt Ostfildern",
+        "operator:type": "public",
+        "roof:colour": "#808080",
+        "roof:shape": "flat",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "wheelchair:description": "kein WC für Rollstuhlfahrer",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2546589,
+          48.7265137
+        ]
+      },
+      "id": "way/1451403512"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/1512905732",
         "check_date": "2023-12-16",
         "leisure": "fitness_centre",
@@ -1771,6 +5701,39 @@
         ]
       },
       "id": "node/1512905732"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1600922356",
+        "leisure": "sports_centre",
+        "name": "Turnhalle Zazenhausen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1943197,
+          48.8414632
+        ]
+      },
+      "id": "node/1600922356"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1619068013",
+        "leisure": "sports_centre",
+        "name": "Turnhalle Lindenschule",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2719199,
+          48.7276489
+        ]
+      },
+      "id": "node/1619068013"
     },
     {
       "type": "Feature",
@@ -1815,6 +5778,27 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/1817495990",
+        "check_date:opening_hours": "2025-08-10",
+        "contact:website": "https://www.fitplus-club.de",
+        "leisure": "fitness_centre",
+        "name": "Fit+",
+        "opening_hours": "Mo-Su 06:00-23:00",
+        "sport": "fitness",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2325393,
+          48.7460418
+        ]
+      },
+      "id": "node/1817495990"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/1836685803",
         "leisure": "sports_centre",
         "name": "TSG Stuttgart e. V.",
@@ -1828,6 +5812,120 @@
         ]
       },
       "id": "node/1836685803"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1864408296",
+        "leisure": "sports_centre",
+        "name": "Sportplätze"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1865395,
+          48.8580661
+        ]
+      },
+      "id": "node/1864408296"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1886255065",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "70",
+        "addr:postcode": "70378",
+        "addr:street": "Aldinger Straße",
+        "addr:suburb": "Mühlhausen",
+        "brand": "McFit",
+        "brand:wikidata": "Q871302",
+        "leisure": "fitness_centre",
+        "name": "McFit",
+        "opening_hours": "24/7",
+        "operator": "McFIT",
+        "phone": "+49 711 5506 116",
+        "sport": "gymnastics",
+        "website": "https://www.mcfit.com/de/studiodetail/info/stuttgart-muehlhausen.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2291274,
+          48.8401275
+        ]
+      },
+      "id": "node/1886255065"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2012774424",
+        "access": "customers",
+        "charge": "16 €",
+        "check_date": "2022-11-11",
+        "climbing:autobelay:sport": "yes",
+        "climbing:autobelay:toprope": "yes",
+        "climbing:boulder": "yes",
+        "climbing:speed": "yes",
+        "climbing:sport": "yes",
+        "climbing:toprope": "yes",
+        "email": "info@rockerei-stuttgart.de",
+        "fee": "yes",
+        "internet_access": "wlan",
+        "internet_access:fee": "customers",
+        "leisure": "sports_centre",
+        "name": "DAV Kletter- und Boulderzentrum Schwaben - Rockerei",
+        "opening_hours": "Mo 13:00-23:00; Tu-We 09:00-23:00; Th 13:00-23:00; Fr 09:00-23:00; Sa-Su 09:00-22:00; PH 09:00-22:00",
+        "panoramax": "bd0972c5-e646-4cb1-9735-fa793ad53125;2870aed0-33ac-4502-9a4c-e3c0e7fdd1af;6a991907-c9c8-4b0b-92af-92ca8ade13b1;eecfa40d-9b80-46fe-9494-cabc716f68b5;a8290b6e-1255-41b8-9e75-bb13a01c3a30;13f670dd-95c6-4972-adf1-edacd16d6e7c",
+        "panoramax:2": "9e2aa422-d2f5-4e2f-94cb-45ef7cd2653e;9b46def3-c47b-47a7-996b-8f4dd40553b6",
+        "panoramax:3": "ef2540a2-c4e8-46cd-aa60-cba133d53990;ea31f240-5976-45cf-8417-90d9404288c5;1b393d6f-9f04-458d-819b-3a825e1bc632;a57c100a-b996-4378-b5ef-d05f917d66c3;59269c35-383d-4a29-b891-c7267cb7d350;efa8071e-441e-428e-b752-dea75104d3f5",
+        "panoramax:4": "36daac6f-ab48-4f1c-8658-10840370fa76;aad6ead3-a69c-4dfe-9c80-9de752520198;d9e0b605-2f8a-4c1a-966d-efdd263cd3c2;c8318eac-80f3-4c30-bfeb-a92e7712a726;18732759-9000-47bf-ae63-4735430b075d;053d1cdd-afe1-4e8f-9229-09733c3d8c89",
+        "payment:mastercard": "yes",
+        "payment:visa": "yes",
+        "phone": "+49 711 69972736",
+        "service:climbing_belay_device:rental": "yes",
+        "service:climbing_harness:rental": "yes",
+        "service:climbing_rope:rental": "yes",
+        "service:climbing_shoes:rental": "yes",
+        "service:climbing_shoes:rental:fee": "yes",
+        "short_name": "Rockerei",
+        "shower": "yes",
+        "sport": "climbing",
+        "website": "https://www.rockerei-stuttgart.de",
+        "wikidata": "Q116223466"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1634091,
+          48.8345647
+        ]
+      },
+      "id": "node/2012774424"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2016366737",
+        "leisure": "sports_centre",
+        "name": "Panoramabad Asemwald",
+        "opening_hours": "Tu 12:00-18:00; We 18:00-22:00; Th 07:00-13:00; Fr 07:00-13:00, 18:00-22:00; Su 08:00-13:00, 18:00-22:00",
+        "phone": "+49 711 724293",
+        "sport": "swimming",
+        "toilets:wheelchair": "no",
+        "website": "https://asemwald.de/informationen/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1934553,
+          48.7252538
+        ]
+      },
+      "id": "node/2016366737"
     },
     {
       "type": "Feature",
@@ -1851,6 +5949,93 @@
         ]
       },
       "id": "node/2181274498"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2273015055",
+        "addr:city": "Ditzingen",
+        "addr:housenumber": "14",
+        "addr:postcode": "71254",
+        "addr:street": "Ringwiesenstraße",
+        "email": "info@tsf-ditzingen.de",
+        "leisure": "sports_centre",
+        "name": "TSF-SportCenter",
+        "operator": "Turn- und Sportfreunde Ditzingen 1893 e.V.",
+        "operator:type": "association",
+        "sport": "multi",
+        "website": "https://tsf-ditzingen.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.07049,
+          48.8270856
+        ]
+      },
+      "id": "node/2273015055"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2584742535",
+        "contact:website": "https://str2.wh-stuttgart.net/das-straussi/kraftraum/",
+        "leisure": "sports_centre",
+        "sport": "fitness",
+        "toilets:wheelchair": "no",
+        "website": "http://str2.wh-stuttgart.net/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1024291,
+          48.7422626
+        ]
+      },
+      "id": "node/2584742535"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2616936284",
+        "addr:city": "Fellbach",
+        "addr:housenumber": "22",
+        "addr:postcode": "70736",
+        "addr:street": "Uhlandstraße",
+        "addr:suburb": "Schmiden",
+        "leisure": "sports_centre",
+        "name": "Aikido-Gruppe Schmiden",
+        "phone": "+49 711 5102938",
+        "website": "https://www.aikido-fellbach.de/",
+        "wheelchair": "limited",
+        "wheelchair:description": "Kampfsport bedingt für Behinderte geeignet (nicht für Rollis, aber für andere Behinderungen)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2655337,
+          48.8321097
+        ]
+      },
+      "id": "node/2616936284"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2771007377",
+        "layer": "1",
+        "leisure": "sports_centre",
+        "name": "Vitalis"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2714017,
+          48.7212649
+        ]
+      },
+      "id": "node/2771007377"
     },
     {
       "type": "Feature",
@@ -1922,6 +6107,29 @@
         ]
       },
       "id": "node/3150752898"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3153754439",
+        "addr:city": "Leinfelden-Echterdingen",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "70771",
+        "addr:street": "Adlerstraße",
+        "contact:website": "http://www.topsports-fitness.de/index.php/startseite-leinfelden.html",
+        "leisure": "fitness_centre",
+        "name": "Top Sports Leinfelden",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1443801,
+          48.7040601
+        ]
+      },
+      "id": "node/3153754439"
     },
     {
       "type": "Feature",
@@ -2046,6 +6254,58 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3384360979",
+        "addr:city": "Ostfildern",
+        "addr:housenumber": "16",
+        "addr:postcode": "73760",
+        "addr:street": "Hedelfinger Straße",
+        "contact:website": "https://wtaa-stuttgart.de/",
+        "leisure": "sports_centre",
+        "level": "0",
+        "name": "Akademie für Kampfkunst und Gewaltprävention",
+        "old_name": "Clauss",
+        "operator": "Wing Tsung Art Association",
+        "phone": "+49 711 22029301",
+        "sport": "martial_arts",
+        "website": "https://wtaa-stuttgart.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2528855,
+          48.7301376
+        ]
+      },
+      "id": "node/3384360979"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3508091120",
+        "addr:postcode": "70771",
+        "check_date": "2024-04-03",
+        "email": "info@powerplay-fitness.de",
+        "internet_access": "wlan",
+        "leisure": "fitness_centre",
+        "name": "Power Play",
+        "opening_hours": "Mo-Fr 05:00-23:00; Sa-Su 05:00-21:00",
+        "phone": "+49 711 71924600",
+        "sauna": "yes",
+        "sport": "fitness",
+        "website": "https://powerplay-fitness.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1441415,
+          48.6973942
+        ]
+      },
+      "id": "node/3508091120"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3625886625",
         "leisure": "sports_centre",
         "name": "P9 Pilates Studio",
@@ -2059,6 +6319,82 @@
         ]
       },
       "id": "node/3625886625"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3674018527",
+        "leisure": "fitness_centre",
+        "name": "Trainingsliebe"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1393683,
+          48.7009958
+        ]
+      },
+      "id": "node/3674018527"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3676355770",
+        "leisure": "sports_centre",
+        "name": "Fitnessraum",
+        "sport": "gymnastics"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2092885,
+          48.7162826
+        ]
+      },
+      "id": "node/3676355770"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3676355771",
+        "leisure": "sports_centre",
+        "name": "Gymnastikraum",
+        "sport": "gymnastics",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2087316,
+          48.7162385
+        ]
+      },
+      "id": "node/3676355771"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3681339055",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "70327",
+        "addr:street": "Heiligenwiesen",
+        "leisure": "sports_centre",
+        "name": "puls fit&wellnessclub",
+        "opening_hours": "Mo,We,Fr 08:00-22:30; Tu,Th 09:00-22:30; Sa 10:00-20:00; Su 10:00-21:00; PH 10:00-21:00",
+        "phone": "+49 711 42393 9",
+        "sport": "fitness",
+        "website": "https://www.puls-stuttgart.de/wangen/club-wangen.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.251578,
+          48.7675385
+        ]
+      },
+      "id": "node/3681339055"
     },
     {
       "type": "Feature",
@@ -2153,6 +6489,22 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3829925728",
+        "leisure": "sports_centre",
+        "sport": "multi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1407574,
+          48.6994165
+        ]
+      },
+      "id": "node/3829925728"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/3837225962",
         "addr:city": "Stuttgart",
         "addr:country": "DE",
@@ -2201,6 +6553,115 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/3899070267",
+        "entrance": "yes",
+        "leisure": "sports_centre",
+        "name": "New Style Pilates",
+        "sport": "pilates"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1873535,
+          48.8314905
+        ]
+      },
+      "id": "node/3899070267"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3900355450",
+        "addr:city": "Kornwestheim",
+        "addr:housenumber": "80",
+        "addr:postcode": "70806",
+        "addr:street": "Bahnhofstraße",
+        "brand": "Körperformen",
+        "brand:wikidata": "Q117455940",
+        "entrance": "yes",
+        "leisure": "fitness_centre",
+        "name": "Körperformen",
+        "opening_hours": "\"Termine nach Vereinbarung\"",
+        "source": "survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1793548,
+          48.8630768
+        ]
+      },
+      "id": "node/3900355450"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4031472504",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "17",
+        "addr:postcode": "70329",
+        "addr:street": "Otto-Hirsch-Brücken",
+        "leisure": "fitness_centre",
+        "name": "fitnesslounge",
+        "opening_hours": "Mo-Fr 09:00-23:00; Sa-Su 10:00-18:00",
+        "phone": "+49 711 67495584",
+        "website": "http://www.fitnesslounge.net/de/?studio_id=2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2559903,
+          48.7609723
+        ]
+      },
+      "id": "node/4031472504"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4086676792",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "17",
+        "addr:postcode": "70374",
+        "addr:street": "Ziegelbrennerstraße",
+        "contact:phone": "+49 711 90793210",
+        "contact:website": "https://www.sprungbude.de",
+        "leisure": "sports_centre",
+        "name": "Sprungbude Stuttgart",
+        "opening_hours": "SH Mo-Sa 10:00-22:00; SH Su 10:00-20:00; Tu-Th 15:00-21:00; Fr 14:00-21:00; Sa 10:00-21:00; Su 10:00-20:00; Mo off; PH off",
+        "sport": "multi",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2412866,
+          48.8204707
+        ]
+      },
+      "id": "node/4086676792"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4124616218",
+        "brand": "Körperformen",
+        "brand:wikidata": "Q117455940",
+        "leisure": "fitness_centre",
+        "name": "Körperformen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1677227,
+          48.8324399
+        ]
+      },
+      "id": "node/4124616218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/4153239378",
         "addr:city": "Stuttgart",
         "addr:housenumber": "121",
@@ -2217,6 +6678,69 @@
         ]
       },
       "id": "node/4153239378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4213824641",
+        "contact:phone": "+49 7154 202 8383",
+        "contact:website": "https://www.kornwestheim.de/start/kultur_+sport+und+freizeit/kindersportschule.html",
+        "description": "Die Kindersportschule ist ein Projekt zwischen der Stadt Kornwestheim und den örtlichen Sportvereinen. In der Regel ist eine telefonische Anmeldung erforderlich.",
+        "leisure": "sports_centre",
+        "max_age": "12",
+        "min_age": "1",
+        "name": "Kindersportschule KISS",
+        "operator": "Stadt Kornwestheim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1780157,
+          48.8668718
+        ]
+      },
+      "id": "node/4213824641"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4510879791",
+        "check_date:opening_hours": "2022-10-05",
+        "leisure": "fitness_centre",
+        "name": "Gymnastiktreff",
+        "opening_hours:signed": "no",
+        "website": "https://www.gymnastiktreff.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.108475,
+          48.7242695
+        ]
+      },
+      "id": "node/4510879791"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4704550849",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "21",
+        "addr:postcode": "70567",
+        "addr:street": "Schelmenwasenstraße",
+        "leisure": "fitness_centre",
+        "name": "Crossfit Assault",
+        "sport": "exercise;running;weightlifting;gymnastics",
+        "website": "http://www.crossfitassault.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1690308,
+          48.7104528
+        ]
+      },
+      "id": "node/4704550849"
     },
     {
       "type": "Feature",
@@ -2297,6 +6821,47 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/4809848876",
+        "brand": "Bodystreet",
+        "brand:wikidata": "Q117880186",
+        "check_date": "2026-04-10",
+        "leisure": "fitness_centre",
+        "name": "Bodystreet",
+        "opening_hours": "Mo-Fr 10:00-19:00; Sa 11:00-14:00",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1462872,
+          48.7307788
+        ]
+      },
+      "id": "node/4809848876"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4968833925",
+        "brand": "Mrs. Sporty",
+        "brand:wikidata": "Q100718953",
+        "leisure": "fitness_centre",
+        "name": "Mrs. Sporty",
+        "opening_hours": "Mo-Su 06:00-22:00",
+        "website": "https://www.mrssporty.de/club/fellbach/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2741535,
+          48.8150404
+        ]
+      },
+      "id": "node/4968833925"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/5207433462",
         "description": "Kartbahn befindet sich auf der 3. Etage.",
         "leisure": "sports_centre",
@@ -2331,6 +6896,48 @@
         ]
       },
       "id": "node/5209623390"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5631070467",
+        "addr:city": "Kornwestheim",
+        "addr:housenumber": "2-6",
+        "addr:postcode": "70806",
+        "addr:street": "Salamanderplatz",
+        "check_date:opening_hours": "2026-03-01",
+        "leisure": "fitness_centre",
+        "name": "Top sports",
+        "opening_hours": "07:00-22:00",
+        "phone": "+49 7154 1550240",
+        "website": "https://topsports.fitness/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1771352,
+          48.8595658
+        ]
+      },
+      "id": "node/5631070467"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5659070210",
+        "addr:suburb": "Möhringen",
+        "leisure": "fitness_centre",
+        "name": "FrauenFitness",
+        "website": "https://www.frauen-fitness-moehringen.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1407886,
+          48.7275282
+        ]
+      },
+      "id": "node/5659070210"
     },
     {
       "type": "Feature",
@@ -2378,6 +6985,25 @@
         ]
       },
       "id": "node/5747511537"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5863345142",
+        "check_date": "2023-06-02",
+        "leisure": "fitness_centre",
+        "name": "Top Sports Fitness",
+        "opening_hours": "Mo-Su 07:00-23:00",
+        "website": "https://topsports.fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1662771,
+          48.6960865
+        ]
+      },
+      "id": "node/5863345142"
     },
     {
       "type": "Feature",
@@ -2457,6 +7083,25 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/6365846649",
+        "leisure": "sports_centre",
+        "name": "Kampfsportzentrum Schmid",
+        "phone": "+49 711 67330394",
+        "sport": "boxing",
+        "website": "https://www.kampfsport-schmid.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1276915,
+          48.7062745
+        ]
+      },
+      "id": "node/6365846649"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/6501851157",
         "leisure": "fitness_centre",
         "name": "Aurum"
@@ -2469,6 +7114,25 @@
         ]
       },
       "id": "node/6501851157"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6923476886",
+        "check_date": "2023-07-21",
+        "leisure": "fitness_centre",
+        "name": "Kraftpunkt",
+        "opening_hours": "Mo-Th 09:00-141:00, 16:00-20:00; Fr 09:00-19:00; Su 10:00-14:00",
+        "website": "https://fellbach.kraft-punkt.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2764194,
+          48.8127666
+        ]
+      },
+      "id": "node/6923476886"
     },
     {
       "type": "Feature",
@@ -2489,6 +7153,26 @@
         ]
       },
       "id": "node/7004159631"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7108917876",
+        "leisure": "sports_centre",
+        "name": "Wing-Tsung School",
+        "phone": "+49 711 22029301",
+        "sport": "martial_arts",
+        "website": "http://www.wing-tsung-school.de",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1470531,
+          48.7258435
+        ]
+      },
+      "id": "node/7108917876"
     },
     {
       "type": "Feature",
@@ -2516,6 +7200,201 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/7177437960",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "70565",
+        "addr:street": "Schockenriedstraße",
+        "leisure": "sports_centre",
+        "name": "Yoga-Ma",
+        "sport": "yoga",
+        "website": "https://www.yoga-ma.com/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1154319,
+          48.7263377
+        ]
+      },
+      "id": "node/7177437960"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7234958713",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "7/1",
+        "addr:postcode": "70736",
+        "addr:street": "Talstraße",
+        "addr:suburb": "Schmiden",
+        "fixme": "Wie soll man das Schmidolino bezeichnen (Sportzentrum, Indoor-Spielplatz,...)",
+        "leisure": "sports_centre",
+        "name": "Schmidolino",
+        "sport": "multi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2669322,
+          48.8334361
+        ]
+      },
+      "id": "node/7234958713"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/7649452428",
+        "addr:city": "Stuttgart",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "70599",
+        "addr:street": "Scharnhauser Straße",
+        "leisure": "fitness_centre",
+        "name": "StudioPlus",
+        "opening_hours": "Mo-Fr 08:00-22:00; Sa,Su 11:00-16:00",
+        "sport": "fitness",
+        "website": "https://www.studioplus.ag/",
+        "wheelchair": "yes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2147119,
+          48.702122
+        ]
+      },
+      "id": "node/7649452428"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8302852736",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "36",
+        "addr:postcode": "70565",
+        "addr:street": "Kupferstraße",
+        "leisure": "sports_centre",
+        "name": "Pole Dance Stuttgart",
+        "sport": "pole_dance",
+        "website": "https://www.poledance-stuttgart.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1214231,
+          48.7273795
+        ]
+      },
+      "id": "node/8302852736"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8327862285",
+        "contact:email": "info@franziska-schadel.de",
+        "contact:phone": "+49 173 8961969",
+        "contact:website": "personaltraining-cannstatt.de",
+        "last_check": "2021-06",
+        "leisure": "fitness_centre",
+        "name": "Franziska Schdel Fitness",
+        "note": "\"Termine nach Vereinbarung\"",
+        "shop": "vacant",
+        "source": "estimate; extrapolate; survey",
+        "start_date": "2021-05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2444661,
+          48.8084166
+        ]
+      },
+      "id": "node/8327862285"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8700640053",
+        "addr:city": "Fellbach",
+        "addr:country": "DE",
+        "addr:housenumber": "33",
+        "addr:postcode": "70736",
+        "addr:street": "Schorndorfer Straße",
+        "contact:website": "https://kunstwerkfellbach.gallery/",
+        "leisure": "sports_centre",
+        "name": "MCC Fellbach e.V.",
+        "sport": "rc_car"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2795031,
+          48.8157446
+        ]
+      },
+      "id": "node/8700640053"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8851211641",
+        "addr:city": "Kornwestheim",
+        "addr:housenumber": "1",
+        "addr:postcode": "70806",
+        "addr:street": "Ohiostraße",
+        "brand": "Fitness First",
+        "brand:wikidata": "Q127120",
+        "leisure": "fitness_centre",
+        "name": "Fitness First",
+        "old_name": "Clever fit",
+        "website": "https://www.fitnessfirst.de/clubs/kornwestheim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2227491,
+          48.8659122
+        ]
+      },
+      "id": "node/8851211641"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8972447217",
+        "addr:city": "Waiblingen",
+        "addr:country": "DE",
+        "addr:housenumber": "18",
+        "addr:postcode": "71332",
+        "addr:street": "Düsseldorfer Straße",
+        "climbing:boulder": "yes",
+        "climbing:sport": "no",
+        "climbing:toprope": "no",
+        "contact:email": "waiblingen@active-garden.de",
+        "contact:phone": "+49 7151 2567448",
+        "contact:website": "https://active-garden.de",
+        "leisure": "fitness_centre",
+        "name": "Active Garden",
+        "opening_hours": "Mo,We 14:00-22:30; Tu,Th,Fr 10:00-22:30; PH,Sa,Su 10:00-21:00",
+        "sport": "climbing;ninja"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2988922,
+          48.8162037
+        ]
+      },
+      "id": "node/8972447217"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/8986504714",
         "brand": "Fitbox",
         "brand:wikidata": "Q129168234",
@@ -2534,6 +7413,96 @@
         ]
       },
       "id": "node/8986504714"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8990419868",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "26",
+        "addr:postcode": "70565",
+        "addr:street": "Ruppmannstraße",
+        "email": "info@puls-degerloch.de",
+        "leisure": "sports_centre",
+        "name": "puls fit & wellnessclub",
+        "opening_hours": "Mo,We,Fr 06:45-23:00; Tu,Th 09:30-23:00; Sa,Su 10:00-21:00",
+        "phone": "+49 711 719177 19",
+        "sport": "fitness",
+        "website": "https://www.puls-stuttgart.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1169534,
+          48.726349
+        ]
+      },
+      "id": "node/8990419868"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9010101254",
+        "addr:city": "Ostfildern",
+        "addr:housenumber": "47",
+        "addr:postcode": "73760",
+        "addr:street": "Schönbergstraße",
+        "email": "info@yoga-intens.de",
+        "leisure": "fitness_centre",
+        "level": "2",
+        "name": "YOGA intens",
+        "sport": "yoga",
+        "website": "https://www.yoga-intens.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.222529,
+          48.7242012
+        ]
+      },
+      "id": "node/9010101254"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9045699664",
+        "addr:city": "Esslingen am Neckar",
+        "addr:country": "DE",
+        "addr:housenumber": "113",
+        "addr:postcode": "73728",
+        "addr:street": "Mettinger Straße",
+        "leisure": "fitness_centre",
+        "name": "In Shape",
+        "website": "https://www.inshape.de/esslingen-premium.html"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2913718,
+          48.7417663
+        ]
+      },
+      "id": "node/9045699664"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9197981808",
+        "check_date": "2023-10-29",
+        "leisure": "fitness_centre",
+        "name": "Gym10.de",
+        "opening_hours": "24/7",
+        "source": "estimate; extrapolate; survey"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2680514,
+          48.8137718
+        ]
+      },
+      "id": "node/9197981808"
     },
     {
       "type": "Feature",
@@ -2558,6 +7527,28 @@
         ]
       },
       "id": "node/9844421874"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9905540430",
+        "addr:housenumber": "3",
+        "addr:street": "Hauptstrasse",
+        "email": "info@tz-effektiv.de",
+        "leisure": "sports_centre",
+        "name": "TZe Therapie Zentrum effektiv",
+        "opening_hours": "Mo-Fr 08:00-20:00",
+        "phone": "+4971569285900",
+        "website": "https://www.tz-effektiv.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0619863,
+          48.8006886
+        ]
+      },
+      "id": "node/9905540430"
     },
     {
       "type": "Feature",
@@ -2605,6 +7596,64 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/10176567546",
+        "contact:website": "https://filderathletics.de/",
+        "leisure": "fitness_centre",
+        "name": "Crossfit Ostfildern"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2453419,
+          48.7282873
+        ]
+      },
+      "id": "node/10176567546"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10221138721",
+        "check_date:opening_hours": "2025-01-26",
+        "contact:website": "https://www.studiofitness.de/gerlingen.html",
+        "entrance": "yes",
+        "leisure": "fitness_centre",
+        "name": "Studio Fitness Gerlingen",
+        "opening_hours": "Mo-Fr 07:00-23:00; Sa,Su,PH 09:00-21:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0739061,
+          48.8029712
+        ]
+      },
+      "id": "node/10221138721"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10589006254",
+        "beauty": "tanning",
+        "leisure": "fitness_centre",
+        "mobile": "+49 172 7066443",
+        "name": "Kettler Studio",
+        "opening_hours": "Mo-Sa 10:00-21:00",
+        "phone": "+49 711 7288313",
+        "shop": "beauty"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1926518,
+          48.7254934
+        ]
+      },
+      "id": "node/10589006254"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/10697136213",
         "addr:city": "Stuttgart",
         "addr:housenumber": "21b",
@@ -2628,6 +7677,23 @@
         ]
       },
       "id": "node/10697136213"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/11012196620",
+        "check_date": "2026-04-14",
+        "leisure": "fitness_centre",
+        "name": "Kraftmanufaktur"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1715626,
+          48.7096055
+        ]
+      },
+      "id": "node/11012196620"
     },
     {
       "type": "Feature",
@@ -2755,6 +7821,47 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/12187782746",
+        "internet_access": "yes",
+        "leisure": "fitness_centre",
+        "level": "-1",
+        "name": "Maxx Sport Center",
+        "opening_hours": "Mo-Fr 09:00-22:30; Sa 09:00-20:00; Su 09:00-20:00",
+        "phone": "+49 711 5302196",
+        "sport": "fitness",
+        "website": "https://maxx-sports.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2312365,
+          48.830166
+        ]
+      },
+      "id": "node/12187782746"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12230468032",
+        "check_date:opening_hours": "2024-11-15",
+        "contact:website": "https://www.körperformen.com/studios/ems-training-stuttgart-vaihingen/",
+        "leisure": "fitness_centre",
+        "name": "Körperformen",
+        "opening_hours:signed": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1102684,
+          48.73006
+        ]
+      },
+      "id": "node/12230468032"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/12475948919",
         "addr:city": "Stuttgart",
         "addr:housenumber": "7",
@@ -2772,6 +7879,28 @@
         ]
       },
       "id": "node/12475948919"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12571382802",
+        "addr:postcode": "70771",
+        "email": "info@powerplay-fitness.de",
+        "internet_access": "wlan",
+        "leisure": "fitness_centre",
+        "name": "Power Play for Ladies",
+        "opening_hours": "Mo-Fr 05:00-23:00; Sa-Su 05:00-21:00",
+        "phone": "+49 711 7072810",
+        "website": "https://powerplay-fitness.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1628436,
+          48.6958768
+        ]
+      },
+      "id": "node/12571382802"
     },
     {
       "type": "Feature",
@@ -2799,6 +7928,70 @@
         ]
       },
       "id": "node/12618556280"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12803004492",
+        "addr:city": "Fellbach",
+        "addr:housenumber": "16",
+        "addr:postcode": "70736",
+        "addr:street": "Höhenstraße",
+        "leisure": "fitness_centre",
+        "name": "Fitnessclub Moveri",
+        "opening_hours": "Mo,We,Th 09:00-22:00; Tu,Fr 07:00-22:00; Sa,Su 09:00-14:00",
+        "sport": "fitness",
+        "website": "https://www.moveri.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2602185,
+          48.8152609
+        ]
+      },
+      "id": "node/12803004492"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12849709946",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "18",
+        "addr:postcode": "70327",
+        "addr:street": "Oberstdorfer Straße",
+        "leisure": "fitness_centre",
+        "name": "Adi Shakti",
+        "phone": "+4915120745522",
+        "sport": "yoga",
+        "website": "https://adi-shakti.de"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2525429,
+          48.7821936
+        ]
+      },
+      "id": "node/12849709946"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12909869407",
+        "brand": "FT Club",
+        "changing_table": "no",
+        "leisure": "fitness_centre",
+        "name": "FT Club Fellbach"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2613305,
+          48.8315046
+        ]
+      },
+      "id": "node/12909869407"
     },
     {
       "type": "Feature",
@@ -2977,6 +8170,47 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/13435981169",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "93",
+        "addr:postcode": "70327",
+        "addr:street": "Hedelfinger Straße",
+        "leisure": "fitness_centre",
+        "name": "SportHub",
+        "phone": "+49 711 88796050",
+        "sport": "fitness;yoga;gymnastics",
+        "website": "https://sks-sporthub.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2509231,
+          48.7651312
+        ]
+      },
+      "id": "node/13435981169"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13442750601",
+        "addr:housenumber": "10",
+        "addr:street": "Strohgäustraße",
+        "leisure": "sports_centre",
+        "name": "Black Light Stuttgart"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1600941,
+          48.8365471
+        ]
+      },
+      "id": "node/13442750601"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/13483783890",
         "addr:city": "Stuttgart",
         "addr:housenumber": "99B",
@@ -2999,6 +8233,33 @@
         ]
       },
       "id": "node/13483783890"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13619855919",
+        "addr:city": "Ostfildern",
+        "addr:housenumber": "2",
+        "addr:postcode": "73760",
+        "addr:street": "Brunnwiesenstraße",
+        "branch": "Körperwerk Training und Physiotherapie Ruit",
+        "email": "ruit@koerperwerk.com",
+        "leisure": "fitness_centre",
+        "level": "0",
+        "name": "Körperwerk",
+        "opening_hours": "Mo-Su 07:00-18:00",
+        "phone": "+49 711 50 488 488",
+        "sport": "fitness",
+        "website": "https://www.koerperwerk.com/ostfildern-ruit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2458718,
+          48.7303632
+        ]
+      },
+      "id": "node/13619855919"
     }
   ]
 }

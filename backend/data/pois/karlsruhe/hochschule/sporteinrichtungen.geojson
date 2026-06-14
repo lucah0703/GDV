@@ -2,7 +2,7 @@
   "type": "FeatureCollection",
   "generator": "overpass-turbo",
   "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
-  "timestamp": "2026-06-10T13:12:27Z",
+  "timestamp": "2026-06-14T11:02:28Z",
   "features": [
     {
       "type": "Feature",
@@ -29,6 +29,58 @@
         ]
       },
       "id": "relation/1922186"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/4626528",
+        "access": "customers",
+        "alt_name": "Freibad Wölfle",
+        "fee": "yes",
+        "landuse": "grass",
+        "leisure": "sports_centre",
+        "loc_name": "Wölfle",
+        "name": "Freibad Wolfartsweier",
+        "operator": "Förderverein Freibad Wolfartsweier. e.V.",
+        "source": "Bing",
+        "sport": "swimming",
+        "website": "https://freibad-wolfartsweier.com/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4534111,
+          48.9724236
+        ]
+      },
+      "id": "way/4626528"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/22926893",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "76227",
+        "addr:street": "Weiherhof",
+        "building": "sports_centre",
+        "leisure": "sports_centre",
+        "name": "Weiherhofhalle",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4729911,
+          48.9970547
+        ]
+      },
+      "id": "way/22926893"
     },
     {
       "type": "Feature",
@@ -64,6 +116,80 @@
         ]
       },
       "id": "way/23022913"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/23063225",
+        "leisure": "sports_centre",
+        "name": "ASV Durlach 1902",
+        "old_name": "FC Germania Durlach",
+        "short_name": "ASV Durlach",
+        "sport": "multi",
+        "website": "http://www.asv-durlach02.de/",
+        "wikidata": "Q298116",
+        "wikipedia": "de:ASV Durlach",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4803121,
+          49.0025526
+        ]
+      },
+      "id": "way/23063225"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/23485185",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "72",
+        "addr:postcode": "76229",
+        "addr:street": "Bruchwaldstraße",
+        "addr:suburb": "Grötzingen",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "LA-KA",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4982086,
+          49.0225988
+        ]
+      },
+      "id": "way/23485185"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/23516697",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "76",
+        "addr:postcode": "76229",
+        "addr:street": "Bruchwaldstraße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Emil-Arheit-Halle",
+        "sport": "multi",
+        "toilets:wheelchair": "yes",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4994523,
+          49.0226281
+        ]
+      },
+      "id": "way/23516697"
     },
     {
       "type": "Feature",
@@ -106,6 +232,50 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/23986482",
+        "leisure": "sports_centre",
+        "name": "Turngemeinde Aue 1895 e.V.",
+        "short_name": "TG Aue",
+        "sport": "athletics",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4644275,
+          48.9868769
+        ]
+      },
+      "id": "way/23986482"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/24870436",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "76227",
+        "addr:street": "Untere Hub",
+        "building": "civic",
+        "leisure": "sports_centre",
+        "name": "Werner-Stegmaier-Halle",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4693223,
+          49.0092396
+        ]
+      },
+      "id": "way/24870436"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/24940909",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -129,6 +299,152 @@
         ]
       },
       "id": "way/24940909"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26166289",
+        "leisure": "sports_centre",
+        "name": "FC Alemannia 05 Eggenstein",
+        "sport": "soccer",
+        "website": "https://fc-alemannia-05.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4091401,
+          49.0742383
+        ]
+      },
+      "id": "way/26166289"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26166481",
+        "leisure": "sports_centre",
+        "name": "TC Eggenstein",
+        "sport": "tennis",
+        "website": "https://www.tc-eggenstein.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4099731,
+          49.075972
+        ]
+      },
+      "id": "way/26166481"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26167136",
+        "building": "sports_hall",
+        "check_date": "2025-07-31",
+        "leisure": "sports_hall",
+        "name": "Halle B",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3997466,
+          49.0744487
+        ]
+      },
+      "id": "way/26167136"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26167138",
+        "building": "sports_hall",
+        "check_date": "2025-07-31",
+        "leisure": "sports_hall",
+        "name": "Halle A",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4002893,
+          49.0741237
+        ]
+      },
+      "id": "way/26167138"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26167139",
+        "addr:city": "Eggenstein-Leopoldshafen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "76344",
+        "addr:street": "Buchheimer Weg",
+        "building": "civic",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Hallenbad Eggenstein",
+        "opening_hours": "We, Sa-Su 10:00-18:00; Tu 07:00-16:00; Th 10:00-21:00; Fr 07:00-21:00",
+        "phone": "+49721786779",
+        "source": "Maps4BW",
+        "sport": "swimming",
+        "website": "https://www.egg-leo.de/de/Familie-Soziales/Freizeit-Kultur/Hallenbad",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4003223,
+          49.0748886
+        ]
+      },
+      "id": "way/26167139"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26185993",
+        "leisure": "sports_centre",
+        "name": "TC Leopoldshafen",
+        "sport": "tennis",
+        "website": "https://www.tc-leopoldshafen.de/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3841575,
+          49.1004732
+        ]
+      },
+      "id": "way/26185993"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/26186003",
+        "leisure": "sports_centre",
+        "name": "FV Leopoldshafen",
+        "sport": "soccer",
+        "website": "https://www.fv-leopoldshafen.de/",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3847604,
+          49.1019309
+        ]
+      },
+      "id": "way/26186003"
     },
     {
       "type": "Feature",
@@ -162,6 +478,55 @@
         ]
       },
       "id": "node/27133301"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/30428050",
+        "contact:email": "info@asvhagsfeld1907.de",
+        "contact:phone": "+49 721 66778710; +49 721 7258468",
+        "contact:website": "http://www.asvhagsfeld.de/",
+        "leisure": "sports_centre",
+        "name": "ASV Hagsfeld",
+        "official_name": "Allgemeiner Sportverein Hagsfeld 1907 e.V.",
+        "sport": "soccer;tennis",
+        "wikidata": "Q298117",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4647105,
+          49.0263518
+        ]
+      },
+      "id": "way/30428050"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/32045740",
+        "addr:city": "Rheinstetten",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "76287",
+        "addr:street": "Am Sportpark",
+        "addr:suburb": "Mörsch",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "Maps4BW, LGL, www.lgl-bw.de",
+        "sport": "tennis",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2963384,
+          48.9669575
+        ]
+      },
+      "id": "way/32045740"
     },
     {
       "type": "Feature",
@@ -224,6 +589,71 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/37842885",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source:outline": "Maps4BW (LGL-BW, www.lgl-bw.de)",
+        "sport": "tennis",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2970126,
+          48.967312
+        ]
+      },
+      "id": "way/37842885"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/37842887",
+        "addr:city": "Rheinstetten",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "76287",
+        "addr:street": "Am Sportpark",
+        "addr:suburb": "Mörsch",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Treffpunkt Tennishütte TV Mörsch",
+        "source:outline": "Maps4BW (LGL-BW, www.lgl-bw.de)",
+        "sport": "tennis",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2963909,
+          48.9677156
+        ]
+      },
+      "id": "way/37842887"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/41680997",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4794638,
+          48.9556236
+        ]
+      },
+      "id": "way/41680997"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/42090470",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -251,6 +681,127 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/43946354",
+        "leisure": "sports_centre",
+        "name": "ASC Grünwettersbach - Sportpark Tannweg",
+        "sport": "multi",
+        "website": "https://asc-gw.de/",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.480229,
+          48.9554605
+        ]
+      },
+      "id": "way/43946354"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/46620249",
+        "leisure": "sports_centre",
+        "name": "Minidrom",
+        "sport": "rc_car",
+        "url": "http://www.mc-ettlingen.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3876455,
+          48.9566608
+        ]
+      },
+      "id": "way/46620249"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/48190276",
+        "leisure": "sports_centre",
+        "name": "Waldseilpark Karlsruhe",
+        "sport": "climbing_adventure",
+        "website": "https://www.waldseilpark-karlsruhe.de/",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4921886,
+          48.9967602
+        ]
+      },
+      "id": "way/48190276"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/50948294",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Reitstall Batzenhof",
+        "sport": "equestrian",
+        "website": "http://gut-batzenhof.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4945617,
+          48.9596992
+        ]
+      },
+      "id": "way/50948294"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/52042898",
+        "building": "sports_hall",
+        "description": "Sporthalle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2711794,
+          49.0510105
+        ]
+      },
+      "id": "way/52042898"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/52385132",
+        "addr:city": "Eggenstein-Leopoldshafen",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "76344",
+        "addr:street": "Fisperweg",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Sporthalle TG Eggenstein e.V.",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3829659,
+          49.0788171
+        ]
+      },
+      "id": "way/52385132"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/52917072",
         "building": "sports_hall",
         "building:levels": "1.5",
@@ -266,6 +817,55 @@
         ]
       },
       "id": "way/52917072"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/53024117",
+        "addr:city": "Eggenstein-Leopoldshafen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "76344",
+        "addr:street": "Kruppstraße",
+        "leisure": "sports_centre",
+        "name": "Reiterverein Eggenstein",
+        "operator": "Reiterverein Eggenstein e.V.",
+        "sport": "equestrian",
+        "website": "https://www.reitervereineggenstein.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3820241,
+          49.0769792
+        ]
+      },
+      "id": "way/53024117"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/58521492",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "12",
+        "addr:postcode": "76228",
+        "addr:street": "Am Lustgarten",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Lustgartenhalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4782988,
+          48.9663737
+        ]
+      },
+      "id": "way/58521492"
     },
     {
       "type": "Feature",
@@ -321,6 +921,180 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/65313688",
+        "leisure": "sports_centre",
+        "name": "Sportpark Ettlingen",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3914399,
+          48.9383465
+        ]
+      },
+      "id": "way/65313688"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/66724057",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Eichendorff-Gymnasium",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4013423,
+          48.9412978
+        ]
+      },
+      "id": "way/66724057"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/67544868",
+        "addr:city": "Ettlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "29",
+        "addr:postcode": "76275",
+        "addr:street": "Karl-Friedrich-Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Kreissporthalle",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3961484,
+          48.9415693
+        ]
+      },
+      "id": "way/67544868"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/69605531",
+        "building": "sports_hall",
+        "description": "Sporthalle Pestalozzi Schule",
+        "leisure": "sports_centre",
+        "name": "Sporthalle",
+        "source:outline": "Maps4BW (LGL-BW, www.lgl-bw.de)",
+        "sport": "multi",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4707619,
+          49.0656853
+        ]
+      },
+      "id": "way/69605531"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/69605546",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Sporthalle Schulzentrum",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4766369,
+          49.0657812
+        ]
+      },
+      "id": "way/69605546"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/71290048",
+        "leisure": "sports_centre",
+        "name": "FV Ettlingenweier",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3805366,
+          48.927545
+        ]
+      },
+      "id": "way/71290048"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/77421090",
+        "building": "yes",
+        "description": "aus Namen übertragen: Schulsporthalle",
+        "leisure": "sports_centre",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2913669,
+          48.9585949
+        ]
+      },
+      "id": "way/77421090"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/83913151",
+        "leisure": "sports_centre",
+        "name": "Schützenverein Ettlingen e.V.",
+        "sport": "shooting",
+        "website": "https://www.sv-ettlingen.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.420763,
+          48.9305505
+        ]
+      },
+      "id": "way/83913151"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/86328178",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Ski-Club Ettlingen - Tennis & Squash",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3882511,
+          48.9374631
+        ]
+      },
+      "id": "way/86328178"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/86503816",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -356,6 +1130,27 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/86839925",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Schulsporthalle",
+        "sport": "multi",
+        "toilets:wheelchair": "no",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3914542,
+          48.9294869
+        ]
+      },
+      "id": "way/86839925"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/87244956",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -378,6 +1173,52 @@
         ]
       },
       "id": "way/87244956"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/87255992",
+        "access": "customers",
+        "building": "sports_hall",
+        "name": "Halle 3",
+        "source": "LA-KA",
+        "source:geometry": "maps4bw (LGL, www.lgl-bw.de)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4895339,
+          48.9980582
+        ]
+      },
+      "id": "way/87255992"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/88727159",
+        "addr:city": "Eggenstein-Leopoldshafen",
+        "addr:country": "DE",
+        "addr:housenumber": "9 A",
+        "addr:postcode": "76344",
+        "addr:street": "Nordring",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "name": "Hermann-Uebelhör-Sporthalle",
+        "source": "Maps4BW",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.398632,
+          49.0991719
+        ]
+      },
+      "id": "way/88727159"
     },
     {
       "type": "Feature",
@@ -518,6 +1359,64 @@
         ]
       },
       "id": "way/93709788"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/96021518",
+        "addr:city": "Rheinstetten",
+        "addr:housenumber": "22a",
+        "addr:postcode": "76287",
+        "addr:street": "Vogesenstraße",
+        "building": "sports_centre",
+        "email": "hallenbad@stadt-rheinstetten.de",
+        "leisure": "sports_centre",
+        "name": "Hallenbad Forchheim",
+        "phone": "+49 721 9517650",
+        "sport": "swimming",
+        "toilets:wheelchair": "yes",
+        "website": "https://www.rheinstetten.de/hallenbad",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3163478,
+          48.9789015
+        ]
+      },
+      "id": "way/96021518"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/96021536",
+        "addr:city": "Rheinstetten",
+        "addr:country": "DE",
+        "addr:housenumber": "17c",
+        "addr:postcode": "76287",
+        "addr:street": "Industriestraße",
+        "addr:suburb": "Mörsch",
+        "building": "yes",
+        "leisure": "fitness_centre",
+        "name": "Fitness Forum",
+        "opening_hours": "Mo,We 09:00-12:30,15:00-22:00; Tu,Th 08:00-22:00; Fr 09:00-22:00; Sa 10:00-17:00; Su 10:00-16:00",
+        "phone": "+49 7242 2045",
+        "sauna": "yes",
+        "source": "Maps4BW, LGL, www.lgl-bw.de",
+        "website": "https://www.fitness-forum.org/",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3018303,
+          48.9607249
+        ]
+      },
+      "id": "way/96021536"
     },
     {
       "type": "Feature",
@@ -953,6 +1852,26 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/110881024",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "LA-KA",
+        "sport": "multi",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.446802,
+          49.0471347
+        ]
+      },
+      "id": "way/110881024"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/111138651",
         "building": "sports_hall",
         "leisure": "sports_centre",
@@ -1043,6 +1962,61 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/112789652",
+        "addr:city": "Weingarten (Baden)",
+        "addr:country": "DE",
+        "addr:housenumber": "69",
+        "addr:postcode": "76356",
+        "addr:street": "Kanalstraße",
+        "landuse": "recreation_ground",
+        "leisure": "sports_centre",
+        "name": "Freibad Weingarten",
+        "operator": "Gemeinde Weingarten",
+        "phone": "+49 7244 706460",
+        "sport": "swimming",
+        "website": "https://www.weingarten-baden.de/freizeit-tourismus/freizeit-bademoeglichkeiten/schwimmbad",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.518992,
+          49.0477235
+        ]
+      },
+      "id": "way/112789652"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/113510381",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "9",
+        "addr:postcode": "76229",
+        "addr:street": "Am Grollenberg",
+        "addr:suburb": "Grötzingen",
+        "building": "yes",
+        "contact:website": "http://www.tsv-groetzingen.de/",
+        "leisure": "sports_centre",
+        "name": "TSV Grötzingen",
+        "source:outline": "Maps4BW (LGL-BW, www.lgl-bw.de)",
+        "sport": "gymnastics",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4973338,
+          49.0007926
+        ]
+      },
+      "id": "way/113510381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/116488025",
         "building": "sports_hall",
         "name": "Friedrich-Ebert-Halle",
@@ -1098,6 +2072,50 @@
         ]
       },
       "id": "way/119240484"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/120358444",
+        "addr:housenumber": "8",
+        "addr:street": "Jean-Ritzert-Straße",
+        "building": "yes",
+        "email": "info@sg-durlach.de",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Schützengesellschaft Durlach e.V. gegr. 1601",
+        "phone": "+49 721 1837950",
+        "source": "LA-KA",
+        "sport": "shooting",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.493072,
+          48.9950156
+        ]
+      },
+      "id": "way/120358444"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/120358448",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "source": "LA-KA",
+        "sport": "shooting",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4926929,
+          48.9953214
+        ]
+      },
+      "id": "way/120358448"
     },
     {
       "type": "Feature",
@@ -1207,6 +2225,96 @@
         ]
       },
       "id": "way/123816096"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/124128794",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.316023,
+          48.9792403
+        ]
+      },
+      "id": "way/124128794"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/126063177",
+        "addr:city": "Karlsruhe",
+        "addr:housenumber": "1",
+        "addr:postcode": "76227",
+        "addr:street": "Untere Hub",
+        "email": "info@paintball-ranch-karlsruhe.de",
+        "leisure": "sports_centre",
+        "name": "Paintball Ranch Karlsruhe",
+        "opening_hours": "We-Sa 10:00-20:00; Su 10:00-17:00",
+        "phone": "+49 721 61937979",
+        "sport": "paintball",
+        "surface": "grass",
+        "website": "https://paintball-ranch-karlsruhe.de",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4690539,
+          49.0102599
+        ]
+      },
+      "id": "way/126063177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/127174921",
+        "addr:city": "Wörth am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "76744",
+        "addr:street": "Hermann-Quack-Straße",
+        "building": "sports_hall",
+        "check_date": "2024-03-31",
+        "leisure": "sports_centre",
+        "name": "Rheinhalle",
+        "sport": "multi",
+        "toilets:wheelchair": "no",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2846904,
+          49.0338919
+        ]
+      },
+      "id": "way/127174921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/127175036",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Tullahalle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2851557,
+          49.0329371
+        ]
+      },
+      "id": "way/127175036"
     },
     {
       "type": "Feature",
@@ -1471,6 +2579,100 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/151214449",
+        "leisure": "sports_centre",
+        "name": "ASV Wolfartsweier",
+        "sport": "soccer;tennis",
+        "website": "https://www.asv-wolfartsweier.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4435236,
+          48.9701918
+        ]
+      },
+      "id": "way/151214449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/152087227",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "25",
+        "addr:postcode": "76139",
+        "addr:street": "Am Storrenacker",
+        "addr:suburb": "Hagsfeld",
+        "building": "civic",
+        "leisure": "sports_centre",
+        "name": "Schießhalle BSC Karlsruhe",
+        "operator": "1. Bogen-Sport-Club Karlsruhe 1980 e.V.",
+        "roof:material": "metal",
+        "roof:shape": "gabled",
+        "source:geometry": "Maps4BW (LGL, www.lgl-bw.de)",
+        "sport": "archery",
+        "start_date": "2007",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4690947,
+          49.023785
+        ]
+      },
+      "id": "way/152087227"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/152122358",
+        "addr:street": "Weingartener Straße",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "name": "Schützengesellschaft Grötzingen e.V.",
+        "sport": "shooting",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.503671,
+          49.0193268
+        ]
+      },
+      "id": "way/152122358"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/156201254",
+        "addr:city": "Karlsruhe",
+        "addr:housenumber": "14",
+        "addr:postcode": "76227",
+        "addr:street": "Lenzenhubweg",
+        "building": "civic",
+        "leisure": "sports_centre",
+        "name": "Fritz-Meier-Halle",
+        "operator": "1. Kraftsportverein Durlach 1896 e.V.",
+        "source:outline": "Maps4BW (LGL, www.lgl-bw.de)",
+        "sport": "weightlifting",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4702476,
+          49.0070128
+        ]
+      },
+      "id": "way/156201254"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/157558736",
         "leisure": "sports_centre",
         "name": "Bulacher SC",
@@ -1516,6 +2718,219 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/160483642",
+        "leisure": "sports_centre",
+        "name": "Reitsportanlage Durlach",
+        "sport": "equestrian",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4660221,
+          49.0077031
+        ]
+      },
+      "id": "way/160483642"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/160483667",
+        "access": "yes",
+        "dog": "leashed",
+        "fee": "no",
+        "leisure": "sports_centre",
+        "max_age": "18",
+        "name": "Ballspiel-Anlage Pfarrer-Blink-Straße",
+        "opening_hours": "Mo-Su,PH dusk-dawn",
+        "operator": "Stadt Karlsruhe",
+        "smoking": "no",
+        "sport": "soccer;basketball;beachvolleyball;table_tennis",
+        "start_date": "2017",
+        "surface": "grass",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.459129,
+          49.0060766
+        ]
+      },
+      "id": "way/160483667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170244282",
+        "leisure": "sports_centre",
+        "name": "Tennis-Club Forchheim",
+        "sport": "tennis",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3033639,
+          48.9738738
+        ]
+      },
+      "id": "way/170244282"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170355789",
+        "leisure": "sports_centre",
+        "name": "Freie Turner Forchheim",
+        "sport": "soccer",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3044687,
+          48.9752038
+        ]
+      },
+      "id": "way/170355789"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170458331",
+        "leisure": "sports_centre",
+        "name": "TV Mörsch",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2974645,
+          48.9676938
+        ]
+      },
+      "id": "way/170458331"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/170458339",
+        "leisure": "sports_centre",
+        "name": "TV Mörsch",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.296044,
+          48.9673439
+        ]
+      },
+      "id": "way/170458339"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/171440758",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "1b",
+        "addr:postcode": "76187",
+        "addr:street": "Frauenhäusleweg",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Harald-Schenk Sporthalle TV Knielingen",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3288388,
+          49.0377501
+        ]
+      },
+      "id": "way/171440758"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/174411724",
+        "leisure": "sports_centre",
+        "name": "Sportfreunde Forchheim",
+        "sport": "soccer",
+        "toilets:wheelchair": "no",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3197451,
+          48.9791352
+        ]
+      },
+      "id": "way/174411724"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/182784475",
+        "addr:city": "Stutensee",
+        "addr:housenumber": "142",
+        "addr:postcode": "76297",
+        "addr:street": "Eggensteiner Straße",
+        "addr:suburb": "Blankenloch",
+        "building": "civic",
+        "indoor": "yes",
+        "leisure": "sports_centre",
+        "source:geometry": "Maps4BW (LGL, www.lgl-bw.de)",
+        "sport": "tennis",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4518986,
+          49.0683463
+        ]
+      },
+      "id": "way/182784475"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/217306583",
+        "contact:email": "info@sportschule-schoeneck.de",
+        "contact:fax": "+49 721 40904366",
+        "contact:phone": "+49 721 409040",
+        "contact:website": "https://www.sportschule-schoeneck.de/",
+        "leisure": "sports_centre",
+        "name": "Sportschule Schöneck",
+        "operator": "Badischer Fußballverband e.V.",
+        "wheelchair": "limited",
+        "wikidata": "Q2312852",
+        "wikipedia": "de:Sportschule Schöneck",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4896121,
+          48.9980535
+        ]
+      },
+      "id": "way/217306583"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/219077517",
         "leisure": "sports_centre",
         "name": "Karlsruher Turnverein 1846",
@@ -1532,6 +2947,74 @@
         ]
       },
       "id": "way/219077517"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/220926907",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "name": "Sporthalle II Schulzentrum",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4764396,
+          49.066144
+        ]
+      },
+      "id": "way/220926907"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/221024805",
+        "addr:city": "Stutensee",
+        "addr:country": "DE",
+        "addr:housenumber": "4a",
+        "addr:postcode": "76297",
+        "addr:street": "Mühlenweg",
+        "addr:suburb": "Blankenloch",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "operator": "TSG Blankenloch",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4774594,
+          49.0668041
+        ]
+      },
+      "id": "way/221024805"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/223849832",
+        "addr:city": "Stutensee",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "76297",
+        "addr:street": "Am Vogelpark",
+        "addr:suburb": "Blankenloch",
+        "building": "yes",
+        "leisure": "sports_centre",
+        "sport": "shooting",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4817725,
+          49.0674905
+        ]
+      },
+      "id": "way/223849832"
     },
     {
       "type": "Feature",
@@ -1592,6 +3075,60 @@
         ]
       },
       "id": "way/226214882"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/235968565",
+        "addr:city": "Eggenstein-Leopoldshafen",
+        "addr:country": "DE",
+        "addr:housenumber": "39",
+        "addr:postcode": "76344",
+        "addr:street": "Hauptstraße",
+        "building": "sports_hall",
+        "name": "Gymnastikhalle",
+        "source": "Maps4BW",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3891083,
+          49.0784182
+        ]
+      },
+      "id": "way/235968565"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/237594039",
+        "addr:city": "Rheinstetten",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "76287",
+        "addr:street": "Boschstraße",
+        "addr:suburb": "Mörsch",
+        "building": "yes",
+        "leisure": "fitness_centre",
+        "name": "Sporttherapeutisches Trainingszentrum",
+        "opening_hours": "Mo 08:00-22:00; Tu 08:00-12:00,15:00-22:00; We 08:00-22:00; Th 08:00-12:00,15:00-22:00; Fr 08:00-21:30; Sa 09:00-16:00; Su 09:00-14:00; PH 09:00-14:00",
+        "phone": "+49 7242 1487",
+        "sauna": "yes",
+        "source": "Maps4BW, LGL, www.lgl-bw.de",
+        "toilets:wheelchair": "no",
+        "website": "http://stzrheinstetten.de",
+        "wheelchair": "no",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2824484,
+          48.9613444
+        ]
+      },
+      "id": "way/237594039"
     },
     {
       "type": "Feature",
@@ -1722,6 +3259,49 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/293914490",
+        "addr:city": "Ettlingen",
+        "addr:country": "DE",
+        "addr:housename": "Abenteuerturm Gate",
+        "addr:housenumber": "78",
+        "addr:postcode": "76275",
+        "addr:street": "Schöllbronner Straße",
+        "leisure": "sports_centre",
+        "name": "Kletterpark Abenteuerturm",
+        "sport": "climbing_adventure",
+        "tourism": "attraction",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4192436,
+          48.9337253
+        ]
+      },
+      "id": "way/293914490"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/304140688",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4674952,
+          49.0471813
+        ]
+      },
+      "id": "way/304140688"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/305683616",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -1744,6 +3324,25 @@
         ]
       },
       "id": "way/305683616"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/308667823",
+        "leisure": "sports_centre",
+        "name": "Modellflugplatz Blankenloch",
+        "operator": "Verein für Modellflug Stutensee e.V.",
+        "sport": "model_aerodrome",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4749683,
+          49.079636
+        ]
+      },
+      "id": "way/308667823"
     },
     {
       "type": "Feature",
@@ -1843,6 +3442,50 @@
         ]
       },
       "id": "way/323229550"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/325326806",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "operator": "TSG Blankenloch",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4777419,
+          49.0667825
+        ]
+      },
+      "id": "way/325326806"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/325783463",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "11",
+        "addr:postcode": "76228",
+        "addr:street": "Thüringer Straße",
+        "addr:suburb": "Grünwettersbach",
+        "building": "sports_hall",
+        "leisure": "sports_hall",
+        "name": "Sporthalle Wettersbach",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4785414,
+          48.9530826
+        ]
+      },
+      "id": "way/325783463"
     },
     {
       "type": "Feature",
@@ -1949,6 +3592,29 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/332658538",
+        "alt_name": "SV Blankenloch",
+        "club": "sport",
+        "leisure": "sports_centre",
+        "name": "Edeka Familie Behrens Sportpark",
+        "operator": "Sportverein 1911 e.V. Blankenloch",
+        "short_name": "SVB",
+        "sport": "gymnastics;handball;soccer;swimming;tennis",
+        "website": "http://www.svblankenloch.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4512825,
+          49.0686736
+        ]
+      },
+      "id": "way/332658538"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/334936706",
         "leisure": "sports_centre",
         "name": "FC Germania Neureut 07",
@@ -2039,6 +3705,28 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/380818921",
+        "leisure": "sports_centre",
+        "name": "Sportgruppe am Karlsruher Institut für Technologie",
+        "old_name": "Sportgruppe Forschungszentrum Karlsruhe",
+        "operator": "Sportgruppe am Karlsruher Institut für Technologie e.V.",
+        "short_name": "SG KIT",
+        "sport": "multi",
+        "website": "https://sportgruppe.eu/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4170233,
+          49.0945016
+        ]
+      },
+      "id": "way/380818921"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/383412214",
         "building:colour": "grey",
         "building:levels": "1",
@@ -2060,6 +3748,64 @@
         ]
       },
       "id": "way/383412214"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/411102449",
+        "addr:city": "Karlsruhe",
+        "addr:housenumber": "13",
+        "addr:postcode": "76227",
+        "addr:street": "Weiherhof",
+        "leisure": "sports_centre",
+        "name": "Weiherhofbad",
+        "opening_hours": "Mo-Th 13:00-22:00;We,Fr 06:30-10:00,13:00-22:00;Sa 09:00-20:00;Su,PH 09:00-17:00",
+        "operator": "Karlsruher Bädergesellschaft mbH",
+        "phone": "+49 721 1335227",
+        "sport": "swimming",
+        "toilets:wheelchair": "yes",
+        "website": "https://www.ka-baeder.de/",
+        "wheelchair": "limited",
+        "wheelchair:description": "Umkleidekabine, Dusche und Toilette für Rollstuhlfahrer vorhanden. Kein Lift am Becken",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4715634,
+          48.99712
+        ]
+      },
+      "id": "way/411102449"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/423707345",
+        "addr:city": "Stutensee",
+        "addr:country": "DE",
+        "addr:housenumber": "4",
+        "addr:postcode": "76297",
+        "addr:street": "Erich-Kästner-Straße",
+        "addr:suburb": "Blankenloch",
+        "building": "civic",
+        "contact:website": "https://www.stutensee.de/de/leben-lernen/Sport-Freizeit/Sport-Freizeit?view=publish&item=leisureFacility&id=1061",
+        "leisure": "sports_centre",
+        "name": "Stutenseebad",
+        "opening_hours": "Mo off; Tu 14:00-21:00; We 06:30-21:00; Th 14:00-18:00; Fr 14:00-21:00; Sa 08:00-18:00; Su 08:00-13:00",
+        "operator": "Stadt Stutensee",
+        "sport": "swimming",
+        "start_date": "2018-09-14",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4762913,
+          49.0665301
+        ]
+      },
+      "id": "way/423707345"
     },
     {
       "type": "Feature",
@@ -2127,6 +3873,32 @@
         ]
       },
       "id": "way/435026679"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/439951618",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "2",
+        "addr:postcode": "76199",
+        "addr:street": "Brunnenstückweg",
+        "contact:email": "vorstand@sg-rueppurr.de",
+        "contact:phone": "+49 721 881715",
+        "contact:website": "https://www.sg-rueppurr.de/",
+        "leisure": "sports_centre",
+        "name": "SG Rüppurr",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3896849,
+          48.9690095
+        ]
+      },
+      "id": "way/439951618"
     },
     {
       "type": "Feature",
@@ -2304,6 +4076,25 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/679061479",
+        "landuse": "recreation_ground",
+        "leisure": "sports_centre",
+        "name": "GEGGUS Sportpark",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5180649,
+          49.0480553
+        ]
+      },
+      "id": "way/679061479"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/699102186",
         "building": "yes",
         "leisure": "sports_centre",
@@ -2384,6 +4175,71 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/777240708",
+        "access": "customers",
+        "alt_name": "Halle 1",
+        "building": "sports_hall",
+        "name": "Fritz-Meinzer-Halle",
+        "source:geometry": "maps4bw (LGL, www.lgl-bw.de)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4884121,
+          48.9977758
+        ]
+      },
+      "id": "way/777240708"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/846923695",
+        "access": "customers",
+        "building": "sports_hall",
+        "source:geometry": "maps4bw (LGL, www.lgl-bw.de)",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4889655,
+          48.998013
+        ]
+      },
+      "id": "way/846923695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/857359565",
+        "addr:city": "Rheinstetten",
+        "addr:country": "DE",
+        "addr:housenumber": "6",
+        "addr:postcode": "76287",
+        "addr:street": "Am Tummelplatz",
+        "addr:suburb": "Mörsch",
+        "building": "sports_hall",
+        "leisure": "sports_centre",
+        "level": "2",
+        "name": "Keltenhalle",
+        "sport": "multi",
+        "wheelchair": "limited",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2920787,
+          48.9659706
+        ]
+      },
+      "id": "way/857359565"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/863358785",
         "alt_name": "Sparda Sport-Park",
         "leisure": "sports_centre",
@@ -2457,6 +4313,42 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/922886459",
+        "building": "sports_hall",
+        "designation": "Entensee Halle",
+        "leisure": "sports_hall",
+        "name": "Entensee-Halle",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3862897,
+          48.9503553
+        ]
+      },
+      "id": "way/922886459"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/943546629",
+        "leisure": "sports_centre",
+        "name": "AMC Ettlingen e.V.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4032208,
+          48.9578756
+        ]
+      },
+      "id": "way/943546629"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/996110456",
         "addr:city": "Karlsruhe",
         "addr:housenumber": "146",
@@ -2483,6 +4375,79 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/997803622",
+        "leisure": "sports_centre",
+        "name": "ASC Grünwettersbach - Sportplatz Heidenheimer Straße",
+        "website": "https://asc-gw.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4743419,
+          48.9587784
+        ]
+      },
+      "id": "way/997803622"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/997804488",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4696918,
+          48.9647178
+        ]
+      },
+      "id": "way/997804488"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/999697602",
+        "leisure": "sports_centre",
+        "name": "Tennisclub Rüppurr 1929 e.V.",
+        "website": "https://www.tcr.de/",
+        "wikidata": "Q1652777",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4121852,
+          48.968019
+        ]
+      },
+      "id": "way/999697602"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1004067730",
+        "leisure": "sports_centre",
+        "name": "FC Neureut 08",
+        "operator": "FC Neureut 08 e.V.",
+        "sport": "soccer",
+        "website": "https://www.fc-neureut.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3771468,
+          49.0637361
+        ]
+      },
+      "id": "way/1004067730"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1018802226",
         "building": "sports_hall",
         "description": "Traglufthalle",
@@ -2498,6 +4463,74 @@
         ]
       },
       "id": "way/1018802226"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1023722553",
+        "leisure": "sports_centre",
+        "name": "Sportpark Jürgen Fassbender",
+        "sport": "tennis",
+        "website": "https://www.sportpark-fassbender.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4101036,
+          49.0771085
+        ]
+      },
+      "id": "way/1023722553"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1034719177",
+        "leisure": "sports_centre",
+        "name": "Tennis-Club Ettlingen e.V.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4204044,
+          48.9356595
+        ]
+      },
+      "id": "way/1034719177"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1035007781",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4162484,
+          48.9321621
+        ]
+      },
+      "id": "way/1035007781"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1041437760",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5001342,
+          49.0213653
+        ]
+      },
+      "id": "way/1041437760"
     },
     {
       "type": "Feature",
@@ -2546,6 +4579,42 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1050950667",
+        "leisure": "sports_centre",
+        "name": "TC Durlach",
+        "sport": "tennis",
+        "website": "https://www.tcdurlach.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4815618,
+          49.0035757
+        ]
+      },
+      "id": "way/1050950667"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1050953435",
+        "leisure": "sports_centre",
+        "name": "DJK Durlach 1924 e.V.",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4835338,
+          49.0050777
+        ]
+      },
+      "id": "way/1050953435"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/1053693926",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -2589,6 +4658,22 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1069297013",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2986002,
+          49.0406596
+        ]
+      },
+      "id": "way/1069297013"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1084409389",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -2615,6 +4700,22 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1091275083",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4786633,
+          48.9533804
+        ]
+      },
+      "id": "way/1091275083"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1110749965",
         "leisure": "sports_centre",
         "@geometry": "center"
@@ -2627,6 +4728,116 @@
         ]
       },
       "id": "way/1110749965"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1118650328",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3214645,
+          49.0036285
+        ]
+      },
+      "id": "way/1118650328"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1118650329",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3196953,
+          49.0030884
+        ]
+      },
+      "id": "way/1118650329"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1118650330",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.318402,
+          49.0027286
+        ]
+      },
+      "id": "way/1118650330"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1120433612",
+        "addr:city": "Wörth am Rhein",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "76744",
+        "addr:street": "Pfortzer Straße",
+        "leisure": "sports_centre",
+        "name": "Udo's Fitness World",
+        "phone": "+49 7271 42919",
+        "sport": "fitness",
+        "website": "https://www.udosfitnessworld.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.288481,
+          49.0382486
+        ]
+      },
+      "id": "node/1120433612"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1167377598",
+        "club": "sport",
+        "contact:website": "http://www.vthagsfeld.de/",
+        "leisure": "sports_centre",
+        "name": "Vereinigte Turnerschaft Karlsruhe-Hagsfeld 1895 e.V.",
+        "short_name": "VTH",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4594152,
+          49.0276375
+        ]
+      },
+      "id": "way/1167377598"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1173683666",
+        "leisure": "sports_centre",
+        "name": "Sportzentrum Eggenstein",
+        "sport": "multi",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3995638,
+          49.0736934
+        ]
+      },
+      "id": "way/1173683666"
     },
     {
       "type": "Feature",
@@ -2648,6 +4859,62 @@
         ]
       },
       "id": "way/1188409336"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1190239879",
+        "leisure": "sports_centre",
+        "name": "Wassersportfreunde Eggenstein",
+        "operator": "Wassersportfreunde Eggenstein e.V.",
+        "sport": "multi",
+        "website": "https://www.wsfe.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3763327,
+          49.0892844
+        ]
+      },
+      "id": "way/1190239879"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1212050869",
+        "leisure": "sports_centre",
+        "lit": "yes",
+        "name": "Sportanlage Im Bruch",
+        "sport": "multi",
+        "surface": "rubber",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.518002,
+          49.0471188
+        ]
+      },
+      "id": "way/1212050869"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1224784013",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2900906,
+          49.0289099
+        ]
+      },
+      "id": "way/1224784013"
     },
     {
       "type": "Feature",
@@ -2702,6 +4969,27 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1283776598",
+        "full_name": "Sportschützenverein Daxlanden 1962 e.V.",
+        "leisure": "sports_centre",
+        "name": "Sportschützenverein Daxlanden",
+        "short_name": "SSV Daxlanden",
+        "sport": "shooting",
+        "website": "https://ssv-daxlanden.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3248057,
+          49.0013717
+        ]
+      },
+      "id": "way/1283776598"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1287641862",
         "leisure": "sports_centre",
         "name": "DJK Karlsruhe-Ost",
@@ -2746,6 +5034,44 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1311077439",
+        "leisure": "sports_centre",
+        "name": "Schützenverein Eggenstein 1958",
+        "operator": "Schützenverein Eggenstein 1958 e.V.",
+        "sport": "shooting;archery",
+        "website": "https://sv-eggenstein.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3718402,
+          49.0850855
+        ]
+      },
+      "id": "way/1311077439"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1335354568",
+        "leisure": "sports_centre",
+        "name": "TSV Grötzingen",
+        "wheelchair": "yes",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4972848,
+          49.0006698
+        ]
+      },
+      "id": "way/1335354568"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1352759563",
         "leisure": "sports_centre",
         "sport": "multi",
@@ -2759,6 +5085,22 @@
         ]
       },
       "id": "way/1352759563"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1358004633",
+        "leisure": "sports_centre",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3877946,
+          48.9511504
+        ]
+      },
+      "id": "way/1358004633"
     },
     {
       "type": "Feature",
@@ -2805,6 +5147,26 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1434434209",
+        "leisure": "sports_centre",
+        "name": "Turngemeinde Neureut 1893",
+        "operator": "Turngemeinde Neureut 1893 e. V.",
+        "sport": "multi",
+        "website": "https://www.tg-neureut.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3757236,
+          49.0630152
+        ]
+      },
+      "id": "way/1434434209"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1435071878",
         "addr:city": "Karlsruhe",
         "addr:housenumber": "32",
@@ -2829,6 +5191,26 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "way/1435127262",
+        "leisure": "sports_centre",
+        "name": "Tennisverein Hagenbach 1975",
+        "operator": "Tennisverein Hagenbach 1975 e.V.",
+        "sport": "tennis",
+        "website": "https://www.tennisverein1975hagenbach.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2533558,
+          49.0193059
+        ]
+      },
+      "id": "way/1435127262"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "way/1449451854",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -2849,6 +5231,24 @@
         ]
       },
       "id": "way/1449451854"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1468992809",
+        "leisure": "sports_centre",
+        "name": "1. Boule Club Eggenstein 85 e.V",
+        "sport": "boules",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4087221,
+          49.0755167
+        ]
+      },
+      "id": "way/1468992809"
     },
     {
       "type": "Feature",
@@ -2900,6 +5300,46 @@
         ]
       },
       "id": "way/1484744549"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1486349952",
+        "leisure": "sports_centre",
+        "name": "Schützenclub Wolfartsweier",
+        "operator": "Schützenclub Wolfartsweier e.V.",
+        "sport": "shooting",
+        "website": "https://sc-wolfartsweier.de/",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4445456,
+          48.9692547
+        ]
+      },
+      "id": "way/1486349952"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "way/1492228534",
+        "club": "sport",
+        "leisure": "sports_centre",
+        "name": "MSC Weingarten",
+        "official_name": "Motorsportclub Weingarten e.V. im ADAC",
+        "sport": "motor",
+        "@geometry": "center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5171633,
+          49.0495566
+        ]
+      },
+      "id": "way/1492228534"
     },
     {
       "type": "Feature",
@@ -2966,7 +5406,7 @@
       "properties": {
         "@id": "node/2311562112",
         "access": "private",
-        "check_date": "2023-08-10",
+        "check_date": "2026-06-11",
         "leisure": "fitness_centre",
         "name": "Walk-In",
         "opening_hours": "Mo-Fr 07:00-22:30; Sa 09:00-18:00; Su 12:00-16:00; PH off",
@@ -3002,6 +5442,57 @@
         ]
       },
       "id": "node/2578360871"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2670646323",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "32",
+        "addr:street": "An der RaumFabrik",
+        "lastcheck": "2016-02-29",
+        "leisure": "sports_centre",
+        "name": "Fit-in",
+        "opening_hours": "Mo-Fr 09:00-23:00; Tu,Th 07:00-23:00; Sa,Su 09:00-20:00"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4642447,
+          48.997585
+        ]
+      },
+      "id": "node/2670646323"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2820976866",
+        "addr:city": "Stutensee",
+        "addr:country": "DE",
+        "addr:housenumber": "16",
+        "addr:postcode": "76297",
+        "addr:street": "Hardtstraße",
+        "addr:suburb": "Blankenloch",
+        "contact:email": "info@gymnastik-atelier.com",
+        "contact:fax": "+49 7244 94048",
+        "contact:phone": "+49 7244 96239",
+        "contact:website": "http://www.gymnastik-atelier.com/",
+        "leisure": "sports_centre",
+        "name": "Gymnastik-Atelier Stutensee",
+        "operator": "Christine Seeland",
+        "sport": "gymnastics",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4689279,
+          49.0673998
+        ]
+      },
+      "id": "node/2820976866"
     },
     {
       "type": "Feature",
@@ -3394,6 +5885,104 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/5821479328",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "38",
+        "addr:postcode": "76229",
+        "addr:street": "Eisenbahnstraße",
+        "addr:suburb": "Grötzingen",
+        "leisure": "fitness_centre",
+        "level": "-1",
+        "name": "Lenni's Gymnasion",
+        "opening_hours": "Mo,We,Fr 07:00-22:00; Tu,Th 09:00-22:00; Sa,Su,PH 09:00-15:00",
+        "sauna": "yes",
+        "sport": "fitness",
+        "website": "https://fitnessstudio-groetzingen.de/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4937988,
+          49.0061636
+        ]
+      },
+      "id": "node/5821479328"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5879606310",
+        "addr:city": "Eggenstein-Leopoldshafen",
+        "addr:housenumber": "5",
+        "addr:postcode": "76344",
+        "addr:street": "Zeißstraße",
+        "description": "Das Im|Puls ist mehr als nur ein Fitnessstudio in Eggenstein. Wir sind Ihr Experte für Gesundheit, Fitness, Ernährung, Prävention & Rehabilitation in Eggenstein-Leopoldshafen, Nordhardt, Neureut, Linkenheim-Hochstetten, Liedolsheim, Stutensee, Blankenloch",
+        "description_1": "eGym-Zirkeltraining fle-xx HumanSports® Cardiotraining Functional-Training Personal Training Ernährungscoaching Rehasport K.O.R.E Firmenfitness / BGM Kurse",
+        "email": "info@impuls-eggenstein.de",
+        "leisure": "fitness_centre",
+        "level": "0",
+        "name": "ImPuls Gesundheitsstudio",
+        "phone": "+49 721 46715310",
+        "website": "https://www.impuls-eggenstein.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3804953,
+          49.0762079
+        ]
+      },
+      "id": "node/5879606310"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5968855546",
+        "leisure": "fitness_centre",
+        "name": "BodyJam",
+        "opening_hours": "Mo-Fr 08:00-23:00; Sa 08:00-17:00; Su 08:00-14:00",
+        "website": "https://bodyjam.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4692962,
+          49.0041389
+        ]
+      },
+      "id": "node/5968855546"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6003206244",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housenumber": "3",
+        "addr:postcode": "76229",
+        "addr:street": "Greschbachstraße",
+        "addr:suburb": "Grötzingen",
+        "branch": "Hagsfeld",
+        "contact:website": "https://snap-fit.de/",
+        "leisure": "fitness_centre",
+        "level": "0",
+        "name": "Snap-Fit",
+        "operator": "Fit-in SNAP! GmbH"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4712688,
+          49.026522
+        ]
+      },
+      "id": "node/6003206244"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/7205896851",
         "addr:city": "Karlsruhe",
         "addr:housenumber": "13",
@@ -3458,6 +6047,63 @@
         ]
       },
       "id": "node/8012932345"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/8415733976",
+        "leisure": "fitness_centre",
+        "name": "Fitnessstudio"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3885844,
+          48.9374006
+        ]
+      },
+      "id": "node/8415733976"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9076918304",
+        "addr:city": "Pfinztal",
+        "addr:country": "DE",
+        "addr:housenumber": "69",
+        "addr:postcode": "76327",
+        "addr:street": "Karlsruher Straße",
+        "addr:suburb": "Berghausen",
+        "leisure": "fitness_centre",
+        "name": "fit+",
+        "opening_hours": "06:00-23:00",
+        "sport": "fitness",
+        "website": "https://pfinztal.fitplus-club.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5247978,
+          49.0042073
+        ]
+      },
+      "id": "node/9076918304"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/9141596816",
+        "leisure": "fitness_centre",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4933404,
+          48.9588871
+        ]
+      },
+      "id": "node/9141596816"
     },
     {
       "type": "Feature",
@@ -3561,6 +6207,29 @@
         ]
       },
       "id": "node/10163881134"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/10174204936",
+        "addr:city": "Karlsruhe",
+        "addr:housenumber": "64",
+        "addr:postcode": "76227",
+        "addr:street": "Badener Straße",
+        "email": "tbornhauser@web.de",
+        "leisure": "fitness_centre",
+        "name": "Jumping Fitness Karlsruhe",
+        "phone": "+49 170 4729356",
+        "website": "https://www.jumpingfitnesskarlsruhe.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4721334,
+          48.9905872
+        ]
+      },
+      "id": "node/10174204936"
     },
     {
       "type": "Feature",
@@ -3673,6 +6342,29 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/11352553251",
+        "addr:housenumber": "14",
+        "addr:street": "An der Tagweide",
+        "email": "probe@chlkd.de",
+        "leisure": "fitness_centre",
+        "name": "CrossFit Chlkd",
+        "opening_hours": "Mo 06:30-10:30,16:30-20:00; Tu 17:30-20:00; We 06:30-10:30,17:30-20:00; Th 18:30-20:00; Fr 06:30-10:30,16:00-18:00; Sa 09:00-11:00; Su 10:30-11:30",
+        "phone": "+49 160 3098753",
+        "sport": "fitness",
+        "website": "https://chlkd.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4614474,
+          49.0234863
+        ]
+      },
+      "id": "node/11352553251"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/11353702614",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -3756,6 +6448,59 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/12004041450",
+        "addr:city": "Karlsruhe",
+        "addr:country": "DE",
+        "addr:housename": "Bau 61",
+        "addr:housenumber": "41",
+        "addr:postcode": "76227",
+        "addr:street": "Amalienbadstraße",
+        "addr:suburb": "Durlach",
+        "contact:email": "info@onetoonesports.de",
+        "contact:phone": "+49 721 20323640",
+        "contact:website": "https://www.onetoonesports.de/",
+        "leisure": "fitness_centre",
+        "level": "4",
+        "name": "one to one",
+        "sport": "fitness"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4638593,
+          48.9957834
+        ]
+      },
+      "id": "node/12004041450"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12025403651",
+        "addr:city": "Ettlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "1",
+        "addr:postcode": "76275",
+        "addr:street": "Lindenweg",
+        "contact:email": "info@ortnersport.de",
+        "contact:phone": "+49 7243 1851476",
+        "contact:website": "https://www.ortnersport.de/",
+        "leisure": "fitness_centre",
+        "name": "Ortner Sport",
+        "operator": "Sven Ortner"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3831544,
+          48.9479042
+        ]
+      },
+      "id": "node/12025403651"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/12078800812",
         "leisure": "fitness_centre",
         "name": "Move Light Fitness Club",
@@ -3771,6 +6516,47 @@
         ]
       },
       "id": "node/12078800812"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12146412879",
+        "addr:city": "Ettlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "7",
+        "addr:postcode": "76275",
+        "addr:street": "Erwin-Vetter-Platz",
+        "atm": "yes",
+        "leisure": "fitness_centre",
+        "name": "Mind in Motion",
+        "sport": "yoga;pilates"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4061086,
+          48.9414286
+        ]
+      },
+      "id": "node/12146412879"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12181812314",
+        "leisure": "fitness_centre",
+        "name": "rothfitness",
+        "phone": "+497219703957",
+        "website": "https://www.rothfitness-eggenstein.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3992927,
+          49.0868319
+        ]
+      },
+      "id": "node/12181812314"
     },
     {
       "type": "Feature",
@@ -3824,6 +6610,55 @@
     {
       "type": "Feature",
       "properties": {
+        "@id": "node/12741363754",
+        "addr:city": "Ettlingen",
+        "addr:housenumber": "107",
+        "addr:postcode": "76275",
+        "addr:street": "Rheinstraße",
+        "leisure": "fitness_centre",
+        "name": "Personal Trainer Samuel Orlet",
+        "opening_hours": "Mo-Su 07:00-21:00",
+        "phone": "+49 176 23667570",
+        "sport": "fitness",
+        "website": "https://www.sotrainiertman.de/"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3957328,
+          48.946112
+        ]
+      },
+      "id": "node/12741363754"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/12798342255",
+        "addr:city": "Stutensee",
+        "addr:country": "DE",
+        "addr:housenumber": "20-22",
+        "addr:postcode": "76297",
+        "addr:street": "Am Hasenbiel",
+        "addr:suburb": "Blankenloch",
+        "leisure": "fitness_centre",
+        "name": "Fit-in",
+        "opening_hours": "Mo,We,Th 09:00-23:00; Tu,Fr 07:00-23:00; Sa,Su 09:00-20:00",
+        "operator": "Fit-in FitnessClubs GmbH",
+        "sport": "gymnastics"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4672095,
+          49.0787213
+        ]
+      },
+      "id": "node/12798342255"
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "@id": "node/13328224002",
         "addr:city": "Karlsruhe",
         "addr:country": "DE",
@@ -3869,6 +6704,63 @@
         ]
       },
       "id": "node/13332649600"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13346852672",
+        "addr:city": "Ettlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "47",
+        "addr:postcode": "76275",
+        "addr:street": "Zehntwiesenstraße",
+        "brand": "Fitness First",
+        "brand:wikidata": "Q127120",
+        "contact:website": "https://www.fitnessfirst.de/clubs/ettlingen",
+        "leisure": "fitness_centre",
+        "name": "Fitness First"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.38988,
+          48.9456943
+        ]
+      },
+      "id": "node/13346852672"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/13432207076",
+        "addr:city": "Ettlingen",
+        "addr:country": "DE",
+        "addr:housenumber": "55",
+        "addr:postcode": "76275",
+        "addr:street": "Einsteinstraße",
+        "contact:instagram": "lasertagfactoryettlingen",
+        "email": "info@lasertag-ettlingen.com",
+        "fee": "yes",
+        "leisure": "sports_centre",
+        "name": "Lasertag Factory Ettlingen",
+        "opening_hours": "We 15:00-22:00; Th 15:00-20:00; Fr 14:00-23:00; Sa 12:00-23:00; Su 12:00-20:00; Mo,Tu off",
+        "operator": "simigo plus GmbH",
+        "phone": "+49 7243 9398511",
+        "reservation": "yes",
+        "sport": "laser_tag",
+        "toilets": "yes",
+        "toilets:access": "customers",
+        "website": "https://www.lasertag-ettlingen.com/",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3691815,
+          48.9425745
+        ]
+      },
+      "id": "node/13432207076"
     },
     {
       "type": "Feature",
