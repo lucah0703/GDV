@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from backend.app.services.isochrone_service import get_isochrone_by_budget
+from backend.app.services.isochrone_service import get_isochrone_by_budget, get_isochrone_base
 
 router = APIRouter()
 
@@ -10,7 +10,13 @@ def isochrone(
     budget: float,
     uni: str
 ):
-    return {
+    response = get_isochrone_base(
+        city=city,
+        budget=budget,
+        uni=uni
+    )
+
+    response["results"] = {
         "e-scooter": get_isochrone_by_budget(
             city=city,
             budget=budget,
@@ -24,3 +30,5 @@ def isochrone(
             vehicle_type="bike"
         )
     }
+
+    return response

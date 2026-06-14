@@ -168,6 +168,9 @@ def get_pricing_by_budget(city: str, budget: float, vehicle_type: str):
         if not best:
             continue
 
+        if best["minutes"] <= 0:
+            continue
+
         results.append({
             "provider": plan["provider"],
             "plan_id": plan["plan_id"],

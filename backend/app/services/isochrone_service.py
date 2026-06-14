@@ -83,6 +83,25 @@ def fetch_isochrone(lon: float, lat: float, minutes: int, vehicle_type: str):
     return response.json()
 
 
+def get_isochrone_base(
+    city: str,
+    budget: float,
+    uni: str
+):
+    location = UNI[city][uni]
+
+    return {
+        "city": city,
+        "budget": budget,
+        "uni": {
+            "name": uni,
+            "lat": location["lat"],
+            "lon": location["lon"]
+        },
+        "results": {}
+    }
+
+
 def get_isochrone_by_budget(
     city: str,
     budget: float,
@@ -90,9 +109,6 @@ def get_isochrone_by_budget(
     vehicle_type: str
 ):
     location = UNI[city][uni]
-
-    lat = location["lat"]
-    lon = location["lon"]
 
     pricing_results = get_pricing_by_budget(
         city=city,
@@ -104,18 +120,18 @@ def get_isochrone_by_budget(
 
     for provider_result in pricing_results:
         isochrone = fetch_isochrone(
-            lon=lon,
-            lat=lat,
+            lon=location["lon"],
+            lat=location["lat"],
             minutes=provider_result["max_minutes"],
             vehicle_type=vehicle_type
         )
 
         results.append({
             **provider_result,
-            "uni": uni,
-            "lat": lat,
-            "lon": lon,
-            "isochrone": isochrone
+            "isochrone": {
+                "type": isochrone["type"],
+                "features": isochrone["features"]
+            }
         })
 
     return results
