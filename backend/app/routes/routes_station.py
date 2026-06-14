@@ -5,9 +5,8 @@ import pandas as pd
 import os
 
 router = APIRouter(tags=["Stations"])
-DATA_DIR = "backend/data/stations/"
+STATION_DATA_DIR = "backend/data/stations/"
 
-#TODO: Ausgewählte Stadt vom Frontend bekommen
 @router.get("/station/{city}")
 async def get_station_information(city: str):
 
@@ -22,7 +21,7 @@ async def get_station_information(city: str):
     else:
         raise HTTPException(status_code=404, detail="City not found")
     
-    file_path = os.path.join(DATA_DIR, file_name)
+    file_path = os.path.join(STATION_DATA_DIR, file_name)
     df = pd.read_csv(file_path, encoding="utf-8")
     
     return df.to_dict(orient="records")
