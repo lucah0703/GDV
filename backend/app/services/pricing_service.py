@@ -79,6 +79,7 @@ def fetch_pricing_plans(url: str) -> list[dict]:
     data = response.json()
     return data.get("data").get("plans")
 
+
 def prepare_pricing_plans(city: str, provider: str, plans: list[dict]) -> list[dict]:
     relevant_ids = PLAN_IDS[city][provider]
 
@@ -96,84 +97,6 @@ def prepare_pricing_plans(city: str, provider: str, plans: list[dict]) -> list[d
         })
 
     return filtered_plans
-
-def calculate_price(plan: dict, minutes: int) -> float:
-    total = plan["price"]
-
-    rule = plan["per_min_pricing"][0]
-
-    start = rule["start"]
-    interval = rule["interval"]
-    rate = rule["rate"]
-
-    if minutes <= start:
-        return round(total, 2)
-
-    billable_minutes = minutes - start
-    blocks = math.ceil(billable_minutes / interval)
-
-    total += blocks * rate
-
-    return round(total, 2)
-
-
-def get_max_minutes_for_budget(plan: dict, budget: float):
-    total = plan["price"]
-    rule = plan["per_min_pricing"][0]
-
-    start = rule["start"]
-    interval = rule["interval"]
-    rate = rule["rate"]
-    end = rule.get("end")
-
-    remaining_budget = budget - total
-
-    if remaining_budget < 0:
-        return None
-
-    possible_blocks = math.floor(remaining_budget / rate)
-    minutes = start + possible_blocks * interval
-
-    if end and minutes > end:
-        minutes = end
-
-    price = calculate_price(plan, minutes)
-
-    return {
-        "minutes": minutes,
-        "price": price
-    }
-
-def get_pricing_by_budget(city: str, budget: float, vehicle_type: str):
-    results = []
-
-    for provider, url in PRICING_URLS[city].items():
-        provider_vehicle_type = PROVIDER_VEHICLE_TYPES[provider]
-
-        if provider_vehicle_type != vehicle_type:
-            continue
-
-        plans = fetch_pricing_plans(url)
-        plans = prepare_pricing_plans(city, provider, plans)
-
-        for plan in plans:
-            best = get_max_minutes_for_budget(plan, budget)
-
-            if not best:
-                continue
-
-            results.append({
-                "provider": provider,
-                "plan_id": plan["plan_id"],
-                "max_minutes": best["minutes"],
-                "price": best["price"],
-                "currency": plan["currency"],
-                "label": f"{provider}: bis zu {best['minutes']} Minuten für {best['price']:.2f} €"
-            })
-
-            break
-
-    return results
 
 
 def get_all_pricing_plans(vehicle_type: str):
@@ -198,5 +121,60 @@ def get_all_pricing_plans(vehicle_type: str):
                     "price": plan["price"],
                     "per_min_pricing": plan["per_min_pricing"]
                 })
+
+    return results
+
+
+def get_max_minutes_for_budget(plan: dict, budget: float):
+    total = plan["price"]
+    rule = plan["per_min_pricing"][0]
+
+    start = rule["start"]
+    interval = rule["interval"]
+    rate = rule["rate"]
+    end = rule.get("end")
+
+    remaining_budget = budget - total
+
+    if remaining_budget < 0:
+        return None
+
+    possible_blocks = math.floor(remaining_budget / rate)
+    minutes = start + possible_blocks * interval
+
+    if end and minutes > end:
+        minutes = end
+        possible_blocks = math.ceil((minutes - start) / interval)
+
+    price = round(total + possible_blocks * rate, 2)
+
+    return {
+        "minutes": minutes,
+        "price": price
+    }
+
+
+def get_pricing_by_budget(city: str, budget: float, vehicle_type: str):
+    results = []
+
+    plans = get_all_pricing_plans(vehicle_type)
+
+    for plan in plans:
+        if plan["city"] != city:
+            continue
+
+        best = get_max_minutes_for_budget(plan, budget)
+
+        if not best:
+            continue
+
+        results.append({
+            "provider": plan["provider"],
+            "plan_id": plan["plan_id"],
+            "max_minutes": best["minutes"],
+            "price": best["price"],
+            "currency": plan["currency"],
+            "label": f"{plan['provider']}: bis zu {best['minutes']} Minuten für {best['price']:.2f} €"
+        })
 
     return results
