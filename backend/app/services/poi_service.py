@@ -137,6 +137,6 @@ pois = pois[
 ].copy()
 
 pois.to_file(
-    "backend/app/services/pois.geojson",
+    "backend/data/pois/pois.geojson",
     driver="GeoJSON"
 )

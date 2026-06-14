@@ -5,7 +5,7 @@ import json
 
 router = APIRouter()
 
-POIS_PATH = "backend/app/services/pois.geojson"
+POIS_PATH = "backend/data/pois/pois.geojson"
 pois_gdf = gpd.read_file(POIS_PATH)
 
 
