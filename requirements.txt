@@ -2,3 +2,5 @@ fastapi
 uvicorn
 pandas
 geopandas
+requests
+shapely
