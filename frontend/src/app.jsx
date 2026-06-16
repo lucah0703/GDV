@@ -27,6 +27,7 @@ const poisByCity = {
     { name: "Mannheim Hbf", type: "Bahnhof", icon: "🚉", coords: [49.479, 8.469], address: "Willy-Brandt-Platz 17, 68161 Mannheim" },
     { name: "Wohnheim Innenstadt", type: "Wohnheim", icon: "🏠", coords: [49.489, 8.462], address: "Innenstadt, 68159 Mannheim" },
     { name: "Hochschulsport Mannheim", type: "Sportanlage", icon: "⚽", coords: [49.492, 8.475], address: "Nähe Universität Mannheim" },
+    { name: "Luisenpark Mannheim", type: "Freizeit", icon: "🌳", coords: [49.4844, 8.4966], address: "Theodor-Heuss-Anlage 2, Mannheim" },
   ],
   Karlsruhe: [
     { name: "Karlsruhe Hbf", type: "Bahnhof", icon: "🚉", coords: [48.9937, 8.4005], address: "Bahnhofplatz 1a, 76137 Karlsruhe" },
@@ -46,14 +47,34 @@ const mobilityStationsByCity = {
       name: "Nextbike Universität Mannheim",
       provider: "Nextbike",
       type: "Bike-Station",
+      vehicle: "bike",
       coords: [49.4835, 8.464],
       capacity: 18,
       availability: { morning: 12, midday: 8, evening: 3 },
     },
     {
+      name: "Nextbike Schloss",
+      provider: "Nextbike",
+      type: "Bike-Station",
+      vehicle: "bike",
+      coords: [49.4827, 8.462],
+      capacity: 14,
+      availability: { morning: 0, midday: 4, evening: 8 },
+    },
+    {
+      name: "Bolt Universität Mannheim",
+      provider: "Bolt",
+      type: "Scooter-Pick-up",
+      vehicle: "scooter",
+      coords: [49.4838, 8.4652],
+      capacity: 10,
+      availability: { morning: 4, midday: 2, evening: 8 },
+    },
+    {
       name: "Nextbike Mannheim Hbf",
       provider: "Nextbike",
       type: "Bike-Station",
+      vehicle: "bike",
       coords: [49.479, 8.469],
       capacity: 15,
       availability: { morning: 4, midday: 7, evening: 1 },
@@ -62,6 +83,7 @@ const mobilityStationsByCity = {
       name: "Bolt Paradeplatz",
       provider: "Bolt",
       type: "Scooter-Pick-up",
+      vehicle: "scooter",
       coords: [49.4875, 8.466],
       capacity: 10,
       availability: { morning: 6, midday: 3, evening: 8 },
@@ -72,6 +94,7 @@ const mobilityStationsByCity = {
       name: "Nextbike KIT Campus Süd",
       provider: "Nextbike",
       type: "Bike-Station",
+      vehicle: "bike",
       coords: [49.0095, 8.4116],
       capacity: 20,
       availability: { morning: 14, midday: 9, evening: 4 },
@@ -80,6 +103,7 @@ const mobilityStationsByCity = {
       name: "Bolt Karlsruhe Hbf",
       provider: "Bolt",
       type: "Scooter-Pick-up",
+      vehicle: "scooter",
       coords: [48.9937, 8.4005],
       capacity: 12,
       availability: { morning: 3, midday: 6, evening: 9 },
@@ -90,6 +114,7 @@ const mobilityStationsByCity = {
       name: "Nextbike Universität Stuttgart",
       provider: "Nextbike",
       type: "Bike-Station",
+      vehicle: "bike",
       coords: [48.7812, 9.1735],
       capacity: 18,
       availability: { morning: 10, midday: 6, evening: 3 },
@@ -98,6 +123,7 @@ const mobilityStationsByCity = {
       name: "Bolt Stuttgart Hbf",
       provider: "Bolt",
       type: "Scooter-Pick-up",
+      vehicle: "scooter",
       coords: [48.7834, 9.1816],
       capacity: 14,
       availability: { morning: 5, midday: 8, evening: 11 },
@@ -125,7 +151,7 @@ export default function App() {
       <header className="header">
         <div>
           <h1>Mikromobilität für Studierende</h1>
-          <p>POI-Erreichbarkeit, Budget-Reichweite und Verfügbarkeit</p>
+          <p>Budget-Reichweite, echte Verfügbarkeit und POI-Erreichbarkeit</p>
         </div>
 
         <div className="selectors">
@@ -148,18 +174,23 @@ export default function App() {
           </label>
 
           <button onClick={() => setShowAvailability(!showAvailability)}>
-            {showAvailability ? "Zur Hauptansicht" : "Verfügbarkeiten anzeigen"}
+            {showAvailability ? "Zur Budget-Ansicht" : "Verfügbarkeiten anzeigen"}
           </button>
         </div>
       </header>
 
       {!showAvailability ? (
-        <Reichweite city={city} school={school} pois={poisByCity[city]} />
+        <Reichweite
+          city={city}
+          school={school}
+          pois={poisByCity[city] || []}
+          stations={mobilityStationsByCity[city] || []}
+        />
       ) : (
         <Verfuegbarkeit
           city={city}
           school={school}
-          stations={mobilityStationsByCity[city]}
+          stations={mobilityStationsByCity[city] || []}
         />
       )}
     </div>

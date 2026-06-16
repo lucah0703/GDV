@@ -437,3 +437,28 @@ button.active,
   font-size: 26px;
   flex-shrink: 0;
 }
+.poi-list-card.real {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.poi-list-card.theoretical {
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.poi-list-card.not-reachable {
+  border-color: #fecaca;
+  background: #fef2f2;
+}
+
+.poi-list-card.not-reachable span {
+  color: #991b1b;
+}
+
+.station-map-marker-inner {
+  min-width: 44px;
+  padding: 0 6px;
+  gap: 2px;
+  font-size: 18px;
+}
