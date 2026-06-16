@@ -1,0 +1,403 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-06-10T13:34:45Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/21412509",
+        "departures_board": "timetable",
+        "internet_access": "no",
+        "name": "Ladenburg",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RLD",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08226:1711",
+        "ref:ibnr": "8003489",
+        "ref:station": "3490",
+        "uic_ref": "8011332",
+        "wheelchair": "yes",
+        "wikidata": "Q22682010"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.6030889,
+          49.4745688
+        ]
+      },
+      "id": "node/21412509"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/25439439",
+        "iata": "MHG",
+        "name": "Mannheim Hauptbahnhof",
+        "name:de": "Mannheim Hauptbahnhof",
+        "name:fr": "Mannheim Gare Centrale",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "note": "Adressdaten an Bahnhofsgebäude",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RM",
+        "railway:ref:SBB": "MAN",
+        "railway:station_category": "2",
+        "ref:FR:sncf:resarail": "DEMHG",
+        "ref:FR:uic8": "80140087",
+        "ref:IFOPT": "de:08222:2417",
+        "ref:ibnr": "8000244",
+        "ref:station": "3925",
+        "short_name": "Mannheim Hbf",
+        "toilets:wheelchair": "yes",
+        "train": "yes",
+        "uic_ref": "8014008",
+        "url": "https://www.bahnhof.de/mannheim-hbf",
+        "wheelchair": "yes",
+        "wikidata": "Q706994",
+        "wikipedia": "de:Mannheim Hauptbahnhof"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4694107,
+          49.4792363
+        ]
+      },
+      "id": "node/25439439"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/60459785",
+        "name": "Mannheim-Waldhof",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RMW",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08222:2615",
+        "ref:ibnr": "8003848",
+        "ref:station": "3936",
+        "start_date": "1879-10",
+        "uic_ref": "8014003",
+        "wheelchair": "no",
+        "wikidata": "Q47004109"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4825676,
+          49.5261774
+        ]
+      },
+      "id": "node/60459785"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/259132917",
+        "name": "Ludwigshafen-Mundenheim",
+        "old_name": "Mundenheim Hbf",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:position": "103.171;0.000",
+        "railway:ref": "RLUM",
+        "railway:ref:parent": "RL",
+        "railway:station_category": "5",
+        "uic_ref": "8003765",
+        "wheelchair": "yes",
+        "wikidata": "Q17521470",
+        "wikipedia": "de:Bahnhof Ludwigshafen-Mundenheim"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4208339,
+          49.4612724
+        ]
+      },
+      "id": "node/259132917"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2950551727",
+        "name": "Mannheim-Neckarau",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "RMN",
+        "railway:ref:count": "1/2",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08222:2481",
+        "ref:ibnr": "8003844",
+        "ref:station": "3932",
+        "uic_ref": "8014048",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4946502,
+          49.4557572
+        ]
+      },
+      "id": "node/2950551727"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3154068055",
+        "name": "Schwetzingen-Hirschacker",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "RHKR",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08226:35055",
+        "ref:ibnr": "8005493",
+        "ref:station": "8260",
+        "start_date": "2022-12-11",
+        "train": "yes",
+        "wikidata": "Q122841762"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5568833,
+          49.4063513
+        ]
+      },
+      "id": "node/3154068055"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3265807466",
+        "name": "Ludwigshafen-Rheingönheim",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:position": "101.392;101.000",
+        "railway:ref": "RLUR",
+        "railway:ref:parent": "RL",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:07314:2189:1",
+        "uic_ref": "8003767",
+        "wheelchair": "yes",
+        "wikidata": "Q47093332"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4092521,
+          49.4471747
+        ]
+      },
+      "id": "node/3265807466"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3419993110",
+        "name": "Mannheim-Käfertal",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RMKL",
+        "railway:station_category": "6",
+        "ref:IFOPT": "de:08222:2356",
+        "ref:ibnr": "8003843",
+        "ref:station": "3930",
+        "uic_ref": "8014006",
+        "wheelchair": "yes",
+        "wikidata": "Q15107221",
+        "wikipedia": "de:Bahnhof Mannheim-Käfertal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.5038114,
+          49.5014671
+        ]
+      },
+      "id": "node/3419993110"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3657001833",
+        "layer": "1",
+        "name": "Mannheim Handelshafen/Jungbusch",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "old_name": "Mannheim-Handelshafen",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "RMHH",
+        "railway:station_category": "6",
+        "ref:IFOPT": "de:08222:2416",
+        "ref:ibnr": "8006508",
+        "ref:station": "3929",
+        "start_date": "1985-06-02",
+        "uic_ref": "8014562"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4539425,
+          49.4927322
+        ]
+      },
+      "id": "node/3657001833"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3822913060",
+        "name": "Mannheim-Neckarstadt",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "RMNS",
+        "railway:station_category": "6",
+        "ref:IFOPT": "de:08222:2446",
+        "ref:ibnr": "8006511",
+        "ref:station": "3933",
+        "start_date": "1985-06-02",
+        "uic_ref": "8014567"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4606257,
+          49.5046094
+        ]
+      },
+      "id": "node/3822913060"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3823497763",
+        "name": "Mannheim-Luzenberg",
+        "network": "Verkehrsverbund Rhein-Neckar",
+        "network:guid": "DE-BW-VRN",
+        "network:short": "VRN",
+        "network:wikidata": "Q1553051",
+        "network:wikipedia": "de:Verkehrsverbund Rhein-Neckar",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "RMLB",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08222:2386",
+        "ref:ibnr": "8006509",
+        "ref:station": "3931",
+        "start_date": "1985-06-02",
+        "uic_ref": "8014563"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4783424,
+          49.5176596
+        ]
+      },
+      "id": "node/3823497763"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/4831509038",
+        "name": "Limburgerhof",
+        "old_name": "Mutterstadt Hbf",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "RLI",
+        "railway:station_category": "4",
+        "uic_ref": "8003687",
+        "wheelchair": "yes",
+        "wikidata": "Q16318639",
+        "wikipedia": "de:Bahnhof Limburgerhof"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.390697,
+          49.4241965
+        ]
+      },
+      "id": "node/4831509038"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/5108659830",
+        "name": "Ludwigshafen (Rhein) Mitte",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:position": "68.600;106.442",
+        "railway:ref": "RLSM",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:07314:2019",
+        "ref:station": "7385",
+        "uic_name": "Ludwigshafen(Rhein) Mitte",
+        "uic_ref": "8003759",
+        "wheelchair": "yes",
+        "wikidata": "Q320489",
+        "wikipedia": "de:Bahnhof Ludwigshafen (Rhein) Mitte"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4528731,
+          49.4792999
+        ]
+      },
+      "id": "node/5108659830"
+    }
+  ]
+}

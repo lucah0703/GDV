@@ -1,0 +1,945 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-06-10T13:29:41Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/103011354",
+        "exit": "right",
+        "fee_zone": "2",
+        "name": "Leinfelden",
+        "network": "VVS",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TLF",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08116:175",
+        "ref:ibnr": "8003622",
+        "ref:station": "3626",
+        "train": "yes",
+        "uic_ref": "8029369",
+        "wheelchair": "yes",
+        "wikidata": "Q195824",
+        "wikipedia": "de:Bahnhof Leinfelden"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1427508,
+          48.6966965
+        ]
+      },
+      "id": "node/103011354"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/248909838",
+        "alt_name": "Stuttgart-Untertürkheim Personenbahnhof",
+        "fee_zone": "1",
+        "name": "Stuttgart-Untertürkheim",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "note": "\"Stuttgart-Untertürkheim\" ist die im offizielle Bahnhofsbezeichnung, wie sie beispielsweise auch in Fahrplänen steht; die \"amtliche\" Betriebsstellenbezeichnung ist \"Stuttgart-Untertürkheim Pbf\" (ein Bahnhofsteil des Bahnhofs Untertürkheim)",
+        "official_name": "Stuttgart-Untertürkheim Pbf",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSU P",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08111:6085",
+        "ref:ibnr": "8005775",
+        "ref:station": "6086",
+        "short_name": "Stg-Utürkhm Pbf",
+        "train": "yes",
+        "uic_ref": "8029045",
+        "wheelchair": "limited",
+        "wikidata": "Q801479"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2504725,
+          48.7798209
+        ]
+      },
+      "id": "node/248909838"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/263259559",
+        "alt_name": "Obertürkheim",
+        "name": "Stuttgart-Obertürkheim",
+        "note": "\"Stuttgart-Obertürkheim\" ist die offizielle Bahnhofsbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "rail": "yes",
+        "railway": "station",
+        "railway:ref": "TSOM",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08111:6091",
+        "ref:ibnr": "8005772",
+        "ref:station": "6081",
+        "short_name": "Stg-Obertürkheim",
+        "uic_ref": "8029052",
+        "wheelchair": "yes",
+        "wikidata": "Q801476"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2681173,
+          48.7617575
+        ]
+      },
+      "id": "node/263259559"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/263346985",
+        "alt_name": "Stuttgart Nord",
+        "name": "Stuttgart Nordbahnhof",
+        "note": "\"Stuttgart Nordbahnhof\" die offizielle Betriebsstellenbezeichnung (siehe https://data.deutschebahn.com/dataset/data-betriebsstellen.html), \"Nordbahnhof\" offizielle Kurzbezeichnung und laut örtlichen Schildern; vereinzelt auch \"Stuttgart Nord\" noch genutzt",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TSN",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08111:6295",
+        "ref:ibnr": "8005767",
+        "ref:station": "6073",
+        "short_name": "Nordbahnhof",
+        "toilets:wheelchair": "no",
+        "uic_ref": "8029033",
+        "wheelchair": "limited",
+        "wikidata": "Q538138",
+        "wikipedia": "de:Bahnhof Stuttgart Nord"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.188064,
+          48.80373
+        ]
+      },
+      "id": "node/263346985"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/278553741",
+        "alt_name": "Stuttgart Hbf (S-Bahn)",
+        "level": "-3",
+        "name": "Stuttgart Hauptbahnhof (tief)",
+        "note": "\"Stuttgart Hbf tief\" ist die offizielle Betriebsstellenbezeichnung",
+        "note:alt_name": "\"Stuttgart Hbf (S-Bahn)\" (Kürzel TSB) ist die Bezeichnung des mit Inbetriebnahme von Stuttgart 21 geplanten neuen Bahnhofsteils der S-Bahn-Stammstrecke",
+        "official_name": "Stuttgart Hbf tief",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "rail": "yes",
+        "railway": "station",
+        "railway:ref": "TS T",
+        "ref:IFOPT": "de:08111:6118",
+        "ref:ibnr": "8098096",
+        "ref:station": "6071",
+        "short_name": "Stg Hbf tief",
+        "toilets:wheelchair": "no",
+        "uic_ref": "8029376",
+        "wheelchair": "yes",
+        "wikidata": "Q112258959"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1799271,
+          48.7830723
+        ]
+      },
+      "id": "node/278553741"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/279987129",
+        "name": "Stuttgart-Zazenhausen",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TSZA",
+        "railway:station_category": "7",
+        "ref:IFOPT": "de:08111:1200",
+        "ref:ibnr": "8005777",
+        "ref:station": "6089",
+        "train": "yes",
+        "uic_ref": "8029027"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1995088,
+          48.8360504
+        ]
+      },
+      "id": "node/279987129"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/303467028",
+        "alt_name": "Feuerbach",
+        "name": "Stuttgart-Feuerbach",
+        "note": "Einfach \"Feuerbach\" laut örtlichen Schildern; betrieblich seit Dezember 2025: Stuttgart-Feuerbach S-Bahn",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TSFE",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08111:6157",
+        "ref:ibnr": "8005770",
+        "ref:station": "6078",
+        "short_name": "Feuerbach S-Bahn",
+        "toilets:wheelchair": "no",
+        "train": "yes",
+        "uic_ref": "8029031",
+        "wheelchair": "limited",
+        "wikidata": "Q801471",
+        "wikipedia": "de:Bahnhof Stuttgart-Feuerbach"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1693064,
+          48.813504
+        ]
+      },
+      "id": "node/303467028"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/304359311",
+        "alt_name": "Stuttgart-Weilimdorf",
+        "fee_zone": "1;2",
+        "name": "Weilimdorf",
+        "network": "VVS",
+        "note": "\"Stuttgart-Weilimdorf\" ist die offizielle Betriebsstellenbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TSWF",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08111:2270",
+        "ref:ibnr": "8006268",
+        "ref:station": "6088",
+        "uic_ref": "8029384",
+        "wikidata": "Q801482"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0944331,
+          48.822086
+        ]
+      },
+      "id": "node/304359311"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/304367932",
+        "fee_zone": "1;2",
+        "name": "Korntal",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "network:guid": "DE-BW-VVS",
+        "network:short": "VVS",
+        "network:wikidata": "Q2516108",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TKO",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08118:7603",
+        "ref:ibnr": "8003409",
+        "ref:station": "3377",
+        "station": "train",
+        "train": "yes",
+        "uic_ref": "8029441",
+        "wheelchair": "yes",
+        "wikidata": "Q801028"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1214162,
+          48.8265137
+        ]
+      },
+      "id": "node/304367932"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/997756196",
+        "name": "Esslingen-Mettingen",
+        "note": "\"Esslingen-Mettingen\" ist die offizielle Betriebsstellenbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TEME",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08116:1801",
+        "ref:ibnr": "8001921",
+        "ref:station": "1717",
+        "train": "yes",
+        "uic_ref": "8029053",
+        "wheelchair": "limited",
+        "wheelchair:description": "nur Gleis 3+4 mit Rollstuhl erreichbar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2756947,
+          48.7472159
+        ]
+      },
+      "id": "node/997756196"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/1635698272",
+        "TMC:cid_58:tabcd_1:Class": "Area",
+        "TMC:cid_58:tabcd_1:LCLversion": "9.00",
+        "TMC:cid_58:tabcd_1:LocationCode": "26329",
+        "addr:city": "Stuttgart",
+        "addr:housenumber": "2",
+        "addr:postcode": "70173",
+        "addr:street": "Arnulf-Klett-Platz",
+        "departures_board": "realtime",
+        "departures_board:speech_output": "no",
+        "iata": "ZWS",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "name": "Stuttgart Hauptbahnhof",
+        "name:de": "Stuttgart Hauptbahnhof",
+        "name:en": "Stuttgart Main Station",
+        "name:fr": "Stuttgart Gare Centrale",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "note:iata": "Den IATA-Code hat der Bahnhof wegen des AIRail-Verkehrsangebots.",
+        "note:name": "\"Stuttgart Hbf (oben)\" ist die 'bahnamtliche' Betriebsstellenbezeichnung",
+        "official_name": "Stuttgart Hbf (oben)",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TS",
+        "railway:station_category": "1",
+        "ref:FR:sncf:resarail": "DESGT",
+        "ref:FR:uic8": "80290346",
+        "ref:IFOPT": "de:08111:6115",
+        "ref:ibnr": "8000096",
+        "ref:station": "6071",
+        "short_name": "Stuttgart Hbf",
+        "stop_date": "2025-12",
+        "toilets:wheelchair": "yes",
+        "train": "yes",
+        "uic_ref": "8029034",
+        "url": "https://www.bahnhof.de/stuttgart-hbf",
+        "vehicles": "train",
+        "website": "https://www.einkaufsbahnhof.de/stuttgart-hauptbahnhof/",
+        "wheelchair": "limited",
+        "wikidata": "Q613766",
+        "wikipedia": "de:Stuttgart Hauptbahnhof"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1833959,
+          48.7856099
+        ]
+      },
+      "id": "node/1635698272"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2432321160",
+        "alt_name": "Schwabstraße",
+        "name": "Stuttgart Schwabstraße",
+        "note": "\"Stuttgart Schwabstraße\" ist die offizielle Betriebsstellenbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "rail": "yes",
+        "railway": "station",
+        "railway:position": "2.472",
+        "railway:ref": "TSS",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08111:6052",
+        "ref:ibnr": "8006698",
+        "ref:station": "6083",
+        "short_name": "Stg Schwabstraße",
+        "train": "yes",
+        "uic_ref": "8029373",
+        "wheelchair": "no",
+        "wikidata": "Q801490",
+        "wikipedia": "de:Bahnhof Stuttgart Schwabstraße"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1569698,
+          48.7702483
+        ]
+      },
+      "id": "node/2432321160"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2521443817",
+        "departures_board": "realtime",
+        "departures_board:speech_output": "no",
+        "name": "Stuttgart-Vaihingen",
+        "note": "\"Stuttgart-Vaihingen\" ist die offizielle Betriebsstellenbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSV",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08111:6002",
+        "ref:ibnr": "8005776",
+        "ref:station": "6087",
+        "toilets:wheelchair": "no",
+        "train": "yes",
+        "uic_ref": "8029367",
+        "wheelchair": "yes",
+        "wikidata": "Q801478",
+        "wikipedia": "de:Bahnhof Stuttgart-Vaihingen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1131764,
+          48.7264626
+        ]
+      },
+      "id": "node/2521443817"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2661524407",
+        "departures_board": "no",
+        "fee_zone": "1",
+        "name": "Stuttgart-Zuffenhausen",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "network:guid": "DE-BW-VVS",
+        "network:short": "VVS",
+        "network:wikidata": "Q2516108",
+        "note": "\"Stuttgart-Zuffenhausen\" ist die offizielle und auch die in den Fahrplanmedien genannte Betriebsstellenbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSZ",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08111:6465",
+        "ref:ibnr": "8005778",
+        "ref:station": "6090",
+        "toilets:wheelchair": "no",
+        "train": "yes",
+        "uic_ref": "8029038",
+        "wheelchair": "limited",
+        "wikidata": "Q801481",
+        "wikipedia": "de:Bahnhof Stuttgart-Zuffenhausen"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.16721,
+          48.8295258
+        ]
+      },
+      "id": "node/2661524407"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3027565242",
+        "alt_name": "Feuersee",
+        "fee_zone": "1",
+        "name": "Stuttgart Feuersee",
+        "network": "VVS",
+        "note": "\"Stuttgart Feuersee\" ist die offizielle Betriebsstellenbezeichnung; aufgrund fehlender Weichen im Stationsbereich Haltepunkt (railway=halt) statt Bahnhof (railway=station)",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TSFS",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08111:6221",
+        "ref:ibnr": "8006699",
+        "ref:station": "6079",
+        "short_name": "Stg Feuersee",
+        "train": "yes",
+        "uic_ref": "8029374",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1659138,
+          48.7726044
+        ]
+      },
+      "id": "node/3027565242"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3034741424",
+        "name": "Stuttgart Universität",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "network:guid": "DE-BW-VVS",
+        "network:short": "VVS",
+        "network:wikidata": "Q2516108",
+        "note": "\"Stuttgart Universität\" (ohne Bindestrich) ist die offizielle Betriebsstellenbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TSUN",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08111:6008",
+        "ref:ibnr": "8006513",
+        "ref:station": "6076",
+        "train": "yes",
+        "uic_ref": "8029723",
+        "wikidata": "Q801491"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.105765,
+          48.7452713
+        ]
+      },
+      "id": "node/3034741424"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3034811520",
+        "alt_name": "Österfeld",
+        "name": "Stuttgart Österfeld",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "note": "\"Stuttgart Österfeld\" (ohne Bindestrich) ist die offizielle Betriebsstellenbezeichnung",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSOS",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08111:6027",
+        "ref:ibnr": "8005779",
+        "ref:station": "6075",
+        "short_name": "Stg Österfeld",
+        "uic_ref": "8029044",
+        "wheelchair": "yes",
+        "wikidata": "Q801483"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1167264,
+          48.7375038
+        ]
+      },
+      "id": "node/3034811520"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3043128922",
+        "name": "Stuttgart Neuwirtshaus (Porscheplatz)",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TNW",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08111:1403",
+        "ref:ibnr": "8004338",
+        "ref:station": "4467",
+        "short_name": "Neuwirtshaus",
+        "toilets:wheelchair": "no",
+        "uic_ref": "8029440",
+        "wheelchair": "yes",
+        "wikidata": "Q801486"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1522098,
+          48.8338388
+        ]
+      },
+      "id": "node/3043128922"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3043348659",
+        "check_date:wheelchair": "2023-05-11",
+        "departures_board": "realtime",
+        "departures_board:speech_output": "no",
+        "exit": "left",
+        "fee_zone": "1;2",
+        "name": "Stuttgart-Rohr",
+        "name:note": "Die offizielle Betriebsstellenbezeichnung lautet \"Stuttgart-Rohr\"",
+        "network": "VVS",
+        "note": "betrieblich ist Stuttgart-Rohr ein Bahnhofsteil des Bahnhof Stuttgart-Vaihingen; aufgrund von Weichen im Stationsbereich kann die Station wohl als Bahnhof gelten",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSRO",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08111:6001",
+        "ref:ibnr": "8005773",
+        "ref:station": "6082",
+        "short_name": "Stuttgart-Rohr",
+        "train": "yes",
+        "uic_ref": "8029381",
+        "wheelchair": "yes",
+        "wikidata": "Q801477",
+        "wikipedia": "de:Bahnhof Stuttgart-Rohr"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1084072,
+          48.7177263
+        ]
+      },
+      "id": "node/3043348659"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3043366695",
+        "name": "Oberaichen",
+        "note": "Aufgrund fehlender Weichen im Stationsberich offenbar Haltepunkt (railway=halt) statt Bahnhof (railway=station)",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TOAI",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08116:2105",
+        "ref:ibnr": "8004496",
+        "ref:station": "4617",
+        "uic_ref": "8029789",
+        "wheelchair": "yes",
+        "wikidata": "Q169481"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1272836,
+          48.7052607
+        ]
+      },
+      "id": "node/3043366695"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3043452988",
+        "name": "Bad Cannstatt",
+        "note": "\"Stuttgart-Bad Cannstatt\" ist die offizielle Betriebsstellenbezeichnung - deshalb zu official_name verschoben",
+        "official_name": "Stuttgart-Bad Cannstatt",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSC",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08111:6333",
+        "ref:ibnr": "8005769",
+        "ref:station": "6077",
+        "short_name": "Stg-Bad Cannst",
+        "train": "yes",
+        "uic_ref": "8029041",
+        "wheelchair": "yes",
+        "wikidata": "Q321680",
+        "wikipedia": "de:Bahnhof Stuttgart-Bad Cannstatt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2168515,
+          48.8014069
+        ]
+      },
+      "id": "node/3043452988"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3045280857",
+        "fee_zone": "1",
+        "name": "Nürnberger Straße",
+        "network": "VVS",
+        "official_name": "Stuttgart Nürnberger Straße",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:position": "2.700",
+        "railway:ref": "TSNU",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08111:34",
+        "ref:ibnr": "8004357",
+        "ref:station": "6074",
+        "short_name": "Stg Nürnbg Str",
+        "train": "yes",
+        "uic_ref": "8029512",
+        "wheelchair": "limited",
+        "wikidata": "Q130397",
+        "wikipedia": "de:Haltepunkt Stuttgart Nürnberger Straße"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2348625,
+          48.806375
+        ]
+      },
+      "id": "node/3045280857"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3045304520",
+        "alt_name": "Sommerrain",
+        "fee_zone": "1",
+        "name": "Sommerrain",
+        "network": "VVS",
+        "note": "\"Stuttgart Sommerrain\" ist die offizielle und in den Fahrplanmedien ausgewiesene Betriebsstellenbezeichnung - deshalb official_name",
+        "official_name": "Stuttgart-Sommerrain",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "rail": "yes",
+        "railway": "halt",
+        "railway:ref": "TSSM",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08111:1300",
+        "ref:ibnr": "8005774",
+        "ref:station": "6084",
+        "short_name": "Stg-Sommerrain",
+        "train": "yes",
+        "uic_ref": "8029513",
+        "wheelchair": "no"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.248517,
+          48.8152317
+        ]
+      },
+      "id": "node/3045304520"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3045348184",
+        "bus": "no",
+        "fee_zone": "1;2",
+        "name": "Fellbach",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "note": "Dieser Node nimmt stellvertretend für den Bahnhof die Bahnhofsinformationen auf (je Bahnhof soll laut OSM-Wiki nur ein Node gesetzt werden)",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "rail": "yes",
+        "railway": "station",
+        "railway:ref": "TFE",
+        "railway:station_category": "3",
+        "ref": "1",
+        "ref:IFOPT": "de:08119:6500",
+        "ref:ibnr": "8001974",
+        "ref:station": "1775",
+        "uic_ref": "8029514",
+        "wheelchair": "yes",
+        "wikidata": "Q130382",
+        "wikipedia": "de:Bahnhof Fellbach"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2707765,
+          48.820297
+        ]
+      },
+      "id": "node/3045348184"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3045595163",
+        "departures_board": "realtime",
+        "departures_board:speech_output": "no",
+        "fee_zone": "2;3",
+        "name": "Ditzingen",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "network:guid": "DE-BW-VVS",
+        "network:short": "VVS",
+        "network:wikidata": "Q2516108",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TDI",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08118:7000",
+        "ref:ibnr": "8001476",
+        "ref:station": "1234",
+        "train": "yes",
+        "uic_ref": "8029442",
+        "wheelchair": "yes",
+        "wikidata": "Q800671"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.0674255,
+          48.8235995
+        ]
+      },
+      "id": "node/3045595163"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3055341381",
+        "fee_zone": "2",
+        "name": "Kornwestheim Personenbahnhof",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "network:guid": "DE-BW-VVS",
+        "network:short": "VVS",
+        "network:wikidata": "Q2516108",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TKH",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08118:1402",
+        "ref:ibnr": "8003411",
+        "ref:station": "3379",
+        "short_name": "Kornwestheim Pbf",
+        "train": "yes",
+        "uic_ref": "8029026",
+        "wheelchair": "yes",
+        "wikidata": "Q440554",
+        "wikipedia": "de:Kornwestheim Personenbahnhof"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.1800732,
+          48.8621538
+        ]
+      },
+      "id": "node/3055341381"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3068189388",
+        "alt_name": "Stuttgart Neckarpark (Mercedes-Benz)",
+        "fee_zone": "1",
+        "name": "Stuttgart Neckarpark",
+        "network": "Verkehrs- und Tarifverbund Stuttgart",
+        "network:guid": "DE-BW-VVS",
+        "network:short": "VVS",
+        "network:wikidata": "Q2516108",
+        "note": "\"Stuttgart Neckarpark\" ist die offizielle Stationsbezeichhnung",
+        "old_name": "Gottlieb-Daimler-Stadion",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSNS",
+        "railway:station_category": "4",
+        "ref:IFOPT": "de:08111:6080",
+        "ref:ibnr": "8006743",
+        "ref:station": "6072",
+        "short_name": "Stg Neckarpark",
+        "toilets:wheelchair": "no",
+        "train": "yes",
+        "uic_ref": "8029377",
+        "wheelchair": "yes",
+        "wikidata": "Q801487",
+        "wikipedia": "de:Bahnhof Stuttgart Neckarpark"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2411731,
+          48.7918161
+        ]
+      },
+      "id": "node/3068189388"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6298426136",
+        "name": "Stuttgart-Münster",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "TSM",
+        "railway:station_category": "7",
+        "ref:IFOPT": "de:08111:1504",
+        "ref:ibnr": "8005771",
+        "ref:station": "6080",
+        "short_name": "Stg-Münster",
+        "train": "yes",
+        "uic_ref": "8029028",
+        "wheelchair": "yes",
+        "wikidata": "Q801475",
+        "wikipedia": "de:Bahnhof Stuttgart-Münster"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2161743,
+          48.8207118
+        ]
+      },
+      "id": "node/6298426136"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/6298426137",
+        "name": "Stuttgart-Ebitzweg",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:ref": "TSEB",
+        "railway:station_category": "7",
+        "ref:IFOPT": "de:08111:1604",
+        "ref:ibnr": "8005766",
+        "ref:station": "6070",
+        "short_name": "Stg-Ebitzweg",
+        "train": "yes",
+        "uic_ref": "8029029",
+        "wheelchair": "limited"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          9.2318241,
+          48.8037427
+        ]
+      },
+      "id": "node/6298426137"
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "type": "FeatureCollection",
+  "generator": "overpass-turbo",
+  "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.",
+  "timestamp": "2026-06-10T13:32:45Z",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/25242218",
+        "check_date:wheelchair": "2024-09-28",
+        "name": "Karlsruhe West",
+        "note": "Die Bahnsteige liegen zwischen den Weichen der beiden Bahnhofsköpfe, so dass sie nicht RKWU 'Karsrihe West Hp' sein können.",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RKW",
+        "railway:station_category": "6",
+        "ref:IFOPT": "de:08212:6005",
+        "ref:ibnr": "8003183",
+        "ref:station": "3108",
+        "uic_ref": "8014095",
+        "wheelchair": "no",
+        "wikidata": "Q11735895"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3628863,
+          49.0023942
+        ]
+      },
+      "id": "node/25242218"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/29542815",
+        "name": "Maximiliansau Im Rüsten",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "halt",
+        "railway:position": "51.480",
+        "railway:ref": "RMAI",
+        "railway:station_category": "7",
+        "ref:IFOPT": "de:7334:1724:1",
+        "uic_name": "Maximiliansau-Im Rüsten",
+        "uic_ref": "8003911",
+        "wheelchair": "yes",
+        "wikidata": "Q17709042"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2795954,
+          49.0349146
+        ]
+      },
+      "id": "node/29542815"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/75655504",
+        "name": "Forchheim (b Karlsruhe)",
+        "network": "Karlsruher Verkehrsverbund",
+        "note": "Schreibweise im uic_name (unschön...) lt. Verzeichnis – bitte nicht ändern. Stationsschilder sind mit \"Forchheim\" ohne Zusatz beschriftet!",
+        "official_name": "Forchheim (bei Karlsruhe)",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RFM",
+        "railway:station_category": "6",
+        "ref:IFOPT": "de:08215:1818",
+        "ref:ibnr": "8002023",
+        "ref:station": "1829",
+        "ticket_vending": "no",
+        "uic_name": "Forchheim(b Karlsruhe)",
+        "uic_ref": "8014234",
+        "wheelchair": "limited",
+        "wikidata": "Q20170857",
+        "wikipedia": "de:Bahnhof Forchheim (b Karlsruhe)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3387483,
+          48.964715
+        ]
+      },
+      "id": "node/75655504"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/117367378",
+        "name": "Wörth (Rhein)",
+        "network": "Karlsruher Verkehrsverbund",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RWRT",
+        "railway:station_category": "4",
+        "train": "yes",
+        "uic_name": "Wörth (Rhein)",
+        "uic_ref": "8000254",
+        "wheelchair": "yes",
+        "wikidata": "Q15107313",
+        "wikipedia": "de:Bahnhof Wörth (Rhein)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.2731506,
+          49.0456919
+        ]
+      },
+      "id": "node/117367378"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/269735124",
+        "check_date:wheelchair": "2024-06-24",
+        "name": "Karlsruhe-Knielingen",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RKIN",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08212:32586",
+        "ref:ibnr": "8003186",
+        "ref:station": "3111",
+        "uic_ref": "8014081",
+        "wheelchair": "limited",
+        "wikidata": "Q116017410"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3411955,
+          49.0266524
+        ]
+      },
+      "id": "node/269735124"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2417382807",
+        "name": "Ettlingen West",
+        "network": "Karlsruher Verkehrsverbund",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RETL",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08215:1840",
+        "ref:ibnr": "8001926",
+        "ref:station": "1725",
+        "uic_ref": "8014238",
+        "wheelchair": "limited",
+        "wikidata": "Q116016556"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3878674,
+          48.9471361
+        ]
+      },
+      "id": "node/2417382807"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2574283615",
+        "iata": "KJR",
+        "iata:note": "AIRail Flughafen",
+        "internet_access": "wlan",
+        "internet_access:fee": "no",
+        "internet_access:fee:description": "30min kostenlos",
+        "internet_access:operator": "Deutsche Telekom AG",
+        "internet_access:ssid": "Telekom",
+        "max_level": "1",
+        "min_level": "-1",
+        "name": "Karlsruhe Hauptbahnhof",
+        "name:fr": "Karlsruhe Gare Centrale",
+        "operator": "DB InfraGO AG",
+        "platforms": "7",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RK",
+        "railway:station_category": "1",
+        "ref:FR:sncf:resarail": "DEQKA",
+        "ref:FR:uic8": "80142281",
+        "ref:IFOPT": "de:08212:90",
+        "ref:ibnr": "8000191",
+        "ref:station": "3107",
+        "short_name": "Karlsruhe Hbf",
+        "uic_ref": "8014228",
+        "website": "https://www.bahnhof.de/bahnhof-de/bahnhof/Karlsruhe-Hbf-1019530",
+        "wheelchair": "yes",
+        "wikidata": "Q688541",
+        "wikipedia": "de:Karlsruhe Hauptbahnhof"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4020518,
+          48.9936164
+        ]
+      },
+      "id": "node/2574283615"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2827402189",
+        "addr:city": "Karlsruhe",
+        "addr:housenumber": "73",
+        "addr:postcode": "76139",
+        "addr:street": "Karlsruher Straße",
+        "name": "Karlsruhe Hagsfeld",
+        "network": "Karlsruher Verkehrsverbund",
+        "network:short": "KVV",
+        "network:wikidata": "Q1733986",
+        "note:name": "steht vor Ort ohne Bindestrich auf dem Bahnhofsschild",
+        "operator": "DB InfraGO AG",
+        "operator:wikidata": "Q122870674",
+        "operator:wikipedia": "de:DB InfraGO",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RKHA",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08212:3102",
+        "ref:ibnr": "8003185",
+        "ref:station": "3110",
+        "short_name": "Hagsfeld",
+        "train": "yes",
+        "uic_name": "Karlsruhe-Hagsfeld",
+        "uic_ref": "8007281",
+        "wheelchair": "yes",
+        "wheelchair:description": "Zugang zum Bahnsteig barrierefrei über Rampen, bzw. Aufug. Alle Züge, die den Bahnhof anfahren, haben aber Stufen im Türbereich. Diese kann mit einer vom Lokführer bedienten Überfahrhilfe überbrückt werden.",
+        "wikidata": "Q64494822",
+        "wikipedia": "en:Karlsruhe-Hagsfeld station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4537121,
+          49.0262453
+        ]
+      },
+      "id": "node/2827402189"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2827470327",
+        "name": "Blankenloch",
+        "network": "Karlsruher Verkehrsverbund",
+        "on_demand": "no",
+        "operator": "DB InfraGO AG",
+        "operator:wikidata": "Q122870674",
+        "operator:wikipedia": "de:DB InfraGO",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RBAN",
+        "railway:station_category": "5",
+        "ref:IFOPT": "de:08215:32239",
+        "ref:ibnr": "8001009",
+        "ref:station": "692",
+        "request_stop": "yes",
+        "uic_ref": "8014070",
+        "wheelchair": "yes",
+        "wheelchair:description": "Gleis 1 ist über eine Rampe erreichbar. Barrierefreier Zugang zu den Gleisen 2 und 3 über Aufzug möglich. Alle Züge, die den Bahnhof anfahren, haben aber Stufen im Türbereich."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4647709,
+          49.0668996
+        ]
+      },
+      "id": "node/2827470327"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/2958859136",
+        "check_date:wheelchair": "2024-04-11",
+        "ele": "116",
+        "name": "Karlsruhe-Durlach",
+        "name:AVG": "Karlsruhe-Durlach Bahnhof",
+        "network": "Karlsruher Verkehrsverbund",
+        "operator": "DB InfraGO AG",
+        "operator:wikidata": "Q122870674",
+        "operator:wikipedia": "de:DB InfraGO",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RKDU",
+        "railway:station_category": "3",
+        "ref:IFOPT": "de:08212:801",
+        "ref:ibnr": "8003184",
+        "ref:station": "3109",
+        "short_name:AVG": "Karlsruhe-Durlach Bf",
+        "source:ele": "Schild am Empfangsgebäude",
+        "start_date": "1911",
+        "uic_ref": "8014043",
+        "wheelchair": "limited",
+        "wheelchair:description": "Die Linien S4 , S5 und S6 (Gleise 10,11 und 12) sind nicht barrierefrei zu erreichen, Die Trams sind nach Bauart nicht alle barrierefrei. Manche sind ebenerdig, andere habe Stufen im Einsteigbereich.",
+        "wikidata": "Q442305",
+        "wikipedia": "de:Bahnhof Karlsruhe-Durlach"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.4622543,
+          49.0020956
+        ]
+      },
+      "id": "node/2958859136"
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "node/3321341099",
+        "light_rail": "yes",
+        "name": "Karlsruhe-Mühlburg",
+        "operator": "DB InfraGO AG",
+        "public_transport": "station",
+        "railway": "station",
+        "railway:ref": "RKMG",
+        "railway:station_category": "6",
+        "ref:IFOPT": "de:08212:32587",
+        "ref:ibnr": "8003187",
+        "ref:station": "3112",
+        "train": "yes",
+        "uic_ref": "8014083",
+        "wheelchair": "limited",
+        "wikidata": "Q15891050",
+        "wikipedia": "de:Bahnhof Karlsruhe-Mühlburg"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.3511104,
+          49.0145576
+        ]
+      },
+      "id": "node/3321341099"
+    }
+  ]
+}
