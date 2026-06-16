@@ -1,4 +1,25 @@
-backend/.venv
-__pycache__
+# Python
+backend/.venv/
+backend/__pycache__/
+**/__pycache__/
 *.pyc
+
+# Node
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.vite/
+frontend/.vite/
+
+# IDE
+.vscode/
+.idea/
+
+# Betriebssystem
 .DS_Store
+Thumbs.db
+
+# Umgebungsvariablen
+.env
+.env.*
