@@ -6,6 +6,7 @@ import {
   Marker,
   Popup,
   Circle,
+  GeoJSON,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -29,9 +30,19 @@ function getTrafficEmoji(status) {
   return "🔴";
 }
 
+function getAvailable(station, timeSlot) {
+  return (
+    station.availability?.[timeSlot] ??
+    station.availability?.current ??
+    station.availability?.morning ??
+    0
+  );
+}
+
 function getAvailabilityStatus(station, timeSlot) {
-  const available = station.availability[timeSlot];
-  const ratio = available / station.capacity;
+  const available = getAvailable(station, timeSlot);
+  const capacity = Math.max(station.capacity || 1, 1);
+  const ratio = available / capacity;
 
   if (ratio >= 0.5) return "green";
   if (ratio >= 0.2) return "yellow";
@@ -79,14 +90,14 @@ export default function Map({
   label,
   markerCoords,
   pois = [],
-  selectedPoi = null,
   setSelectedPoi = () => {},
   availability = false,
-  timeSlot = "morning",
+  timeSlot = "current",
   stationsInRadius = [],
   showStationsInBudgetView = false,
   realRadius = 0,
   theoreticalRadius = 0,
+  isochroneData = null,
 }) {
   const startpointIcon = createStartpointIcon();
 
@@ -101,7 +112,25 @@ export default function Map({
 
       <RecenterMap center={center} />
 
-      {!availability && theoreticalRadius > 0 && (
+      {!availability &&
+        isochroneData?.results &&
+        Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
+          offers.map((offer) => (
+            <GeoJSON
+              key={`${vehicleType}-${offer.provider}-${offer.plan_id}`}
+              data={offer.isochrone}
+              style={{
+                color: vehicleType === "bike" ? "#047857" : "#7c3aed",
+                fillColor: vehicleType === "bike" ? "#047857" : "#7c3aed",
+                fillOpacity: 0.12,
+                weight: 2,
+                dashArray: vehicleType === "bike" ? undefined : "8 8",
+              }}
+            />
+          ))
+        )}
+
+      {!availability && !isochroneData && theoreticalRadius > 0 && (
         <Circle
           center={center}
           radius={theoreticalRadius}
@@ -115,7 +144,7 @@ export default function Map({
         />
       )}
 
-      {!availability && realRadius > 0 && (
+      {!availability && !isochroneData && realRadius > 0 && (
         <Circle
           center={center}
           radius={realRadius}
@@ -151,7 +180,7 @@ export default function Map({
       {!availability &&
         pois.map((poi) => (
           <Marker
-            key={poi.name}
+            key={poi.id}
             position={poi.coords}
             eventHandlers={{
               click: () => setSelectedPoi(poi),
@@ -169,13 +198,14 @@ export default function Map({
           </Marker>
         ))}
 
-      {showStationsInBudgetView &&
+      {(availability || showStationsInBudgetView) &&
         stationsInRadius.map((station) => {
           const status = getAvailabilityStatus(station, timeSlot);
+          const available = getAvailable(station, timeSlot);
 
           return (
             <Marker
-              key={station.name}
+              key={`${station.vehicle}-${station.id || station.name}`}
               position={station.coords}
               icon={createStationIcon(status, station.vehicle)}
             >
@@ -184,28 +214,7 @@ export default function Map({
                 <br />
                 {station.provider} · {station.type}
                 <br />
-                {station.availability[timeSlot]} von {station.capacity} verfügbar
-              </Popup>
-            </Marker>
-          );
-        })}
-
-      {availability &&
-        stationsInRadius.map((station) => {
-          const status = getAvailabilityStatus(station, timeSlot);
-
-          return (
-            <Marker
-              key={station.name}
-              position={station.coords}
-              icon={createStationIcon(status, station.vehicle)}
-            >
-              <Popup>
-                {getTrafficEmoji(status)} <strong>{station.name}</strong>
-                <br />
-                {station.provider} · {station.type}
-                <br />
-                {station.availability[timeSlot]} von {station.capacity} verfügbar
+                {available} von {station.capacity} verfügbar
               </Popup>
             </Marker>
           );
