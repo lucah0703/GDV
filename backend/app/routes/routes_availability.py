@@ -142,7 +142,7 @@ async def get_history_availability(city: str):
     file_path = os.path.join(AVAILABILITY_DATA_DIR, file_name)
     
     if not os.path.exists(file_path):
-        raise HTTPException(status_code=404, detail="Daten not found")
+        raise HTTPException(status_code=404, detail="Data not found")
         
     df = pd.read_csv(file_path)
 
@@ -181,16 +181,12 @@ async def get_history_availability_segments(city: str):
     elif city_key == "karlsruhe":
         bike_file_name = "KA_kw21_stationinfo.csv"
     else:
-        raise HTTPException(
-            status_code=404, 
-            detail=f"Stadt '{city}' nicht unterstützt."
-        )
+        raise HTTPException(status_code=404, detail=f"City not found")
     
     # Daten für Fahrrad und E-Scooter getrennt 
     bike_data = fetch_bike_history_segments(bike_file_name)
     scooter_data = fetch_scooter_history_segments(city_key)
     
-    # 3. Kombiniertes Ergebnis zurückgeben
     return {
         "bike": bike_data,
         "scooter": scooter_data

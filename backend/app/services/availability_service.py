@@ -28,7 +28,7 @@ def fetch_bike_availability(bike_gbfs_url: str, file_name: str) -> list:
     try:
         gbfs_stationstatus = requests.get(bike_gbfs_url).json()
     except Exception as e:
-        print(f"Fehler beim Abrufen der Bike-API: {e}")
+        print(f"Erorr Bike-API: {e}")
         return []
 
     file_path = os.path.join(STATION_DATA_DIR, file_name)
@@ -95,7 +95,7 @@ def fetch_scooter_availability(scooter_gbfs_urls: list, uni_lat: float, uni_lon:
                     "distance_to_uni": round(float(row.distance_to_uni), 1)
                 })
         except Exception as e:
-            print(f"Fehler beim Abrufen von Scooter-Anbieter {provider_name}: {e}")
+            print(f"Error while retrieving info from {provider_name}: {e}")
             continue
             
     return scooter_availabilities
@@ -131,47 +131,22 @@ def fetch_bike_history_segments(file_name: str) -> list:
         })
     return segments_by_station
 
-def fetch_scooter_history_segments(city_key: str) -> dict:
- 
+def fetch_scooter_history_segments(city_key: str) -> list:
     file_path = os.path.join(SCOOTER_AVAILABILTY_DATA_DIR, f"{city_key}.csv")
     
-    result = {"morgens": [], "mittags": [], "abends": []}
     if not os.path.exists(file_path):
-        print(f"DEBUG: Datei nicht gefunden unter {file_path}") # Debug-Hilfe
-        return result
+        return []
         
-    df = pd.read_csv(file_path, usecols=["geometry", "last_reported"])
+    df = pd.read_csv(file_path, usecols=["geometry"])
     if df.empty:
-        print("DEBUG: CSV ist leer") # Debug-Hilfe
-        return result
+        return []
         
     # WKT in Lat/Lon umwandeln und runden
     df["point"] = df["geometry"].apply(wkt.loads)
     df["lat"] = df["point"].apply(lambda p: round(p.y, 5))
     df["lon"] = df["point"].apply(lambda p: round(p.x, 5))
-    df = df.drop(columns=["point"])
-
-    # --- FEHLERBEHEBUNG HIER ---
-    # 1. Zeitzone (+02) abschneiden (die ersten 19 Zeichen: YYYY-MM-DD HH:MM:SS)
-    df['last_reported_clean'] = df['last_reported'].astype(str).str.slice(0, 19)
-    df['last_reported_clean'] = pd.to_datetime(df['last_reported_clean'])
-    df['stunde'] = df['last_reported_clean'].dt.hour
     
-    bins = [6, 10, 16, 22]
-    labels = ["morgens", "mittags", "abends"]
+    # Als Liste von Paaren extrahieren, also: [[lat, lon], [lat, lon], ...]
+    coords_list = df[["lat", "lon"]].values.tolist()
     
-    # pd.cut anwenden
-    df['tageszeit'] = pd.cut(df['stunde'], bins=bins, labels=labels, include_lowest=True)
-    
-    # 2. String-Konvertierung, damit der Vergleich in der Schleife sauber matched
-    df['tageszeit'] = df['tageszeit'].astype(str)
-    
-    for tageszeit in labels:
-        df_segment = df[df["tageszeit"] == tageszeit]
-        
-        # Debugging-Print (kannst du später löschen), um zu sehen, ob Daten drin sind
-        print(f"DEBUG: {tageszeit} hat {len(df_segment)} Einträge gefunden.")
-        
-        result[tageszeit] = df_segment[["lat", "lon"]].values.tolist()
-        
-    return result
+    return coords_list
