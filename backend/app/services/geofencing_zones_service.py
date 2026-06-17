@@ -22,19 +22,11 @@ GEOFENCING_ZONES_URLS = {
 }
 
 
-def fetch_geofencing_zones_data(url: str) -> dict:
+def fetch_geofencing_zones(url: str) -> list[dict]:
     response = requests.get(url)
     response.raise_for_status()
-    return response.json()
-
-
-def extract_geofencing_zones(data: dict) -> list[dict]:
-    geofencing_zones_data = data.get("data")
-
-    if "geofencing_zones" in geofencing_zones_data:
-        geofencing_zones_data = geofencing_zones_data["geofencing_zones"]
-
-    return geofencing_zones_data.get("features")
+    data = response.json().get("data")
+    return data.get("features")
 
 
 def get_geofencing_zones(
@@ -57,8 +49,8 @@ def get_geofencing_zones(
     }
 
     for provider_name, url in selected_providers.items():
-        data = fetch_geofencing_zones_data(url)
-        features = extract_geofencing_zones(data)
+        data = fetch_geofencing_zones(url)
+        features = data
 
         geofencing_zones = []
 
