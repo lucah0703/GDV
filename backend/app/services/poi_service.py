@@ -186,20 +186,6 @@ def fetch_pois(
         category=category
     )
 
-    return json.loads(gdf.to_json())
-
-
-def fetch_pois_summary(
-    city: str,
-    uni: str | None = None,
-    category: str | None = None
-) -> dict:
-    gdf = filter_pois(
-        city=city,
-        uni=uni,
-        category=category
-    )
-
     counts = gdf["category"].value_counts().to_dict()
 
     return {
@@ -220,7 +206,8 @@ def fetch_pois_summary(
                 "category": "sporteinrichtungen",
                 "count": counts.get("sporteinrichtungen", 0)
             }
-        ]
+        ],
+        "pois": json.loads(gdf.to_json())
     }
 
 
