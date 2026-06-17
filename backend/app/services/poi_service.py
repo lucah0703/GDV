@@ -93,7 +93,7 @@ def load_sporteinrichtungen(path):
     return gdf
 
 
-LOADERS = {
+POIS = {
     "bahnhoefe": load_bahnhoefe,
     "wohnheime": load_wohnheime,
     "sporteinrichtungen": load_sporteinrichtungen
@@ -105,12 +105,12 @@ def build_pois_file():
 
     for path in POIS_DIR.glob("*/*/*.geojson"):
         category = path.stem
-        loader = LOADERS.get(category)
+        pois = POIS.get(category)
 
-        if loader is None:
+        if pois is None:
             continue
 
-        gdf = loader(path)
+        gdf = pois(path)
         all_gdfs.append(gdf)
 
     pois = pd.concat(
@@ -124,9 +124,6 @@ def build_pois_file():
         crs="EPSG:4326"
     )
 
-    pois["lon"] = pois.geometry.x
-    pois["lat"] = pois.geometry.y
-
     pois = pois[
         [
             "id",
@@ -136,8 +133,6 @@ def build_pois_file():
             "name",
             "adress",
             "sportart",
-            "lon",
-            "lat",
             "geometry"
         ]
     ].copy()
