@@ -1,10 +1,10 @@
 from fastapi import APIRouter
-from backend.app.services.pricingIsochrone_service import get_pricingIsochrone
+from backend.app.services.pricing_isochrone_service import get_pricing_isochrone
 
-router = APIRouter()
+router = APIRouter(tags=["Pricing Isochrone"])
 
 
-@router.get("/pricing/{city}/{budget}/{uni}")
+@router.get("/pricingisochrone/{city}/{budget}/{uni}")
 def pricing(
     city: str,
     budget: float,
@@ -17,13 +17,13 @@ def pricing(
     }
 
     response["results"] = {
-        "e-scooter": get_pricingIsochrone(
+        "e-scooter": get_pricing_isochrone(
             city=city,
             budget=budget,
             uni=uni,
             vehicle_type="e-scooter"
         ),
-        "bike": get_pricingIsochrone(
+        "bike": get_pricing_isochrone(
             city=city,
             budget=budget,
             uni=uni,

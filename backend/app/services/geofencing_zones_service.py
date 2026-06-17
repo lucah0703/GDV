@@ -1,7 +1,7 @@
 import requests
 
 
-GEOFENCINGZONES_URLS = {
+GEOFENCING_ZONES_URLS = {
     "stuttgart": {
         "lime": "https://api.mobidata-bw.de/sharing/gbfs/v3/lime_bw/geofencing_zones",
         "bolt": "https://api.mobidata-bw.de/sharing/gbfs/v3/bolt_stuttgart/geofencing_zones",
@@ -22,19 +22,19 @@ GEOFENCINGZONES_URLS = {
 }
 
 
-def fetch_geofencing_data(url: str) -> dict:
+def fetch_geofencing_zones_data(url: str) -> dict:
     response = requests.get(url)
     response.raise_for_status()
     return response.json()
 
 
-def extract_features(data: dict) -> list[dict]:
-    geofencing_data = data.get("data")
+def extract_geofencing_zones(data: dict) -> list[dict]:
+    geofencing_zones_data = data.get("data")
 
-    if "geofencing_zones" in geofencing_data:
-        geofencing_data = geofencing_data["geofencing_zones"]
+    if "geofencing_zones" in geofencing_zones_data:
+        geofencing_zones_data = geofencing_zones_data["geofencing_zones"]
 
-    return geofencing_data.get("features")
+    return geofencing_zones_data.get("features")
 
 
 def get_geofencing_zones(
@@ -42,9 +42,9 @@ def get_geofencing_zones(
     provider: str | None = None
 ) -> dict:
 
-    providers = GEOFENCINGZONES_URLS[city]
+    providers = GEOFENCING_ZONES_URLS[city]
 
-    if provider:
+    if provider: # Optionaler Filter für einen bestimmten Anbieter
         selected_providers = {
             provider: providers[provider]
         }
@@ -57,17 +57,16 @@ def get_geofencing_zones(
     }
 
     for provider_name, url in selected_providers.items():
-        data = fetch_geofencing_data(url)
-        features = extract_features(data)
+        data = fetch_geofencing_zones_data(url)
+        features = extract_geofencing_zones(data)
 
-        zones = []
+        geofencing_zones = []
 
         for feature in features:
             geometry = feature.get("geometry")
 
             rules = feature.get(
-                "properties",
-                {}
+                "properties"
             ).get("rules")
 
             ride_end_forbidden = any(
@@ -79,7 +78,7 @@ def get_geofencing_zones(
             if not ride_end_forbidden:
                 continue
 
-            zones.append({
+            geofencing_zones.append({
                 "geometry": {
                     "type": geometry.get("type"),
                     "coordinates": geometry.get("coordinates")
@@ -88,7 +87,7 @@ def get_geofencing_zones(
 
         result["providers"].append({
             "provider": provider_name,
-            "zones": zones
+            "geofencing_zones": geofencing_zones
         })
 
     return result

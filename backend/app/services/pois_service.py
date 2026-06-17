@@ -13,7 +13,7 @@ def ensure_column(gdf, column, default=None):
     return gdf
 
 
-def build_address(row):
+def build_adress(row):
     street = row["addr:street"]
     housenumber = row["addr:housenumber"]
 
@@ -66,7 +66,7 @@ def load_wohnheime(path):
         .fillna("Wohnheim")
     )
 
-    gdf["adress"] = gdf.apply(build_address, axis=1)
+    gdf["adress"] = gdf.apply(build_adress, axis=1)
 
     return gdf
 
@@ -88,7 +88,7 @@ def load_sporteinrichtungen(path):
         .fillna("Sporteinrichtung")
     )
 
-    gdf["adress"] = gdf.apply(build_address, axis=1)
+    gdf["adress"] = gdf.apply(build_adress, axis=1)
 
     return gdf
 
@@ -206,5 +206,5 @@ def fetch_pois(
     }
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # Nur zum einmaligen Erstellen der pois.geojson
     build_pois_file()

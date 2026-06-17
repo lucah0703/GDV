@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from backend.app.services.poi_service import (
+from backend.app.services.pois_service import (
     fetch_pois,
 )
 

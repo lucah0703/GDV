@@ -1,16 +1,15 @@
 from fastapi import APIRouter
 
-from backend.app.services.geofencingZones_service import (
-    GEOFENCINGZONES_URLS,
+from backend.app.services.geofencing_zones_service import (
     get_geofencing_zones
 )
 
 
-router = APIRouter()
+router = APIRouter(tags=["Geofencing Zones"])
 
 
-@router.get("/geofencingzones")
-def get_geofencing(
+@router.get("/geofencingzones/{city}")
+def get_geofencing_zones(
     city: str,
     provider: str | None = None
 ):

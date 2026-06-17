@@ -217,7 +217,7 @@ def fetch_isochrone(
         "range_type": "time",
         "range": [minutes * 60],
         "location_type": "start"
-    } # Berechnet das Isochrone um die Uni herum, basierend auf der maximalen Fahrzeit, die mit dem Budget erreicht werden kann
+    }
 
     headers = {
         "Authorization": ORS_API_KEY,
@@ -230,7 +230,7 @@ def fetch_isochrone(
     return response.json()
 
 
-def get_pricingIsochrone(
+def get_pricing_isochrone(
     city: str,
     budget: float,
     uni: str,
@@ -245,7 +245,7 @@ def get_pricingIsochrone(
     )
 
     for result in results:
-        isochrone = fetch_isochrone(
+        isochrone = fetch_isochrone( # Berechnet das Isochrone um die Uni herum, basierend auf der maximalen Fahrzeit, die mit dem Budget erreicht werden kann
             lon=location["lon"],
             lat=location["lat"],
             minutes=result["max_minutes"],
