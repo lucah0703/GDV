@@ -21,10 +21,10 @@ GEOFENCINGZONES_URLS = {
     }
 }
 
+
 def fetch_geofencing_data(url: str) -> dict:
     response = requests.get(url)
     response.raise_for_status()
-
     return response.json()
 
 
@@ -39,42 +39,56 @@ def extract_features(data: dict) -> list[dict]:
 
 def get_geofencing_zones(
     city: str,
-    provider: str
+    provider: str | None = None
 ) -> dict:
 
-    url = GEOFENCINGZONES_URLS.get(
-        city,
-    ).get(provider)
+    providers = GEOFENCINGZONES_URLS[city]
 
-    data = fetch_geofencing_data(url)
-    features = extract_features(data)
+    if provider:
+        selected_providers = {
+            provider: providers[provider]
+        }
+    else:
+        selected_providers = providers
 
-    zones = []
+    result = {
+        "city": city,
+        "providers": []
+    }
 
-    for feature in features:
-        geometry = feature.get("geometry")
+    for provider_name, url in selected_providers.items():
+        data = fetch_geofencing_data(url)
+        features = extract_features(data)
 
-        rules = feature.get(
-            "properties",
-            {}
-        ).get("rules", [])
+        zones = []
 
-        ride_end_forbidden = any(
-            rule.get("ride_end_allowed") is False
-            for rule in rules
-        )
+        for feature in features:
+            geometry = feature.get("geometry")
 
-        if not ride_end_forbidden:
-            continue
+            rules = feature.get(
+                "properties",
+                {}
+            ).get("rules")
 
-        zones.append({
-            "geometry": {
-                "coordinates": geometry.get("coordinates")
-            }
+            ride_end_forbidden = any(
+                rule.get("ride_end_allowed") is False
+                or rule.get("ride_allowed") is False
+                for rule in rules
+            )
+
+            if not ride_end_forbidden:
+                continue
+
+            zones.append({
+                "geometry": {
+                    "type": geometry.get("type"),
+                    "coordinates": geometry.get("coordinates")
+                }
+            })
+
+        result["providers"].append({
+            "provider": provider_name,
+            "zones": zones
         })
 
-    return {
-        "city": city,
-        "provider": provider,
-        "zones": zones
-    }
+    return result
