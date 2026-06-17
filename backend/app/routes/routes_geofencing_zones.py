@@ -9,7 +9,7 @@ router = APIRouter(tags=["Geofencing Zones"])
 
 
 @router.get("/geofencingzones/{city}")
-def get_geofencing_zones(
+def geofencing_zones(
     city: str,
     provider: str | None = None
 ):

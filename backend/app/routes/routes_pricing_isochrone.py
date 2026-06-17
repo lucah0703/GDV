@@ -5,7 +5,7 @@ router = APIRouter(tags=["Pricing Isochrone"])
 
 
 @router.get("/pricingisochrone/{city}/{budget}/{uni}")
-def pricing(
+def pricing_isochrone(
     city: str,
     budget: float,
     uni: str
