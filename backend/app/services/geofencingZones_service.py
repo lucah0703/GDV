@@ -1,4 +1,4 @@
-GEOFENCING_URLS = {
+GEOFENCINGZONES_URLS = {
     "stuttgart": {
         "lime": "https://api.mobidata-bw.de/sharing/gbfs/v3/lime_bw/geofencing_zones",
         "bolt": "https://api.mobidata-bw.de/sharing/gbfs/v3/bolt_stuttgart/geofencing_zones",
