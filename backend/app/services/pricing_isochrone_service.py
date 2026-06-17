@@ -126,7 +126,6 @@ UNI = {
 def fetch_pricing_plans(url: str) -> list[dict]:
     response = requests.get(url)
     response.raise_for_status()
-
     data = response.json()
     return data.get("data").get("plans")
 

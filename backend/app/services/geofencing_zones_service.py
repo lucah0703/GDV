@@ -25,8 +25,8 @@ GEOFENCING_ZONES_URLS = {
 def fetch_geofencing_zones(url: str) -> list[dict]:
     response = requests.get(url)
     response.raise_for_status()
-    data = response.json().get("data")
-    return data.get("features")
+    data = response.json()
+    return data.get("data").get("features")
 
 
 def get_geofencing_zones(

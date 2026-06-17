@@ -13,7 +13,7 @@ def ensure_column(gdf, column, default=None):
     return gdf
 
 
-def build_adress(row):
+def build_address(row):
     street = row["addr:street"]
     housenumber = row["addr:housenumber"]
 
@@ -66,7 +66,7 @@ def load_wohnheime(path):
         .fillna("Wohnheim")
     )
 
-    gdf["adress"] = gdf.apply(build_adress, axis=1)
+    gdf["address"] = gdf.apply(build_address, axis=1)
 
     return gdf
 
@@ -88,7 +88,7 @@ def load_sporteinrichtungen(path):
         .fillna("Sporteinrichtung")
     )
 
-    gdf["adress"] = gdf.apply(build_adress, axis=1)
+    gdf["address"] = gdf.apply(build_address, axis=1)
 
     return gdf
 
@@ -131,7 +131,7 @@ def build_pois_file():
             "uni",
             "category",
             "name",
-            "adress",
+            "address",
             "sportart",
             "geometry"
         ]
@@ -146,11 +146,11 @@ def build_pois_file():
 pois_gdf = gpd.read_file("backend/data/pois/pois.geojson")
 
 
-def filter_pois(
+def get_pois(
     city: str,
     uni: str | None = None,
     category: str | None = None
-) -> gpd.GeoDataFrame:
+) -> dict:
     gdf = pois_gdf.copy()
 
     gdf = gdf[gdf["city"] == city]
@@ -166,20 +166,6 @@ def filter_pois(
         gdf = gdf.drop_duplicates(
             subset=["id", "category"]
         )
-
-    return gdf
-
-
-def fetch_pois(
-    city: str,
-    uni: str | None = None,
-    category: str | None = None
-) -> dict:
-    gdf = filter_pois(
-        city=city,
-        uni=uni,
-        category=category
-    )
 
     counts = gdf["category"].value_counts().to_dict()
 
