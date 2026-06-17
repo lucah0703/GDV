@@ -1,8 +1,8 @@
+import json
 import geopandas as gpd
 import pandas as pd
 from pathlib import Path
 
-#gdf =  GeoDataFrame
 
 POIS_DIR = Path("backend/data/pois")
 
@@ -96,47 +96,133 @@ def load_sporteinrichtungen(path):
 LOADERS = {
     "bahnhoefe": load_bahnhoefe,
     "wohnheime": load_wohnheime,
-    "sporteinrichtungen": load_sporteinrichtungen,
+    "sporteinrichtungen": load_sporteinrichtungen
 }
 
 
-all_gdfs = []
+def build_pois_file():
+    all_gdfs = []
 
-for path in POIS_DIR.glob("*/*/*.geojson"):
-    category = path.stem
+    for path in POIS_DIR.glob("*/*/*.geojson"):
+        category = path.stem
+        loader = LOADERS.get(category)
 
-    loader = LOADERS.get(category)
+        if loader is None:
+            continue
 
-    if loader is None:
-        continue
+        gdf = loader(path)
+        all_gdfs.append(gdf)
 
-    gdf = loader(path)
-    all_gdfs.append(gdf)
+    pois = pd.concat(
+        all_gdfs,
+        ignore_index=True
+    )
+
+    pois = gpd.GeoDataFrame(
+        pois,
+        geometry="geometry",
+        crs="EPSG:4326"
+    )
+
+    pois["lon"] = pois.geometry.x
+    pois["lat"] = pois.geometry.y
+
+    pois = pois[
+        [
+            "id",
+            "city",
+            "uni",
+            "category",
+            "name",
+            "adress",
+            "sportart",
+            "lon",
+            "lat",
+            "geometry"
+        ]
+    ].copy()
+
+    pois.to_file(
+        "backend/data/pois/pois.geojson",
+        driver="GeoJSON"
+    )
 
 
-pois = pd.concat(all_gdfs, ignore_index=True)
+pois_gdf = gpd.read_file("backend/data/pois/pois.geojson")
 
-pois = gpd.GeoDataFrame(pois, geometry="geometry", crs="EPSG:4326")
 
-pois["lon"] = pois.geometry.x
-pois["lat"] = pois.geometry.y
+def filter_pois(
+    city: str,
+    uni: str | None = None,
+    category: str | None = None
+) -> gpd.GeoDataFrame:
+    gdf = pois_gdf.copy()
 
-pois = pois[
-    [
-        "id",
-        "city",
-        "uni",
-        "category",
-        "name",
-        "adress",
-        "sportart",
-        "lon",
-        "lat",
-        "geometry",
-    ]
-].copy()
+    gdf = gdf[gdf["city"] == city]
 
-pois.to_file(
-    "backend/data/pois/pois.geojson",
-    driver="GeoJSON"
-)
+    if uni:
+        gdf = gdf[gdf["uni"] == uni]
+
+    if category:
+        gdf = gdf[gdf["category"] == category]
+
+    # Ohne Uni doppelte POIs entfernen
+    if not uni:
+        gdf = gdf.drop_duplicates(
+            subset=["id", "category"]
+        )
+
+    return gdf
+
+
+def fetch_pois(
+    city: str,
+    uni: str | None = None,
+    category: str | None = None
+) -> dict:
+    gdf = filter_pois(
+        city=city,
+        uni=uni,
+        category=category
+    )
+
+    return json.loads(gdf.to_json())
+
+
+def fetch_pois_summary(
+    city: str,
+    uni: str | None = None,
+    category: str | None = None
+) -> dict:
+    gdf = filter_pois(
+        city=city,
+        uni=uni,
+        category=category
+    )
+
+    counts = gdf["category"].value_counts().to_dict()
+
+    return {
+        "city": city,
+        "uni": uni,
+        "category": category,
+        "total": len(gdf),
+        "by_category": [
+            {
+                "category": "bahnhoefe",
+                "count": counts.get("bahnhoefe", 0)
+            },
+            {
+                "category": "wohnheime",
+                "count": counts.get("wohnheime", 0)
+            },
+            {
+                "category": "sporteinrichtungen",
+                "count": counts.get("sporteinrichtungen", 0)
+            }
+        ]
+    }
+
+
+if __name__ == "__main__":
+    build_pois_file()
