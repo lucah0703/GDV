@@ -115,19 +115,28 @@ export default function Map({
       {!availability &&
         isochroneData?.results &&
         Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
-          offers.map((offer) => (
-            <GeoJSON
-              key={`${vehicleType}-${offer.provider}-${offer.plan_id}`}
-              data={offer.isochrone}
-              style={{
-                color: vehicleType === "bike" ? "#047857" : "#7c3aed",
-                fillColor: vehicleType === "bike" ? "#047857" : "#7c3aed",
-                fillOpacity: 0.12,
-                weight: 2,
-                dashArray: vehicleType === "bike" ? undefined : "8 8",
-              }}
-            />
-          ))
+          offers.map((offer, index) =>
+            offer.geometry ? (
+              <GeoJSON
+                key={`${vehicleType}-${offer.provider}-${index}`}
+                data={{
+                  type: "Feature",
+                  properties: {
+                    provider: offer.provider,
+                    vehicleType,
+                  },
+                  geometry: offer.geometry,
+                }}
+                style={{
+                  color: vehicleType === "bike" ? "#047857" : "#7c3aed",
+                  fillColor: vehicleType === "bike" ? "#047857" : "#7c3aed",
+                  fillOpacity: 0.12,
+                  weight: 2,
+                  dashArray: vehicleType === "bike" ? undefined : "8 8",
+                }}
+              />
+            ) : null
+          )
         )}
 
       {!availability && !isochroneData && theoreticalRadius > 0 && (

@@ -93,9 +93,9 @@ function calculateTravel(start, destination, vehicle) {
     return { km, minutes };
 }
 
-function getCheapestOffer(pricingData, vehicle, requiredMinutes) {
+function getCheapestOffer(pricingIsochroneData, vehicle, requiredMinutes) {
     const backendKey = vehicle === "scooter" ? "e-scooter" : "bike";
-    const offers = pricingData?.[backendKey] || [];
+    const offers = pricingIsochroneData?.results?.[backendKey] || [];
 
     return (
         offers
@@ -126,7 +126,11 @@ function normalizeAvailabilityToStations(data) {
             capacity: Number(item.capacity || item.num_docks_available || item.num_docks || 1),
             availability: {
                 current: Number(
-                    item.num_bicycles_available ?? item.bikes_available ?? item.available ?? item.current ?? 0
+                    item.num_bicycles_available ??
+                    item.bikes_available ??
+                    item.available ??
+                    item.current ??
+                    0
                 ),
             },
         });
@@ -172,15 +176,17 @@ function getTrafficEmoji(status) {
     return "🔴";
 }
 
-function getBestIsochroneOffer(isochroneData, vehicle) {
+function getBestIsochroneOffer(pricingIsochroneData, vehicle) {
     const backendKey = vehicle === "scooter" ? "e-scooter" : "bike";
-    const offers = isochroneData?.results?.[backendKey] || [];
+    const offers = pricingIsochroneData?.results?.[backendKey] || [];
 
     return [...offers].sort((a, b) => b.max_minutes - a.max_minutes)[0] || null;
 }
 
 export default function Reichweite({ city, school }) {
     const [budget, setBudget] = useState(5);
+    const [debouncedBudget, setDebouncedBudget] = useState(5);
+
     const [selectedPoiType, setSelectedPoiType] = useState("Alle");
     const [selectedPoi, setSelectedPoi] = useState(null);
     const [showBikes, setShowBikes] = useState(true);
@@ -188,12 +194,19 @@ export default function Reichweite({ city, school }) {
 
     const [backendPois, setBackendPois] = useState([]);
     const [backendStations, setBackendStations] = useState([]);
-    const [isochroneData, setIsochroneData] = useState(null);
-    const [pricingData, setPricingData] = useState(null);
+    const [pricingIsochroneData, setPricingIsochroneData] = useState(null);
     const [loadingBackend, setLoadingBackend] = useState(false);
     const [backendError, setBackendError] = useState("");
 
     const currentAvailabilityKey = "current";
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebouncedBudget(budget);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, [budget]);
 
     useEffect(() => {
         async function loadBackendData() {
@@ -204,32 +217,34 @@ export default function Reichweite({ city, school }) {
                 const backendCity = getBackendCity(city);
                 const backendUni = getBackendUni(school.name);
 
-                const poisUrl = new URL(`${API_BASE}/pois`);
-                poisUrl.searchParams.set("city", backendCity);
+                const poisUrl = new URL(`${API_BASE}/pois/${backendCity}`);
+                poisUrl.searchParams.set("uni", backendUni);
 
-                const isochroneUrl = new URL(`${API_BASE}/isochrone`);
-                isochroneUrl.searchParams.set("city", backendCity);
-                isochroneUrl.searchParams.set("budget", budget);
-                isochroneUrl.searchParams.set("uni", backendUni);
+                const pricingIsochroneUrl =
+                    `${API_BASE}/pricingisochrone/${backendCity}/${backendUni}/${debouncedBudget}`;
 
-                const pricingUrl = new URL(`${API_BASE}/pricing`);
-                pricingUrl.searchParams.set("city", backendCity);
-                pricingUrl.searchParams.set("budget", budget);
+                const availabilityUrl =
+                    `${API_BASE}/availability/current/${backendCity}/${backendUni}`;
 
-                const availabilityUrl = `${API_BASE}/availability/current/${backendCity}/${backendUni}`;
-
-                const [poisResult, isochroneResult, pricingResult, availabilityResult] =
+                const [poisResult, pricingIsochroneResult, availabilityResult] =
                     await Promise.allSettled([
                         fetch(poisUrl),
-                        fetch(isochroneUrl),
-                        fetch(pricingUrl),
+                        fetch(pricingIsochroneUrl),
                         fetch(availabilityUrl),
                     ]);
 
-                const poisResponse = poisResult.status === "fulfilled" ? poisResult.value : null;
-                const isochroneResponse = isochroneResult.status === "fulfilled" ? isochroneResult.value : null;
-                const pricingResponse = pricingResult.status === "fulfilled" ? pricingResult.value : null;
-                const availabilityResponse = availabilityResult.status === "fulfilled" ? availabilityResult.value : null;
+                const poisResponse =
+                    poisResult.status === "fulfilled" ? poisResult.value : null;
+
+                const pricingIsochroneResponse =
+                    pricingIsochroneResult.status === "fulfilled"
+                        ? pricingIsochroneResult.value
+                        : null;
+
+                const availabilityResponse =
+                    availabilityResult.status === "fulfilled"
+                        ? availabilityResult.value
+                        : null;
 
                 if (poisResponse?.ok) {
                     const poisJson = await poisResponse.json();
@@ -238,18 +253,12 @@ export default function Reichweite({ city, school }) {
                     setBackendPois([]);
                 }
 
-                if (isochroneResponse?.ok) {
-                    const isochroneJson = await isochroneResponse.json();
-                    setIsochroneData(isochroneJson);
+                if (pricingIsochroneResponse?.ok) {
+                    const pricingIsochroneJson = await pricingIsochroneResponse.json();
+                    setPricingIsochroneData(pricingIsochroneJson);
                 } else {
-                    setIsochroneData(null);
-                }
-
-                if (pricingResponse?.ok) {
-                    const pricingJson = await pricingResponse.json();
-                    setPricingData(pricingJson);
-                } else {
-                    setPricingData(null);
+                    setPricingIsochroneData(null);
+                    setBackendError("Preis-/Isochrone-Daten konnten nicht geladen werden.");
                 }
 
                 if (availabilityResponse?.ok) {
@@ -258,18 +267,11 @@ export default function Reichweite({ city, school }) {
                 } else {
                     setBackendStations([]);
                 }
-
-                if (!isochroneResponse?.ok) {
-                    setBackendError(
-                        "Isochrone konnte nicht geladen werden. POIs, Preise und Verfügbarkeit werden trotzdem angezeigt."
-                    );
-                }
             } catch (error) {
                 console.error("Backend konnte nicht geladen werden:", error);
                 setBackendPois([]);
                 setBackendStations([]);
-                setIsochroneData(null);
-                setPricingData(null);
+                setPricingIsochroneData(null);
                 setBackendError("Backend nicht erreichbar oder Route liefert Fehler.");
             } finally {
                 setLoadingBackend(false);
@@ -277,7 +279,7 @@ export default function Reichweite({ city, school }) {
         }
 
         loadBackendData();
-    }, [city, school, budget]);
+    }, [city, school, debouncedBudget]);
 
     const activeVehicles = useMemo(() => {
         const vehicles = [];
@@ -309,7 +311,11 @@ export default function Reichweite({ city, school }) {
                 .map((station) => {
                     const vehicle = station.vehicle;
                     const travel = calculateTravel(station.coords, poi.coords, vehicle);
-                    const offer = getCheapestOffer(pricingData, vehicle, travel.minutes);
+                    const offer = getCheapestOffer(
+                        pricingIsochroneData,
+                        vehicle,
+                        travel.minutes
+                    );
 
                     if (!offer) return null;
 
@@ -341,23 +347,27 @@ export default function Reichweite({ city, school }) {
                 realReachable: Boolean(realRoute),
             };
         });
-    }, [filteredBackendPois, stationsNearStart, pricingData]);
+    }, [filteredBackendPois, stationsNearStart, pricingIsochroneData]);
 
     const realReachablePois = poisWithReachability.filter((poi) => poi.realReachable);
-    const theoreticalReachablePois = poisWithReachability.filter((poi) => !poi.realReachable && poi.theoreticalReachable);
-    const notReachablePois = poisWithReachability.filter((poi) => !poi.theoreticalReachable);
+    const theoreticalReachablePois = poisWithReachability.filter(
+        (poi) => !poi.realReachable && poi.theoreticalReachable
+    );
+    const notReachablePois = poisWithReachability.filter(
+        (poi) => !poi.theoreticalReachable
+    );
 
     const maxTheoreticalRadius = useMemo(() => {
         if (activeVehicles.length === 0) return 0;
 
         const radii = activeVehicles.map((vehicle) => {
-            const offer = getBestIsochroneOffer(isochroneData, vehicle);
+            const offer = getBestIsochroneOffer(pricingIsochroneData, vehicle);
             if (!offer) return 0;
             return (offer.max_minutes / 60) * SPEED_KMH[vehicle] * 1000;
         });
 
         return Math.max(...radii);
-    }, [activeVehicles, isochroneData]);
+    }, [activeVehicles, pricingIsochroneData]);
 
     const maxRealRadius = useMemo(() => {
         const availableStations = stationsNearStart.filter(
@@ -367,13 +377,13 @@ export default function Reichweite({ city, school }) {
         if (availableStations.length === 0) return 0;
 
         const radii = availableStations.map((station) => {
-            const offer = getBestIsochroneOffer(isochroneData, station.vehicle);
+            const offer = getBestIsochroneOffer(pricingIsochroneData, station.vehicle);
             if (!offer) return 0;
             return (offer.max_minutes / 60) * SPEED_KMH[station.vehicle] * 1000;
         });
 
         return Math.max(...radii);
-    }, [stationsNearStart, isochroneData]);
+    }, [stationsNearStart, pricingIsochroneData]);
 
     return (
         <main className="layout main-view">
@@ -386,34 +396,74 @@ export default function Reichweite({ city, school }) {
                 <h4>Verkehrsmittel</h4>
 
                 <label>
-                    <input type="checkbox" checked={showBikes} onChange={(e) => setShowBikes(e.target.checked)} />
+                    <input
+                        type="checkbox"
+                        checked={showBikes}
+                        onChange={(e) => setShowBikes(e.target.checked)}
+                    />
                     Bike / E-Bike
                 </label>
 
                 <label>
-                    <input type="checkbox" checked={showScooters} onChange={(e) => setShowScooters(e.target.checked)} />
+                    <input
+                        type="checkbox"
+                        checked={showScooters}
+                        onChange={(e) => setShowScooters(e.target.checked)}
+                    />
                     E-Scooter
                 </label>
 
                 <h4>POI-Typen</h4>
 
                 <label>
-                    <input type="radio" name="poiType" checked={selectedPoiType === "Alle"} onChange={() => { setSelectedPoiType("Alle"); setSelectedPoi(null); }} />
+                    <input
+                        type="radio"
+                        name="poiType"
+                        checked={selectedPoiType === "Alle"}
+                        onChange={() => {
+                            setSelectedPoiType("Alle");
+                            setSelectedPoi(null);
+                        }}
+                    />
                     Alle anzeigen
                 </label>
 
                 <label>
-                    <input type="radio" name="poiType" checked={selectedPoiType === "Bahnhof"} onChange={() => { setSelectedPoiType("Bahnhof"); setSelectedPoi(null); }} />
+                    <input
+                        type="radio"
+                        name="poiType"
+                        checked={selectedPoiType === "Bahnhof"}
+                        onChange={() => {
+                            setSelectedPoiType("Bahnhof");
+                            setSelectedPoi(null);
+                        }}
+                    />
                     Bahnhöfe
                 </label>
 
                 <label>
-                    <input type="radio" name="poiType" checked={selectedPoiType === "Wohnheim"} onChange={() => { setSelectedPoiType("Wohnheim"); setSelectedPoi(null); }} />
+                    <input
+                        type="radio"
+                        name="poiType"
+                        checked={selectedPoiType === "Wohnheim"}
+                        onChange={() => {
+                            setSelectedPoiType("Wohnheim");
+                            setSelectedPoi(null);
+                        }}
+                    />
                     Wohnheime
                 </label>
 
                 <label>
-                    <input type="radio" name="poiType" checked={selectedPoiType === "Sportanlage"} onChange={() => { setSelectedPoiType("Sportanlage"); setSelectedPoi(null); }} />
+                    <input
+                        type="radio"
+                        name="poiType"
+                        checked={selectedPoiType === "Sportanlage"}
+                        onChange={() => {
+                            setSelectedPoiType("Sportanlage");
+                            setSelectedPoi(null);
+                        }}
+                    />
                     Sportanlagen
                 </label>
 
@@ -423,8 +473,8 @@ export default function Reichweite({ city, school }) {
                 <input
                     className="budget-input"
                     type="number"
-                    min="1"
-                    max="20"
+                    min="0"
+                    max="5"
                     step="0.5"
                     value={budget}
                     onChange={(e) => setBudget(Number(e.target.value))}
@@ -432,14 +482,18 @@ export default function Reichweite({ city, school }) {
 
                 <input
                     type="range"
-                    min="1"
-                    max="20"
+                    min="0"
+                    max="5"
                     step="0.5"
                     value={budget}
                     onChange={(e) => setBudget(Number(e.target.value))}
                 />
 
                 <div className="budget-value">{budget.toFixed(2)} €</div>
+
+                {budget !== debouncedBudget && (
+                    <div className="hint">Budget wird übernommen...</div>
+                )}
 
                 <div className="budget-card">
                     <strong>Reichweite</strong>
@@ -486,7 +540,7 @@ export default function Reichweite({ city, school }) {
                 timeSlot={currentAvailabilityKey}
                 realRadius={maxRealRadius}
                 theoreticalRadius={maxTheoreticalRadius}
-                isochroneData={isochroneData}
+                isochroneData={pricingIsochroneData}
             />
 
             <aside className="panel">
@@ -524,7 +578,7 @@ export default function Reichweite({ city, school }) {
                     </>
                 )}
 
-                <h4>🟢 Real erreichbar</h4>
+                <h4>Real erreichbar</h4>
 
                 {realReachablePois.length === 0 ? (
                     <div className="hint">Aktuell ist kein POI real erreichbar.</div>
@@ -536,20 +590,26 @@ export default function Reichweite({ city, school }) {
                             onClick={() => setSelectedPoi(poi)}
                         >
                             <div>
-                                <strong>{poi.icon} {poi.name}</strong>
+                                <strong>
+                                    {poi.icon} {poi.name}
+                                </strong>
                                 <small>
                                     {poi.realRoute.station.provider} ·{" "}
                                     {poi.realRoute.vehicle === "bike" ? "Bike" : "Scooter"} ·{" "}
                                     {poi.realRoute.travel.minutes.toFixed(0)} Min
                                 </small>
-                                <small>{poi.realRoute.offer.label}</small>
+                                <small>
+                                    {poi.realRoute.offer.label ||
+                                        poi.realRoute.offer.provider ||
+                                        "Preisplan"}
+                                </small>
                             </div>
                             <span>{poi.realRoute.price.toFixed(2)} €</span>
                         </button>
                     ))
                 )}
 
-                <h4>🟡 Theoretisch erreichbar</h4>
+                <h4>Theoretisch erreichbar</h4>
 
                 {theoreticalReachablePois.length === 0 ? (
                     <div className="hint">Keine theoretisch erreichbaren POIs.</div>
@@ -561,18 +621,24 @@ export default function Reichweite({ city, school }) {
                             onClick={() => setSelectedPoi(poi)}
                         >
                             <div>
-                                <strong>{poi.icon} {poi.name}</strong>
+                                <strong>
+                                    {poi.icon} {poi.name}
+                                </strong>
                                 <small>
                                     {poi.theoreticalRoute.station.provider} · aktuell keine Verfügbarkeit
                                 </small>
-                                <small>{poi.theoreticalRoute.offer.label}</small>
+                                <small>
+                                    {poi.theoreticalRoute.offer.label ||
+                                        poi.theoreticalRoute.offer.provider ||
+                                        "Preisplan"}
+                                </small>
                             </div>
                             <span>{poi.theoreticalRoute.price.toFixed(2)} €</span>
                         </button>
                     ))
                 )}
 
-                <h4>🔴 Nicht erreichbar</h4>
+                <h4>Nicht erreichbar</h4>
 
                 {notReachablePois.map((poi) => (
                     <button
@@ -581,7 +647,9 @@ export default function Reichweite({ city, school }) {
                         onClick={() => setSelectedPoi(poi)}
                     >
                         <div>
-                            <strong>{poi.icon} {poi.name}</strong>
+                            <strong>
+                                {poi.icon} {poi.name}
+                            </strong>
                             <small>Außerhalb des Budgets oder kein passender Preisplan</small>
                         </div>
                         <span>—</span>
