@@ -248,7 +248,7 @@ export default function Reichweite({ city, school }) {
 
                 if (poisResponse?.ok) {
                     const poisJson = await poisResponse.json();
-                    setBackendPois(geoJsonPoisToFrontend(poisJson));
+                    setBackendPois(geoJsonPoisToFrontend(poisJson.pois));
                 } else {
                     setBackendPois([]);
                 }
