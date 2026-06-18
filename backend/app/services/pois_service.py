@@ -168,6 +168,7 @@ def get_pois(
         )
 
     counts = gdf["category"].value_counts().to_dict()
+    output_gdf = gdf.drop(columns=["city", "uni"])
 
     return {
         "city": city,
@@ -188,7 +189,7 @@ def get_pois(
                 "count": counts.get("sporteinrichtungen", 0)
             }
         ],
-        "pois": json.loads(gdf.to_json())
+        "pois": json.loads(output_gdf.to_json())
     }
 
 
