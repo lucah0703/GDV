@@ -11,79 +11,14 @@ import {
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-function RecenterMap({ center }) {
-  const map = useMap();
-
-  useEffect(() => {
-    if (!center) return;
-    map.setView(center, 14);
-    setTimeout(() => map.invalidateSize(true), 100);
-    setTimeout(() => map.invalidateSize(true), 500);
-  }, [center, map]);
-
-  return null;
-}
-
-function getTrafficEmoji(status) {
-  if (status === "green") return "🟢";
-  if (status === "yellow") return "🟡";
-  return "🔴";
-}
-
-function getAvailable(station, timeSlot) {
-  return (
-    station.availability?.[timeSlot] ??
-    station.availability?.current ??
-    station.availability?.morning ??
-    0
-  );
-}
-
-function getAvailabilityStatus(station, timeSlot) {
-  const available = getAvailable(station, timeSlot);
-  const capacity = Math.max(station.capacity || 1, 1);
-  const ratio = available / capacity;
-
-  if (ratio >= 0.5) return "green";
-  if (ratio >= 0.2) return "yellow";
-  return "red";
-}
-
-function createStationIcon(status, vehicle) {
-  const symbol = vehicle === "bike" ? "🚲" : "🛴";
-
-  return L.divIcon({
-    className: "station-map-marker",
-    html: `<div class="station-map-marker-inner">${getTrafficEmoji(status)}${symbol}</div>`,
-    iconSize: [44, 34],
-    iconAnchor: [22, 17],
-    popupAnchor: [0, -16],
-  });
-}
-
-function createStartpointIcon() {
-  return L.divIcon({
-    html: `<div style="
-      width: 32px;
-      height: 40px;
-      background: #ff4d4d;
-      border: 3px solid #fff;
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-    ">
-      <div style="transform: rotate(45deg);">📍</div>
-    </div>`,
-    iconSize: [32, 40],
-    iconAnchor: [16, 40],
-    popupAnchor: [0, -40],
-    className: "custom-pin-icon",
-  });
-}
+import RecenterMap from "./map/RecenterMap";
+import {
+  getTrafficEmoji,
+  getAvailable,
+  getAvailabilityStatus,
+  createStationIcon,
+  createStartpointIcon,
+} from "./map/mapUtils";
 
 export default function Map({
   center,
@@ -98,6 +33,11 @@ export default function Map({
   realRadius = 0,
   theoreticalRadius = 0,
   isochroneData = null,
+  scooterCoords = [],
+  bikeCoords = [],
+  showMobilityLayer = false,
+
+  onStationClick = () => {},
 }) {
   const startpointIcon = createStartpointIcon();
 
@@ -109,6 +49,42 @@ export default function Map({
       style={{ width: "100%", height: "100%" }}
     >
       <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+
+      {showMobilityLayer && scooterCoords.length > 0 && (
+  <>
+    {scooterCoords.map((pos, i) => (
+      <CircleMarker
+        key={`scooter-${i}`}
+        center={[pos[0], pos[1]]}
+        radius={3}
+        pathOptions={{
+          color: "#2563eb",
+          fillColor: "#3b82f6",
+          fillOpacity: 0.7,
+          weight: 1,
+        }}
+      />
+    ))}
+  </>
+)}
+
+{showMobilityLayer && bikeCoords.length > 0 && (
+  <>
+    {bikeCoords.map((pos, i) => (
+      <CircleMarker
+        key={`bike-${i}`}
+        center={[pos[0], pos[1]]}
+        radius={3}
+        pathOptions={{
+          color: "#16a34a",
+          fillColor: "#22c55e",
+          fillOpacity: 0.7,
+          weight: 1,
+        }}
+      />
+    ))}
+  </>
+)}
 
       <RecenterMap center={center} />
 
@@ -217,6 +193,13 @@ export default function Map({
               key={`${station.vehicle}-${station.id || station.name}`}
               position={station.coords}
               icon={createStationIcon(status, station.vehicle)}
+              eventHandlers={{
+                click: () => {
+                  if(onStationClick) {
+                    onStationClick(station);
+                  }
+                },
+              }}
             >
               <Popup>
                 {getTrafficEmoji(status)} <strong>{station.name}</strong>

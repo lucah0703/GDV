@@ -462,3 +462,12 @@ button.active,
   gap: 2px;
   font-size: 18px;
 }
+
+.station-history {
+  margin-top: 20px;
+  padding-top: 10px;
+}
+
+.station-history h4 {
+  margin-bottom: 10px;
+}
