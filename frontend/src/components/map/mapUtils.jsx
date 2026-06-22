@@ -5,12 +5,9 @@ export function getTrafficEmoji(status) {
 }
 
 export function getAvailable(station, timeSlot) {
-    return (
-        station.availability?.[timeSlot] ??
-        station.availability?.current ??
-        station.availability?.morning ??
-        0
-    );
+    return timeSlot === "current"
+        ? station.availability?.current ?? 0
+        : station.segments?.[timeSlot] ?? 0;
 }
 
 export function getAvailabilityStatus(station, timeSlot) {
