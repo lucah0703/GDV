@@ -217,10 +217,10 @@ function normalizeAvailabilityToStations(data) {
       availability: {
         current: Number(
           item.num_bicycles_available ??
-            item.bikes_available ??
-            item.available ??
-            item.current ??
-            0
+          item.bikes_available ??
+          item.available ??
+          item.current ??
+          0
         ),
       },
     });
@@ -269,8 +269,8 @@ function getBestIsochroneOffer(pricingIsochroneData, vehicle) {
 }
 
 export default function Reichweite({ city, school }) {
-  const [budget, setBudget] = useState(5);
-  const [debouncedBudget, setDebouncedBudget] = useState(5);
+  const [budget, setBudget] = useState(0);
+  const [calculatedBudget, setCalculatedBudget] = useState(null);
 
   const [selectedPoiType, setSelectedPoiType] = useState("Alle");
   const [selectedPoi, setSelectedPoi] = useState(null);
@@ -290,14 +290,6 @@ export default function Reichweite({ city, school }) {
   const currentAvailabilityKey = "current";
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedBudget(budget);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [budget]);
-
-  useEffect(() => {
     async function loadBackendData() {
       try {
         setLoadingBackend(true);
@@ -309,7 +301,11 @@ export default function Reichweite({ city, school }) {
         const poisUrl = new URL(`${API_BASE}/pois/${backendCity}`);
         poisUrl.searchParams.set("uni", backendUni);
 
-        const pricingIsochroneUrl = `${API_BASE}/pricingisochrone/${backendCity}/${backendUni}/${debouncedBudget}`;
+        const pricingIsochroneUrl =
+          calculatedBudget !== null
+            ? `${API_BASE}/pricingisochrone/${backendCity}/${backendUni}/${calculatedBudget}`
+            : null;
+
         const availabilityUrl = `${API_BASE}/availability/current/${backendCity}/${backendUni}`;
         const geofencingUrl = `${API_BASE}/geofencingzones/${backendCity}`;
 
@@ -320,7 +316,7 @@ export default function Reichweite({ city, school }) {
           geofencingResult,
         ] = await Promise.allSettled([
           fetch(poisUrl),
-          fetch(pricingIsochroneUrl),
+          pricingIsochroneUrl ? fetch(pricingIsochroneUrl) : Promise.resolve(null),
           fetch(availabilityUrl),
           fetch(geofencingUrl),
         ]);
@@ -332,18 +328,20 @@ export default function Reichweite({ city, school }) {
           setBackendPois([]);
         }
 
-        if (
-          pricingIsochroneResult.status === "fulfilled" &&
-          pricingIsochroneResult.value.ok
-        ) {
-          const pricingIsochroneJson =
-            await pricingIsochroneResult.value.json();
-          setPricingIsochroneData(pricingIsochroneJson);
-        } else {
-          setPricingIsochroneData(null);
-          setBackendError(
-            "Preis-/Isochrone-Daten konnten nicht geladen werden."
-          );
+        if (pricingIsochroneUrl) {
+          if (
+            pricingIsochroneResult.status === "fulfilled" &&
+            pricingIsochroneResult.value?.ok
+          ) {
+            const pricingIsochroneJson =
+              await pricingIsochroneResult.value.json();
+            setPricingIsochroneData(pricingIsochroneJson);
+          } else {
+            setPricingIsochroneData(null);
+            setBackendError(
+              "Preis-/Isochrone-Daten konnten nicht geladen werden."
+            );
+          }
         }
 
         if (
@@ -385,7 +383,7 @@ export default function Reichweite({ city, school }) {
     }
 
     loadBackendData();
-  }, [city, school, debouncedBudget]);
+  }, [city, school, calculatedBudget]);
 
   const activeVehicles = useMemo(() => {
     const vehicles = [];
@@ -537,277 +535,272 @@ export default function Reichweite({ city, school }) {
   }, [stationsNearStart, pricingIsochroneData]);
 
   return (
-    <main className="layout main-view">
-      <aside className="panel">
-        <h3>Filter</h3>
-
-        <h4>Analysemodus</h4>
-        <div className="analysis-mode">Budget + Live-Verfügbarkeit</div>
-
-        <h4>Verkehrsmittel</h4>
-
-        <label>
-          <input
-            type="checkbox"
-            checked={showBikes}
-            onChange={(e) => setShowBikes(e.target.checked)}
-          />
-          Bike / E-Bike
-        </label>
-
-        <label>
-          <input
-            type="checkbox"
-            checked={showScooters}
-            onChange={(e) => setShowScooters(e.target.checked)}
-          />
-          E-Scooter
-        </label>
-
-        <h4>POI-Typen</h4>
-
-        <label>
-          <input
-            type="radio"
-            name="poiType"
-            checked={selectedPoiType === "Alle"}
-            onChange={() => {
-              setSelectedPoiType("Alle");
-              setSelectedPoi(null);
-            }}
-          />
-          Alle anzeigen
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="poiType"
-            checked={selectedPoiType === "Bahnhof"}
-            onChange={() => {
-              setSelectedPoiType("Bahnhof");
-              setSelectedPoi(null);
-            }}
-          />
-          Bahnhöfe
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="poiType"
-            checked={selectedPoiType === "Wohnheim"}
-            onChange={() => {
-              setSelectedPoiType("Wohnheim");
-              setSelectedPoi(null);
-            }}
-          />
-          Wohnheime
-        </label>
-
-        <label>
-          <input
-            type="radio"
-            name="poiType"
-            checked={selectedPoiType === "Sportanlage"}
-            onChange={() => {
-              setSelectedPoiType("Sportanlage");
-              setSelectedPoi(null);
-            }}
-          />
-          Sportanlagen
-        </label>
-
-        <h4>Budget</h4>
-        <p className="muted">Preis festlegen</p>
-
-        <input
-          className="budget-input"
-          type="number"
-          min="0"
-          max="5"
-          step="0.5"
-          value={budget}
-          onChange={(e) => setBudget(Number(e.target.value))}
-        />
-
-        <input
-          type="range"
-          min="0"
-          max="5"
-          step="0.5"
-          value={budget}
-          onChange={(e) => setBudget(Number(e.target.value))}
-        />
-
-        <div className="budget-value">{budget.toFixed(2)} €</div>
-
-        {budget !== debouncedBudget && (
-          <div className="hint">Budget wird übernommen...</div>
-        )}
-
-        <div className="budget-card">
-          <strong>Reichweite</strong>
-          <p>Real: {(maxRealRadius / 1000).toFixed(1)} km</p>
-          <p>Theoretisch: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
+    <main className="main-view new-map-layout">
+      <section className="top-filter-bar">
+        <div className="filter-group">
+          <span className="filter-label">Analysemodus</span>
+          <strong>Budget + Live-Verfügbarkeit</strong>
         </div>
 
-        {loadingBackend && (
-          <div className="hint">Backend-Daten werden geladen...</div>
-        )}
+        <div className="filter-group">
+          <span className="filter-label">Verkehrsmittel</span>
+          <div className="chip-row">
+            <label className={`filter-chip ${showBikes ? "active" : ""}`}>
+              <input
+                type="checkbox"
+                checked={showBikes}
+                onChange={(e) => setShowBikes(e.target.checked)}
+              />
+              🚲 Bike
+            </label>
 
-        {backendError && <div className="hint">{backendError}</div>}
-      </aside>
-
-      <Map
-        key={selectedPoiType}
-        center={school.coords}
-        label={school.name}
-        markerCoords={school.coords}
-        pois={poisWithReachability}
-        selectedPoi={selectedPoi}
-        setSelectedPoi={setSelectedPoi}
-        availability={false}
-        stationsInRadius={stationsNearStart}
-        showStationsInBudgetView={false}
-        timeSlot={currentAvailabilityKey}
-        realRadius={maxRealRadius}
-        theoreticalRadius={maxTheoreticalRadius}
-        isochroneData={pricingIsochroneData}
-      />
-
-      <aside className="panel">
-        <h3>Auswertung</h3>
-
-        <div className="school-card">
-          <span>Startpunkt</span>
-          <strong>{school.name}</strong>
-          <small>{school.students} Studierende</small>
+            <label className={`filter-chip ${showScooters ? "active" : ""}`}>
+              <input
+                type="checkbox"
+                checked={showScooters}
+                onChange={(e) => setShowScooters(e.target.checked)}
+              />
+              🛴 E-Scooter
+            </label>
+          </div>
         </div>
 
-        <div className="poi-summary-card">
-          <span>
-            {selectedPoiType === "Alle" ? "Alle POIs" : selectedPoiType}
-          </span>
-          <strong>{poisWithReachability.length} insgesamt</strong>
-          <p>
-            🟢 {realReachablePois.length} real · 🟡{" "}
-            {theoreticalReachablePois.length} theoretisch · 🔴{" "}
-            {notReachablePois.length} nicht erreichbar
-          </p>
+        <div className="filter-group">
+          <span className="filter-label">POI-Typen</span>
+          <div className="chip-row">
+            {["Alle", "Bahnhof", "Wohnheim", "Sportanlage"].map((type) => (
+              <button
+                key={type}
+                className={`filter-chip ${selectedPoiType === type ? "active" : ""}`}
+                onClick={() => {
+                  setSelectedPoiType(type);
+                  setSelectedPoi(null);
+                }}
+              >
+                {type === "Alle" && "Alle"}
+                {type === "Bahnhof" && "Bahnhöfe"}
+                {type === "Wohnheim" && "Wohnheime"}
+                {type === "Sportanlage" && "Sport"}
+              </button>
+            ))}
+          </div>
         </div>
 
-        {selectedPoi && (
-          <>
-            <button className="back-button" onClick={() => setSelectedPoi(null)}>
-              ← Auswahl zurücksetzen
+        <div className="filter-group budget-filter">
+          <span className="filter-label">Budget</span>
+
+          <input
+            type="range"
+            min="0"
+            max="5"
+            step="0.5"
+            value={budget}
+            onChange={(e) => setBudget(Number(e.target.value))}
+          />
+
+          <strong>{budget.toFixed(2)} €</strong>
+
+          <div className="calculate-row">
+            <button
+              className="calculate-button"
+              onClick={() => setCalculatedBudget(budget)}
+            >
+              Berechnen
             </button>
 
-            <div className="poi-title">
-              <span>{selectedPoi.icon}</span>
-              <div>
-                <strong>{selectedPoi.name}</strong>
-                <small>{selectedPoi.address}</small>
+            <span
+              className={`calculate-status ${backendError
+                  ? "error"
+                  : loadingBackend
+                    ? "loading"
+                    : calculatedBudget === null
+                      ? "waiting"
+                      : calculatedBudget !== budget
+                        ? "changed"
+                        : "success"
+                }`}
+            >
+              {backendError
+                ? "Fehler"
+                : loadingBackend
+                  ? "Lädt..."
+                  : calculatedBudget === null
+                    ? "Noch nicht berechnet"
+                    : calculatedBudget !== budget
+                      ? "Neu berechnen"
+                      : "Berechnet"}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {(calculatedBudget === null ||
+        calculatedBudget !== budget ||
+        loadingBackend ||
+        backendError)
+      }
+
+      <section className="map-workspace">
+        <aside className="results-panel">
+          <h3>Auswertung</h3>
+
+          <div className="school-card">
+            <span>Startpunkt</span>
+            <strong>{school.name}</strong>
+            <small>{school.students} Studierende</small>
+          </div>
+
+          <div className="budget-card">
+            <strong>Reichweite</strong>
+            <p>Real: {(maxRealRadius / 1000).toFixed(1)} km</p>
+            <p>Theoretisch: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
+          </div>
+
+          <div className="poi-summary-card">
+            <span>
+              {selectedPoiType === "Alle" ? "Alle POIs" : selectedPoiType}
+            </span>
+            <strong>{poisWithReachability.length} insgesamt</strong>
+            <p>
+              🟢 {realReachablePois.length} real · 🟡{" "}
+              {theoreticalReachablePois.length} theoretisch · 🔴{" "}
+              {notReachablePois.length} nicht erreichbar
+            </p>
+          </div>
+
+          {selectedPoi && (
+            <>
+              <button className="back-button" onClick={() => setSelectedPoi(null)}>
+                ← Auswahl zurücksetzen
+              </button>
+
+              <div className="poi-title">
+                <span>{selectedPoi.icon}</span>
+                <div>
+                  <strong>{selectedPoi.name}</strong>
+                  <small>{selectedPoi.address}</small>
+                </div>
               </div>
+            </>
+          )}
+
+          <h4>Real erreichbar</h4>
+
+          {realReachablePois.length === 0 ? (
+            <div className="hint">Aktuell ist kein POI real erreichbar.</div>
+          ) : (
+            realReachablePois.map((poi) => (
+              <button
+                key={`real-${poi.id}`}
+                className="poi-list-card real"
+                onClick={() => setSelectedPoi(poi)}
+              >
+                <div>
+                  <strong>
+                    {poi.icon} {poi.name}
+                  </strong>
+                  <small>
+                    {poi.realRoute.station.provider} ·{" "}
+                    {poi.realRoute.vehicle === "bike" ? "Bike" : "Scooter"} ·{" "}
+                    {poi.realRoute.travel.minutes.toFixed(0)} Min
+                  </small>
+                  <small>
+                    {poi.realRoute.offer.label ||
+                      poi.realRoute.offer.provider ||
+                      "Preisplan"}
+                  </small>
+                </div>
+                <span>{poi.realRoute.price.toFixed(2)} €</span>
+              </button>
+            ))
+          )}
+
+          <h4>Theoretisch erreichbar</h4>
+
+          {theoreticalReachablePois.length === 0 ? (
+            <div className="hint">Keine theoretisch erreichbaren POIs.</div>
+          ) : (
+            theoreticalReachablePois.map((poi) => (
+              <button
+                key={`theoretical-${poi.id}`}
+                className="poi-list-card theoretical"
+                onClick={() => setSelectedPoi(poi)}
+              >
+                <div>
+                  <strong>
+                    {poi.icon} {poi.name}
+                  </strong>
+
+                  <small>
+                    {poi.theoreticalReason || "Nur theoretisch erreichbar"}
+                  </small>
+
+                  <small>
+                    {poi.theoreticalRoute.station.provider} ·{" "}
+                    {poi.theoreticalRoute.vehicle === "bike"
+                      ? "Bike"
+                      : "Scooter"}{" "}
+                    · {poi.theoreticalRoute.travel.minutes.toFixed(0)} Min
+                  </small>
+
+                  <small>
+                    {poi.theoreticalRoute.offer.label ||
+                      poi.theoreticalRoute.offer.provider ||
+                      "Preisplan"}
+                  </small>
+                </div>
+
+                <span>{poi.theoreticalRoute.price.toFixed(2)} €</span>
+              </button>
+            ))
+          )}
+
+          <h4>Nicht erreichbar</h4>
+
+          {notReachablePois.length === 0 ? (
+            <div className="hint">
+              Alle POIs sind mindestens theoretisch erreichbar.
             </div>
-          </>
-        )}
+          ) : (
+            notReachablePois.map((poi) => (
+              <button
+                key={`not-${poi.id}`}
+                className="poi-list-card not-reachable"
+                onClick={() => setSelectedPoi(poi)}
+              >
+                <div>
+                  <strong>
+                    {poi.icon} {poi.name}
+                  </strong>
+                  <small>
+                    Außerhalb des Budgets oder kein passender Preisplan
+                  </small>
+                </div>
+                <span>—</span>
+              </button>
+            ))
+          )}
+        </aside>
 
-        <h4>Real erreichbar</h4>
-
-        {realReachablePois.length === 0 ? (
-          <div className="hint">Aktuell ist kein POI real erreichbar.</div>
-        ) : (
-          realReachablePois.map((poi) => (
-            <button
-              key={`real-${poi.id}`}
-              className="poi-list-card real"
-              onClick={() => setSelectedPoi(poi)}
-            >
-              <div>
-                <strong>
-                  {poi.icon} {poi.name}
-                </strong>
-                <small>
-                  {poi.realRoute.station.provider} ·{" "}
-                  {poi.realRoute.vehicle === "bike" ? "Bike" : "Scooter"} ·{" "}
-                  {poi.realRoute.travel.minutes.toFixed(0)} Min
-                </small>
-                <small>
-                  {poi.realRoute.offer.label ||
-                    poi.realRoute.offer.provider ||
-                    "Preisplan"}
-                </small>
-              </div>
-              <span>{poi.realRoute.price.toFixed(2)} €</span>
-            </button>
-          ))
-        )}
-
-        <h4>Theoretisch erreichbar</h4>
-
-        {theoreticalReachablePois.length === 0 ? (
-          <div className="hint">Keine theoretisch erreichbaren POIs.</div>
-        ) : (
-          theoreticalReachablePois.map((poi) => (
-            <button
-              key={`theoretical-${poi.id}`}
-              className="poi-list-card theoretical"
-              onClick={() => setSelectedPoi(poi)}
-            >
-              <div>
-                <strong>
-                  {poi.icon} {poi.name}
-                </strong>
-
-                <small>
-                  {poi.theoreticalReason || "Nur theoretisch erreichbar"}
-                </small>
-
-                <small>
-                  {poi.theoreticalRoute.station.provider} ·{" "}
-                  {poi.theoreticalRoute.vehicle === "bike"
-                    ? "Bike"
-                    : "Scooter"}{" "}
-                  · {poi.theoreticalRoute.travel.minutes.toFixed(0)} Min
-                </small>
-
-                <small>
-                  {poi.theoreticalRoute.offer.label ||
-                    poi.theoreticalRoute.offer.provider ||
-                    "Preisplan"}
-                </small>
-              </div>
-
-              <span>{poi.theoreticalRoute.price.toFixed(2)} €</span>
-            </button>
-          ))
-        )}
-
-        <h4>Nicht erreichbar</h4>
-
-        {notReachablePois.length === 0 ? (
-          <div className="hint">Alle POIs sind mindestens theoretisch erreichbar.</div>
-        ) : (
-          notReachablePois.map((poi) => (
-            <button
-              key={`not-${poi.id}`}
-              className="poi-list-card not-reachable"
-              onClick={() => setSelectedPoi(poi)}
-            >
-              <div>
-                <strong>
-                  {poi.icon} {poi.name}
-                </strong>
-                <small>
-                  Außerhalb des Budgets oder kein passender Preisplan
-                </small>
-              </div>
-              <span>—</span>
-            </button>
-          ))
-        )}
-      </aside>
+        <div className="map-wrapper">
+          <Map
+            key={selectedPoiType}
+            center={school.coords}
+            label={school.name}
+            markerCoords={school.coords}
+            pois={poisWithReachability}
+            selectedPoi={selectedPoi}
+            setSelectedPoi={setSelectedPoi}
+            availability={false}
+            stationsInRadius={stationsNearStart}
+            showStationsInBudgetView={false}
+            timeSlot={currentAvailabilityKey}
+            realRadius={maxRealRadius}
+            theoreticalRadius={maxTheoreticalRadius}
+            isochroneData={pricingIsochroneData}
+          />
+        </div>
+      </section>
     </main>
   );
 }

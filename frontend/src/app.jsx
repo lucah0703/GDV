@@ -147,7 +147,8 @@ export default function App() {
   }
 
   return (
-    <div className="app">
+  <div className="app">
+    <div className="dashboard-shell">
       <header className="header">
         <div>
           <h1>Mikromobilität für Studierende</h1>
@@ -166,7 +167,10 @@ export default function App() {
 
           <label>
             Hochschule
-            <select value={school.name} onChange={(e) => changeSchool(e.target.value)}>
+            <select
+              value={school.name}
+              onChange={(e) => changeSchool(e.target.value)}
+            >
               {cities[city].map((s) => (
                 <option key={s.name}>{s.name}</option>
               ))}
@@ -174,7 +178,9 @@ export default function App() {
           </label>
 
           <button onClick={() => setShowAvailability(!showAvailability)}>
-            {showAvailability ? "Zur Budget-Ansicht" : "Verfügbarkeiten anzeigen"}
+            {showAvailability
+              ? "Zur Budget-Ansicht"
+              : "Verfügbarkeiten anzeigen"}
           </button>
         </div>
       </header>
@@ -194,5 +200,6 @@ export default function App() {
         />
       )}
     </div>
-  );
+  </div>
+);
 }
