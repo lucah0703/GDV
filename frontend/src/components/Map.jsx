@@ -6,6 +6,7 @@ import {
   Marker,
   Popup,
   Circle,
+  CircleMarker,
   GeoJSON,
 } from "react-leaflet";
 import L from "leaflet";
@@ -63,6 +64,12 @@ function getIsochroneStyle(vehicleType, reachabilityType = "real") {
     dashArray: isReal ? undefined : "8 8",
   };
 }
+function getPoiColor(type) {
+  if (type === "Bahnhof") return "#2563eb";
+  if (type === "Wohnheim") return "#22c55e";
+  if (type === "Sportanlage") return "#f59e0b";
+  return "#6b7280";
+}
 
 function createStationIcon(status, vehicle) {
   const symbol = vehicle === "bike" ? "🚲" : "🛴";
@@ -107,7 +114,7 @@ export default function Map({
   label,
   markerCoords,
   pois = [],
-  setSelectedPoi = () => {},
+  setSelectedPoi = () => { },
   availability = false,
   timeSlot = "current",
   stationsInRadius = [],
@@ -195,46 +202,47 @@ export default function Map({
 
       {!availability &&
         pois.map((poi) => (
-          <Marker
+          <CircleMarker
             key={poi.id}
-            position={poi.coords}
+            center={poi.coords}
+            radius={6}
+            pathOptions={{
+              color: "#ffffff",
+              weight: 1,
+              fillColor: getPoiColor(poi.type),
+              fillOpacity: 0.85,
+            }}
             eventHandlers={{
               click: () => setSelectedPoi(poi),
             }}
           >
             <Popup>
-              {poi.icon} <strong>{poi.name}</strong>
+              <strong>{poi.name}</strong>
               <br />
-              {poi.realReachable
-                ? "🟢 real erreichbar"
-                : poi.theoreticalReachable
-                ? "🟡 theoretisch erreichbar"
-                : "🔴 nicht erreichbar"}
+              {poi.type}
             </Popup>
-          </Marker>
+          </CircleMarker>
         ))}
+      {!availability && (
+        <div className="map-legend">
+          <h4>POIs</h4>
 
-      {(availability || showStationsInBudgetView) &&
-        stationsInRadius.map((station) => {
-          const status = getAvailabilityStatus(station, timeSlot);
-          const available = getAvailable(station, timeSlot);
+          <div className="legend-item">
+            <span className="legend-dot blue"></span>
+            Bahnhof
+          </div>
 
-          return (
-            <Marker
-              key={`${station.vehicle}-${station.id || station.name}`}
-              position={station.coords}
-              icon={createStationIcon(status, station.vehicle)}
-            >
-              <Popup>
-                {getTrafficEmoji(status)} <strong>{station.name}</strong>
-                <br />
-                {station.provider} · {station.type}
-                <br />
-                {available} von {station.capacity} verfügbar
-              </Popup>
-            </Marker>
-          );
-        })}
+          <div className="legend-item">
+            <span className="legend-dot green"></span>
+            Wohnheim
+          </div>
+
+          <div className="legend-item">
+            <span className="legend-dot orange"></span>
+            Sportanlage
+          </div>
+        </div>
+      )}
     </MapContainer>
   );
 }
