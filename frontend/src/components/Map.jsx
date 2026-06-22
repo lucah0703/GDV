@@ -87,25 +87,15 @@ function createStationIcon(status, vehicle) {
 
 function createStartpointIcon() {
   return L.divIcon({
-    html: `<div style="
-      width: 32px;
-      height: 40px;
-      background: #ef4444;
-      border: 3px solid #fff;
-      border-radius: 50% 50% 50% 0;
-      transform: rotate(-45deg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-    ">
-      <div style="transform: rotate(45deg);">📍</div>
-    </div>`,
-    iconSize: [32, 40],
-    iconAnchor: [16, 40],
-    popupAnchor: [0, -40],
-    className: "custom-pin-icon",
+    className: "startpoint-pulse-icon",
+    html: `
+      <div class="startpoint-pulse">
+        <div class="startpoint-dot">\u{1F393}</div>
+      </div>
+    `,
+    iconSize: [42, 42],
+    iconAnchor: [21, 21],
+    popupAnchor: [0, -18],
   });
 }
 
@@ -241,8 +231,10 @@ export default function Map({
             <span className="legend-dot orange"></span>
             Sportanlage
           </div>
+
         </div>
       )}
+      
     </MapContainer>
   );
 }
