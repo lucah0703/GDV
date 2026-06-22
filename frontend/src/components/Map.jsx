@@ -49,12 +49,29 @@ function getAvailabilityStatus(station, timeSlot) {
   return "red";
 }
 
+function getIsochroneStyle(vehicleType, reachabilityType = "real") {
+  const isBike = vehicleType === "bike";
+  const isReal = reachabilityType === "real";
+
+  const color = isBike ? "#047857" : "#7c3aed";
+
+  return {
+    color,
+    fillColor: color,
+    fillOpacity: isReal ? 0.16 : 0.06,
+    weight: isReal ? 3 : 2,
+    dashArray: isReal ? undefined : "8 8",
+  };
+}
+
 function createStationIcon(status, vehicle) {
   const symbol = vehicle === "bike" ? "🚲" : "🛴";
 
   return L.divIcon({
     className: "station-map-marker",
-    html: `<div class="station-map-marker-inner">${getTrafficEmoji(status)}${symbol}</div>`,
+    html: `<div class="station-map-marker-inner">${getTrafficEmoji(
+      status
+    )}${symbol}</div>`,
     iconSize: [44, 34],
     iconAnchor: [22, 17],
     popupAnchor: [0, -16],
@@ -66,7 +83,7 @@ function createStartpointIcon() {
     html: `<div style="
       width: 32px;
       height: 40px;
-      background: #ff4d4d;
+      background: #ef4444;
       border: 3px solid #fff;
       border-radius: 50% 50% 50% 0;
       transform: rotate(-45deg);
@@ -74,7 +91,7 @@ function createStartpointIcon() {
       align-items: center;
       justify-content: center;
       font-size: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
     ">
       <div style="transform: rotate(45deg);">📍</div>
     </div>`,
@@ -108,7 +125,11 @@ export default function Map({
       className="leaflet-map"
       style={{ width: "100%", height: "100%" }}
     >
-      <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        attribution='&copy; OpenStreetMap &copy; CARTO'
+        subdomains="abcd"
+      />
 
       <RecenterMap center={center} />
 
@@ -127,13 +148,10 @@ export default function Map({
                   },
                   geometry: offer.geometry,
                 }}
-                style={{
-                  color: vehicleType === "bike" ? "#047857" : "#7c3aed",
-                  fillColor: vehicleType === "bike" ? "#047857" : "#7c3aed",
-                  fillOpacity: 0.12,
-                  weight: 2,
-                  dashArray: vehicleType === "bike" ? undefined : "8 8",
-                }}
+                style={getIsochroneStyle(
+                  vehicleType,
+                  offer.reachabilityType || offer.type || "real"
+                )}
               />
             ) : null
           )
@@ -143,13 +161,7 @@ export default function Map({
         <Circle
           center={center}
           radius={theoreticalRadius}
-          pathOptions={{
-            color: "#a855f7",
-            fillColor: "#a855f7",
-            fillOpacity: 0.07,
-            weight: 2,
-            dashArray: "8 8",
-          }}
+          pathOptions={getIsochroneStyle("scooter", "theoretical")}
         />
       )}
 
@@ -157,12 +169,7 @@ export default function Map({
         <Circle
           center={center}
           radius={realRadius}
-          pathOptions={{
-            color: "#047857",
-            fillColor: "#047857",
-            fillOpacity: 0.08,
-            weight: 3,
-          }}
+          pathOptions={getIsochroneStyle("bike", "real")}
         />
       )}
 
