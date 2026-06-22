@@ -54,13 +54,7 @@ const grayscaleTiles =
       className="leaflet-map"
       style={{ width: "100%", height: "100%" }}
     >
-      <TileLayer
-  url={
-    showScooterHeatmap
-      ? grayscaleTiles
-      : normalTiles
-  }
-/>
+      <TileLayer url={ grayscaleTiles}/>
 
 
       {showScooterHeatmap && scooterCoords.length > 0 && (
