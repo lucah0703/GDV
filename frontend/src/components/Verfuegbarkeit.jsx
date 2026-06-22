@@ -63,6 +63,8 @@ export default function Verfuegbarkeit({ city, school }) {
   
   const [selectedStation, setSelectedStation] = useState(null);
 
+  const [scooterCoords, setScooterCoords] = useState([]);
+
   /* -----------------------------
      Backend Load
   ----------------------------- */
@@ -82,6 +84,9 @@ export default function Verfuegbarkeit({ city, school }) {
           getHistory(backendCity),
         ]);
 
+
+  console.log("Scooter API:", historyDataSegments);
+  setScooterCoords(historyDataSegments?.scooter ?? []);
         /* -----------------------------
            Bike mapping (station + availability)
         ----------------------------- */
@@ -98,7 +103,7 @@ const bikeStations = stationData.map((s) => {
   const history = historyData?.find(
     (d) => String(d.station_id) === String(s.station_id)
   );
-  console.log(history);
+
 
   return {
     id: s.station_id,
@@ -201,7 +206,7 @@ const bikeStations = stationData.map((s) => {
         <h4>Zeitpunkt</h4>
 
         <div className="time-buttons">
-          {["current", "morning", "midday", "evening"].map((t) => (
+          {["current", "morning", "midday", "evening", "heatmap"].map((t) => (
             <button
               key={t}
               className={timeSlot === t ? "active" : ""}
@@ -221,10 +226,12 @@ const bikeStations = stationData.map((s) => {
         label={school.name}
         markerCoords={school.coords}
         stationsInRadius={stationsInRadius}
-        availability={true}
+        availability={timeSlot !== "heatmap"}
         timeSlot={timeSlot}
-        showStationsInBudgetView={true}
+        showStationsInBudgetView={timeSlot !== "heatmap"}
         onStationClick={setSelectedStation}
+        scooterCoords={scooterCoords}
+        showScooterHeatmap={timeSlot === "heatmap"}
       />
       </section>
 

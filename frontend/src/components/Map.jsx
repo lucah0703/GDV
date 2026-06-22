@@ -20,6 +20,8 @@ import {
   createStartpointIcon,
 } from "./map/mapUtils";
 
+import ScooterHeatmap from "./map/ScooterHeatmap";
+
 export default function Map({
   center,
   label,
@@ -33,13 +35,17 @@ export default function Map({
   realRadius = 0,
   theoreticalRadius = 0,
   isochroneData = null,
-  scooterCoords = [],
   bikeCoords = [],
   showMobilityLayer = false,
-
   onStationClick = () => {},
+  scooterCoords = [],
+  showScooterHeatmap = false,
 }) {
   const startpointIcon = createStartpointIcon();
+  const normalTiles = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+
+const grayscaleTiles =
+  "https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}.png";
 
   return (
     <MapContainer
@@ -48,7 +54,18 @@ export default function Map({
       className="leaflet-map"
       style={{ width: "100%", height: "100%" }}
     >
-      <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <TileLayer
+  url={
+    showScooterHeatmap
+      ? grayscaleTiles
+      : normalTiles
+  }
+/>
+
+
+      {showScooterHeatmap && scooterCoords.length > 0 && (
+        <ScooterHeatmap points={scooterCoords} />
+      )}
 
       {showMobilityLayer && scooterCoords.length > 0 && (
   <>

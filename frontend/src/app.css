@@ -471,3 +471,31 @@ button.active,
 .station-history h4 {
   margin-bottom: 10px;
 }
+
+
+.heatmap-legend {
+  margin-top: 16px;
+}
+
+.heatmap-gradient {
+  height: 20px;
+  width: 100%;
+  border-radius: 8px;
+
+  background: linear-gradient(
+    to right,
+    #60a5fa 0%,
+    #22c55e 25%,
+    #eab308 50%,
+    #f97316 75%,
+    #dc2626 100%
+  );
+}
+
+.heatmap-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #555;
+}
