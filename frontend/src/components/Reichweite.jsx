@@ -715,10 +715,10 @@ export default function Reichweite({ city, school }) {
             ))
           )}
 
-          <h4>Theoretisch erreichbar</h4>
+          <h4>Aktuell nicht erreichbar</h4>
 
           {theoreticalReachablePois.length === 0 ? (
-            <div className="hint">Keine theoretisch erreichbaren POIs.</div>
+            <div className="hint">Aktuell keine erreichbaren POIs.</div>
           ) : (
             theoreticalReachablePois.map((poi) => (
               <button
