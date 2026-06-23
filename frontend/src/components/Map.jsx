@@ -6,28 +6,129 @@ import {
   Marker,
   Popup,
   Circle,
+  CircleMarker,
   GeoJSON,
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-import RecenterMap from "./map/RecenterMap";
-import {
-  getTrafficEmoji,
-  getAvailable,
-  getAvailabilityStatus,
-  createStationIcon,
-  createStartpointIcon,
-} from "./map/mapUtils";
+function RecenterMap({ center }) {
+  const map = useMap();
 
-import ScooterHeatmap from "./map/ScooterHeatmap";
+  useEffect(() => {
+    if (!center || !map) return;
+
+    const t1 = setTimeout(() => {
+      if (!map._mapPane) return;
+
+      map.invalidateSize({
+        animate: false,
+        pan: false,
+      });
+
+      map.setView(center, 14, {
+        animate: false,
+      });
+    }, 100);
+
+    const t2 = setTimeout(() => {
+      if (!map._mapPane) return;
+
+      map.invalidateSize({
+        animate: false,
+        pan: false,
+      });
+    }, 500);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [center, map]);
+
+  return null;
+}
+
+function getTrafficEmoji(status) {
+  if (status === "green") return "🟢";
+  if (status === "yellow") return "🟡";
+  return "🔴";
+}
+
+function getAvailable(station, timeSlot) {
+  return (
+    station.availability?.[timeSlot] ??
+    station.availability?.current ??
+    station.availability?.morning ??
+    0
+  );
+}
+
+function getAvailabilityStatus(station, timeSlot) {
+  const available = getAvailable(station, timeSlot);
+  const capacity = Math.max(station.capacity || 1, 1);
+  const ratio = available / capacity;
+
+  if (ratio >= 0.5) return "green";
+  if (ratio >= 0.2) return "yellow";
+  return "red";
+}
+
+function getIsochroneStyle(vehicleType, reachabilityType = "real") {
+  const isBike = vehicleType === "bike";
+  const isReal = reachabilityType === "real";
+
+  const color = isBike ? "#047857" : "#7c3aed";
+
+  return {
+    color,
+    fillColor: color,
+    fillOpacity: isReal ? 0.16 : 0.06,
+    weight: isReal ? 3 : 2,
+    dashArray: isReal ? undefined : "8 8",
+  };
+}
+function getPoiColor(type) {
+  if (type === "Bahnhof") return "#2563eb";
+  if (type === "Wohnheim") return "#22c55e";
+  if (type === "Sportanlage") return "#f59e0b";
+  return "#6b7280";
+}
+
+function createStationIcon(status, vehicle) {
+  const symbol = vehicle === "bike" ? "🚲" : "🛴";
+
+  return L.divIcon({
+    className: "station-map-marker",
+    html: `<div class="station-map-marker-inner">${getTrafficEmoji(
+      status
+    )}${symbol}</div>`,
+    iconSize: [44, 34],
+    iconAnchor: [22, 17],
+    popupAnchor: [0, -16],
+  });
+}
+
+function createStartpointIcon() {
+  return L.divIcon({
+    className: "startpoint-pulse-icon",
+    html: `
+      <div class="startpoint-pulse">
+        <div class="startpoint-dot">\u{1F393}</div>
+      </div>
+    `,
+    iconSize: [42, 42],
+    iconAnchor: [21, 21],
+    popupAnchor: [0, -18],
+  });
+}
 
 export default function Map({
   center,
   label,
   markerCoords,
   pois = [],
-  setSelectedPoi = () => {},
+  setSelectedPoi = () => { },
   availability = false,
   timeSlot = "current",
   stationsInRadius = [],
@@ -54,48 +155,11 @@ const grayscaleTiles =
       className="leaflet-map"
       style={{ width: "100%", height: "100%" }}
     >
-      <TileLayer url={ grayscaleTiles}/>
-
-
-      {showScooterHeatmap && scooterCoords.length > 0 && (
-        <ScooterHeatmap points={scooterCoords} />
-      )}
-
-      {showMobilityLayer && scooterCoords.length > 0 && (
-  <>
-    {scooterCoords.map((pos, i) => (
-      <CircleMarker
-        key={`scooter-${i}`}
-        center={[pos[0], pos[1]]}
-        radius={3}
-        pathOptions={{
-          color: "#2563eb",
-          fillColor: "#3b82f6",
-          fillOpacity: 0.7,
-          weight: 1,
-        }}
+      <TileLayer
+        url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+        attribution='&copy; OpenStreetMap &copy; CARTO'
+        subdomains="abcd"
       />
-    ))}
-  </>
-)}
-
-{showMobilityLayer && bikeCoords.length > 0 && (
-  <>
-    {bikeCoords.map((pos, i) => (
-      <CircleMarker
-        key={`bike-${i}`}
-        center={[pos[0], pos[1]]}
-        radius={3}
-        pathOptions={{
-          color: "#16a34a",
-          fillColor: "#22c55e",
-          fillOpacity: 0.7,
-          weight: 1,
-        }}
-      />
-    ))}
-  </>
-)}
 
       <RecenterMap center={center} />
 
@@ -114,13 +178,10 @@ const grayscaleTiles =
                   },
                   geometry: offer.geometry,
                 }}
-                style={{
-                  color: vehicleType === "bike" ? "#047857" : "#7c3aed",
-                  fillColor: vehicleType === "bike" ? "#047857" : "#7c3aed",
-                  fillOpacity: 0.12,
-                  weight: 2,
-                  dashArray: vehicleType === "bike" ? undefined : "8 8",
-                }}
+                style={getIsochroneStyle(
+                  vehicleType,
+                  offer.reachabilityType || offer.type || "real"
+                )}
               />
             ) : null
           )
@@ -130,13 +191,7 @@ const grayscaleTiles =
         <Circle
           center={center}
           radius={theoreticalRadius}
-          pathOptions={{
-            color: "#a855f7",
-            fillColor: "#a855f7",
-            fillOpacity: 0.07,
-            weight: 2,
-            dashArray: "8 8",
-          }}
+          pathOptions={getIsochroneStyle("scooter", "theoretical")}
         />
       )}
 
@@ -144,12 +199,7 @@ const grayscaleTiles =
         <Circle
           center={center}
           radius={realRadius}
-          pathOptions={{
-            color: "#047857",
-            fillColor: "#047857",
-            fillOpacity: 0.08,
-            weight: 3,
-          }}
+          pathOptions={getIsochroneStyle("bike", "real")}
         />
       )}
 
@@ -175,24 +225,49 @@ const grayscaleTiles =
 
       {!availability &&
         pois.map((poi) => (
-          <Marker
+          <CircleMarker
             key={poi.id}
-            position={poi.coords}
+            center={poi.coords}
+            radius={6}
+            pathOptions={{
+              color: "#ffffff",
+              weight: 1,
+              fillColor: getPoiColor(poi.type),
+              fillOpacity: 0.85,
+            }}
             eventHandlers={{
               click: () => setSelectedPoi(poi),
             }}
           >
             <Popup>
-              {poi.icon} <strong>{poi.name}</strong>
+              <strong>{poi.name}</strong>
               <br />
-              {poi.realReachable
-                ? "🟢 real erreichbar"
-                : poi.theoreticalReachable
-                ? "🟡 theoretisch erreichbar"
-                : "🔴 nicht erreichbar"}
+              {poi.type}
             </Popup>
-          </Marker>
+          </CircleMarker>
         ))}
+      {!availability && (
+        <div className="map-legend">
+          <h4>POIs</h4>
+
+          <div className="legend-item">
+            <span className="legend-dot blue"></span>
+            Bahnhof
+          </div>
+
+          <div className="legend-item">
+            <span className="legend-dot green"></span>
+            Wohnheim
+          </div>
+
+          <div className="legend-item">
+            <span className="legend-dot orange"></span>
+            Sportanlage
+          </div>
+
+        </div>
+      )}
+      
 
       {(availability || showStationsInBudgetView) &&
         stationsInRadius.map((station) => {
