@@ -10,6 +10,16 @@ export function getAvailable(station, timeSlot) {
         : station.segments?.[timeSlot] ?? 0;
 }
 
+// function getAvailable(station, timeSlot) {
+//   return (
+//     station.availability?.[timeSlot] ??
+//     station.availability?.current ??
+//     station.availability?.morning ??
+//     0
+//   );
+// }
+
+
 export function getAvailabilityStatus(station, timeSlot) {
     const available = getAvailable(station, timeSlot);
     const capacity = Math.max(station.capacity || 1, 1);
@@ -21,37 +31,53 @@ export function getAvailabilityStatus(station, timeSlot) {
 }
 
 export function createStationIcon(status, vehicle) {
-    const symbol = vehicle === "bike" ? "🚲" : "🛴";
+  const symbol = vehicle === "bike" ? "🚲" : "🛴";
 
-    return L.divIcon({
-        className: "station-map-marker",
-        html: `<div class="station-map-marker-inner">${getTrafficEmoji(status)}${symbol}</div>`,
-        iconSize: [44, 34],
-        iconAnchor: [22, 17],
-        popupAnchor: [0, -16],
-    });
+  return L.divIcon({
+    className: "station-map-marker",
+    html: `<div class="station-map-marker-inner">${getTrafficEmoji(
+      status
+    )}${symbol}</div>`,
+    iconSize: [44, 34],
+    iconAnchor: [22, 17],
+    popupAnchor: [0, -16],
+  });
 }
 
 export function createStartpointIcon() {
-    return L.divIcon({
-        html: `<div style="
-        width: 32px;
-        height: 40px;
-        background: #ff4d4d;
-        border: 3px solid #fff;
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-45deg);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        ">
-        <div style="transform: rotate(45deg);">📍</div>
-        </div>`,
-        iconSize: [32, 40],
-        iconAnchor: [16, 40],
-        popupAnchor: [0, -40],
-        className: "custom-pin-icon",
-    });
+  return L.divIcon({
+    className: "startpoint-pulse-icon",
+    html: `
+      <div class="startpoint-pulse">
+        <div class="startpoint-dot">\u{1F393}</div>
+      </div>
+    `,
+    iconSize: [42, 42],
+    iconAnchor: [21, 21],
+    popupAnchor: [0, -18],
+  });
+}
+
+
+export function getIsochroneStyle(vehicleType, reachabilityType = "real") {
+  const isBike = vehicleType === "bike";
+  const isReal = reachabilityType === "real";
+
+  const color = isBike ? "#047857" : "#7c3aed";
+
+  return {
+    color,
+    fillColor: color,
+    fillOpacity: isReal ? 0.16 : 0.06,
+    weight: isReal ? 3 : 2,
+    dashArray: isReal ? undefined : "8 8",
+  };
+}
+
+
+export function getPoiColor(type) {
+  if (type === "Bahnhof") return "#2563eb";
+  if (type === "Wohnheim") return "#22c55e";
+  if (type === "Sportanlage") return "#f59e0b";
+  return "#6b7280";
 }

@@ -2,16 +2,38 @@ import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 
 export default function RecenterMap({ center }) {
-    const map = useMap();
+const map = useMap();
 
-    useEffect(() => {
-        if (!center) return;
+  useEffect(() => {
+    if (!center || !map) return;
 
-        map.setView(center, 14);
+    const t1 = setTimeout(() => {
+      if (!map._mapPane) return;
 
-        setTimeout(() => map.invalidateSize(true), 100);
-        setTimeout(() => map.invalidateSize(true), 500);
-    }, [center, map]);
+      map.invalidateSize({
+        animate: false,
+        pan: false,
+      });
 
-    return null;
+      map.setView(center, 14, {
+        animate: false,
+      });
+    }, 100);
+
+    const t2 = setTimeout(() => {
+      if (!map._mapPane) return;
+
+      map.invalidateSize({
+        animate: false,
+        pan: false,
+      });
+    }, 500);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [center, map]);
+
+  return null;
 }
