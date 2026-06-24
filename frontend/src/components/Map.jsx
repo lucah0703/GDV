@@ -75,15 +75,17 @@ function getAvailabilityStatus(station, timeSlot) {
 }
 
 const PROVIDER_COLORS = {
-  lime: "#1b004b",
-  bolt: "#4c007d",
-  voi: "#7f00b2",
-  dott: "#bc4ed8",
+  // Bikes
+  regioRadStuttgart: "#230a51",
+  dbCallABike: "#6022c4",
+  "kvv.nextbike": "#A855F7",
+  vrnnextbike: "#D8B4FE",
 
-  regioRadStuttgart: "#005227",
-  dbCallABike: "#038554",
-  "kvv.nextbike": "#03bb85",
-  vrnnextbike: "#68ddbd",
+  // Scooter
+  lime: "#8C2D04",
+  bolt: "#D94801",
+  voi: "#F97316",
+  dott: "#FBBF24"
 };
 
 function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
@@ -104,9 +106,9 @@ function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
 }
 
 function getPoiColor(type) {
-  if (type === "Bahnhof") return "#2563eb";
-  if (type === "Wohnheim") return "#22c55e";
-  if (type === "Sportanlage") return "#f59e0b";
+  if (type === "Bahnhof") return "#2463eb";
+  if (type === "Wohnheim") return "#289951";
+  if (type === "Sportanlage") return "#720d0d";
   return "#6b7280";
 }
 

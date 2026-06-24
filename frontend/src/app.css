@@ -721,9 +721,9 @@ button.filter-chip.active {
   display: inline-block;
 }
  
-.legend-dot.blue   { background: #2563eb; }
-.legend-dot.green  { background: #22c55e; }
-.legend-dot.orange { background: #f59e0b; }
+.legend-dot.blue   { background: #2463eb; }
+.legend-dot.green  { background: #289951; }
+.legend-dot.orange { background: #720d0d; }
 .legend-divider {
   height: 1px;
   background: #e2e8f0;
