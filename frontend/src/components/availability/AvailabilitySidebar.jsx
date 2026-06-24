@@ -51,7 +51,7 @@ export default function AvailabilitySidebar({
 
     <div className="availability-stations-list">
     {stations.map((s) => {
-      const val = s.segments?.[timeSlot] ?? 0;
+      const val = s.availability?.[timeSlot] ?? 0;
       const ratio = val / (s.capacity || 1);
 
       const color = getTrafficColor(ratio);

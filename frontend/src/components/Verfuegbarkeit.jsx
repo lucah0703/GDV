@@ -118,6 +118,9 @@ const bikeStations = stationData.map((s) => {
     // LIVE
     availability: {
       current: current?.num_bikes_available ?? 0,
+        morning: segments?.y_data?.[0] ?? 0,
+        midday: segments?.y_data?.[1] ?? 0,
+        evening: segments?.y_data?.[2] ?? 0,
     },
 
     // MAP / 3 ZEITPUNKTE
