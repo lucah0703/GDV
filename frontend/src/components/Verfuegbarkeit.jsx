@@ -295,6 +295,7 @@ const bikeStations = stationData.map((s) => {
         onStationClick={setSelectedStation}
         scooterCoords={scooterCoords}
         showScooterHeatmap={timeSlot === "heatmap"}
+        selectedStation={selectedStation}
       />
     </section>
 

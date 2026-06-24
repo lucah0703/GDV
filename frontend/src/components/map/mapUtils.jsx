@@ -33,19 +33,96 @@ export function getAvailabilityStatus(station, timeSlot) {
     return "red";
 }
 
-export function createStationIcon(status, vehicle) {
+// export function createStationIcon(status, vehicle, isSelected = false) {
+//   const symbol = vehicle === "bike" ? "🚲" : "🛴";
+
+//   return L.divIcon({
+//     className: "station-map-marker",
+//     html: `<div class="station-map-marker-inner">${getTrafficEmoji(
+//       status
+//     )}${symbol}</div>`,
+//     iconSize: [44, 34],
+//     iconAnchor: [22, 17],
+//     popupAnchor: [0, -16],
+//   });
+// }
+export function createStationIcon(status, vehicle, isSelected = false) {
   const symbol = vehicle === "bike" ? "🚲" : "🛴";
 
+  const baseColor =
+    status === "red"
+      ? "#ef4444"
+      : status === "yellow"
+      ? "#f59e0b"
+      : "#22c55e";
+
+  const color = baseColor;
+  const stroke = isSelected ? "#3b82f6" : "#ffffff";
+
+  const size = isSelected ? 48 : 40;
+
+  const glow = isSelected
+    ? `filter="drop-shadow(0px 0px 10px #3b82f6)"`
+    : "";
+
   return L.divIcon({
-    className: "station-map-marker",
-    html: `<div class="station-map-marker-inner">${getTrafficEmoji(
-      status
-    )}${symbol}</div>`,
-    iconSize: [44, 34],
-    iconAnchor: [22, 17],
-    popupAnchor: [0, -16],
+    className: "",
+    html: `
+      <div style="
+  width: ${size}px;
+  height: ${size}px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+">
+
+        <svg width="${size}" height="${size}" viewBox="0 0 24 24" ${glow}>
+          
+          <!-- PIN SHAPE -->
+          <path
+            d="M12 2C7.5 2 4 5.5 4 10c0 6 8 12 8 12s8-6 8-12c0-4.5-3.5-8-8-8z"
+            fill="${color}"
+            stroke="${stroke}"
+            stroke-width="1.5"
+          />
+
+          <!-- TOP HALF OVERLAY (leicht heller für “fill effect”) -->
+          <path
+            d="M12 2C7.5 2 4 5.5 4 10c0 6 8 12 8 12V2z"
+            fill="rgba(255,255,255,0.12)"
+          />
+
+<!-- ICON BADGE -->
+<circle
+  cx="12"
+  cy="11"
+  r="5.5"
+  fill="white"
+  opacity="0.95"
+/>
+
+<!-- ICON -->
+<text
+  x="12"
+  y="11"
+  text-anchor="middle"
+  dominant-baseline="middle"
+  font-size="9"
+  fill="#111827"
+  style="font-weight: 600;"
+>
+  ${symbol}
+</text>
+
+        </svg>
+      </div>
+    `,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size],
+    popupAnchor: [0, -size],
   });
 }
+
 
 export function createStartpointIcon() {
   return L.divIcon({

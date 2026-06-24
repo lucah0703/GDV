@@ -45,6 +45,7 @@ export default function Map({
   onStationClick = () => {},
   scooterCoords = [],
   showScooterHeatmap = false,
+  selectedStation = null, 
 }) {
   const startpointIcon = createStartpointIcon();
   const normalTiles = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
@@ -185,34 +186,40 @@ const grayscaleTiles =
       
 
       {(availability || showStationsInBudgetView) &&
-        stationsInRadius.map((station) => {
-          const status = getAvailabilityStatus(station, timeSlot);
-          const available = getAvailable(station, timeSlot);
+  stationsInRadius.map((station) => {
+    const status = getAvailabilityStatus(station, timeSlot);
+    const available = getAvailable(station, timeSlot);
 
-          return (
-            <Marker
-              key={`${station.vehicle}-${station.id || station.name}`}
-              position={station.coords}
-              icon={createStationIcon(status, station.vehicle)}
-              eventHandlers={{
-                click: () => {
-                  if(onStationClick) {
-                    onStationClick(station);
-                  }
-                },
-              }}
-            >
-              <Popup>
-                {getTrafficEmoji(status)} <strong>{station.name}</strong>
-                <br />
-                {station.provider} · {station.type}
-                <br />
-                {available} von {station.capacity} verfügbar
-              </Popup>
-            </Marker>
-            
-          );
-        })}
+    const isSelected = selectedStation?.id === station.id;
+
+    return (
+      <Marker
+        key={`${station.vehicle}-${station.id || station.name}`}
+        position={station.coords}
+        icon={createStationIcon(
+          status,
+          station.vehicle,
+          isSelected   // 👈 NEW
+        )}
+        zIndexOffset={isSelected ? 1000 : 0}
+        eventHandlers={{
+          click: () => {
+            if (onStationClick) {
+              onStationClick(station);
+            }
+          },
+        }}
+      >
+        <Popup>
+          {getTrafficEmoji(status)} <strong>{station.name}</strong>
+          <br />
+          {station.provider} · {station.type}
+          <br />
+          {available} von {station.capacity} verfügbar
+        </Popup>
+      </Marker>
+    );
+  })}
     </MapContainer>
   );
 }
