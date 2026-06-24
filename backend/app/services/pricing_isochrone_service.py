@@ -12,7 +12,6 @@ PLAN_IDS = {
         "dott": ["68f10397-538d-4785-954d-028a6dca5df4"],
 
         "regioRadStuttgart": ["CAB:PricingPlan:9fcfe017-d9f6-35e9-8605-19637aa3ba60"],
-        "dbCallABike": ["CAB:PricingPlan:cd69c83c-a695-3df9-bfbe-e1a967fb1f84"]
     },
 
     "karlsruhe": {
@@ -21,7 +20,6 @@ PLAN_IDS = {
         "dott": ["1ba9b296-47d7-4062-bb8a-e85831e06364"],
 
         "kvv.nextbike": ["Rate0053"], # unsicher
-        "dbCallABike": ["CAB:PricingPlan:cd69c83c-a695-3df9-bfbe-e1a967fb1f84"]
     },
 
     "mannheim": {
@@ -29,7 +27,6 @@ PLAN_IDS = {
         "dott": ["a0add3e8-0ed2-4163-aa74-ef55932c0f0c"],
 
         "vrnnextbike": ["Rate0307"],
-        "dbCallABike": ["CAB:PricingPlan:cd69c83c-a695-3df9-bfbe-e1a967fb1f84"]
     }
 }
 
@@ -41,7 +38,6 @@ PRICING_URLS = {
         "dott": "https://gbfs.api.ridedott.com/public/v2/stuttgart/system_pricing_plans.json",
         
         "regioRadStuttgart": "https://api.mobidata-bw.de/sharing/gbfs/v3/regiorad_stuttgart/system_pricing_plans",
-        "dbCallABike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
     },
 
     "karlsruhe": {
@@ -50,7 +46,6 @@ PRICING_URLS = {
         "dott": "https://gbfs.api.ridedott.com/public/v2/karlsruhe/system_pricing_plans.json",
 
         "kvv.nextbike": "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_fg/de/system_pricing_plans.json",
-        "dbCallABike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
     },
 
     "mannheim": {
@@ -58,7 +53,6 @@ PRICING_URLS = {
         "dott": "https://gbfs.api.ridedott.com/public/v2/mannheim/system_pricing_plans.json",
 
         "vrnnextbike": "https://gbfs.nextbike.net/maps/gbfs/v2/nextbike_vn/de/system_pricing_plans.json",
-        "dbCallABike": "https://api.mobidata-bw.de/sharing/gbfs/v3/callabike/system_pricing_plans"
     }
 }
 
@@ -71,7 +65,6 @@ PROVIDER_VEHICLE_TYPE = {
     "vrnnextbike": "bike",
     "kvv.nextbike": "bike",
     "regioRadStuttgart": "bike",
-    "dbCallABike": "bike",
 }
 
 

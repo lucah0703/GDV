@@ -77,7 +77,6 @@ function getAvailabilityStatus(station, timeSlot) {
 const PROVIDER_COLORS = {
   // Bikes
   regioRadStuttgart: "#230a51",
-  dbCallABike: "#6022c4",
   "kvv.nextbike": "#A855F7",
   vrnnextbike: "#D8B4FE",
 
