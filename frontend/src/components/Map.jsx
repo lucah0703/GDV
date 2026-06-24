@@ -107,7 +107,7 @@ function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
 function getPoiColor(type) {
   if (type === "Bahnhof") return "#2463eb";
   if (type === "Wohnheim") return "#289951";
-  if (type === "Sportanlage") return "#720d0d";
+  if (type === "Sportanlage") return "#ff5858";
   return "#6b7280";
 }
 function providerHasOnlyTheoreticalPois(provider, pois) {
@@ -359,6 +359,7 @@ export default function Map({
                   </div>
                 ))}
               </div>
+
               <p className="legend-hint">
                 Gefüllt = real erreichbar · gestrichelt = aktuell nicht Verfügbar
               </p>

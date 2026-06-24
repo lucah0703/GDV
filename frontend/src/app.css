@@ -686,62 +686,135 @@ button.filter-chip.active {
 /* ==========================================================================
    KARTEN-LEGENDE
    ========================================================================== */
- 
+
 .map-legend {
   position: absolute;
   top: 18px;
   right: 18px;
   z-index: 500;
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 14px;
-  padding: 14px 16px;
-  min-width: 230px;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 16px;
+  padding: 16px 18px;
+  min-width: 330px;
+  max-width: 360px;
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.2);
   font-size: 14px;
 }
- 
+
 .map-legend h4 {
   margin: 0 0 10px;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
+  color: #0f172a;
 }
- 
+
 .legend-item {
   display: flex;
   align-items: center;
   gap: 9px;
-  margin: 9px 0;
+  margin: 8px 0;
   color: #0f172a;
+  font-size: 13px;
 }
- 
+
 .legend-dot {
   width: 11px;
   height: 11px;
   border-radius: 999px;
   display: inline-block;
+  flex-shrink: 0;
 }
- 
-.legend-dot.blue   { background: #2463eb; }
-.legend-dot.green  { background: #289951; }
-.legend-dot.orange { background: #720d0d; }
+
+.legend-dot.blue {
+  background: #2463eb;
+}
+
+.legend-dot.green {
+  background: #289951;
+}
+
+.legend-dot.orange {
+  background: #ff5858;
+}
+
 .legend-divider {
   height: 1px;
   background: #e2e8f0;
-  margin: 13px 0;
+  margin: 14px 0;
 }
 
-.legend-line {
-  width: 23px;
-  height: 4px;
-  border-radius: 999px;
+.legend-divider.small {
+  margin: 11px 0;
+}
+
+.legend-status-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+.legend-status-line {
+  width: 32px;
+  height: 0;
   display: inline-block;
-  flex: 0 0 auto;
+  flex-shrink: 0;
+  border-top: 4px solid #0f172a;
+  border-radius: 999px;
 }
 
-.legend-item small {
-  margin-left: 5px;
+.legend-status-line.dashed {
+  border-top-style: dashed;
+}
+
+.legend-provider-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.legend-provider-item {
+  display: grid;
+  grid-template-columns: 38px 38px 1fr;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.legend-isochrone-shape {
+  width: 32px;
+  height: 18px;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 8px;
+  opacity: 0.85;
+}
+
+.legend-isochrone-shape.dashed {
+  background: transparent !important;
+  border-style: dashed;
+  opacity: 1;
+}
+
+.legend-provider-name {
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.legend-provider-name small {
+  display: block;
+  margin-left: 0;
+  margin-top: 1px;
   color: #64748b;
-  font-size: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.legend-hint {
+  margin: 13px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.35;
 }
  
 /* ==========================================================================
