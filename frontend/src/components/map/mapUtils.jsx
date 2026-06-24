@@ -1,3 +1,6 @@
+import { useMapEvents } from "react-leaflet";
+
+
 export function getTrafficEmoji(status) {
     if (status === "green") return "🟢";
     if (status === "yellow") return "🟡";
@@ -80,4 +83,14 @@ export function getPoiColor(type) {
   if (type === "Wohnheim") return "#22c55e";
   if (type === "Sportanlage") return "#f59e0b";
   return "#6b7280";
+}
+
+export function MapClickHandler({ onMapClick }) {
+  useMapEvents({
+    click() {
+      onMapClick?.();
+    },
+  });
+
+  return null;
 }

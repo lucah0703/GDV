@@ -3,6 +3,7 @@ import {
   MapContainer,
   TileLayer,
   useMap,
+  useMapEvents,
   Marker,
   Popup,
   Circle,
@@ -19,7 +20,8 @@ import {
   createStationIcon,
   createStartpointIcon,
   getIsochroneStyle,
-  getPoiColor
+  getPoiColor,
+  MapClickHandler
 } from "./map/mapUtils";
 
 import ScooterHeatmap from "./map/ScooterHeatmap";
@@ -64,6 +66,13 @@ const grayscaleTiles =
       />
 
       <RecenterMap center={center} />
+      <MapClickHandler
+        onMapClick={() => {
+          if (onStationClick) {
+            onStationClick(null);
+          }
+        }}
+      />
 
       {showScooterHeatmap && scooterCoords.length > 0 && (
         <ScooterHeatmap points={scooterCoords} />
@@ -201,6 +210,7 @@ const grayscaleTiles =
                 {available} von {station.capacity} verfügbar
               </Popup>
             </Marker>
+            
           );
         })}
     </MapContainer>

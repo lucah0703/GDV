@@ -4,6 +4,7 @@ import {
   getEmoji,
 } from "../../utils/availabilityHelpers";
 import StationHistoryChart from "./StationHistoryChart";
+import StationSparkline from "./StationSparkline";
 
 export default function AvailabilitySidebar({
   stations,
@@ -35,9 +36,16 @@ export default function AvailabilitySidebar({
   </>
 ) : (
   <>
-{/* CHART */}
+
+  {selectedStation ? (
+    <>
       <StationHistoryChart station={selectedStation} />
   <hr />
+  </>
+  ) : (
+    <>
+    </>
+  )}
 
     <h3>Stationen im 10 km Radius</h3>
 
@@ -50,22 +58,39 @@ export default function AvailabilitySidebar({
     </div>
 
     <div className="availability-stations-list">
-    {stations.map((s) => {
-      const val = s.availability?.[timeSlot] ?? 0;
-      const ratio = val / (s.capacity || 1);
+  {stations.map((s) => {
+    const val = s.availability?.[timeSlot] ?? 0;
+    const ratio = val / (s.capacity || 1);
 
-      const color = getTrafficColor(ratio);
+    const color = getTrafficColor(ratio);
 
-      return (
-        <div key={s.id} className={`station-card ${color}`}>
+    return (
+      <div
+        key={s.id}
+        className={`station-card ${color}`}
+        onClick={() => window.dispatchEvent(
+          new CustomEvent("selectStation", { detail: s })
+        )}
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          cursor: "pointer",
+        }}
+      >
+        <div>
           <strong>{s.name}</strong>
           <small>
             {getEmoji(color)} {val}/{s.capacity}
           </small>
         </div>
-      );
-    })}
-    </div>
+
+        {/* 👇 MINI SPARKLINE */}
+        <StationSparkline station={s} />
+      </div>
+    );
+  })}
+</div>
   </>
 )}
     </aside>

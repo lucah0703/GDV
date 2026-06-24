@@ -65,6 +65,16 @@ export default function Verfuegbarkeit({ city, school }) {
 
   const [scooterCoords, setScooterCoords] = useState([]);
 
+  useEffect(() => {
+  const handler = (e) => {
+    setSelectedStation(e.detail);
+  };
+
+  window.addEventListener("selectStation", handler);
+
+  return () => window.removeEventListener("selectStation", handler);
+}, []);
+
   /* -----------------------------
      Backend Load
   ----------------------------- */
