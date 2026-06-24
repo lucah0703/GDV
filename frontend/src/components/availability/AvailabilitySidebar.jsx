@@ -12,11 +12,11 @@ export default function AvailabilitySidebar({
   selectedStation,
 }) {
   return (
-    <aside className="panel">
+    <aside className="results-panel availability-sidebar">
 
 {timeSlot === "heatmap" ? (
   <>
-    <div className="heatmap-info">
+    <div className="heatmap-info heatmap-card">
   <strong>Historische Scooter-Verteilung</strong>
 
   <p>
@@ -41,10 +41,15 @@ export default function AvailabilitySidebar({
 
     <h3>Stationen im 10 km Radius</h3>
 
-    <p>
-      🟢 {summary.green} · 🟡 {summary.yellow} · 🔴 {summary.red}
-    </p>
+    <div className="availability-summary">
+      🟢 {summary.green}
+      ·
+      🟡 {summary.yellow}
+      ·
+      🔴 {summary.red}
+    </div>
 
+    <div className="availability-stations-list">
     {stations.map((s) => {
       const val = s.segments?.[timeSlot] ?? 0;
       const ratio = val / (s.capacity || 1);
@@ -60,6 +65,7 @@ export default function AvailabilitySidebar({
         </div>
       );
     })}
+    </div>
   </>
 )}
     </aside>

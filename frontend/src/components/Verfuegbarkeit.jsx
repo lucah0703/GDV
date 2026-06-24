@@ -199,8 +199,10 @@ const bikeStations = stationData.map((s) => {
   ----------------------------- */
 
   return (
-    <main className="layout availability-view">
-      <aside className="panel">
+    <div className="new-map-layout">
+      <div className="map-workspace availability-workspace">
+        
+      <aside className="results-panel availability-filter-panel">
         <h3>Verfügbarkeit</h3>
 
         <h4>Zeitpunkt</h4>
@@ -209,7 +211,7 @@ const bikeStations = stationData.map((s) => {
           {["current", "morning", "midday", "evening", "heatmap"].map((t) => (
             <button
               key={t}
-              className={timeSlot === t ? "active" : ""}
+              className={`time-button ${timeSlot === t ? "active" : ""}`}
               onClick={() => setTimeSlot(t)}
             >
               {t}
@@ -220,7 +222,7 @@ const bikeStations = stationData.map((s) => {
         {loading && <p>Lade Daten...</p>}
       </aside>
 
-      <section className="map">
+      <section className="map-wrapper availability-map">
         <Map
         center={school.coords}
         label={school.name}
@@ -241,6 +243,7 @@ const bikeStations = stationData.map((s) => {
         timeSlot={timeSlot}
         selectedStation={selectedStation}
       />
-    </main>
+      </div>
+    </div>
   );
 }
