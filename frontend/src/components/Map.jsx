@@ -110,6 +110,24 @@ function getPoiColor(type) {
   if (type === "Sportanlage") return "#720d0d";
   return "#6b7280";
 }
+function providerHasOnlyTheoreticalPois(provider, pois) {
+  return pois.some((poi) => {
+    const theoreticalProvider =
+      poi.theoreticalRoute?.offer?.provider ||
+      poi.theoreticalRoute?.station?.provider;
+
+    const realProvider =
+      poi.realRoute?.offer?.provider ||
+      poi.realRoute?.station?.provider;
+
+    return (
+      poi.theoreticalReachable &&
+      !poi.realReachable &&
+      theoreticalProvider === provider &&
+      realProvider !== provider
+    );
+  });
+}
 
 function createStationIcon(status, vehicle) {
   const symbol = vehicle === "bike" ? "🚲" : "🛴";
@@ -186,12 +204,16 @@ export default function Map({
       />
 
       <RecenterMap center={center} />
-
       {!availability &&
         isochroneData?.results &&
         Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
-          offers.map((offer, index) =>
-            offer.geometry ? (
+          offers.map((offer, index) => {
+            const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
+              offer.provider,
+              pois
+            );
+
+            return offer.geometry ? (
               <GeoJSON
                 key={`${vehicleType}-${offer.provider}-${index}`}
                 data={{
@@ -204,12 +226,12 @@ export default function Map({
                 }}
                 style={getIsochroneStyle(
                   vehicleType,
-                  offer.reachabilityType || offer.type || "real",
+                  isOnlyTheoretical ? "theoretical" : "real",
                   offer.provider
                 )}
               />
-            ) : null
-          )
+            ) : null;
+          })
         )}
 
       {!availability && !isochroneData && theoreticalRadius > 0 && (
@@ -294,23 +316,52 @@ export default function Map({
             <>
               <div className="legend-divider"></div>
 
-              <h4>Erreichbarkeit</h4>
+              <h4>Erreichbarkeit / Isochronen</h4>
 
-              {isochroneLegendItems.map((item) => (
-                <div className="legend-item" key={item.provider}>
-                  <span
-                    className="legend-line"
-                    style={{ backgroundColor: item.color }}
-                  ></span>
-
-                  <span>
-                    {item.provider}
-                    <small>
-                      {item.vehicleType === "bike" ? " Bike" : " E-Scooter"}
-                    </small>
-                  </span>
+              <div className="legend-status-row">
+                <div className="legend-item">
+                  <span className="legend-status-line solid"></span>
+                  Real erreichbar
                 </div>
-              ))}
+
+                <div className="legend-item">
+                  <span className="legend-status-line dashed"></span>
+                  Aktuell nicht erreichbar
+                </div>
+              </div>
+
+              <div className="legend-divider small"></div>
+
+              <div className="legend-provider-grid">
+                {isochroneLegendItems.map((item) => (
+                  <div className="legend-provider-item" key={item.provider}>
+                    <span
+                      className="legend-isochrone-shape"
+                      style={{
+                        backgroundColor: item.color,
+                        borderColor: item.color,
+                      }}
+                    ></span>
+
+                    <span
+                      className="legend-isochrone-shape dashed"
+                      style={{
+                        borderColor: item.color,
+                      }}
+                    ></span>
+
+                    <span className="legend-provider-name">
+                      {item.provider}
+                      <small>
+                        {item.vehicleType === "bike" ? " Bike" : " E-Scooter"}
+                      </small>
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <p className="legend-hint">
+                Gefüllt = real erreichbar · gestrichelt = aktuell nicht Verfügbar
+              </p>
             </>
           )}
         </div>
