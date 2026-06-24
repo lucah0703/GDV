@@ -288,6 +288,11 @@ export default function Reichweite({ city, school }) {
   const [backendError, setBackendError] = useState("");
 
   const currentAvailabilityKey = "current";
+  useEffect(() => {
+    setCalculatedBudget(null);
+    setPricingIsochroneData(null);
+    setBackendError("");
+  }, [city, school]);
 
   useEffect(() => {
     async function loadBackendData() {
@@ -610,14 +615,14 @@ export default function Reichweite({ city, school }) {
 
             <span
               className={`calculate-status ${backendError
-                  ? "error"
-                  : loadingBackend
-                    ? "loading"
-                    : calculatedBudget === null
-                      ? "waiting"
-                      : calculatedBudget !== budget
-                        ? "changed"
-                        : "success"
+                ? "error"
+                : loadingBackend
+                  ? "loading"
+                  : calculatedBudget === null
+                    ? "waiting"
+                    : calculatedBudget !== budget
+                      ? "changed"
+                      : "success"
                 }`}
             >
               {backendError

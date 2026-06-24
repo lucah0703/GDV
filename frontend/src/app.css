@@ -689,40 +689,60 @@ button.filter-chip.active {
  
 .map-legend {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.97);
-  padding: 10px 14px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-  min-width: 130px;
+  top: 18px;
+  right: 18px;
+  z-index: 500;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 14px;
+  padding: 14px 16px;
+  min-width: 230px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+  font-size: 14px;
 }
  
 .map-legend h4 {
-  margin: 0 0 8px 0;
-  font-size: 13px;
+  margin: 0 0 10px;
+  font-size: 15px;
   font-weight: 700;
 }
  
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 6px 0;
-  font-size: 13px;
+  gap: 9px;
+  margin: 9px 0;
+  color: #0f172a;
 }
  
 .legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  display: inline-block;
 }
  
 .legend-dot.blue   { background: #2563eb; }
 .legend-dot.green  { background: #22c55e; }
 .legend-dot.orange { background: #f59e0b; }
+.legend-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 13px 0;
+}
+
+.legend-line {
+  width: 23px;
+  height: 4px;
+  border-radius: 999px;
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.legend-item small {
+  margin-left: 5px;
+  color: #64748b;
+  font-size: 12px;
+}
  
 /* ==========================================================================
    STARTPUNKT-MARKER

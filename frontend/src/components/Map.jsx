@@ -74,20 +74,35 @@ function getAvailabilityStatus(station, timeSlot) {
   return "red";
 }
 
-function getIsochroneStyle(vehicleType, reachabilityType = "real") {
-  const isBike = vehicleType === "bike";
+const PROVIDER_COLORS = {
+  lime: "#1b004b",
+  bolt: "#4c007d",
+  voi: "#7f00b2",
+  dott: "#bc4ed8",
+
+  regioRadStuttgart: "#005227",
+  dbCallABike: "#038554",
+  "kvv.nextbike": "#03bb85",
+  vrnnextbike: "#68ddbd",
+};
+
+function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   const isReal = reachabilityType === "real";
 
-  const color = isBike ? "#047857" : "#7c3aed";
+  const fallbackColor =
+    vehicleType === "bike" ? "#038554" : "#7f00b2";
+
+  const color = PROVIDER_COLORS[provider] || fallbackColor;
 
   return {
     color,
     fillColor: color,
-    fillOpacity: isReal ? 0.16 : 0.06,
+    fillOpacity: isReal ? 0.18 : 0.08,
     weight: isReal ? 3 : 2,
     dashArray: isReal ? undefined : "8 8",
   };
 }
+
 function getPoiColor(type) {
   if (type === "Bahnhof") return "#2563eb";
   if (type === "Wohnheim") return "#22c55e";
@@ -138,7 +153,24 @@ export default function Map({
   isochroneData = null,
 }) {
   const startpointIcon = createStartpointIcon();
-
+  const isochroneLegendItems = isochroneData?.results
+    ? Object.entries(isochroneData.results)
+      .flatMap(([vehicleType, offers]) =>
+        offers
+          .filter((offer) => offer.provider)
+          .map((offer) => ({
+            provider: offer.provider,
+            vehicleType,
+            color:
+              PROVIDER_COLORS[offer.provider] ||
+              (vehicleType === "bike" ? "#038554" : "#7f00b2"),
+          }))
+      )
+      .filter(
+        (item, index, array) =>
+          array.findIndex((x) => x.provider === item.provider) === index
+      )
+    : [];
   return (
     <MapContainer
       center={center}
@@ -171,7 +203,8 @@ export default function Map({
                 }}
                 style={getIsochroneStyle(
                   vehicleType,
-                  offer.reachabilityType || offer.type || "real"
+                  offer.reachabilityType || offer.type || "real",
+                  offer.provider
                 )}
               />
             ) : null
@@ -256,9 +289,31 @@ export default function Map({
             Sportanlage
           </div>
 
+          {isochroneLegendItems.length > 0 && (
+            <>
+              <div className="legend-divider"></div>
+
+              <h4>Erreichbarkeit</h4>
+
+              {isochroneLegendItems.map((item) => (
+                <div className="legend-item" key={item.provider}>
+                  <span
+                    className="legend-line"
+                    style={{ backgroundColor: item.color }}
+                  ></span>
+
+                  <span>
+                    {item.provider}
+                    <small>
+                      {item.vehicleType === "bike" ? " Bike" : " E-Scooter"}
+                    </small>
+                  </span>
+                </div>
+              ))}
+            </>
+          )}
         </div>
       )}
-      
     </MapContainer>
   );
 }
