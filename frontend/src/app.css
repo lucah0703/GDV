@@ -686,43 +686,136 @@ button.filter-chip.active {
 /* ==========================================================================
    KARTEN-LEGENDE
    ========================================================================== */
- 
+
 .map-legend {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 1000;
+  top: 18px;
+  right: 18px;
+  z-index: 500;
   background: rgba(255, 255, 255, 0.97);
-  padding: 10px 14px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
-  min-width: 130px;
+  border-radius: 16px;
+  padding: 16px 18px;
+  min-width: 330px;
+  max-width: 360px;
+  box-shadow: 0 12px 34px rgba(15, 23, 42, 0.2);
+  font-size: 14px;
 }
- 
+
 .map-legend h4 {
-  margin: 0 0 8px 0;
-  font-size: 13px;
-  font-weight: 700;
+  margin: 0 0 10px;
+  font-size: 15px;
+  font-weight: 800;
+  color: #0f172a;
 }
- 
+
 .legend-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin: 6px 0;
+  gap: 9px;
+  margin: 8px 0;
+  color: #0f172a;
   font-size: 13px;
 }
- 
+
 .legend-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  display: inline-block;
   flex-shrink: 0;
 }
- 
-.legend-dot.blue   { background: #2563eb; }
-.legend-dot.green  { background: #22c55e; }
-.legend-dot.orange { background: #f59e0b; }
+
+.legend-dot.blue {
+  background: #2463eb;
+}
+
+.legend-dot.green {
+  background: #289951;
+}
+
+.legend-dot.orange {
+  background: #ff5858;
+}
+
+.legend-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 14px 0;
+}
+
+.legend-divider.small {
+  margin: 11px 0;
+}
+
+.legend-status-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px;
+}
+
+.legend-status-line {
+  width: 32px;
+  height: 0;
+  display: inline-block;
+  flex-shrink: 0;
+  border-top: 4px solid #0f172a;
+  border-radius: 999px;
+}
+
+.legend-status-line.dashed {
+  border-top-style: dashed;
+}
+
+.legend-provider-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.legend-provider-item {
+  display: grid;
+  grid-template-columns: 38px 38px 1fr;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.legend-isochrone-shape {
+  width: 32px;
+  height: 18px;
+  display: inline-block;
+  border: 2px solid;
+  border-radius: 8px;
+  opacity: 0.85;
+}
+
+.legend-isochrone-shape.dashed {
+  background: transparent !important;
+  border-style: dashed;
+  opacity: 1;
+}
+
+.legend-provider-name {
+  color: #0f172a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.legend-provider-name small {
+  display: block;
+  margin-left: 0;
+  margin-top: 1px;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.legend-hint {
+  margin: 13px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.35;
+}
  
 /* ==========================================================================
    STARTPUNKT-MARKER

@@ -74,25 +74,59 @@ function getAvailabilityStatus(station, timeSlot) {
   return "red";
 }
 
-function getIsochroneStyle(vehicleType, reachabilityType = "real") {
-  const isBike = vehicleType === "bike";
+const PROVIDER_COLORS = {
+  // Bikes
+  regioRadStuttgart: "#230a51",
+  "kvv.nextbike": "#A855F7",
+  vrnnextbike: "#D8B4FE",
+
+  // Scooter
+  lime: "#8C2D04",
+  bolt: "#D94801",
+  voi: "#F97316",
+  dott: "#FBBF24"
+};
+
+function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   const isReal = reachabilityType === "real";
 
-  const color = isBike ? "#047857" : "#7c3aed";
+  const fallbackColor =
+    vehicleType === "bike" ? "#038554" : "#7f00b2";
+
+  const color = PROVIDER_COLORS[provider] || fallbackColor;
 
   return {
     color,
     fillColor: color,
-    fillOpacity: isReal ? 0.16 : 0.06,
+    fillOpacity: isReal ? 0.18 : 0.08,
     weight: isReal ? 3 : 2,
     dashArray: isReal ? undefined : "8 8",
   };
 }
+
 function getPoiColor(type) {
-  if (type === "Bahnhof") return "#2563eb";
-  if (type === "Wohnheim") return "#22c55e";
-  if (type === "Sportanlage") return "#f59e0b";
+  if (type === "Bahnhof") return "#2463eb";
+  if (type === "Wohnheim") return "#289951";
+  if (type === "Sportanlage") return "#ff5858";
   return "#6b7280";
+}
+function providerHasOnlyTheoreticalPois(provider, pois) {
+  return pois.some((poi) => {
+    const theoreticalProvider =
+      poi.theoreticalRoute?.offer?.provider ||
+      poi.theoreticalRoute?.station?.provider;
+
+    const realProvider =
+      poi.realRoute?.offer?.provider ||
+      poi.realRoute?.station?.provider;
+
+    return (
+      poi.theoreticalReachable &&
+      !poi.realReachable &&
+      theoreticalProvider === provider &&
+      realProvider !== provider
+    );
+  });
 }
 
 function createStationIcon(status, vehicle) {
@@ -138,7 +172,24 @@ export default function Map({
   isochroneData = null,
 }) {
   const startpointIcon = createStartpointIcon();
-
+  const isochroneLegendItems = isochroneData?.results
+    ? Object.entries(isochroneData.results)
+      .flatMap(([vehicleType, offers]) =>
+        offers
+          .filter((offer) => offer.provider)
+          .map((offer) => ({
+            provider: offer.provider,
+            vehicleType,
+            color:
+              PROVIDER_COLORS[offer.provider] ||
+              (vehicleType === "bike" ? "#038554" : "#7f00b2"),
+          }))
+      )
+      .filter(
+        (item, index, array) =>
+          array.findIndex((x) => x.provider === item.provider) === index
+      )
+    : [];
   return (
     <MapContainer
       center={center}
@@ -153,12 +204,16 @@ export default function Map({
       />
 
       <RecenterMap center={center} />
-
       {!availability &&
         isochroneData?.results &&
         Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
-          offers.map((offer, index) =>
-            offer.geometry ? (
+          offers.map((offer, index) => {
+            const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
+              offer.provider,
+              pois
+            );
+
+            return offer.geometry ? (
               <GeoJSON
                 key={`${vehicleType}-${offer.provider}-${index}`}
                 data={{
@@ -171,11 +226,12 @@ export default function Map({
                 }}
                 style={getIsochroneStyle(
                   vehicleType,
-                  offer.reachabilityType || offer.type || "real"
+                  isOnlyTheoretical ? "theoretical" : "real",
+                  offer.provider
                 )}
               />
-            ) : null
-          )
+            ) : null;
+          })
         )}
 
       {!availability && !isochroneData && theoreticalRadius > 0 && (
@@ -256,9 +312,61 @@ export default function Map({
             Sportanlage
           </div>
 
+          {isochroneLegendItems.length > 0 && (
+            <>
+              <div className="legend-divider"></div>
+
+              <h4>Erreichbarkeit / Isochronen</h4>
+
+              <div className="legend-status-row">
+                <div className="legend-item">
+                  <span className="legend-status-line solid"></span>
+                  Real erreichbar
+                </div>
+
+                <div className="legend-item">
+                  <span className="legend-status-line dashed"></span>
+                  Aktuell nicht erreichbar
+                </div>
+              </div>
+
+              <div className="legend-divider small"></div>
+
+              <div className="legend-provider-grid">
+                {isochroneLegendItems.map((item) => (
+                  <div className="legend-provider-item" key={item.provider}>
+                    <span
+                      className="legend-isochrone-shape"
+                      style={{
+                        backgroundColor: item.color,
+                        borderColor: item.color,
+                      }}
+                    ></span>
+
+                    <span
+                      className="legend-isochrone-shape dashed"
+                      style={{
+                        borderColor: item.color,
+                      }}
+                    ></span>
+
+                    <span className="legend-provider-name">
+                      {item.provider}
+                      <small>
+                        {item.vehicleType === "bike" ? " Bike" : " E-Scooter"}
+                      </small>
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <p className="legend-hint">
+                Gefüllt = real erreichbar · gestrichelt = aktuell nicht Verfügbar
+              </p>
+            </>
+          )}
         </div>
       )}
-      
     </MapContainer>
   );
 }

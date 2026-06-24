@@ -111,7 +111,6 @@ function isPoiInForbiddenZone(poi, geofencingZones) {
   return features.some((feature) => {
     const geometry = feature.geometry;
     const props = feature.properties || {};
-
     const name = String(props.name || "").toLowerCase();
 
     const isForbidden =
@@ -217,10 +216,10 @@ function normalizeAvailabilityToStations(data) {
       availability: {
         current: Number(
           item.num_bicycles_available ??
-          item.bikes_available ??
-          item.available ??
-          item.current ??
-          0
+            item.bikes_available ??
+            item.available ??
+            item.current ??
+            0
         ),
       },
     });
@@ -288,6 +287,12 @@ export default function Reichweite({ city, school }) {
   const [backendError, setBackendError] = useState("");
 
   const currentAvailabilityKey = "current";
+
+  useEffect(() => {
+    setCalculatedBudget(null);
+    setPricingIsochroneData(null);
+    setBackendError("");
+  }, [city, school.name]);
 
   useEffect(() => {
     async function loadBackendData() {
@@ -368,7 +373,6 @@ export default function Reichweite({ city, school }) {
         }
       } catch (error) {
         console.error("Backend konnte nicht geladen werden:", error);
-
         setBackendPois([]);
         setBackendStations([]);
         setGeofencingZones({
@@ -383,7 +387,7 @@ export default function Reichweite({ city, school }) {
     }
 
     loadBackendData();
-  }, [city, school, calculatedBudget]);
+  }, [city, school.name, calculatedBudget]);
 
   const activeVehicles = useMemo(() => {
     const vehicles = [];
@@ -396,7 +400,6 @@ export default function Reichweite({ city, school }) {
 
   const filteredBackendPois = useMemo(() => {
     if (selectedPoiType === "Alle") return backendPois;
-
     return backendPois.filter((poi) => poi.type === selectedPoiType);
   }, [backendPois, selectedPoiType]);
 
@@ -407,10 +410,10 @@ export default function Reichweite({ city, school }) {
 
       return isNear && vehicleActive;
     });
-  }, [backendStations, school, activeVehicles]);
+  }, [backendStations, school.coords, activeVehicles]);
 
   const poisWithReachability = useMemo(() => {
-    function getBestRouteToPoi(poi, onlyAvailable) {
+    function getRoutesToPoi(poi, onlyAvailable) {
       const stationPool = onlyAvailable ? stationsNearStart : backendStations;
 
       const options = stationPool
@@ -446,21 +449,33 @@ export default function Reichweite({ city, school }) {
         .filter(Boolean)
         .sort((a, b) => a.price - b.price);
 
-      return options[0] || null;
+      return {
+        best: options[0] || null,
+        all: options,
+      };
     }
 
     return filteredBackendPois.map((poi) => {
       const blockedByGeofence = isPoiInForbiddenZone(poi, geofencingZones);
 
-      const theoreticalRoute = getBestRouteToPoi(poi, false);
+      const theoreticalRoutes = getRoutesToPoi(poi, false);
 
-      const realRoute = blockedByGeofence
-        ? null
-        : getBestRouteToPoi(poi, true);
+      const realRoutes = blockedByGeofence
+        ? { best: null, all: [] }
+        : getRoutesToPoi(poi, true);
+
+      const realProviderKeys = new Set(
+        realRoutes.all.map((route) => route.offer?.provider || route.station.provider)
+      );
+
+      const theoreticalOnlyRoutes = theoreticalRoutes.all.filter((route) => {
+        const provider = route.offer?.provider || route.station.provider;
+        return !realProviderKeys.has(provider);
+      });
 
       let theoreticalReason = "";
 
-      if (theoreticalRoute && !realRoute) {
+      if (theoreticalRoutes.best && !realRoutes.best) {
         if (blockedByGeofence) {
           theoreticalReason = "Liegt in einer Verbotszone";
         } else {
@@ -470,12 +485,15 @@ export default function Reichweite({ city, school }) {
 
       return {
         ...poi,
-        theoreticalRoute,
-        realRoute,
+        theoreticalRoute: theoreticalRoutes.best,
+        theoreticalRoutes: theoreticalRoutes.all,
+        theoreticalOnlyRoutes,
+        realRoute: realRoutes.best,
+        realRoutes: realRoutes.all,
         blockedByGeofence,
         theoreticalReason,
-        theoreticalReachable: Boolean(theoreticalRoute),
-        realReachable: Boolean(realRoute),
+        theoreticalReachable: Boolean(theoreticalRoutes.best),
+        realReachable: Boolean(realRoutes.best),
       };
     });
   }, [
@@ -492,7 +510,7 @@ export default function Reichweite({ city, school }) {
   );
 
   const theoreticalReachablePois = poisWithReachability.filter(
-    (poi) => !poi.realReachable && poi.theoreticalReachable
+    (poi) => poi.theoreticalOnlyRoutes.length > 0
   );
 
   const notReachablePois = poisWithReachability.filter(
@@ -504,7 +522,6 @@ export default function Reichweite({ city, school }) {
 
     const radii = activeVehicles.map((vehicle) => {
       const offer = getBestIsochroneOffer(pricingIsochroneData, vehicle);
-
       if (!offer) return 0;
 
       return (offer.max_minutes / 60) * SPEED_KMH[vehicle] * 1000;
@@ -571,7 +588,9 @@ export default function Reichweite({ city, school }) {
             {["Alle", "Bahnhof", "Wohnheim", "Sportanlage"].map((type) => (
               <button
                 key={type}
-                className={`filter-chip ${selectedPoiType === type ? "active" : ""}`}
+                className={`filter-chip ${
+                  selectedPoiType === type ? "active" : ""
+                }`}
                 onClick={() => {
                   setSelectedPoiType(type);
                   setSelectedPoi(null);
@@ -609,36 +628,31 @@ export default function Reichweite({ city, school }) {
             </button>
 
             <span
-              className={`calculate-status ${backendError
+              className={`calculate-status ${
+                backendError
                   ? "error"
                   : loadingBackend
-                    ? "loading"
-                    : calculatedBudget === null
-                      ? "waiting"
-                      : calculatedBudget !== budget
-                        ? "changed"
-                        : "success"
-                }`}
+                  ? "loading"
+                  : calculatedBudget === null
+                  ? "waiting"
+                  : calculatedBudget !== budget
+                  ? "changed"
+                  : "success"
+              }`}
             >
               {backendError
                 ? "Fehler"
                 : loadingBackend
-                  ? "Lädt..."
-                  : calculatedBudget === null
-                    ? "Noch nicht berechnet"
-                    : calculatedBudget !== budget
-                      ? "Neu berechnen"
-                      : "Berechnet"}
+                ? "Lädt..."
+                : calculatedBudget === null
+                ? "Noch nicht berechnet"
+                : calculatedBudget !== budget
+                ? "Neu berechnen"
+                : "Berechnet"}
             </span>
           </div>
         </div>
       </section>
-
-      {(calculatedBudget === null ||
-        calculatedBudget !== budget ||
-        loadingBackend ||
-        backendError)
-      }
 
       <section className="map-workspace">
         <aside className="results-panel">
@@ -670,7 +684,10 @@ export default function Reichweite({ city, school }) {
 
           {selectedPoi && (
             <>
-              <button className="back-button" onClick={() => setSelectedPoi(null)}>
+              <button
+                className="back-button"
+                onClick={() => setSelectedPoi(null)}
+              >
                 ← Auswahl zurücksetzen
               </button>
 
@@ -718,41 +735,37 @@ export default function Reichweite({ city, school }) {
           <h4>Aktuell nicht erreichbar</h4>
 
           {theoreticalReachablePois.length === 0 ? (
-            <div className="hint">Aktuell keine erreichbaren POIs.</div>
+            <div className="hint">Aktuell keine theoretischen POIs.</div>
           ) : (
-            theoreticalReachablePois.map((poi) => (
-              <button
-                key={`theoretical-${poi.id}`}
-                className="poi-list-card theoretical"
-                onClick={() => setSelectedPoi(poi)}
-              >
-                <div>
-                  <strong>
-                    {poi.icon} {poi.name}
-                  </strong>
+            theoreticalReachablePois.map((poi) =>
+              poi.theoreticalOnlyRoutes.map((route, index) => (
+                <button
+                  key={`theoretical-${poi.id}-${route.offer.provider}-${index}`}
+                  className="poi-list-card theoretical"
+                  onClick={() => setSelectedPoi(poi)}
+                >
+                  <div>
+                    <strong>
+                      {poi.icon} {poi.name}
+                    </strong>
 
-                  <small>
-                    {poi.theoreticalReason || "Nur theoretisch erreichbar"}
-                  </small>
+                    <small>
+                      {poi.blockedByGeofence
+                        ? "Liegt in einer Verbotszone"
+                        : "Aktuell kein Fahrzeug verfügbar"}
+                    </small>
 
-                  <small>
-                    {poi.theoreticalRoute.station.provider} ·{" "}
-                    {poi.theoreticalRoute.vehicle === "bike"
-                      ? "Bike"
-                      : "Scooter"}{" "}
-                    · {poi.theoreticalRoute.travel.minutes.toFixed(0)} Min
-                  </small>
+                    <small>
+                      {route.offer.provider || route.station.provider} ·{" "}
+                      {route.vehicle === "bike" ? "Bike" : "Scooter"} ·{" "}
+                      {route.travel.minutes.toFixed(0)} Min
+                    </small>
+                  </div>
 
-                  <small>
-                    {poi.theoreticalRoute.offer.label ||
-                      poi.theoreticalRoute.offer.provider ||
-                      "Preisplan"}
-                  </small>
-                </div>
-
-                <span>{poi.theoreticalRoute.price.toFixed(2)} €</span>
-              </button>
-            ))
+                  <span>{route.price.toFixed(2)} €</span>
+                </button>
+              ))
+            )
           )}
 
           <h4>Nicht erreichbar</h4>
@@ -784,7 +797,7 @@ export default function Reichweite({ city, school }) {
 
         <div className="map-wrapper">
           <Map
-            key={selectedPoiType}
+            key={`${selectedPoiType}-${school.name}`}
             center={school.coords}
             label={school.name}
             markerCoords={school.coords}
