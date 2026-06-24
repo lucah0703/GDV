@@ -199,31 +199,79 @@ const bikeStations = stationData.map((s) => {
   ----------------------------- */
 
   return (
-    <div className="new-map-layout">
-      <div className="map-workspace availability-workspace">
-        
-      <aside className="results-panel availability-filter-panel">
-        <h3>Verfügbarkeit</h3>
+    <div className="availability-layout">
 
-        <h4>Zeitpunkt</h4>
+<section className="availability-topbar">
 
-        <div className="time-buttons">
-          {["current", "morning", "midday", "evening", "heatmap"].map((t) => (
-            <button
-              key={t}
-              className={`time-button ${timeSlot === t ? "active" : ""}`}
-              onClick={() => setTimeSlot(t)}
-            >
-              {t}
-            </button>
-          ))}
-        </div>
+  <div className="availability-toolbar">
 
-        {loading && <p>Lade Daten...</p>}
-      </aside>
+    {/* Live */}
+    <div className="availability-section">
+      <span className="availability-title">
+        Live-Verfügbarkeit
+      </span>
 
-      <section className="map-wrapper availability-map">
-        <Map
+      <button
+        className={`time-button ${timeSlot === "current" ? "active" : ""}`}
+        onClick={() => setTimeSlot("current")}
+      >
+        Aktuell
+      </button>
+    </div>
+
+    <div className="availability-divider" />
+
+    {/* Prognosen */}
+    <div className="availability-section">
+      <span className="availability-title">
+        Fahrrad-Prognosen
+      </span>
+
+      <div className="time-buttons">
+        {["morning", "midday", "evening"].map((t) => (
+          <button
+            key={t}
+            className={`time-button ${timeSlot === t ? "active" : ""}`}
+            onClick={() => setTimeSlot(t)}
+          >
+            {t === "morning" && "Morgen"}
+            {t === "midday" && "Mittag"}
+            {t === "evening" && "Abend"}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div className="availability-divider" />
+
+    {/* Heatmap */}
+    <div className="availability-section">
+      <span className="availability-title">
+        Scooter-Verteilung
+      </span>
+
+      <button
+        className={`time-button ${timeSlot === "heatmap" ? "active" : ""}`}
+        onClick={() => setTimeSlot("heatmap")}
+      >
+        Heatmap
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+  <div className="map-workspace availability-workspace">
+      <AvailabilitySidebar
+        stations={stationsInRadius}
+        summary={summary}
+        timeSlot={timeSlot}
+        selectedStation={selectedStation}
+      />
+
+    <section className="map-wrapper availability-map">
+      <Map
         center={school.coords}
         label={school.name}
         markerCoords={school.coords}
@@ -235,15 +283,9 @@ const bikeStations = stationData.map((s) => {
         scooterCoords={scooterCoords}
         showScooterHeatmap={timeSlot === "heatmap"}
       />
-      </section>
+    </section>
 
-      <AvailabilitySidebar
-        stations={stationsInRadius}
-        summary={summary}
-        timeSlot={timeSlot}
-        selectedStation={selectedStation}
-      />
-      </div>
-    </div>
+  </div>
+</div>
   );
 }

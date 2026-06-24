@@ -1054,19 +1054,108 @@ button.filter-chip.active {
   margin-bottom: 16px;
 }
 
-
 .availability-workspace {
-  flex: 1;
-  min-height: 0;
-
   display: grid;
 
   grid-template-columns:
-    280px
-    1fr
-    320px;
+    320px
+    1fr;
 
   gap: 16px;
+}
 
-  overflow: hidden;
+/* =====================================================
+   VERFÜGBARKEIT TOPBAR
+===================================================== */
+
+.availability-layout {
+  position: relative;
+
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.availability-topbar {
+  position: absolute;
+
+  top: 10px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  z-index: 2000;
+
+  width: fit-content;
+
+  background: rgba(255,255,255,.97);
+
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+
+  padding: 18px 28px;
+
+  box-shadow:
+    0 22px 42px rgba(15,23,42,.10),
+    0 6px 16px rgba(15,23,42,.05);
+}
+
+.availability-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.availability-filter-label {
+  font-size: 11px;
+  font-weight: 800;
+
+  color: #94a3b8;
+
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.availability-loading {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #059669;
+}
+
+
+.availability-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  width: fit-content;
+}
+
+.availability-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.availability-title {
+  font-size: 11px;
+  font-weight: 800;
+
+  color: #94a3b8;
+
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.availability-divider {
+  width: 1px;
+  height: 60px;
+
+  background: #e2e8f0;
+}
+
+.availability-workspace .results-panel {
+  margin-top: 0;
 }
