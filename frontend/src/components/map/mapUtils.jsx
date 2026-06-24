@@ -50,7 +50,9 @@ export function createStationIcon(status, vehicle, isSelected = false) {
   const symbol = vehicle === "bike" ? "🚲" : "🛴";
 
   const baseColor =
-    status === "red"
+    vehicle === "scooter"
+      ? "#3b82f6" // 🔵 always blue
+      : status === "red"
       ? "#ef4444"
       : status === "yellow"
       ? "#f59e0b"
@@ -76,7 +78,7 @@ export function createStationIcon(status, vehicle, isSelected = false) {
   align-items: flex-end;
 ">
 
-        <svg width="${size}" height="${size}" viewBox="0 0 24 24" ${glow}>
+        <svg width="${size}" height="${size}" viewBox="0 0 24 24" ${glow} >
           
           <!-- PIN SHAPE -->
           <path
@@ -92,27 +94,27 @@ export function createStationIcon(status, vehicle, isSelected = false) {
             fill="rgba(255,255,255,0.12)"
           />
 
-<!-- ICON BADGE -->
-<circle
-  cx="12"
-  cy="11"
-  r="5.5"
-  fill="white"
-  opacity="0.95"
-/>
+          <!-- ICON BADGE -->
+          <circle
+            cx="12"
+            cy="11"
+            r="5.5"
+            fill="white"
+            opacity="0.95"
+          />
 
-<!-- ICON -->
-<text
-  x="12"
-  y="11"
-  text-anchor="middle"
-  dominant-baseline="middle"
-  font-size="9"
-  fill="#111827"
-  style="font-weight: 600;"
->
-  ${symbol}
-</text>
+          <!-- ICON -->
+          <text
+            x="12"
+            y="11"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            font-size="9"
+            fill="#111827"
+            style="font-weight: 600;"
+          >
+            ${symbol}
+          </text>
 
         </svg>
       </div>
