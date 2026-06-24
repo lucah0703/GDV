@@ -170,6 +170,8 @@ export default function Map({
   realRadius = 0,
   theoreticalRadius = 0,
   isochroneData = null,
+  geofencingZones = [],
+  showGeofencingZones = false,
 }) {
   const startpointIcon = createStartpointIcon();
   const isochroneLegendItems = isochroneData?.results
@@ -204,6 +206,26 @@ export default function Map({
       />
 
       <RecenterMap center={center} />
+      {showGeofencingZones &&
+        geofencingZones.flatMap((provider) =>
+          provider.geofencing_zones.map((zone, index) => (
+            <GeoJSON
+              key={`geofence-${provider.provider}-${index}`}
+              data={{
+                type: "Feature",
+                geometry: zone.geometry,
+                properties: {},
+              }}
+              style={{
+                color: "#7a7a7a",
+                fillColor: "#7a7a7a",
+                fillOpacity: 0.15,
+                weight: 2,
+                dashArray: "6 6",
+              }}
+            />
+          ))
+        )}
       {!availability &&
         isochroneData?.results &&
         Object.entries(isochroneData.results).map(([vehicleType, offers]) =>

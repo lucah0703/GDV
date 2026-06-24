@@ -187,10 +187,10 @@ function normalizeAvailabilityToStations(data) {
       availability: {
         current: Number(
           item.num_bicycles_available ??
-            item.bikes_available ??
-            item.available ??
-            item.current ??
-            0
+          item.bikes_available ??
+          item.available ??
+          item.current ??
+          0
         ),
       },
     });
@@ -266,6 +266,7 @@ export default function Reichweite({ city, school }) {
   const [backendPois, setBackendPois] = useState([]);
   const [backendStations, setBackendStations] = useState([]);
   const [geofencingZones, setGeofencingZones] = useState([]);
+  const [showGeofencingZones, setShowGeofencingZones] = useState(false);
   const [pricingIsochroneData, setPricingIsochroneData] = useState(null);
   const [loadingBackend, setLoadingBackend] = useState(false);
   const [backendError, setBackendError] = useState("");
@@ -533,14 +534,26 @@ export default function Reichweite({ city, school }) {
         </div>
 
         <div className="filter-group">
+          <span className="filter-label">Karte</span>
+
+          <label className={`filter-chip ${showGeofencingZones ? "active" : ""}`}>
+            <input
+              type="checkbox"
+              checked={showGeofencingZones}
+              onChange={(e) => setShowGeofencingZones(e.target.checked)}
+            />
+            Abstellverbot Zonen
+          </label>
+        </div>
+
+        <div className="filter-group">
           <span className="filter-label">POI-Typen</span>
           <div className="chip-row">
             {["Alle", "Bahnhof", "Wohnheim", "Sportanlage"].map((type) => (
               <button
                 key={type}
-                className={`filter-chip ${
-                  selectedPoiType === type ? "active" : ""
-                }`}
+                className={`filter-chip ${selectedPoiType === type ? "active" : ""
+                  }`}
                 onClick={() => {
                   setSelectedPoiType(type);
                   setSelectedPoi(null);
@@ -578,27 +591,26 @@ export default function Reichweite({ city, school }) {
             </button>
 
             <span
-              className={`calculate-status ${
-                backendError
+              className={`calculate-status ${backendError
                   ? "error"
                   : loadingBackend
-                  ? "loading"
-                  : calculatedBudget === null
-                  ? "waiting"
-                  : calculatedBudget !== budget
-                  ? "changed"
-                  : "success"
-              }`}
+                    ? "loading"
+                    : calculatedBudget === null
+                      ? "waiting"
+                      : calculatedBudget !== budget
+                        ? "changed"
+                        : "success"
+                }`}
             >
               {backendError
                 ? "Fehler"
                 : loadingBackend
-                ? "Lädt..."
-                : calculatedBudget === null
-                ? "Noch nicht berechnet"
-                : calculatedBudget !== budget
-                ? "Neu berechnen"
-                : "Berechnet"}
+                  ? "Lädt..."
+                  : calculatedBudget === null
+                    ? "Noch nicht berechnet"
+                    : calculatedBudget !== budget
+                      ? "Neu berechnen"
+                      : "Berechnet"}
             </span>
           </div>
         </div>
@@ -756,6 +768,9 @@ export default function Reichweite({ city, school }) {
             realRadius={maxRealRadius}
             theoreticalRadius={maxTheoreticalRadius}
             isochroneData={pricingIsochroneData}
+            geofencingZones={geofencingZones}
+            showGeofencingZones={showGeofencingZones}
+
           />
         </div>
       </section>
