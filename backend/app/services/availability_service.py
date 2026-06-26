@@ -24,21 +24,29 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     meters = 6371000 * c
     return meters
 
-def fetch_bike_availability(bike_gbfs_url: str, file_name: str) -> list:
+def fetch_bike_availability(bike_gbfs_url: str, file_name: str, uni_lat: float, uni_lon: float):
     try:
         gbfs_stationstatus = requests.get(bike_gbfs_url).json()
     except Exception as e:
-        print(f"Erorr Bike-API: {e}")
-        return []
+        print(f"Error Bike-API: {e}")
+        return [], []
 
     file_path = os.path.join(STATION_DATA_DIR, file_name)
     if not os.path.exists(file_path):
-        return []
+        return [], []
         
     df_city = pd.read_csv(file_path, encoding="utf-8")
+
+    # Distanz jeder Station zur Universität berechnen
+    df_city['distance_to_uni'] = haversine_distance(
+        df_city["lat"], df_city["lon"],
+        uni_lat, uni_lon
+    )
+
     allowed_station_ids = set(df_city["station_id"].astype(str))
 
     bike_availabilities = []
+    bike_200m_availabilities = []
     gbfs_stations = gbfs_stationstatus.get("data", {}).get("stations", [])
 
     for station in gbfs_stations:
@@ -48,13 +56,30 @@ def fetch_bike_availability(bike_gbfs_url: str, file_name: str) -> list:
             last_reported_raw = station.get("last_reported")
             timestamp = datetime.fromtimestamp(last_reported_raw).isoformat() if last_reported_raw else None
 
-            bike_availabilities.append({
+            # Datenstruktur für die Station vorbereiten
+            station_data = {
                 "station_id": current_id,
                 "num_bikes_available": station.get("num_bikes_available", 0),
                 "last_reported": timestamp
-            })
+            }
+
+            # Liste A: Station wird immer für die gesamte Stadt hinzugefügt
+            bike_availabilities.append(station_data)
+
+            # Liste B: Zeile im DataFrame filtern, um die berechnete Distanz zu holen
+            filtered_df = df_city.loc[df_city['station_id'].astype(str) == current_id]
             
-    return bike_availabilities
+            if not filtered_df.empty:
+                station_distance = filtered_df['distance_to_uni'].values[0]
+                station_name = filtered_df['name'].values[0]
+
+                # Prüfen, ob die Station im 200m-Campus-Radius liegt
+                if station_distance <= 200:
+                    station_data["distance_to_uni"] = float(station_distance)
+                    station_data["name"] = str(station_name)
+                    bike_200m_availabilities.append(station_data)
+            
+    return bike_availabilities, bike_200m_availabilities
 
 def fetch_scooter_availability(scooter_gbfs_urls: list, uni_lat: float, uni_lon: float) -> list:
     scooter_availabilities = []
