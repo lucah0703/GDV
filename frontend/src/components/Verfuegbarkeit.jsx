@@ -9,6 +9,7 @@ import {
 } from "../services/api";
 
 import { getTrafficColor } from "../utils/availabilityHelpers";
+import MapAvailability from "./MapAvailability";
 
 const API_BASE = "http://localhost:8000";
 
@@ -284,18 +285,16 @@ const bikeStations = stationData.map((s) => {
       />
 
     <section className="map-wrapper availability-map">
-      <Map
+      <MapAvailability
         center={school.coords}
         label={school.name}
         markerCoords={school.coords}
-        stationsInRadius={stationsInRadius}
-        availability={timeSlot !== "heatmap"}
         timeSlot={timeSlot}
-        showStationsInBudgetView={timeSlot !== "heatmap"}
-        onStationClick={setSelectedStation}
+        stationsInRadius={stationsInRadius}
         scooterCoords={scooterCoords}
         showScooterHeatmap={timeSlot === "heatmap"}
         selectedStation={selectedStation}
+        onStationClick={setSelectedStation}
       />
     </section>
 
