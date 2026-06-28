@@ -37,7 +37,7 @@ export default function AvailabilitySidebar({
 ) : (
   <>
 
-  {selectedStation ? (
+  {selectedStation  ? (
     <>
       <StationHistoryChart station={selectedStation} />
   <hr />
@@ -85,7 +85,6 @@ export default function AvailabilitySidebar({
           </small>
         </div>
 
-        {/* 👇 MINI SPARKLINE */}
         <StationSparkline station={s} />
       </div>
     );

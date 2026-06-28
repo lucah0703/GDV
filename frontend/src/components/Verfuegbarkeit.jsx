@@ -238,7 +238,7 @@ const bikeStations = stationData.map((s) => {
     {/* Prognosen */}
     <div className="availability-section">
       <span className="availability-title">
-        Fahrrad-Prognosen
+        Historische Bike-Verteilung (Mo-Fr)
       </span>
 
       <div className="time-buttons">
@@ -261,7 +261,7 @@ const bikeStations = stationData.map((s) => {
     {/* Heatmap */}
     <div className="availability-section">
       <span className="availability-title">
-        Scooter-Verteilung
+        Historische Scooter-Verteilung
       </span>
 
       <button

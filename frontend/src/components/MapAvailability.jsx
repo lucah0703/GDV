@@ -66,10 +66,15 @@ export default function MapAvailability({
       )}
 
       {!showScooterHeatmap &&
-        stationsInRadius.map((station) => {
+        stationsInRadius
+        .filter(
+            (station) =>
+                timeSlot === "current" || station.vehicle !== "scooter"
+        )
+        .map((station) => {
           const status = getAvailabilityStatus(station, timeSlot);
           const available = getAvailable(station, timeSlot);
-
+          
           const isSelected =
             selectedStation?.id === station.id;
 
@@ -101,6 +106,8 @@ export default function MapAvailability({
               </Popup>
             </Marker>
           );
+
+          
         })}
     </MapContainer>
   );

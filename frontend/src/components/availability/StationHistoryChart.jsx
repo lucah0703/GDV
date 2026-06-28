@@ -10,7 +10,13 @@ export default function StationHistoryChart({ station }) {
       </div>
     );
   }
-
+  if (station.vehicle === "scooter"){
+    return(
+      <div className="station-history">
+        <h4>{station.name}</h4>
+      </div>
+    )
+  }
   const hours = station.history?.x_data ?? [];
   const values = station.history?.y_data ?? [];
 
