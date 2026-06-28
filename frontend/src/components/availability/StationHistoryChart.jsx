@@ -28,6 +28,7 @@ export default function StationHistoryChart({ station }) {
 
     xAxis: {
       type: "category",
+      name: "h",
       data: hours.map((h) => `${h}:00`),
       boundaryGap: false,
     },
@@ -52,6 +53,7 @@ export default function StationHistoryChart({ station }) {
     <div className="station-history">
       <h4>{station.name}</h4>
       <ReactECharts option={option} style={{ height: 280 }} />
+      <h6>Historische Bike-Verteilung (Mo-Fr)</h6>
     </div>
   );
 }
