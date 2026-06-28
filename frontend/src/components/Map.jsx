@@ -1,13 +1,15 @@
+import { useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
+  useMap,
   Marker,
   Popup,
   Circle,
   CircleMarker,
   GeoJSON,
 } from "react-leaflet";
-
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 function RecenterMap({ center }) {
@@ -160,7 +162,11 @@ export default function Map({
   label,
   markerCoords,
   pois = [],
-  setSelectedPoi = () => {},
+  setSelectedPoi = () => { },
+  availability = false,
+  timeSlot = "current",
+  stationsInRadius = [],
+  showStationsInBudgetView = false,
   realRadius = 0,
   theoreticalRadius = 0,
   isochroneData = null,
@@ -195,7 +201,7 @@ export default function Map({
     >
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-        attribution="&copy; OpenStreetMap &copy; CARTO"
+        attribution='&copy; OpenStreetMap &copy; CARTO'
         subdomains="abcd"
       />
 
@@ -250,7 +256,7 @@ export default function Map({
           })
         )}
 
-      {!isochroneData && theoreticalRadius > 0 && (
+      {!availability && !isochroneData && theoreticalRadius > 0 && (
         <Circle
           center={center}
           radius={theoreticalRadius}
@@ -258,11 +264,25 @@ export default function Map({
         />
       )}
 
-      {!isochroneData && realRadius > 0 && (
+      {!availability && !isochroneData && realRadius > 0 && (
         <Circle
           center={center}
           radius={realRadius}
           pathOptions={getIsochroneStyle("bike", "real")}
+        />
+      )}
+
+      {availability && (
+        <Circle
+          center={center}
+          radius={10000}
+          pathOptions={{
+            color: "#047857",
+            fillColor: "#047857",
+            fillOpacity: 0.03,
+            weight: 2,
+            dashArray: "8 8",
+          }}
         />
       )}
 
@@ -272,31 +292,47 @@ export default function Map({
         </Marker>
       )}
 
-      {pois.map((poi) => (
-        <CircleMarker
-          key={poi.id}
-          center={poi.coords}
-          radius={6}
-          pathOptions={{
-            color: "#ffffff",
-            weight: 1,
-            fillColor: getPoiColor(poi.type),
-            fillOpacity: 0.85,
-          }}
-          eventHandlers={{
-            click: () => setSelectedPoi(poi),
-          }}
-        >
-          <Popup>
-            <strong>{poi.name}</strong>
-            <br />
-            {poi.type}
-          </Popup>
-        </CircleMarker>
-      ))}
+      {!availability &&
+        pois.map((poi) => (
+          <CircleMarker
+            key={poi.id}
+            center={poi.coords}
+            radius={6}
+            pathOptions={{
+              color: "#ffffff",
+              weight: 1,
+              fillColor: getPoiColor(poi.type),
+              fillOpacity: 0.85,
+            }}
+            eventHandlers={{
+              click: () => setSelectedPoi(poi),
+            }}
+          >
+            <Popup>
+              <strong>{poi.name}</strong>
+              <br />
+              {poi.type}
+            </Popup>
+          </CircleMarker>
+        ))}
+      {!availability && (
+        <div className="map-legend">
+          <h4>POIs</h4>
 
-      <div className="map-legend">
-        <h4>POIs</h4>
+          <div className="legend-item">
+            <span className="legend-dot blue"></span>
+            Bahnhof
+          </div>
+
+          <div className="legend-item">
+            <span className="legend-dot green"></span>
+            Wohnheim
+          </div>
+
+          <div className="legend-item">
+            <span className="legend-dot orange"></span>
+            Sportanlage
+          </div>
 
           {isochroneLegendItems.length > 0 && (
             <>
@@ -352,6 +388,7 @@ export default function Map({
             </>
           )}
         </div>
+      )}
     </MapContainer>
   );
 }
