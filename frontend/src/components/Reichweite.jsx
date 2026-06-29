@@ -59,7 +59,7 @@ function geoJsonPoisToFrontend(geojson) {
         type,
         icon: getPoiIcon(type),
         coords: [lat, lon],
-        adress: props.adress || "",
+        address: props.address || props.adress || props.adresse || "",
         category: props.category,
       };
     })
@@ -528,29 +528,6 @@ export default function Reichweite({ city, school }) {
         <div className="filter-group">
           <span className="filter-label">Analysemodus</span>
           <strong>Budget + Live-Verfügbarkeit</strong>
-        </div>
-
-        <div className="filter-group">
-          <span className="filter-label">Verkehrsmittel</span>
-          <div className="chip-row">
-            <label className={`filter-chip ${showBikes ? "active" : ""}`}>
-              <input
-                type="checkbox"
-                checked={showBikes}
-                onChange={(e) => setShowBikes(e.target.checked)}
-              />
-              🚲 Bike
-            </label>
-
-            <label className={`filter-chip ${showScooters ? "active" : ""}`}>
-              <input
-                type="checkbox"
-                checked={showScooters}
-                onChange={(e) => setShowScooters(e.target.checked)}
-              />
-              🛴 E-Scooter
-            </label>
-          </div>
         </div>
 
         <div className="filter-group">
