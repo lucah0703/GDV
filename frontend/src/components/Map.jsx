@@ -73,10 +73,10 @@ function SelectedPoiPopup({ selectedPoi }) {
 
       <small>{selectedPoi.type}</small>
 
-      {selectedPoi.adress && (
+      {selectedPoi.address && (
         <>
           <br />
-          <small>📍 {selectedPoi.adress}</small>
+          <small>📍 {selectedPoi.address}</small>
         </>
       )}
     </Popup>
@@ -353,13 +353,6 @@ export default function Map({
                       }}
                     ></span>
 
-                    <span
-                      className="legend-isochrone-shape dashed"
-                      style={{
-                        borderColor: item.color,
-                      }}
-                    ></span>
-
                     <span className="legend-provider-name">
                       {item.provider}
                       <small>
@@ -369,11 +362,6 @@ export default function Map({
                   </div>
                 ))}
               </div>
-
-              <p className="legend-hint">
-                Gefüllt = real erreichbar · gestrichelt = aktuell nicht
-                verfügbar
-              </p>
             </>
           )}
         </div>
