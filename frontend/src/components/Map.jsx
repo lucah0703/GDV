@@ -309,9 +309,20 @@ export default function Map({
             }}
           >
             <Popup>
-              <strong>{poi.name}</strong>
+              <strong>
+                {poi.icon} {poi.name}
+              </strong>
+
               <br />
-              {poi.type}
+
+              <small>{poi.type}</small>
+
+              {poi.adress && (
+                <>
+                  <br />
+                  <small>📍 {poi.adress}</small>
+                </>
+              )}
             </Popup>
           </CircleMarker>
         ))}

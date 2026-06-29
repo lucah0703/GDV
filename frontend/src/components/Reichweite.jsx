@@ -59,7 +59,7 @@ function geoJsonPoisToFrontend(geojson) {
         type,
         icon: getPoiIcon(type),
         coords: [lat, lon],
-        address: props.address || "",
+        adress: props.adress || props.adress || "",
         category: props.category,
       };
     })
@@ -592,14 +592,14 @@ export default function Reichweite({ city, school }) {
 
             <span
               className={`calculate-status ${backendError
-                  ? "error"
-                  : loadingBackend
-                    ? "loading"
-                    : calculatedBudget === null
-                      ? "waiting"
-                      : calculatedBudget !== budget
-                        ? "changed"
-                        : "success"
+                ? "error"
+                : loadingBackend
+                  ? "loading"
+                  : calculatedBudget === null
+                    ? "waiting"
+                    : calculatedBudget !== budget
+                      ? "changed"
+                      : "success"
                 }`}
             >
               {backendError
@@ -643,25 +643,6 @@ export default function Reichweite({ city, school }) {
               {notReachablePois.length} nicht erreichbar
             </p>
           </div>
-
-          {selectedPoi && (
-            <>
-              <button
-                className="back-button"
-                onClick={() => setSelectedPoi(null)}
-              >
-                ← Auswahl zurücksetzen
-              </button>
-
-              <div className="poi-title">
-                <span>{selectedPoi.icon}</span>
-                <div>
-                  <strong>{selectedPoi.name}</strong>
-                  <small>{selectedPoi.address}</small>
-                </div>
-              </div>
-            </>
-          )}
 
           <h4>Real erreichbar</h4>
 
@@ -744,7 +725,7 @@ export default function Reichweite({ city, school }) {
                   <strong>
                     {poi.icon} {poi.name}
                   </strong>
-                  <small>Liegt außerhalb aller Provider-Isochronen</small>
+                  <small>Liegt außerhalb deines Budgets</small>
                 </div>
                 <span>—</span>
               </button>
