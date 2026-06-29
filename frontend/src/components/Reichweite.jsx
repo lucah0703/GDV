@@ -261,7 +261,7 @@ function distanceKm(a, b) {
 
 export default function Reichweite({ city, school }) {
   const [budget, setBudget] = useState(0);
-  const [calculatedBudget, setCalculatedBudget] = useState(null);
+  const [calculation, setCalculation] = useState(null);
 
   const [selectedPoiType, setSelectedPoiType] = useState("Alle");
   const [selectedPoi, setSelectedPoi] = useState(null);
@@ -279,11 +279,12 @@ export default function Reichweite({ city, school }) {
   const currentAvailabilityKey = "current";
 
   useEffect(() => {
+    setBudget(0);
     setSelectedPoi(null);
-    setCalculatedBudget(null);
+    setCalculation(null);
     setPricingIsochroneData(null);
     setBackendError("");
-  }, [city, school.name]);
+  }, [city, school.name, school.coords]);
 
   useEffect(() => {
     async function loadBackendData() {
@@ -297,10 +298,16 @@ export default function Reichweite({ city, school }) {
         const poisUrl = new URL(`${API_BASE}/pois/${backendCity}`);
         poisUrl.searchParams.set("uni", backendUni);
 
-        const pricingIsochroneUrl =
-          calculatedBudget !== null
-            ? `${API_BASE}/pricingisochrone/${backendCity}/${backendUni}/${calculatedBudget}`
-            : null;
+        const canCalculate =
+          calculation &&
+          calculation.city === city &&
+          calculation.schoolName === school.name &&
+          calculation.lat === school.coords[0] &&
+          calculation.lon === school.coords[1];
+
+        const pricingIsochroneUrl = canCalculate
+          ? `${API_BASE}/pricingisochrone/${backendCity}/${backendUni}/${calculation.budget}`
+          : null;
 
         const availabilityUrl = `${API_BASE}/availability/current/${backendCity}/${backendUni}`;
         const geofencingUrl = `${API_BASE}/geofencingzones/${backendCity}`;
@@ -374,7 +381,7 @@ export default function Reichweite({ city, school }) {
     }
 
     loadBackendData();
-  }, [city, school.name, calculatedBudget]);
+  }, [city, school.name, school.coords, calculation]);
 
   const activeVehicles = useMemo(() => {
     const vehicles = [];
@@ -583,7 +590,11 @@ export default function Reichweite({ city, school }) {
             max="5"
             step="0.5"
             value={budget}
-            onChange={(e) => setBudget(Number(e.target.value))}
+            onChange={(e) => {
+              setBudget(Number(e.target.value));
+              setPricingIsochroneData(null);
+              setSelectedPoi(null);
+            }}
           />
 
           <strong>{budget.toFixed(2)} €</strong>
@@ -591,7 +602,15 @@ export default function Reichweite({ city, school }) {
           <div className="calculate-row">
             <button
               className="calculate-button"
-              onClick={() => setCalculatedBudget(budget)}
+              onClick={() =>
+                setCalculation({
+                  budget,
+                  city,
+                  schoolName: school.name,
+                  lat: school.coords[0],
+                  lon: school.coords[1],
+                })
+              }
             >
               Berechnen
             </button>
@@ -601,9 +620,9 @@ export default function Reichweite({ city, school }) {
                 ? "error"
                 : loadingBackend
                   ? "loading"
-                  : calculatedBudget === null
+                  : calculation === null
                     ? "waiting"
-                    : calculatedBudget !== budget
+                    : calculation?.budget !== budget
                       ? "changed"
                       : "success"
                 }`}
@@ -612,9 +631,9 @@ export default function Reichweite({ city, school }) {
                 ? "Fehler"
                 : loadingBackend
                   ? "Lädt..."
-                  : calculatedBudget === null
+                  : calculation === null
                     ? "Noch nicht berechnet"
-                    : calculatedBudget !== budget
+                    : calculation?.budget !== budget
                       ? "Neu berechnen"
                       : "Berechnet"}
             </span>
@@ -741,7 +760,7 @@ export default function Reichweite({ city, school }) {
 
         <div className="map-wrapper">
           <Map
-            key={`${selectedPoiType}-${school.name}`}
+            key={`${school.name}-${school.coords[0]}-${school.coords[1]}`}
             center={school.coords}
             label={school.name}
             markerCoords={school.coords}
