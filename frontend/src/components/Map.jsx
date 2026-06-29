@@ -21,23 +21,13 @@ function RecenterMap({ center }) {
     const t1 = setTimeout(() => {
       if (!map._mapPane) return;
 
-      map.invalidateSize({
-        animate: false,
-        pan: false,
-      });
-
-      map.setView(center, 14, {
-        animate: false,
-      });
+      map.invalidateSize({ animate: false, pan: false });
+      map.setView(center, 14, { animate: false });
     }, 100);
 
     const t2 = setTimeout(() => {
       if (!map._mapPane) return;
-
-      map.invalidateSize({
-        animate: false,
-        pan: false,
-      });
+      map.invalidateSize({ animate: false, pan: false });
     }, 500);
 
     return () => {
@@ -70,7 +60,6 @@ function SelectedPoiPopup({ selectedPoi }) {
       </strong>
 
       <br />
-
       <small>{selectedPoi.type}</small>
 
       {selectedPoi.address && (
@@ -114,21 +103,24 @@ function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   };
 }
 
-function providerHasOnlyTheoreticalPois(provider, pois) {
-  return pois.some((poi) => {
-    const theoreticalProvider =
-      poi.theoreticalRoute?.offer?.provider ||
-      poi.theoreticalRoute?.station?.provider;
+function normalizeVehicleType(vehicleType) {
+  if (vehicleType === "e-scooter") return "scooter";
+  return vehicleType;
+}
 
-    const realProvider =
-      poi.realRoute?.offer?.provider ||
-      poi.realRoute?.station?.provider;
+function normalizeProviderName(provider) {
+  return String(provider || "").trim().toLowerCase();
+}
 
+function providerHasAvailableVehicle(provider, vehicleType, stationsInRadius) {
+  const normalizedProvider = normalizeProviderName(provider);
+  const normalizedVehicle = normalizeVehicleType(vehicleType);
+
+  return stationsInRadius.some((station) => {
     return (
-      poi.theoreticalReachable &&
-      !poi.realReachable &&
-      theoreticalProvider === provider &&
-      realProvider !== provider
+       normalizeProviderName(station.provider) === normalizedProvider &&
+      normalizeVehicleType(station.vehicle) === normalizedVehicle &&
+      (station.availability?.current ?? 0) > 0
     );
   });
 }
@@ -154,8 +146,9 @@ export default function Map({
   pois = [],
   isochronePois = pois,
   activeVehicles = ["bike", "scooter"],
+  stationsInRadius = [],
   selectedPoi = null,
-  setSelectedPoi = () => { },
+  setSelectedPoi = () => {},
   availability = false,
   realRadius = 0,
   theoreticalRadius = 0,
@@ -165,28 +158,30 @@ export default function Map({
 }) {
   const startpointIcon = createStartpointIcon();
 
-  const isochroneLegendItems = isochroneData?.results
-    ? Object.entries(isochroneData.results)
-      .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
-      .flatMap(([vehicleType, offers]) =>
-        offers.map((offer) => ({
-          provider: offer.provider,
-          vehicleType,
-          color:
-            PROVIDER_COLORS[offer.provider] ||
-            (vehicleType === "bike" ? "#038554" : "#7f00b2"),
-        }))
-      )
-      .filter(
-        (item, index, array) =>
-          array.findIndex((x) => x.provider === item.provider) === index
-      )
-    : [];
   function isVehicleTypeActive(vehicleType) {
     if (vehicleType === "bike") return activeVehicles.includes("bike");
     if (vehicleType === "e-scooter") return activeVehicles.includes("scooter");
     return false;
   }
+
+  const isochroneLegendItems = isochroneData?.results
+    ? Object.entries(isochroneData.results)
+        .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
+        .flatMap(([vehicleType, offers]) =>
+          offers.map((offer) => ({
+            provider: offer.provider,
+            vehicleType,
+            color:
+              PROVIDER_COLORS[offer.provider] ||
+              (vehicleType === "bike" ? "#038554" : "#7f00b2"),
+          }))
+        )
+        .filter(
+          (item, index, array) =>
+            array.findIndex((x) => x.provider === item.provider) === index
+        )
+    : [];
+
   return (
     <MapContainer
       center={center}
@@ -201,7 +196,6 @@ export default function Map({
       />
 
       <RecenterMap center={center} />
-
       <SelectedPoiPopup selectedPoi={selectedPoi} />
 
       {showGeofencingZones &&
@@ -232,9 +226,10 @@ export default function Map({
           .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
           .map(([vehicleType, offers]) =>
             offers.map((offer, index) => {
-              const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
+              const isRealIsochrone = providerHasAvailableVehicle(
                 offer.provider,
-                isochronePois
+                vehicleType,
+                stationsInRadius
               );
 
               return offer.geometry ? (
@@ -251,7 +246,7 @@ export default function Map({
                   interactive={false}
                   style={getIsochroneStyle(
                     vehicleType,
-                    isOnlyTheoretical ? "theoretical" : "real",
+                    isRealIsochrone ? "real" : "theoretical",
                     offer.provider
                   )}
                 />

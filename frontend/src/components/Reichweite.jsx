@@ -111,6 +111,9 @@ function pointInGeometry(point, geometry) {
 
   return false;
 }
+function normalizeProviderName(provider) {
+  return String(provider || "").trim().toLowerCase();
+}
 
 function getIsochroneOffers(pricingIsochroneData, activeVehicles) {
   const offers = [];
@@ -137,8 +140,10 @@ function getIsochroneOffers(pricingIsochroneData, activeVehicles) {
 }
 
 function isPoiInProviderGeofence(poi, provider, geofencingZones) {
+  const normalizedProvider = normalizeProviderName(provider);
+
   const providerData = geofencingZones.find(
-    (item) => item.provider === provider
+    (item) => normalizeProviderName(item.provider) === normalizedProvider
   );
 
   if (!providerData) return false;
@@ -226,11 +231,17 @@ function normalizeAvailabilityToStations(data) {
 function getCurrentAvailability(station) {
   return station.availability?.current ?? 0;
 }
+function normalizeVehicle(vehicle) {
+  if (vehicle === "e-scooter") return "scooter";
+  return vehicle;
+}
 
 function providerHasAvailableVehicle(provider, vehicle, stationsNearStart) {
+  const normalizedProvider = normalizeProviderName(provider);
+
   return stationsNearStart.some((station) => {
     return (
-      station.provider === provider &&
+      normalizeProviderName(station.provider) === normalizedProvider &&
       station.vehicle === vehicle &&
       getCurrentAvailability(station) > 0
     );
@@ -340,6 +351,7 @@ export default function Reichweite({ city, school }) {
           ) {
             const pricingIsochroneJson =
               await pricingIsochroneResult.value.json();
+              console.log("ISOCHRONE", pricingIsochroneJson.results);
             setPricingIsochroneData(pricingIsochroneJson);
           } else {
             setPricingIsochroneData(null);
@@ -355,6 +367,7 @@ export default function Reichweite({ city, school }) {
         ) {
           const availabilityJson = await availabilityResult.value.json();
           setBackendStations(normalizeAvailabilityToStations(availabilityJson));
+          console.log("STATIONS", normalizeAvailabilityToStations(availabilityJson));
         } else {
           setBackendStations([]);
         }
@@ -397,19 +410,17 @@ export default function Reichweite({ city, school }) {
     return backendPois.filter((poi) => poi.type === selectedPoiType);
   }, [backendPois, selectedPoiType]);
 
-  const stationsNearStart = useMemo(() => {
-    return backendStations.filter((station) => {
-      const isNear = distanceKm(school.coords, station.coords) <= 0.2;
-      const vehicleActive = activeVehicles.includes(station.vehicle);
-
-      return isNear && vehicleActive;
-    });
-  }, [backendStations, school.coords, activeVehicles]);
+const stationsNearStart = useMemo(() => {
+  return backendStations.filter((station) => {
+    return distanceKm(school.coords, station.coords) <= 0.2;
+  });
+}, [backendStations, school.coords]);
 
   const allPoisWithReachability = useMemo(() => {
     const isochroneOffers = getIsochroneOffers(
       pricingIsochroneData,
       activeVehicles
+
     );
 
     return backendPois.map((poi) => {
@@ -473,7 +484,7 @@ export default function Reichweite({ city, school }) {
       };
     });
   }, [
-    filteredBackendPois,
+    backendPois,
     pricingIsochroneData,
     activeVehicles,
     stationsNearStart,
