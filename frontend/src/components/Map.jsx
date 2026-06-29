@@ -157,7 +157,7 @@ function ScalablePoiMarker({ poi, isSelected, setSelectedPoi, isochroneData }) {
 
     map.on("zoomend", updateZoom);
     map.on("zoom", updateZoom);
-  
+
     return () => {
       map.off("zoomend", updateZoom);
       map.off("zoom", updateZoom);
@@ -165,7 +165,13 @@ function ScalablePoiMarker({ poi, isSelected, setSelectedPoi, isochroneData }) {
   }, [map]);
 
   const baseRadius = Math.max(2.5, Math.min(8, 3 + (zoom - 11) * 0.7));
-  const radius = isSelected ? baseRadius + 4 : baseRadius;
+
+  // Nicht erreichbare POIs etwas kleiner darstellen
+  const scaledRadius = poi.theoreticalReachable
+    ? baseRadius
+    : Math.max(2, baseRadius - 1.5);
+
+  const radius = isSelected ? scaledRadius + 4 : scaledRadius;
 
   const dimPoi = isochroneData && !poi.theoreticalReachable;
   return (
