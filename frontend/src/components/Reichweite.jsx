@@ -279,6 +279,7 @@ export default function Reichweite({ city, school }) {
   const currentAvailabilityKey = "current";
 
   useEffect(() => {
+    setSelectedPoi(null);
     setCalculatedBudget(null);
     setPricingIsochroneData(null);
     setBackendError("");
