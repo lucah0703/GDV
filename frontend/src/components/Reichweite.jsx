@@ -151,7 +151,11 @@ function isPoiInProviderGeofence(poi, provider, geofencingZones) {
 function normalizeAvailabilityToStations(data) {
   const stations = [];
 
-  const bikeItems = Array.isArray(data?.bike) ? data.bike : [];
+  const bikeItems = Array.isArray(data?.bike_200m)
+    ? data.bike_200m
+    : Array.isArray(data?.bike)
+      ? data.bike
+      : [];
   const scooterItems = Array.isArray(data?.["e-scooter"])
     ? data["e-scooter"]
     : [];
@@ -186,6 +190,7 @@ function normalizeAvailabilityToStations(data) {
       ),
       availability: {
         current: Number(
+          item.num_bikes_available ??
           item.num_bicycles_available ??
           item.bikes_available ??
           item.available ??
