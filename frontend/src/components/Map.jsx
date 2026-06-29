@@ -178,7 +178,7 @@ export default function Map({
     ? Object.entries(isochroneData.results)
       .flatMap(([vehicleType, offers]) =>
         offers
-          .filter((offer) => offer.provider)
+          .s((offer) => offer.provider)
           .map((offer) => ({
             provider: offer.provider,
             vehicleType,

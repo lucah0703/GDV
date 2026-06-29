@@ -1,7 +1,7 @@
 /* ==========================================================================
    BASIS-STYLING & RESETS
    ========================================================================== */
- 
+
 *,
 *::before,
 *::after {
@@ -9,7 +9,7 @@
   padding: 0;
   box-sizing: border-box;
 }
- 
+
 html,
 body,
 #root {
@@ -17,13 +17,13 @@ body,
   height: 100%;
   overflow: hidden;
 }
- 
+
 body {
   font-family: "Segoe UI", system-ui, sans-serif;
   background: #f8fafc;
   color: #0f172a;
 }
- 
+
 .app {
   width: 100%;
   height: 100%;
@@ -33,11 +33,11 @@ body {
   flex-direction: column;
   overflow: hidden;
 }
- 
+
 /* ==========================================================================
    HEADER
    ========================================================================== */
- 
+
 .header {
   flex-shrink: 0;
   min-height: 80px;
@@ -55,29 +55,30 @@ body {
 
   border-bottom: 1px solid #e5e7eb;
 }
-.header > div:first-child {
-    flex: 1;
+
+.header>div:first-child {
+  flex: 1;
 }
- 
+
 .header h1 {
   font-size: 22px;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 4px;
 }
- 
+
 .header p {
   color: #64748b;
   font-size: 13px;
 }
- 
+
 .selectors {
   display: flex;
   align-items: flex-end;
   gap: 20px;
   flex-shrink: 0;
 }
- 
+
 .selectors label {
   display: flex;
   flex-direction: column;
@@ -88,7 +89,7 @@ body {
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
- 
+
 .selectors select {
   width: 190px;
   height: 42px;
@@ -101,11 +102,11 @@ body {
   outline: none;
   cursor: pointer;
 }
- 
+
 .selectors select:hover {
   border-color: #94a3b8;
 }
- 
+
 .selectors button {
   height: 42px;
   min-width: 180px;
@@ -120,12 +121,12 @@ body {
   transition: background 0.15s ease;
   white-space: nowrap;
 }
- 
+
 .selectors button:hover {
   background: #065f46;
 }
 
- .dashboard-shell {
+.dashboard-shell {
   height: 100%;
   min-height: 0;
   background: white;
@@ -137,10 +138,11 @@ body {
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
 }
+
 /* ========================================================================== 
    LAYOUT UNTER DEM HEADER
    ========================================================================== */
- 
+
 .new-map-layout {
   flex: 1;
   min-height: 0;
@@ -149,46 +151,46 @@ body {
   overflow: hidden;
   position: relative;
 }
- 
+
 /* ========================================================================== 
    FLOATING FILTER-BAR ÜBER DER KARTE
    ========================================================================== */
 
 .top-filter-bar {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2000;
+  position: relative;
+  z-index: 20;
 
-  width: min(1450px, calc(100% - 120px));
+  width: 100%;
 
-  display: grid;
-  grid-template-columns: 1.2fr 1.3fr 1.7fr 2fr;
-  align-items: center;
-  gap: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 14px;
 
-  padding: 20px 26px;
+  margin-bottom: 12px;
+  padding: 14px 18px;
 
   background: rgba(255, 255, 255, 0.97);
   border: 1px solid #e2e8f0;
-  border-radius: 22px;
+  border-radius: 18px;
 
   box-shadow:
-    0 22px 50px rgba(15, 23, 42, 0.12),
-    0 8px 20px rgba(15, 23, 42, 0.06);
-
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+    0 12px 28px rgba(15, 23, 42, 0.08),
+    0 4px 12px rgba(15, 23, 42, 0.04);
 }
 
 .filter-group {
+  flex: 1 1 180px;
+  min-width: 170px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 10px;
-  min-height: 70px;
-  padding-right: 28px;
+
+  min-height: 58px;
+
+  padding-right: 18px;
 }
 
 .filter-group:not(:last-child) {
@@ -214,6 +216,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .filter-chip {
@@ -269,9 +272,9 @@ button.filter-chip.active {
 
   gap: 8px 18px;
 
-  width: 430px;
-  min-width: 430px;
-  max-width: 430px;
+  flex: 1.4 1 320px;
+  min-width: 300px;
+  max-width: 420px;
 
   padding-right: 0 !important;
   border-right: none !important;
@@ -291,7 +294,7 @@ button.filter-chip.active {
 
 .budget-filter strong {
   grid-area: value;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 800;
   color: #0f172a;
   align-self: center;
@@ -333,15 +336,30 @@ button.filter-chip.active {
   white-space: nowrap;
 }
 
-.calculate-status.waiting { color: #64748b; }
-.calculate-status.loading { color: #2aa83f; }
-.calculate-status.changed { color: #0f172a; }
-.calculate-status.success { color: #059669; }
-.calculate-status.error { color: #dc2626; }
+.calculate-status.waiting {
+  color: #64748b;
+}
+
+.calculate-status.loading {
+  color: #2aa83f;
+}
+
+.calculate-status.changed {
+  color: #0f172a;
+}
+
+.calculate-status.success {
+  color: #059669;
+}
+
+.calculate-status.error {
+  color: #dc2626;
+}
+
 /* ==========================================================================
    STATUS-BAR
    ========================================================================== */
- 
+
 .status-bar {
   flex-shrink: 0;
   color: #94a3b8;
@@ -350,7 +368,7 @@ button.filter-chip.active {
   justify-content: flex-end;
   margin-top: -6px;
 }
- 
+
 /* ==========================================================================
    MAP WORKSPACE
    ========================================================================== */
@@ -362,13 +380,13 @@ button.filter-chip.active {
   grid-template-columns: 330px 1fr;
   gap: 16px;
 
-  padding-top: 58px;
+  padding-top: 0px;
   overflow: hidden;
 }
- 
+
 .results-panel {
   min-height: 0;
-  margin-top: 42px;
+  margin-top: 0px;
   margin-left: 8px;
   margin-bottom: 8px;
 
@@ -386,20 +404,20 @@ button.filter-chip.active {
   -webkit-backdrop-filter: blur(12px);
   z-index: 40;
 }
- 
+
 .results-panel h3 {
   font-size: 17px;
   font-weight: 700;
   margin-bottom: 14px;
 }
- 
+
 .results-panel h4 {
   font-size: 15px;
   font-weight: 700;
   margin-top: 20px;
   margin-bottom: 10px;
 }
- 
+
 .map-wrapper {
   min-width: 0;
   min-height: 0;
@@ -408,7 +426,7 @@ button.filter-chip.active {
   border: 1px solid #e5e7eb;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
- 
+
 .map,
 .leaflet-map,
 .leaflet-container,
@@ -416,11 +434,11 @@ button.filter-chip.active {
   width: 100% !important;
   height: 100% !important;
 }
- 
+
 /* ==========================================================================
    CARDS
    ========================================================================== */
- 
+
 .school-card {
   padding: 12px 14px;
   background: #f8fafc;
@@ -430,19 +448,19 @@ button.filter-chip.active {
   gap: 4px;
   margin-bottom: 14px;
 }
- 
+
 .school-card span,
 .school-card small {
   color: #64748b;
   font-size: 12px;
 }
- 
+
 .school-card strong {
   color: #0f172a;
   font-size: 14px;
   font-weight: 700;
 }
- 
+
 .budget-card {
   margin-top: 12px;
   padding: 12px 14px;
@@ -450,20 +468,20 @@ button.filter-chip.active {
   border: 1px solid #bbf7d0;
   border-radius: 12px;
 }
- 
+
 .budget-card strong {
   display: block;
   font-size: 13px;
   font-weight: 700;
   margin-bottom: 6px;
 }
- 
+
 .budget-card p {
   margin: 4px 0;
   color: #065f46;
   font-size: 13px;
 }
- 
+
 .poi-summary-card {
   margin-top: 12px;
   padding: 12px 14px;
@@ -473,22 +491,22 @@ button.filter-chip.active {
   display: grid;
   gap: 4px;
 }
- 
+
 .poi-summary-card span {
   color: #64748b;
   font-size: 12px;
 }
- 
+
 .poi-summary-card strong {
   font-size: 18px;
   font-weight: 700;
 }
- 
+
 .poi-summary-card p {
   color: #047857;
   font-size: 12px;
 }
- 
+
 .poi-title {
   margin-top: 14px;
   padding: 12px;
@@ -499,21 +517,21 @@ button.filter-chip.active {
   border-radius: 12px;
   border: 1px solid #e2e8f0;
 }
- 
+
 .poi-title span {
   font-size: 22px;
 }
- 
+
 .poi-title strong {
   display: block;
   font-size: 14px;
 }
- 
+
 .poi-title small {
   color: #64748b;
   font-size: 12px;
 }
- 
+
 .poi-list-card {
   width: 100%;
   margin-top: 8px;
@@ -528,51 +546,51 @@ button.filter-chip.active {
   cursor: pointer;
   transition: background 0.1s ease;
 }
- 
+
 .poi-list-card:hover {
   background: #f8fafc;
 }
- 
+
 .poi-list-card strong {
   display: block;
   font-size: 13px;
   font-weight: 600;
 }
- 
+
 .poi-list-card small {
   display: block;
   margin-top: 3px;
   color: #64748b;
   font-size: 12px;
 }
- 
-.poi-list-card > span {
+
+.poi-list-card>span {
   font-weight: 700;
   font-size: 13px;
   color: #047857;
   flex-shrink: 0;
   margin-left: 8px;
 }
- 
+
 .poi-list-card.real {
   border-color: #86efac;
   background: #f0fdf4;
 }
- 
+
 .poi-list-card.theoretical {
   border-color: #fde68a;
   background: #fffbeb;
 }
- 
+
 .poi-list-card.not-reachable {
   border-color: #fecaca;
   background: #fef2f2;
 }
- 
-.poi-list-card.not-reachable > span {
+
+.poi-list-card.not-reachable>span {
   color: #991b1b;
 }
- 
+
 .back-button {
   width: 100%;
   margin-top: 10px;
@@ -584,11 +602,11 @@ button.filter-chip.active {
   font-size: 13px;
   transition: background 0.1s ease;
 }
- 
+
 .back-button:hover {
   background: #f1f5f9;
 }
- 
+
 .hint {
   margin-top: 12px;
   padding: 11px 13px;
@@ -599,7 +617,7 @@ button.filter-chip.active {
   font-size: 12px;
   line-height: 1.5;
 }
- 
+
 .cost-card {
   margin-top: 10px;
   padding: 12px 14px;
@@ -608,39 +626,39 @@ button.filter-chip.active {
   display: grid;
   gap: 4px;
 }
- 
+
 .cost-card span {
   color: #64748b;
   font-size: 12px;
 }
- 
+
 .cost-card strong {
   font-size: 22px;
   font-weight: 700;
 }
- 
+
 .cost-card small {
   color: #64748b;
   font-size: 12px;
 }
- 
+
 .cost-card.bike strong {
   color: #047857;
 }
- 
+
 .cost-card.scooter strong {
   color: #7c3aed;
 }
- 
+
 /* ==========================================================================
    STATIONEN & MARKER
    ========================================================================== */
- 
+
 .station-map-marker {
   background: transparent;
   border: none;
 }
- 
+
 .station-map-marker-inner {
   min-width: 40px;
   height: 30px;
@@ -655,7 +673,7 @@ button.filter-chip.active {
   gap: 2px;
   font-size: 16px;
 }
- 
+
 .station-card {
   margin-top: 10px;
   padding: 12px;
@@ -666,23 +684,31 @@ button.filter-chip.active {
   align-items: center;
   gap: 10px;
 }
- 
-.station-card.green { background: #ecfdf5; }
-.station-card.yellow { background: #fefce8; }
-.station-card.red { background: #fef2f2; }
- 
+
+.station-card.green {
+  background: #ecfdf5;
+}
+
+.station-card.yellow {
+  background: #fefce8;
+}
+
+.station-card.red {
+  background: #fef2f2;
+}
+
 .station-card small {
   display: block;
   margin-top: 3px;
   color: #64748b;
   font-size: 12px;
 }
- 
+
 .traffic-light {
   font-size: 22px;
   flex-shrink: 0;
 }
- 
+
 /* ==========================================================================
    KARTEN-LEGENDE
    ========================================================================== */
@@ -816,16 +842,16 @@ button.filter-chip.active {
   font-size: 11px;
   line-height: 1.35;
 }
- 
+
 /* ==========================================================================
    STARTPUNKT-MARKER
    ========================================================================== */
- 
+
 .startpoint-pulse-icon {
   background: transparent;
   border: none;
 }
- 
+
 .startpoint-pulse {
   position: relative;
   width: 42px;
@@ -834,7 +860,7 @@ button.filter-chip.active {
   align-items: center;
   justify-content: center;
 }
- 
+
 .startpoint-pulse::before {
   content: "";
   position: absolute;
@@ -844,7 +870,7 @@ button.filter-chip.active {
   border-radius: 50%;
   animation: startPulse 2s infinite;
 }
- 
+
 .startpoint-dot {
   width: 42px;
   height: 42px;
@@ -859,17 +885,28 @@ button.filter-chip.active {
   font-size: 18px;
   line-height: 1;
 }
- 
+
 @keyframes startPulse {
-  0%   { transform: scale(0.45); opacity: 0.55; }
-  70%  { transform: scale(1.15); opacity: 0; }
-  100% { transform: scale(1.15); opacity: 0; }
+  0% {
+    transform: scale(0.45);
+    opacity: 0.55;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1.15);
+    opacity: 0;
+  }
 }
- 
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */
- 
+
 @media (max-width: 1200px) {
   .top-filter-bar {
     width: calc(100% - 60px);
@@ -888,29 +925,32 @@ button.filter-chip.active {
     max-width: none;
   }
 
-  .map-workspace {
+  /*.map-workspace {
     padding-top: 145px;
-  }
+  }*/
 
   .results-panel {
     margin-top: 20px;
   }
 }
- 
+
 @media (max-width: 850px) {
-  html, body, #root {
+
+  html,
+  body,
+  #root {
     overflow: auto;
   }
- 
+
   .app {
     height: auto;
     overflow: visible;
   }
- 
+
   .new-map-layout {
     overflow: visible;
   }
- 
+
   .top-filter-bar {
     position: relative;
     top: auto;
@@ -940,7 +980,7 @@ button.filter-chip.active {
     min-width: 0;
     max-width: none;
   }
- 
+
   .map-workspace {
     grid-template-columns: 1fr;
     overflow: visible;
@@ -950,7 +990,7 @@ button.filter-chip.active {
   .results-panel {
     margin: 0;
   }
- 
+
   .map-wrapper {
     height: 480px;
   }

@@ -536,7 +536,7 @@ export default function Reichweite({ city, school }) {
         <div className="filter-group">
           <span className="filter-label">Karte</span>
 
-          <label className={`filter-chip ${showGeofencingZones ? "active" : ""}`}>
+          <label className={`filter-chip geofence-chip${showGeofencingZones ? "active" : ""}`}>
             <input
               type="checkbox"
               checked={showGeofencingZones}
