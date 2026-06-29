@@ -530,28 +530,7 @@ export default function Reichweite({ city, school }) {
           <strong>Budget + Live-Verfügbarkeit</strong>
         </div>
 
-        <div className="filter-group">
-          <span className="filter-label">Verkehrsmittel</span>
-          <div className="chip-row">
-            <label className={`filter-chip ${showBikes ? "active" : ""}`}>
-              <input
-                type="checkbox"
-                checked={showBikes}
-                onChange={(e) => setShowBikes(e.target.checked)}
-              />
-              🚲 Bike
-            </label>
-
-            <label className={`filter-chip ${showScooters ? "active" : ""}`}>
-              <input
-                type="checkbox"
-                checked={showScooters}
-                onChange={(e) => setShowScooters(e.target.checked)}
-              />
-              🛴 E-Scooter
-            </label>
-          </div>
-        </div>
+        <div className="divider"/>
 
         <div className="filter-group">
           <span className="filter-label">Karte</span>
@@ -565,6 +544,8 @@ export default function Reichweite({ city, school }) {
             Abstellverbot Zonen
           </label>
         </div>
+
+        <div className="divider"/>
 
         <div className="filter-group">
           <span className="filter-label">POI-Typen</span>
@@ -588,62 +569,65 @@ export default function Reichweite({ city, school }) {
           </div>
         </div>
 
+        <div className="divider"/>
+
         <div className="filter-group budget-filter">
           <span className="filter-label">Budget</span>
+          <div class="budget-slider">
+            <input
+              type="range"
+              min="0"
+              max="5"
+              step="0.5"
+              value={budget}
+              onChange={(e) => {
+                setBudget(Number(e.target.value));
+                setPricingIsochroneData(null);
+                setSelectedPoi(null);
+              }}
+            />
 
-          <input
-            type="range"
-            min="0"
-            max="5"
-            step="0.5"
-            value={budget}
-            onChange={(e) => {
-              setBudget(Number(e.target.value));
-              setPricingIsochroneData(null);
-              setSelectedPoi(null);
-            }}
-          />
+            <strong>{budget.toFixed(2)} €</strong>
 
-          <strong>{budget.toFixed(2)} €</strong>
+            <div className="calculate-row">
+              <button
+                className="calculate-button"
+                onClick={() =>
+                  setCalculation({
+                    budget,
+                    city,
+                    schoolName: school.name,
+                    lat: school.coords[0],
+                    lon: school.coords[1],
+                  })
+                }
+              >
+                Berechnen
+              </button>
 
-          <div className="calculate-row">
-            <button
-              className="calculate-button"
-              onClick={() =>
-                setCalculation({
-                  budget,
-                  city,
-                  schoolName: school.name,
-                  lat: school.coords[0],
-                  lon: school.coords[1],
-                })
-              }
-            >
-              Berechnen
-            </button>
-
-            <span
-              className={`calculate-status ${backendError
-                ? "error"
-                : loadingBackend
-                  ? "loading"
-                  : calculation === null
-                    ? "waiting"
-                    : calculation?.budget !== budget
-                      ? "changed"
-                      : "success"
-                }`}
-            >
-              {backendError
-                ? "Fehler"
-                : loadingBackend
-                  ? "Lädt..."
-                  : calculation === null
-                    ? "Noch nicht berechnet"
-                    : calculation?.budget !== budget
-                      ? "Neu berechnen"
-                      : "Berechnet"}
-            </span>
+              <span
+                className={`calculate-status ${backendError
+                  ? "error"
+                  : loadingBackend
+                    ? "loading"
+                    : calculation === null
+                      ? "waiting"
+                      : calculation?.budget !== budget
+                        ? "changed"
+                        : "success"
+                  }`}
+              >
+                {backendError
+                  ? "Fehler"
+                  : loadingBackend
+                    ? "Lädt..."
+                    : calculation === null
+                      ? "Noch nicht berechnet"
+                      : calculation?.budget !== budget
+                        ? "Neu berechnen"
+                        : "Berechnet"}
+              </span>
+            </div>
           </div>
         </div>
       </section>

@@ -165,10 +165,10 @@ body {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  gap: 14px;
 
   margin-bottom: 12px;
-  padding: 14px 18px;
+  padding: 8px 8px;
+  justify-content: space-between;
 
   background: rgba(255, 255, 255, 0.97);
   border: 1px solid #e2e8f0;
@@ -180,22 +180,18 @@ body {
 }
 
 .filter-group {
-  flex: 1 1 180px;
   min-width: 170px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
 
-  min-height: 58px;
-
-  padding-right: 18px;
 }
 
-.filter-group:not(:last-child) {
-  border-right: 1px solid #e2e8f0;
-  margin-right: 28px;
+.divider {
+  width: 1px;
+  background: #e2e8f0;
 }
 
 .filter-label {
@@ -262,19 +258,20 @@ button.filter-chip.active {
    FLOATING BUDGET-FILTER
    ========================================================================== */
 
+.budget-slider {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
 .budget-filter {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  flex-direction: column;
   grid-template-areas:
     "title title"
     "slider value"
     "button button";
 
   gap: 8px 18px;
-
-  flex: 1.4 1 320px;
-  min-width: 300px;
-  max-width: 420px;
 
   padding-right: 0 !important;
   border-right: none !important;
