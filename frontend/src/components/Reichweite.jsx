@@ -773,6 +773,7 @@ export default function Reichweite({ city, school }) {
             markerCoords={school.coords}
             pois={poisWithReachability}
             isochronePois={allPoisWithReachability}
+            activeVehicles={activeVehicles}
             selectedPoi={selectedPoi}
             setSelectedPoi={setSelectedPoi}
             availability={false}

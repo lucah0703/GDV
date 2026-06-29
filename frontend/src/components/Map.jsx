@@ -153,6 +153,7 @@ export default function Map({
   markerCoords,
   pois = [],
   isochronePois = pois,
+  activeVehicles = ["bike", "scooter"],
   selectedPoi = null,
   setSelectedPoi = () => { },
   availability = false,
@@ -166,6 +167,7 @@ export default function Map({
 
   const isochroneLegendItems = isochroneData?.results
     ? Object.entries(isochroneData.results)
+      .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
       .flatMap(([vehicleType, offers]) =>
         offers.map((offer) => ({
           provider: offer.provider,
@@ -180,7 +182,11 @@ export default function Map({
           array.findIndex((x) => x.provider === item.provider) === index
       )
     : [];
-
+  function isVehicleTypeActive(vehicleType) {
+    if (vehicleType === "bike") return activeVehicles.includes("bike");
+    if (vehicleType === "e-scooter") return activeVehicles.includes("scooter");
+    return false;
+  }
   return (
     <MapContainer
       center={center}
@@ -221,33 +227,35 @@ export default function Map({
 
       {!availability &&
         isochroneData?.results &&
-        Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
-          offers.map((offer, index) => {
-            const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
-              offer.provider,
-              isochronePois
-            );
+        Object.entries(isochroneData.results)
+          .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
+          .map(([vehicleType, offers]) =>
+            offers.map((offer, index) => {
+              const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
+                offer.provider,
+                isochronePois
+              );
 
-            return offer.geometry ? (
-              <GeoJSON
-                key={`${vehicleType}-${offer.provider}-${index}`}
-                data={{
-                  type: "Feature",
-                  properties: {
-                    provider: offer.provider,
+              return offer.geometry ? (
+                <GeoJSON
+                  key={`${vehicleType}-${offer.provider}-${index}`}
+                  data={{
+                    type: "Feature",
+                    properties: {
+                      provider: offer.provider,
+                      vehicleType,
+                    },
+                    geometry: offer.geometry,
+                  }}
+                  style={getIsochroneStyle(
                     vehicleType,
-                  },
-                  geometry: offer.geometry,
-                }}
-                style={getIsochroneStyle(
-                  vehicleType,
-                  isOnlyTheoretical ? "theoretical" : "real",
-                  offer.provider
-                )}
-              />
-            ) : null;
-          })
-        )}
+                    isOnlyTheoretical ? "theoretical" : "real",
+                    offer.provider
+                  )}
+                />
+              ) : null;
+            })
+          )}
 
       {!availability && !isochroneData && theoreticalRadius > 0 && (
         <Circle
