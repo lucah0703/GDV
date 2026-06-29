@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -118,7 +118,7 @@ function providerHasAvailableVehicle(provider, vehicleType, stationsInRadius) {
 
   return stationsInRadius.some((station) => {
     return (
-       normalizeProviderName(station.provider) === normalizedProvider &&
+      normalizeProviderName(station.provider) === normalizedProvider &&
       normalizeVehicleType(station.vehicle) === normalizedVehicle &&
       (station.availability?.current ?? 0) > 0
     );
@@ -137,6 +137,44 @@ function createStartpointIcon() {
     iconAnchor: [21, 21],
     popupAnchor: [0, -18],
   });
+}
+
+function ScalablePoiMarker({ poi, isSelected, setSelectedPoi }) {
+  const map = useMap();
+  const [zoom, setZoom] = useState(map.getZoom());
+
+  useEffect(() => {
+    const updateZoom = () => {
+      setZoom(map.getZoom());
+    };
+
+    map.on("zoomend", updateZoom);
+    map.on("zoom", updateZoom);
+
+    return () => {
+      map.off("zoomend", updateZoom);
+      map.off("zoom", updateZoom);
+    };
+  }, [map]);
+
+  const baseRadius = Math.max(2.5, Math.min(8, 3 + (zoom - 11) * 0.7));
+  const radius = isSelected ? baseRadius + 4 : baseRadius;
+
+  return (
+    <CircleMarker
+      center={poi.coords}
+      radius={radius}
+      pathOptions={{
+        color: isSelected ? "#111827" : "#ffffff",
+        weight: isSelected ? 3 : 1,
+        fillColor: getPoiColor(poi.type),
+        fillOpacity: isSelected ? 1 : 0.85,
+      }}
+      eventHandlers={{
+        click: () => setSelectedPoi(poi),
+      }}
+    />
+  );
 }
 
 export default function Map({
@@ -277,26 +315,14 @@ export default function Map({
       )}
 
       {!availability &&
-        pois.map((poi) => {
-          const isSelected = selectedPoi?.id === poi.id;
-
-          return (
-            <CircleMarker
-              key={poi.id}
-              center={poi.coords}
-              radius={isSelected ? 11 : 6}
-              pathOptions={{
-                color: isSelected ? "#111827" : "#ffffff",
-                weight: isSelected ? 3 : 1,
-                fillColor: getPoiColor(poi.type),
-                fillOpacity: isSelected ? 1 : 0.85,
-              }}
-              eventHandlers={{
-                click: () => setSelectedPoi(poi),
-              }}
-            />
-          );
-        })}
+        pois.map((poi) => (
+          <ScalablePoiMarker
+            key={poi.id}
+            poi={poi}
+            isSelected={selectedPoi?.id === poi.id}
+            setSelectedPoi={setSelectedPoi}
+          />
+        ))}
 
       {!availability && (
         <div className="map-legend">
