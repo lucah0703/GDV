@@ -49,50 +49,60 @@ function RecenterMap({ center }) {
   return null;
 }
 
-function getTrafficEmoji(status) {
-  if (status === "green") return "🟢";
-  if (status === "yellow") return "🟡";
-  return "🔴";
-}
+function SelectedPoiPopup({ selectedPoi }) {
+  const map = useMap();
 
-function getAvailable(station, timeSlot) {
+  useEffect(() => {
+    if (!selectedPoi || !selectedPoi.coords) return;
+
+    map.flyTo(selectedPoi.coords, Math.max(map.getZoom(), 15), {
+      animate: true,
+      duration: 0.6,
+    });
+  }, [selectedPoi, map]);
+
+  if (!selectedPoi) return null;
+
   return (
-    station.availability?.[timeSlot] ??
-    station.availability?.current ??
-    station.availability?.morning ??
-    0
+    <Popup position={selectedPoi.coords}>
+      <strong>
+        {selectedPoi.icon} {selectedPoi.name}
+      </strong>
+
+      <br />
+
+      <small>{selectedPoi.type}</small>
+
+      {selectedPoi.adress && (
+        <>
+          <br />
+          <small>📍 {selectedPoi.adress}</small>
+        </>
+      )}
+    </Popup>
   );
 }
 
-function getAvailabilityStatus(station, timeSlot) {
-  const available = getAvailable(station, timeSlot);
-  const capacity = Math.max(station.capacity || 1, 1);
-  const ratio = available / capacity;
-
-  if (ratio >= 0.5) return "green";
-  if (ratio >= 0.2) return "yellow";
-  return "red";
+function getPoiColor(type) {
+  if (type === "Bahnhof") return "#2463eb";
+  if (type === "Wohnheim") return "#289951";
+  if (type === "Sportanlage") return "#ff5858";
+  return "#6b7280";
 }
 
 const PROVIDER_COLORS = {
-  // Bikes
   regioRadStuttgart: "#230a51",
   "kvv.nextbike": "#A855F7",
   vrnnextbike: "#D8B4FE",
-
-  // Scooter
   lime: "#8C2D04",
   bolt: "#D94801",
   voi: "#F97316",
-  dott: "#FBBF24"
+  dott: "#FBBF24",
 };
 
 function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   const isReal = reachabilityType === "real";
-
-  const fallbackColor =
-    vehicleType === "bike" ? "#038554" : "#7f00b2";
-
+  const fallbackColor = vehicleType === "bike" ? "#038554" : "#7f00b2";
   const color = PROVIDER_COLORS[provider] || fallbackColor;
 
   return {
@@ -104,12 +114,6 @@ function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   };
 }
 
-function getPoiColor(type) {
-  if (type === "Bahnhof") return "#2463eb";
-  if (type === "Wohnheim") return "#289951";
-  if (type === "Sportanlage") return "#ff5858";
-  return "#6b7280";
-}
 function providerHasOnlyTheoreticalPois(provider, pois) {
   return pois.some((poi) => {
     const theoreticalProvider =
@@ -129,26 +133,12 @@ function providerHasOnlyTheoreticalPois(provider, pois) {
   });
 }
 
-function createStationIcon(status, vehicle) {
-  const symbol = vehicle === "bike" ? "🚲" : "🛴";
-
-  return L.divIcon({
-    className: "station-map-marker",
-    html: `<div class="station-map-marker-inner">${getTrafficEmoji(
-      status
-    )}${symbol}</div>`,
-    iconSize: [44, 34],
-    iconAnchor: [22, 17],
-    popupAnchor: [0, -16],
-  });
-}
-
 function createStartpointIcon() {
   return L.divIcon({
     className: "startpoint-pulse-icon",
     html: `
       <div class="startpoint-pulse">
-        <div class="startpoint-dot">\u{1F393}</div>
+        <div class="startpoint-dot">🎓</div>
       </div>
     `,
     iconSize: [42, 42],
@@ -162,11 +152,9 @@ export default function Map({
   label,
   markerCoords,
   pois = [],
-  setSelectedPoi = () => { },
+  selectedPoi = null,
+  setSelectedPoi = () => {},
   availability = false,
-  timeSlot = "current",
-  stationsInRadius = [],
-  showStationsInBudgetView = false,
   realRadius = 0,
   theoreticalRadius = 0,
   isochroneData = null,
@@ -174,24 +162,24 @@ export default function Map({
   showGeofencingZones = false,
 }) {
   const startpointIcon = createStartpointIcon();
+
   const isochroneLegendItems = isochroneData?.results
     ? Object.entries(isochroneData.results)
-      .flatMap(([vehicleType, offers]) =>
-        offers
-          .s((offer) => offer.provider)
-          .map((offer) => ({
+        .flatMap(([vehicleType, offers]) =>
+          offers.map((offer) => ({
             provider: offer.provider,
             vehicleType,
             color:
               PROVIDER_COLORS[offer.provider] ||
               (vehicleType === "bike" ? "#038554" : "#7f00b2"),
           }))
-      )
-      .filter(
-        (item, index, array) =>
-          array.findIndex((x) => x.provider === item.provider) === index
-      )
+        )
+        .filter(
+          (item, index, array) =>
+            array.findIndex((x) => x.provider === item.provider) === index
+        )
     : [];
+
   return (
     <MapContainer
       center={center}
@@ -201,11 +189,14 @@ export default function Map({
     >
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-        attribution='&copy; OpenStreetMap &copy; CARTO'
+        attribution="&copy; OpenStreetMap &copy; CARTO"
         subdomains="abcd"
       />
 
       <RecenterMap center={center} />
+
+      <SelectedPoiPopup selectedPoi={selectedPoi} />
+
       {showGeofencingZones &&
         geofencingZones.flatMap((provider) =>
           provider.geofencing_zones.map((zone, index) => (
@@ -226,6 +217,7 @@ export default function Map({
             />
           ))
         )}
+
       {!availability &&
         isochroneData?.results &&
         Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
@@ -272,20 +264,6 @@ export default function Map({
         />
       )}
 
-      {availability && (
-        <Circle
-          center={center}
-          radius={10000}
-          pathOptions={{
-            color: "#047857",
-            fillColor: "#047857",
-            fillOpacity: 0.03,
-            weight: 2,
-            dashArray: "8 8",
-          }}
-        />
-      )}
-
       {markerCoords && (
         <Marker position={markerCoords} icon={startpointIcon}>
           <Popup>{label}</Popup>
@@ -293,39 +271,27 @@ export default function Map({
       )}
 
       {!availability &&
-        pois.map((poi) => (
-          <CircleMarker
-            key={poi.id}
-            center={poi.coords}
-            radius={6}
-            pathOptions={{
-              color: "#ffffff",
-              weight: 1,
-              fillColor: getPoiColor(poi.type),
-              fillOpacity: 0.85,
-            }}
-            eventHandlers={{
-              click: () => setSelectedPoi(poi),
-            }}
-          >
-            <Popup>
-              <strong>
-                {poi.icon} {poi.name}
-              </strong>
+        pois.map((poi) => {
+          const isSelected = selectedPoi?.id === poi.id;
 
-              <br />
+          return (
+            <CircleMarker
+              key={poi.id}
+              center={poi.coords}
+              radius={isSelected ? 11 : 6}
+              pathOptions={{
+                color: isSelected ? "#111827" : "#ffffff",
+                weight: isSelected ? 3 : 1,
+                fillColor: getPoiColor(poi.type),
+                fillOpacity: isSelected ? 1 : 0.85,
+              }}
+              eventHandlers={{
+                click: () => setSelectedPoi(poi),
+              }}
+            />
+          );
+        })}
 
-              <small>{poi.type}</small>
-
-              {poi.adress && (
-                <>
-                  <br />
-                  <small>📍 {poi.adress}</small>
-                </>
-              )}
-            </Popup>
-          </CircleMarker>
-        ))}
       {!availability && (
         <div className="map-legend">
           <h4>POIs</h4>
@@ -394,7 +360,8 @@ export default function Map({
               </div>
 
               <p className="legend-hint">
-                Gefüllt = real erreichbar · gestrichelt = aktuell nicht Verfügbar
+                Gefüllt = real erreichbar · gestrichelt = aktuell nicht
+                verfügbar
               </p>
             </>
           )}

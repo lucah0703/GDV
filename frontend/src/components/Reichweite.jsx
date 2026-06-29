@@ -59,7 +59,7 @@ function geoJsonPoisToFrontend(geojson) {
         type,
         icon: getPoiIcon(type),
         coords: [lat, lon],
-        adress: props.adress || props.adress || "",
+        adress: props.adress || "",
         category: props.category,
       };
     })
