@@ -351,7 +351,7 @@ export default function Reichweite({ city, school }) {
           ) {
             const pricingIsochroneJson =
               await pricingIsochroneResult.value.json();
-              console.log("ISOCHRONE", pricingIsochroneJson.results);
+            console.log("ISOCHRONE", pricingIsochroneJson.results);
             setPricingIsochroneData(pricingIsochroneJson);
           } else {
             setPricingIsochroneData(null);
@@ -410,11 +410,11 @@ export default function Reichweite({ city, school }) {
     return backendPois.filter((poi) => poi.type === selectedPoiType);
   }, [backendPois, selectedPoiType]);
 
-const stationsNearStart = useMemo(() => {
-  return backendStations.filter((station) => {
-    return distanceKm(school.coords, station.coords) <= 0.2;
-  });
-}, [backendStations, school.coords]);
+  const stationsNearStart = useMemo(() => {
+    return backendStations.filter((station) => {
+      return distanceKm(school.coords, station.coords) <= 0.2;
+    });
+  }, [backendStations, school.coords]);
 
   const allPoisWithReachability = useMemo(() => {
     const isochroneOffers = getIsochroneOffers(
@@ -541,7 +541,7 @@ const stationsNearStart = useMemo(() => {
           <strong>Budget + Live-Verfügbarkeit</strong>
         </div>
 
-        <div className="divider"/>
+        <div className="divider" />
 
         <div className="filter-group">
           <span className="filter-label">Karte</span>
@@ -556,7 +556,7 @@ const stationsNearStart = useMemo(() => {
           </label>
         </div>
 
-        <div className="divider"/>
+        <div className="divider" />
 
         <div className="filter-group">
           <span className="filter-label">POI-Typen</span>
@@ -580,11 +580,11 @@ const stationsNearStart = useMemo(() => {
           </div>
         </div>
 
-        <div className="divider"/>
+        <div className="divider" />
 
         <div className="filter-group budget-filter">
           <span className="filter-label">Budget</span>
-          <div class="budget-slider">
+          <div className="budget-slider">
             <input
               type="range"
               min="0"
@@ -603,6 +603,7 @@ const stationsNearStart = useMemo(() => {
             <div className="calculate-row">
               <button
                 className="calculate-button"
+                disabled={budget <= 0}
                 onClick={() =>
                   setCalculation({
                     budget,

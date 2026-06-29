@@ -334,6 +334,11 @@ button.filter-chip.active {
   border-color: #94a3b8;
 }
 
+.calculate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .calculate-status {
   font-size: 11px;
   font-weight: 650;
