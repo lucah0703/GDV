@@ -214,6 +214,7 @@ export default function Map({
                 geometry: zone.geometry,
                 properties: {},
               }}
+              interactive={false}
               style={{
                 color: "#7a7a7a",
                 fillColor: "#7a7a7a",
@@ -247,6 +248,7 @@ export default function Map({
                     },
                     geometry: offer.geometry,
                   }}
+                  interactive={false}
                   style={getIsochroneStyle(
                     vehicleType,
                     isOnlyTheoretical ? "theoretical" : "real",
