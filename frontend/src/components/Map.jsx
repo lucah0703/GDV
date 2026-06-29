@@ -62,6 +62,13 @@ function SelectedPoiPopup({ selectedPoi }) {
       <br />
       <small>{selectedPoi.type}</small>
 
+      {selectedPoi.sportart && (
+        <>
+          <br />
+          <small>🏃 {selectedPoi.sportart}</small>
+        </>
+      )}
+
       {selectedPoi.address && (
         <>
           <br />
@@ -131,7 +138,7 @@ function createStartpointIcon() {
     html: `
       <div class="startpoint-pulse">
         <div class="startpoint-dot">🎓</div>
-      </div>
+      </div
     `,
     iconSize: [42, 42],
     iconAnchor: [21, 21],
@@ -186,7 +193,7 @@ export default function Map({
   activeVehicles = ["bike", "scooter"],
   stationsInRadius = [],
   selectedPoi = null,
-  setSelectedPoi = () => {},
+  setSelectedPoi = () => { },
   availability = false,
   realRadius = 0,
   theoreticalRadius = 0,
@@ -204,20 +211,20 @@ export default function Map({
 
   const isochroneLegendItems = isochroneData?.results
     ? Object.entries(isochroneData.results)
-        .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
-        .flatMap(([vehicleType, offers]) =>
-          offers.map((offer) => ({
-            provider: offer.provider,
-            vehicleType,
-            color:
-              PROVIDER_COLORS[offer.provider] ||
-              (vehicleType === "bike" ? "#038554" : "#7f00b2"),
-          }))
-        )
-        .filter(
-          (item, index, array) =>
-            array.findIndex((x) => x.provider === item.provider) === index
-        )
+      .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
+      .flatMap(([vehicleType, offers]) =>
+        offers.map((offer) => ({
+          provider: offer.provider,
+          vehicleType,
+          color:
+            PROVIDER_COLORS[offer.provider] ||
+            (vehicleType === "bike" ? "#038554" : "#7f00b2"),
+        }))
+      )
+      .filter(
+        (item, index, array) =>
+          array.findIndex((x) => x.provider === item.provider) === index
+      )
     : [];
 
   return (
