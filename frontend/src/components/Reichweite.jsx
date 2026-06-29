@@ -406,13 +406,13 @@ export default function Reichweite({ city, school }) {
     });
   }, [backendStations, school.coords, activeVehicles]);
 
-  const poisWithReachability = useMemo(() => {
+  const allPoisWithReachability = useMemo(() => {
     const isochroneOffers = getIsochroneOffers(
       pricingIsochroneData,
       activeVehicles
     );
 
-    return filteredBackendPois.map((poi) => {
+    return backendPois.map((poi) => {
       const theoreticalRoutes = isochroneOffers
         .filter((offer) => offer.geometry)
         .filter((offer) => pointInGeometry(poi.coords, offer.geometry))
@@ -479,6 +479,13 @@ export default function Reichweite({ city, school }) {
     stationsNearStart,
     geofencingZones,
   ]);
+  const poisWithReachability = useMemo(() => {
+    if (selectedPoiType === "Alle") return allPoisWithReachability;
+
+    return allPoisWithReachability.filter(
+      (poi) => poi.type === selectedPoiType
+    );
+  }, [allPoisWithReachability, selectedPoiType]);
 
   const realReachablePois = poisWithReachability.filter(
     (poi) => poi.realReachable
@@ -765,6 +772,7 @@ export default function Reichweite({ city, school }) {
             label={school.name}
             markerCoords={school.coords}
             pois={poisWithReachability}
+            isochronePois={allPoisWithReachability}
             selectedPoi={selectedPoi}
             setSelectedPoi={setSelectedPoi}
             availability={false}

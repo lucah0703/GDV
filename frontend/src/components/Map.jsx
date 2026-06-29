@@ -152,8 +152,9 @@ export default function Map({
   label,
   markerCoords,
   pois = [],
+  isochronePois = pois,
   selectedPoi = null,
-  setSelectedPoi = () => {},
+  setSelectedPoi = () => { },
   availability = false,
   realRadius = 0,
   theoreticalRadius = 0,
@@ -165,19 +166,19 @@ export default function Map({
 
   const isochroneLegendItems = isochroneData?.results
     ? Object.entries(isochroneData.results)
-        .flatMap(([vehicleType, offers]) =>
-          offers.map((offer) => ({
-            provider: offer.provider,
-            vehicleType,
-            color:
-              PROVIDER_COLORS[offer.provider] ||
-              (vehicleType === "bike" ? "#038554" : "#7f00b2"),
-          }))
-        )
-        .filter(
-          (item, index, array) =>
-            array.findIndex((x) => x.provider === item.provider) === index
-        )
+      .flatMap(([vehicleType, offers]) =>
+        offers.map((offer) => ({
+          provider: offer.provider,
+          vehicleType,
+          color:
+            PROVIDER_COLORS[offer.provider] ||
+            (vehicleType === "bike" ? "#038554" : "#7f00b2"),
+        }))
+      )
+      .filter(
+        (item, index, array) =>
+          array.findIndex((x) => x.provider === item.provider) === index
+      )
     : [];
 
   return (
@@ -224,7 +225,7 @@ export default function Map({
           offers.map((offer, index) => {
             const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
               offer.provider,
-              pois
+              isochronePois
             );
 
             return offer.geometry ? (
