@@ -600,6 +600,12 @@ button.filter-chip.active {
   color: #991b1b;
 }
 
+.poi-list-card.selected {
+  border: 2px solid #111827;
+  background: #f3f4f6;
+  transform: translateX(2px);
+}
+
 .back-button {
   width: 100%;
   margin-top: 10px;

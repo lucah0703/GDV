@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Map from "./Map";
 
 const API_BASE = "http://localhost:8000";
@@ -289,6 +289,19 @@ export default function Reichweite({ city, school }) {
   const [backendError, setBackendError] = useState("");
 
   const currentAvailabilityKey = "current";
+
+  const selectedPoiRef = useRef(null);
+
+  useEffect(() => {
+    if (!selectedPoiRef.current) return;
+
+    setTimeout(() => {
+      selectedPoiRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 0);
+  }, [selectedPoi]);
 
   useEffect(() => {
     setBudget(0);
@@ -657,8 +670,8 @@ export default function Reichweite({ city, school }) {
 
           <div className="budget-card">
             <strong>Reichweite</strong>
-            <p>Real: {(maxRealRadius / 1000).toFixed(1)} km</p>
-            <p>Theoretisch: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
+            <p>Erreichbar: {(maxRealRadius / 1000).toFixed(1)} km</p>
+            <p>Aktuell nicht mögliche Erreichbarkeit: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
           </div>
 
           <div className="poi-summary-card">
@@ -667,8 +680,8 @@ export default function Reichweite({ city, school }) {
             </span>
             <strong>{poisWithReachability.length} insgesamt</strong>
             <p>
-              🟢 {realReachablePois.length} real · 🟡{" "}
-              {theoreticalReachablePois.length} theoretisch · 🔴{" "}
+              🟢 {realReachablePois.length} erreichbar · 🟡{" "}
+              {theoreticalReachablePois.length} aktuell nicht erreichbar · 🔴{" "}
               {notReachablePois.length} nicht erreichbar
             </p>
           </div>
@@ -682,7 +695,8 @@ export default function Reichweite({ city, school }) {
               poi.realRoutes.map((route, index) => (
                 <button
                   key={`real-${poi.id}-${route.provider}-${index}`}
-                  className="poi-list-card real"
+                  ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                  className={`poi-list-card real ${selectedPoi?.id === poi.id ? "selected" : ""}`}
                   onClick={() => setSelectedPoi(poi)}
                 >
                   <div>
@@ -710,7 +724,8 @@ export default function Reichweite({ city, school }) {
               poi.theoreticalOnlyRoutes.map((route, index) => (
                 <button
                   key={`theoretical-${poi.id}-${route.provider}-${index}`}
-                  className="poi-list-card theoretical"
+                  ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                  className={`poi-list-card theoretical ${selectedPoi?.id === poi.id ? "selected" : ""}`}
                   onClick={() => setSelectedPoi(poi)}
                 >
                   <div>
@@ -747,7 +762,9 @@ export default function Reichweite({ city, school }) {
             notReachablePois.map((poi) => (
               <button
                 key={`not-${poi.id}`}
-                className="poi-list-card not-reachable"
+                ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                className={`poi-list-card not-reachable ${selectedPoi?.id === poi.id ? "selected" : ""
+                  }`}
                 onClick={() => setSelectedPoi(poi)}
               >
                 <div>
