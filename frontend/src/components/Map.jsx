@@ -146,7 +146,7 @@ function createStartpointIcon() {
   });
 }
 
-function ScalablePoiMarker({ poi, isSelected, setSelectedPoi }) {
+function ScalablePoiMarker({ poi, isSelected, setSelectedPoi, isochroneData }) {
   const map = useMap();
   const [zoom, setZoom] = useState(map.getZoom());
 
@@ -157,7 +157,7 @@ function ScalablePoiMarker({ poi, isSelected, setSelectedPoi }) {
 
     map.on("zoomend", updateZoom);
     map.on("zoom", updateZoom);
-
+  
     return () => {
       map.off("zoomend", updateZoom);
       map.off("zoom", updateZoom);
@@ -167,15 +167,27 @@ function ScalablePoiMarker({ poi, isSelected, setSelectedPoi }) {
   const baseRadius = Math.max(2.5, Math.min(8, 3 + (zoom - 11) * 0.7));
   const radius = isSelected ? baseRadius + 4 : baseRadius;
 
+  const dimPoi = isochroneData && !poi.theoreticalReachable;
   return (
     <CircleMarker
       center={poi.coords}
       radius={radius}
       pathOptions={{
-        color: isSelected ? "#111827" : "#ffffff",
+        color: isSelected
+          ? "#111827"
+          : dimPoi
+            ? "#4b5563"
+            : "#ffffff",
+
         weight: isSelected ? 3 : 1,
-        fillColor: getPoiColor(poi.type),
-        fillOpacity: isSelected ? 1 : 0.85,
+
+        fillColor: dimPoi
+          ? "#6b7280"
+          : getPoiColor(poi.type),
+
+        fillOpacity: dimPoi
+          ? 0.45
+          : (isSelected ? 1 : 0.85),
       }}
       eventHandlers={{
         click: () => setSelectedPoi(poi),
@@ -328,6 +340,7 @@ export default function Map({
             poi={poi}
             isSelected={selectedPoi?.id === poi.id}
             setSelectedPoi={setSelectedPoi}
+            isochroneData={isochroneData}
           />
         ))}
 
@@ -359,7 +372,7 @@ export default function Map({
               <div className="legend-status-row">
                 <div className="legend-item">
                   <span className="legend-status-line solid"></span>
-                  Real erreichbar
+                  Erreichbar
                 </div>
 
                 <div className="legend-item">

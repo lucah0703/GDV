@@ -673,10 +673,10 @@ export default function Reichweite({ city, school }) {
             </p>
           </div>
 
-          <h4>Real erreichbar</h4>
+          <h4>Erreichbar</h4>
 
           {realReachablePois.length === 0 ? (
-            <div className="hint">Aktuell ist kein POI real erreichbar.</div>
+            <div className="hint">Aktuell ist kein POI erreichbar.</div>
           ) : (
             realReachablePois.map((poi) =>
               poi.realRoutes.map((route, index) => (
