@@ -795,16 +795,20 @@ button.filter-chip.active {
 }
 
 .legend-status-line {
-  width: 32px;
-  height: 0;
+  width: 34px;
+  height: 4px;
   display: inline-block;
   flex-shrink: 0;
-  border-top: 4px solid #0f172a;
+  background: #0f172a;
   border-radius: 999px;
 }
 
 .legend-status-line.dashed {
-  border-top-style: dashed;
+  background: repeating-linear-gradient(
+    to right,
+    #0f172a 0 8px,
+    transparent 8px 13px
+  );
 }
 
 .legend-provider-grid {
