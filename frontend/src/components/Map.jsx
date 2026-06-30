@@ -65,7 +65,7 @@ function SelectedPoiPopup({ selectedPoi }) {
       {selectedPoi.sportart && (
         <>
           <br />
-          <small>🏃 {selectedPoi.sportart}</small>
+          <small><strong>Sportart:</strong> {selectedPoi.sportart}</small>
         </>
       )}
 
