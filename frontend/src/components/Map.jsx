@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -21,23 +21,13 @@ function RecenterMap({ center }) {
     const t1 = setTimeout(() => {
       if (!map._mapPane) return;
 
-      map.invalidateSize({
-        animate: false,
-        pan: false,
-      });
-
-      map.setView(center, 14, {
-        animate: false,
-      });
+      map.invalidateSize({ animate: false, pan: false });
+      map.setView(center, 14, { animate: false });
     }, 100);
 
     const t2 = setTimeout(() => {
       if (!map._mapPane) return;
-
-      map.invalidateSize({
-        animate: false,
-        pan: false,
-      });
+      map.invalidateSize({ animate: false, pan: false });
     }, 500);
 
     return () => {
@@ -70,13 +60,19 @@ function SelectedPoiPopup({ selectedPoi }) {
       </strong>
 
       <br />
-
       <small>{selectedPoi.type}</small>
 
-      {selectedPoi.adress && (
+      {selectedPoi.sportart && (
         <>
           <br />
-          <small>📍 {selectedPoi.adress}</small>
+          <small>🏃 {selectedPoi.sportart}</small>
+        </>
+      )}
+
+      {selectedPoi.address && (
+        <>
+          <br />
+          <small>📍 {selectedPoi.address}</small>
         </>
       )}
     </Popup>
@@ -114,21 +110,24 @@ function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   };
 }
 
-function providerHasOnlyTheoreticalPois(provider, pois) {
-  return pois.some((poi) => {
-    const theoreticalProvider =
-      poi.theoreticalRoute?.offer?.provider ||
-      poi.theoreticalRoute?.station?.provider;
+function normalizeVehicleType(vehicleType) {
+  if (vehicleType === "e-scooter") return "scooter";
+  return vehicleType;
+}
 
-    const realProvider =
-      poi.realRoute?.offer?.provider ||
-      poi.realRoute?.station?.provider;
+function normalizeProviderName(provider) {
+  return String(provider || "").trim().toLowerCase();
+}
 
+function providerHasAvailableVehicle(provider, vehicleType, stationsInRadius) {
+  const normalizedProvider = normalizeProviderName(provider);
+  const normalizedVehicle = normalizeVehicleType(vehicleType);
+
+  return stationsInRadius.some((station) => {
     return (
-      poi.theoreticalReachable &&
-      !poi.realReachable &&
-      theoreticalProvider === provider &&
-      realProvider !== provider
+      normalizeProviderName(station.provider) === normalizedProvider &&
+      normalizeVehicleType(station.vehicle) === normalizedVehicle &&
+      (station.availability?.current ?? 0) > 0
     );
   });
 }
@@ -139,7 +138,7 @@ function createStartpointIcon() {
     html: `
       <div class="startpoint-pulse">
         <div class="startpoint-dot">🎓</div>
-      </div>
+      </div
     `,
     iconSize: [42, 42],
     iconAnchor: [21, 21],
@@ -147,13 +146,72 @@ function createStartpointIcon() {
   });
 }
 
+function ScalablePoiMarker({ poi, isSelected, setSelectedPoi, isochroneData }) {
+  const map = useMap();
+  const [zoom, setZoom] = useState(map.getZoom());
+
+  useEffect(() => {
+    const updateZoom = () => {
+      setZoom(map.getZoom());
+    };
+
+    map.on("zoomend", updateZoom);
+    map.on("zoom", updateZoom);
+
+    return () => {
+      map.off("zoomend", updateZoom);
+      map.off("zoom", updateZoom);
+    };
+  }, [map]);
+
+  const baseRadius = Math.max(2.5, Math.min(8, 3 + (zoom - 11) * 0.7));
+
+  // Nicht erreichbare POIs etwas kleiner darstellen
+  const scaledRadius = poi.theoreticalReachable
+    ? baseRadius
+    : Math.max(2, baseRadius - 1.5);
+
+  const radius = isSelected ? scaledRadius + 4 : scaledRadius;
+
+  const dimPoi = isochroneData && !poi.theoreticalReachable;
+  return (
+    <CircleMarker
+      center={poi.coords}
+      radius={radius}
+      pathOptions={{
+        color: isSelected
+          ? "#111827"
+          : dimPoi
+            ? "#4b5563"
+            : "#ffffff",
+
+        weight: isSelected ? 3 : 1,
+
+        fillColor: dimPoi
+          ? "#6b7280"
+          : getPoiColor(poi.type),
+
+        fillOpacity: dimPoi
+          ? 0.45
+          : (isSelected ? 1 : 0.85),
+      }}
+      eventHandlers={{
+        click: () => setSelectedPoi(poi),
+      }}
+    />
+  );
+}
+
 export default function Map({
   center,
   label,
   markerCoords,
   pois = [],
+  isochronePois = pois,
+  activeVehicles = ["bike", "scooter"],
+  stationsInRadius = [],
   selectedPoi = null,
-  setSelectedPoi = () => {},
+  setSelectedPoi = () => { },
   availability = false,
   realRadius = 0,
   theoreticalRadius = 0,
@@ -163,21 +221,28 @@ export default function Map({
 }) {
   const startpointIcon = createStartpointIcon();
 
+  function isVehicleTypeActive(vehicleType) {
+    if (vehicleType === "bike") return activeVehicles.includes("bike");
+    if (vehicleType === "e-scooter") return activeVehicles.includes("scooter");
+    return false;
+  }
+
   const isochroneLegendItems = isochroneData?.results
     ? Object.entries(isochroneData.results)
-        .flatMap(([vehicleType, offers]) =>
-          offers.map((offer) => ({
-            provider: offer.provider,
-            vehicleType,
-            color:
-              PROVIDER_COLORS[offer.provider] ||
-              (vehicleType === "bike" ? "#038554" : "#7f00b2"),
-          }))
-        )
-        .filter(
-          (item, index, array) =>
-            array.findIndex((x) => x.provider === item.provider) === index
-        )
+      .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
+      .flatMap(([vehicleType, offers]) =>
+        offers.map((offer) => ({
+          provider: offer.provider,
+          vehicleType,
+          color:
+            PROVIDER_COLORS[offer.provider] ||
+            (vehicleType === "bike" ? "#038554" : "#7f00b2"),
+        }))
+      )
+      .filter(
+        (item, index, array) =>
+          array.findIndex((x) => x.provider === item.provider) === index
+      )
     : [];
 
   return (
@@ -194,7 +259,6 @@ export default function Map({
       />
 
       <RecenterMap center={center} />
-
       <SelectedPoiPopup selectedPoi={selectedPoi} />
 
       {showGeofencingZones &&
@@ -207,6 +271,7 @@ export default function Map({
                 geometry: zone.geometry,
                 properties: {},
               }}
+              interactive={false}
               style={{
                 color: "#7a7a7a",
                 fillColor: "#7a7a7a",
@@ -220,33 +285,37 @@ export default function Map({
 
       {!availability &&
         isochroneData?.results &&
-        Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
-          offers.map((offer, index) => {
-            const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
-              offer.provider,
-              pois
-            );
+        Object.entries(isochroneData.results)
+          .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
+          .map(([vehicleType, offers]) =>
+            offers.map((offer, index) => {
+              const isRealIsochrone = providerHasAvailableVehicle(
+                offer.provider,
+                vehicleType,
+                stationsInRadius
+              );
 
-            return offer.geometry ? (
-              <GeoJSON
-                key={`${vehicleType}-${offer.provider}-${index}`}
-                data={{
-                  type: "Feature",
-                  properties: {
-                    provider: offer.provider,
+              return offer.geometry ? (
+                <GeoJSON
+                  key={`${vehicleType}-${offer.provider}-${index}`}
+                  data={{
+                    type: "Feature",
+                    properties: {
+                      provider: offer.provider,
+                      vehicleType,
+                    },
+                    geometry: offer.geometry,
+                  }}
+                  interactive={false}
+                  style={getIsochroneStyle(
                     vehicleType,
-                  },
-                  geometry: offer.geometry,
-                }}
-                style={getIsochroneStyle(
-                  vehicleType,
-                  isOnlyTheoretical ? "theoretical" : "real",
-                  offer.provider
-                )}
-              />
-            ) : null;
-          })
-        )}
+                    isRealIsochrone ? "real" : "theoretical",
+                    offer.provider
+                  )}
+                />
+              ) : null;
+            })
+          )}
 
       {!availability && !isochroneData && theoreticalRadius > 0 && (
         <Circle
@@ -271,26 +340,15 @@ export default function Map({
       )}
 
       {!availability &&
-        pois.map((poi) => {
-          const isSelected = selectedPoi?.id === poi.id;
-
-          return (
-            <CircleMarker
-              key={poi.id}
-              center={poi.coords}
-              radius={isSelected ? 11 : 6}
-              pathOptions={{
-                color: isSelected ? "#111827" : "#ffffff",
-                weight: isSelected ? 3 : 1,
-                fillColor: getPoiColor(poi.type),
-                fillOpacity: isSelected ? 1 : 0.85,
-              }}
-              eventHandlers={{
-                click: () => setSelectedPoi(poi),
-              }}
-            />
-          );
-        })}
+        pois.map((poi) => (
+          <ScalablePoiMarker
+            key={poi.id}
+            poi={poi}
+            isSelected={selectedPoi?.id === poi.id}
+            setSelectedPoi={setSelectedPoi}
+            isochroneData={isochroneData}
+          />
+        ))}
 
       {!availability && (
         <div className="map-legend">
@@ -320,7 +378,7 @@ export default function Map({
               <div className="legend-status-row">
                 <div className="legend-item">
                   <span className="legend-status-line solid"></span>
-                  Real erreichbar
+                  Erreichbar
                 </div>
 
                 <div className="legend-item">
@@ -342,13 +400,6 @@ export default function Map({
                       }}
                     ></span>
 
-                    <span
-                      className="legend-isochrone-shape dashed"
-                      style={{
-                        borderColor: item.color,
-                      }}
-                    ></span>
-
                     <span className="legend-provider-name">
                       {item.provider}
                       <small>
@@ -358,11 +409,6 @@ export default function Map({
                   </div>
                 ))}
               </div>
-
-              <p className="legend-hint">
-                Gefüllt = real erreichbar · gestrichelt = aktuell nicht
-                verfügbar
-              </p>
             </>
           )}
         </div>

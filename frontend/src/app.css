@@ -159,89 +159,92 @@ body {
 .top-filter-bar {
   position: relative;
   z-index: 20;
-
   width: 100%;
 
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  gap: 14px;
 
   margin-bottom: 12px;
-  padding: 14px 18px;
+  padding: 8px 8px;
+  justify-content: space-between;
 
-  background: rgba(255, 255, 255, 0.97);
+  background: rgba(255, 255, 255, 0.98);
   border: 1px solid #e2e8f0;
-  border-radius: 18px;
+  border-radius: 16px;
 
   box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.08),
-    0 4px 12px rgba(15, 23, 42, 0.04);
+    0 10px 24px rgba(15, 23, 42, 0.07),
+    0 3px 10px rgba(15, 23, 42, 0.04);
 }
 
 .filter-group {
-  flex: 1 1 180px;
   min-width: 170px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
 
-  min-height: 58px;
-
-  padding-right: 18px;
 }
 
-.filter-group:not(:last-child) {
-  border-right: 1px solid #e2e8f0;
-  margin-right: 28px;
+.divider {
+  width: 1px;
+  background: #e2e8f0;
 }
 
 .filter-label {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
   color: #94a3b8;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  line-height: 1;
 }
 
 .filter-group strong {
-  font-size: 16px;
+  font-size: 13px;
   color: #0f172a;
   font-weight: 750;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .chip-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 7px;
+  flex-wrap: nowrap;
 }
 
 .filter-chip {
-  height: 38px;
-  padding: 0 18px;
+  height: 30px;
+  padding: 0 12px;
   border-radius: 999px;
   border: 1px solid #dbe3ec;
   background: white;
   color: #334155;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 650;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 7px;
+  gap: 6px;
 
   cursor: pointer;
   white-space: nowrap;
   transition: all 0.15s ease;
 }
 
+.geofence-chip {
+  width: fit-content;
+  padding: 0 10px;
+}
+
 .filter-chip input[type="checkbox"] {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   accent-color: #047857;
   cursor: pointer;
 }
@@ -259,12 +262,17 @@ button.filter-chip.active {
 }
 
 /* ========================================================================== 
-   FLOATING BUDGET-FILTER
+   BUDGET-FILTER KOMPAKT
    ========================================================================== */
 
+.budget-slider {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
 .budget-filter {
-  display: grid;
-  grid-template-columns: 1fr auto;
+  flex-direction: column;
   grid-template-areas:
     "title title"
     "slider value"
@@ -272,13 +280,8 @@ button.filter-chip.active {
 
   gap: 8px 18px;
 
-  flex: 1.4 1 320px;
-  min-width: 300px;
-  max-width: 420px;
-
   padding-right: 0 !important;
   border-right: none !important;
-  margin-right: 0 !important;
 }
 
 .budget-filter .filter-label {
@@ -287,14 +290,14 @@ button.filter-chip.active {
 
 .budget-filter input[type="range"] {
   grid-area: slider;
-  width: 100%;
+  width: 190px;
   accent-color: #047857;
   cursor: pointer;
 }
 
 .budget-filter strong {
   grid-area: value;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: 800;
   color: #0f172a;
   align-self: center;
@@ -303,24 +306,25 @@ button.filter-chip.active {
 }
 
 .calculate-row {
-  grid-area: button;
+  grid-area: action;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .calculate-button {
-  width: 170px;
-  height: 38px;
+  width: 104px;
+  height: 30px;
   flex-shrink: 0;
 
   background: white;
   color: #0f172a;
   border: 1px solid #cbd5e1;
-  border-radius: 10px;
+  border-radius: 9px;
 
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 650;
   cursor: pointer;
   transition: all 0.15s ease;
 }
@@ -330,9 +334,14 @@ button.filter-chip.active {
   border-color: #94a3b8;
 }
 
+.calculate-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .calculate-status {
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 11px;
+  font-weight: 650;
   white-space: nowrap;
 }
 
@@ -591,6 +600,12 @@ button.filter-chip.active {
   color: #991b1b;
 }
 
+.poi-list-card.selected {
+  border: 2px solid #111827;
+  background: #f3f4f6;
+  transform: translateX(2px);
+}
+
 .back-button {
   width: 100%;
   margin-top: 10px;
@@ -715,16 +730,16 @@ button.filter-chip.active {
 
 .map-legend {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 14px;
+  right: 14px;
   z-index: 500;
   background: rgba(255, 255, 255, 0.97);
   border-radius: 16px;
-  padding: 16px 18px;
-  min-width: 330px;
-  max-width: 360px;
+  padding: 10px 12px;
+  min-width: 240px;
+  max-width: 280px;
   box-shadow: 0 12px 34px rgba(15, 23, 42, 0.2);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .map-legend h4 {
@@ -780,16 +795,20 @@ button.filter-chip.active {
 }
 
 .legend-status-line {
-  width: 32px;
-  height: 0;
+  width: 34px;
+  height: 4px;
   display: inline-block;
   flex-shrink: 0;
-  border-top: 4px solid #0f172a;
+  background: #0f172a;
   border-radius: 999px;
 }
 
 .legend-status-line.dashed {
-  border-top-style: dashed;
+  background: repeating-linear-gradient(
+    to right,
+    #0f172a 0 8px,
+    transparent 8px 13px
+  );
 }
 
 .legend-provider-grid {
@@ -799,7 +818,7 @@ button.filter-chip.active {
 
 .legend-provider-item {
   display: grid;
-  grid-template-columns: 38px 38px 1fr;
+  grid-template-columns: 38px 1fr;
   align-items: center;
   column-gap: 8px;
 }
@@ -907,35 +926,109 @@ button.filter-chip.active {
    RESPONSIVE
    ========================================================================== */
 
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
   .top-filter-bar {
-    width: calc(100% - 60px);
-    grid-template-columns: 1fr 1fr;
-    row-gap: 18px;
+    gap: 12px;
+    padding: 11px 14px;
+  }
+
+  .filter-group:nth-child(1) {
+    flex-basis: 190px;
   }
 
   .filter-group:nth-child(2) {
-    border-right: none;
-    margin-right: 0;
+    flex-basis: 175px;
+  }
+
+  .filter-group:nth-child(3) {
+    flex-basis: 300px;
   }
 
   .budget-filter {
-    width: 100%;
-    min-width: 0;
-    max-width: none;
+    flex-basis: 480px;
+    min-width: 460px;
+    max-width: 480px;
+    grid-template-columns: 58px 160px 54px 98px 1fr;
   }
 
-  /*.map-workspace {
-    padding-top: 145px;
-  }*/
+  .budget-filter input[type="range"] {
+    width: 160px;
+  }
+
+  .calculate-button {
+    width: 96px;
+  }
+
+  .map-legend {
+    min-width: 220px;
+    max-width: 250px;
+    padding: 9px 11px;
+    font-size: 11px;
+  }
+
+  .map-legend h4 {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .legend-item {
+    margin: 5px 0;
+    font-size: 11px;
+  }
+
+  .legend-provider-name {
+    font-size: 11px;
+  }
+
+  .legend-provider-name small {
+    font-size: 9px;
+  }
+
+  .legend-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .legend-isochrone-shape {
+    width: 22px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .top-filter-bar {
+    flex-wrap: wrap;
+    align-items: center;
+    row-gap: 10px;
+  }
+
+  .filter-group:nth-child(1),
+  .filter-group:nth-child(2),
+  .filter-group:nth-child(3) {
+    flex: 1 1 220px;
+  }
+
+  .filter-group:nth-child(3) {
+    border-right: none;
+  }
+
+  .budget-filter {
+    flex: 1 1 100%;
+    min-width: 0;
+    max-width: none;
+    grid-template-columns: 70px minmax(160px, 240px) 60px 105px 1fr;
+  }
+
+  .budget-filter input[type="range"] {
+    width: 100%;
+  }
 
   .results-panel {
-    margin-top: 20px;
+    margin-top: 0;
   }
 }
 
 @media (max-width: 850px) {
-
   html,
   body,
   #root {
@@ -952,22 +1045,24 @@ button.filter-chip.active {
   }
 
   .top-filter-bar {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none;
     width: 100%;
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
     margin: 0;
+    padding: 12px;
   }
 
   .filter-group,
-  .filter-group:not(:last-child) {
+  .filter-group:not(:last-child),
+  .filter-group:nth-child(1),
+  .filter-group:nth-child(2),
+  .filter-group:nth-child(3) {
+    flex: none;
+    width: 100%;
     border-right: none;
-    margin-right: 0;
-    padding-right: 0;
     border-bottom: 1px solid #e2e8f0;
-    padding-bottom: 14px;
+    padding-right: 0;
+    padding-bottom: 12px;
   }
 
   .filter-group:last-child {
@@ -975,10 +1070,29 @@ button.filter-chip.active {
     padding-bottom: 0;
   }
 
+  .chip-row {
+    flex-wrap: wrap;
+  }
+
   .budget-filter {
     width: 100%;
     min-width: 0;
     max-width: none;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "title title"
+      "slider value"
+      "action action";
+    gap: 8px 12px;
+  }
+
+  .budget-filter input[type="range"] {
+    width: 100%;
+  }
+
+  .calculate-row {
+    justify-content: flex-start;
   }
 
   .map-workspace {
@@ -994,4 +1108,309 @@ button.filter-chip.active {
   .map-wrapper {
     height: 480px;
   }
+
+  .map-legend {
+    min-width: 190px;
+    max-width: 220px;
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+}
+
+
+.station-history {
+  margin-top: 1px;
+}
+
+.station-history h4 {
+  margin-bottom: 1px;
+}
+
+
+.heatmap-legend {
+  margin-top: 16px;
+}
+
+.heatmap-gradient {
+  height: 20px;
+  width: 100%;
+  border-radius: 8px;
+
+  background: linear-gradient(
+    to right,
+    #60a5fa 0%,
+    #22c55e 25%,
+    #eab308 50%,
+    #f97316 75%,
+    #dc2626 100%
+  );
+}
+
+.heatmap-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+
+/* =====================================================
+   VERFÜGBARKEIT - FILTER PANEL LINKS
+===================================================== */
+
+.availability-filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.availability-filter-panel h3 {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.availability-filter-panel h4 {
+  margin-top: 4px;
+  color: #64748b;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+/* =====================================================
+   ZEITBUTTONS
+===================================================== */
+
+.time-buttons {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.time-button {
+  flex: 1;
+  height: 38px;
+  padding: 0 16px;
+
+  border: 1px solid #dbe3ec;
+  border-radius: 999px;
+
+  background: white;
+  color: #475569;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .15s ease;
+}
+
+.time-button:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.time-button.active {
+  background: #047857;
+  border-color: #047857;
+  color: white;
+}
+
+/* =====================================================
+   KARTE
+===================================================== */
+
+.availability-map {
+  min-height: 0;
+  height: 100%;
+}
+
+.availability-map .leaflet-container {
+  width: 100%;
+  height: 100% !important;
+}
+/* =====================================================
+   RECHTE SIDEBAR
+===================================================== */
+
+.availability-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.availability-sidebar hr {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* =====================================================
+   ZUSAMMENFASSUNG
+===================================================== */
+
+.availability-summary {
+  margin-top: 10px;
+  margin-bottom: 18px;
+
+  padding: 10px 12px;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   STATIONSLISTE
+===================================================== */
+
+.availability-stations-list {
+  margin-top: 12px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* =====================================================
+   HEATMAP
+===================================================== */
+
+.heatmap-card {
+  padding: 18px;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff,
+    #f8fafc
+  );
+
+  border: 1px solid #e2e8f0;
+}
+
+.heatmap-card strong {
+  display: block;
+  margin-bottom: 10px;
+
+  font-size: 17px;
+}
+
+.heatmap-card p {
+  color: #64748b;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.availability-workspace {
+  display: grid;
+
+  grid-template-columns:
+    320px
+    1fr;
+
+  gap: 16px;
+}
+
+/* =====================================================
+   VERFÜGBARKEIT TOPBAR
+===================================================== */
+
+.availability-layout {
+  position: relative;
+
+  flex: 1;
+  min-height: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.availability-topbar {
+  position: relative;
+  z-index: 20;
+  width: 100%;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+
+  margin-bottom: 12px;
+  padding: 8px 8px;
+  justify-content: space-between;
+
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+
+  box-shadow:
+    0 10px 24px rgba(15, 23, 42, 0.07),
+    0 3px 10px rgba(15, 23, 42, 0.04);
+}
+
+.availability-filter-group {
+  min-width: 170px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.availability-filter-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.availability-loading {
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #059669;
+}
+
+
+.availability-toolbar {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.availability-section {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.availability-title {
+  font-size: 11px;
+  font-weight: 800;
+
+  color: #94a3b8;
+
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+
+.availability-divider {
+  width: 1px;
+  background: #e2e8f0;
+  margin: 0 12px;;
+}
+
+.availability-workspace .results-panel {
+  margin-top: 0;
 }
