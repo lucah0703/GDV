@@ -448,6 +448,72 @@ button.filter-chip.active {
    CARDS
    ========================================================================== */
 
+  .poi-section-header {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f8fafc;
+  color: #111827;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.poi-section-header-real {
+  background: #ecfdf5;
+  border-color: #bbf7d0;
+}
+
+.poi-section-header-theoretical {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.poi-section-header-not {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.poi-section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.poi-section-arrow {
+  width: 16px;
+  font-size: 14px;
+}
+
+.poi-section-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+}
+
+.poi-section-dot.green {
+  background: #16a34a;
+}
+
+.poi-section-dot.yellow {
+  background: #facc15;
+}
+
+.poi-section-dot.red {
+  background: #dc2626;
+}
+
+.poi-section-content {
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
 .school-card {
   padding: 12px 14px;
   background: #f8fafc;

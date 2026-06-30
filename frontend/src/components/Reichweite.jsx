@@ -277,6 +277,18 @@ export default function Reichweite({ city, school }) {
 
   const [selectedPoiType, setSelectedPoiType] = useState("Alle");
   const [selectedPoi, setSelectedPoi] = useState(null);
+  const [collapsedSections, setCollapsedSections] = useState({
+    real: true,
+    theoretical: true,
+    notReachable: true,
+  });
+
+  function toggleSection(section) {
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  }
   const [showBikes, setShowBikes] = useState(true);
   const [showScooters, setShowScooters] = useState(true);
 
@@ -686,96 +698,140 @@ export default function Reichweite({ city, school }) {
             </p>
           </div>
 
-          <h4>Erreichbar</h4>
+          <button
+            className="poi-section-header poi-section-header-real"
+            onClick={() => toggleSection("real")}
+          >
+            <span className="poi-section-title">
+              <span className="poi-section-arrow">
+                {collapsedSections.real ? "▶" : "▼"}
+              </span>
+              Erreichbar ({realReachablePois.length})
+            </span>
+            <span className="poi-section-dot green"></span>
+          </button>
 
-          {realReachablePois.length === 0 ? (
-            <div className="hint">Aktuell ist kein POI erreichbar.</div>
-          ) : (
-            realReachablePois.map((poi) =>
-              poi.realRoutes.map((route, index) => (
-                <button
-                  key={`real-${poi.id}-${route.provider}-${index}`}
-                  ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
-                  className={`poi-list-card real ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                  onClick={() => setSelectedPoi(poi)}
-                >
-                  <div>
-                    <strong>
-                      {poi.icon} {poi.name}
-                    </strong>
-                    <small>
-                      {route.provider} ·{" "}
-                      {route.vehicle === "bike" ? "Bike" : "Scooter"} · bis{" "}
-                      {route.max_minutes} Min
-                    </small>
-                  </div>
-                  <span>{route.price.toFixed(2)} €</span>
-                </button>
-              ))
-            )
-          )}
-
-          <h4>Aktuell nicht erreichbar</h4>
-
-          {theoreticalReachablePois.length === 0 ? (
-            <div className="hint">Aktuell keine theoretischen POIs.</div>
-          ) : (
-            theoreticalReachablePois.map((poi) =>
-              poi.theoreticalOnlyRoutes.map((route, index) => (
-                <button
-                  key={`theoretical-${poi.id}-${route.provider}-${index}`}
-                  ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
-                  className={`poi-list-card theoretical ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                  onClick={() => setSelectedPoi(poi)}
-                >
-                  <div>
-                    <strong>
-                      {poi.icon} {poi.name}
-                    </strong>
-
-                    <small>
-                      {route.blockedByGeofence
-                        ? "Liegt in einer Verbotszone"
-                        : "Aktuell kein Fahrzeug verfügbar"}
-                    </small>
-
-                    <small>
-                      {route.provider} ·{" "}
-                      {route.vehicle === "bike" ? "Bike" : "Scooter"} · bis{" "}
-                      {route.max_minutes} Min
-                    </small>
-                  </div>
-
-                  <span>{route.price.toFixed(2)} €</span>
-                </button>
-              ))
-            )
-          )}
-
-          <h4>Nicht erreichbar</h4>
-
-          {notReachablePois.length === 0 ? (
-            <div className="hint">
-              Alle POIs sind mindestens theoretisch erreichbar.
+          {!collapsedSections.real && (
+            <div className="poi-section-content">
+              {realReachablePois.length === 0 ? (
+                <div className="hint">Aktuell ist kein POI erreichbar.</div>
+              ) : (
+                realReachablePois.map((poi) =>
+                  poi.realRoutes.map((route, index) => (
+                    <button
+                      key={`real-${poi.id}-${route.provider}-${index}`}
+                      ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                      className={`poi-list-card real ${selectedPoi?.id === poi.id ? "selected" : ""}`}
+                      onClick={() => setSelectedPoi(poi)}
+                    >
+                      <div>
+                        <strong>
+                          {poi.icon} {poi.name}
+                        </strong>
+                        <small>
+                          {route.provider} ·{" "}
+                          {route.vehicle === "bike" ? "Bike" : "Scooter"} · bis{" "}
+                          {route.max_minutes} Min
+                        </small>
+                      </div>
+                      <span>{route.price.toFixed(2)} €</span>
+                    </button>
+                  ))
+                )
+              )}
             </div>
-          ) : (
-            notReachablePois.map((poi) => (
-              <button
-                key={`not-${poi.id}`}
-                ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
-                className={`poi-list-card not-reachable ${selectedPoi?.id === poi.id ? "selected" : ""
-                  }`}
-                onClick={() => setSelectedPoi(poi)}
-              >
-                <div>
-                  <strong>
-                    {poi.icon} {poi.name}
-                  </strong>
-                  <small>Liegt außerhalb deines Budgets</small>
+          )}
+
+          <button
+            className="poi-section-header poi-section-header-theoretical"
+            onClick={() => toggleSection("theoretical")}
+          >
+            <span className="poi-section-title">
+              <span className="poi-section-arrow">
+                {collapsedSections.theoretical ? "▶" : "▼"}
+              </span>
+              Aktuell nicht erreichbar ({theoreticalReachablePois.length})
+            </span>
+            <span className="poi-section-dot yellow"></span>
+          </button>
+
+          {!collapsedSections.theoretical && (
+            <div className="poi-section-content">
+              {theoreticalReachablePois.length === 0 ? (
+                <div className="hint">Aktuell keine theoretischen POIs.</div>
+              ) : (
+                theoreticalReachablePois.map((poi) =>
+                  poi.theoreticalOnlyRoutes.map((route, index) => (
+                    <button
+                      key={`theoretical-${poi.id}-${route.provider}-${index}`}
+                      ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                      className={`poi-list-card theoretical ${selectedPoi?.id === poi.id ? "selected" : ""}`}
+                      onClick={() => setSelectedPoi(poi)}
+                    >
+                      <div>
+                        <strong>
+                          {poi.icon} {poi.name}
+                        </strong>
+
+                        <small>
+                          {route.blockedByGeofence
+                            ? "Liegt in einer Verbotszone"
+                            : "Aktuell kein Fahrzeug verfügbar"}
+                        </small>
+
+                        <small>
+                          {route.provider} ·{" "}
+                          {route.vehicle === "bike" ? "Bike" : "Scooter"} · bis{" "}
+                          {route.max_minutes} Min
+                        </small>
+                      </div>
+
+                      <span>{route.price.toFixed(2)} €</span>
+                    </button>
+                  ))
+                )
+              )}
+            </div>
+          )}
+
+          <button
+            className="poi-section-header poi-section-header-not"
+            onClick={() => toggleSection("notReachable")}
+          >
+            <span className="poi-section-title">
+              <span className="poi-section-arrow">
+                {collapsedSections.notReachable ? "▶" : "▼"}
+              </span>
+              Nicht erreichbar ({notReachablePois.length})
+            </span>
+            <span className="poi-section-dot red"></span>
+          </button>
+
+          {!collapsedSections.notReachable && (
+            <div className="poi-section-content">
+              {notReachablePois.length === 0 ? (
+                <div className="hint">
+                  Alle POIs sind mindestens theoretisch erreichbar.
                 </div>
-                <span>—</span>
-              </button>
-            ))
+              ) : (
+                notReachablePois.map((poi) => (
+                  <button
+                    key={`not-${poi.id}`}
+                    ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                    className={`poi-list-card not-reachable ${selectedPoi?.id === poi.id ? "selected" : ""}`}
+                    onClick={() => setSelectedPoi(poi)}
+                  >
+                    <div>
+                      <strong>
+                        {poi.icon} {poi.name}
+                      </strong>
+                      <small>Liegt außerhalb deines Budgets</small>
+                    </div>
+                    <span>›</span>
+                  </button>
+                ))
+              )}
+            </div>
           )}
         </aside>
 
