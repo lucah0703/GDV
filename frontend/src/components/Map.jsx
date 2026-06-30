@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -21,23 +21,13 @@ function RecenterMap({ center }) {
     const t1 = setTimeout(() => {
       if (!map._mapPane) return;
 
-      map.invalidateSize({
-        animate: false,
-        pan: false,
-      });
-
-      map.setView(center, 14, {
-        animate: false,
-      });
+      map.invalidateSize({ animate: false, pan: false });
+      map.setView(center, 14, { animate: false });
     }, 100);
 
     const t2 = setTimeout(() => {
       if (!map._mapPane) return;
-
-      map.invalidateSize({
-        animate: false,
-        pan: false,
-      });
+      map.invalidateSize({ animate: false, pan: false });
     }, 500);
 
     return () => {
@@ -49,50 +39,66 @@ function RecenterMap({ center }) {
   return null;
 }
 
-function getTrafficEmoji(status) {
-  if (status === "green") return "🟢";
-  if (status === "yellow") return "🟡";
-  return "🔴";
-}
+function SelectedPoiPopup({ selectedPoi }) {
+  const map = useMap();
 
-function getAvailable(station, timeSlot) {
+  useEffect(() => {
+    if (!selectedPoi || !selectedPoi.coords) return;
+
+    map.flyTo(selectedPoi.coords, Math.max(map.getZoom(), 15), {
+      animate: true,
+      duration: 0.6,
+    });
+  }, [selectedPoi, map]);
+
+  if (!selectedPoi) return null;
+
   return (
-    station.availability?.[timeSlot] ??
-    station.availability?.current ??
-    station.availability?.morning ??
-    0
+    <Popup position={selectedPoi.coords}>
+      <strong>
+        {selectedPoi.icon} {selectedPoi.name}
+      </strong>
+
+      <br />
+      <small>{selectedPoi.type}</small>
+
+      {selectedPoi.sportart && (
+        <>
+          <br />
+          <small>🏃 {selectedPoi.sportart}</small>
+        </>
+      )}
+
+      {selectedPoi.address && (
+        <>
+          <br />
+          <small>📍 {selectedPoi.address}</small>
+        </>
+      )}
+    </Popup>
   );
 }
 
-function getAvailabilityStatus(station, timeSlot) {
-  const available = getAvailable(station, timeSlot);
-  const capacity = Math.max(station.capacity || 1, 1);
-  const ratio = available / capacity;
-
-  if (ratio >= 0.5) return "green";
-  if (ratio >= 0.2) return "yellow";
-  return "red";
+function getPoiColor(type) {
+  if (type === "Bahnhof") return "#2463eb";
+  if (type === "Wohnheim") return "#289951";
+  if (type === "Sportanlage") return "#ff5858";
+  return "#6b7280";
 }
 
 const PROVIDER_COLORS = {
-  // Bikes
   regioRadStuttgart: "#230a51",
   "kvv.nextbike": "#A855F7",
   vrnnextbike: "#D8B4FE",
-
-  // Scooter
   lime: "#8C2D04",
   bolt: "#D94801",
   voi: "#F97316",
-  dott: "#FBBF24"
+  dott: "#FBBF24",
 };
 
 function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   const isReal = reachabilityType === "real";
-
-  const fallbackColor =
-    vehicleType === "bike" ? "#038554" : "#7f00b2";
-
+  const fallbackColor = vehicleType === "bike" ? "#038554" : "#7f00b2";
   const color = PROVIDER_COLORS[provider] || fallbackColor;
 
   return {
@@ -104,42 +110,25 @@ function getIsochroneStyle(vehicleType, reachabilityType = "real", provider) {
   };
 }
 
-function getPoiColor(type) {
-  if (type === "Bahnhof") return "#2463eb";
-  if (type === "Wohnheim") return "#289951";
-  if (type === "Sportanlage") return "#ff5858";
-  return "#6b7280";
+function normalizeVehicleType(vehicleType) {
+  if (vehicleType === "e-scooter") return "scooter";
+  return vehicleType;
 }
-function providerHasOnlyTheoreticalPois(provider, pois) {
-  return pois.some((poi) => {
-    const theoreticalProvider =
-      poi.theoreticalRoute?.offer?.provider ||
-      poi.theoreticalRoute?.station?.provider;
 
-    const realProvider =
-      poi.realRoute?.offer?.provider ||
-      poi.realRoute?.station?.provider;
+function normalizeProviderName(provider) {
+  return String(provider || "").trim().toLowerCase();
+}
 
+function providerHasAvailableVehicle(provider, vehicleType, stationsInRadius) {
+  const normalizedProvider = normalizeProviderName(provider);
+  const normalizedVehicle = normalizeVehicleType(vehicleType);
+
+  return stationsInRadius.some((station) => {
     return (
-      poi.theoreticalReachable &&
-      !poi.realReachable &&
-      theoreticalProvider === provider &&
-      realProvider !== provider
+      normalizeProviderName(station.provider) === normalizedProvider &&
+      normalizeVehicleType(station.vehicle) === normalizedVehicle &&
+      (station.availability?.current ?? 0) > 0
     );
-  });
-}
-
-function createStationIcon(status, vehicle) {
-  const symbol = vehicle === "bike" ? "🚲" : "🛴";
-
-  return L.divIcon({
-    className: "station-map-marker",
-    html: `<div class="station-map-marker-inner">${getTrafficEmoji(
-      status
-    )}${symbol}</div>`,
-    iconSize: [44, 34],
-    iconAnchor: [22, 17],
-    popupAnchor: [0, -16],
   });
 }
 
@@ -148,8 +137,8 @@ function createStartpointIcon() {
     className: "startpoint-pulse-icon",
     html: `
       <div class="startpoint-pulse">
-        <div class="startpoint-dot">\u{1F393}</div>
-      </div>
+        <div class="startpoint-dot">🎓</div>
+      </div
     `,
     iconSize: [42, 42],
     iconAnchor: [21, 21],
@@ -157,16 +146,73 @@ function createStartpointIcon() {
   });
 }
 
+function ScalablePoiMarker({ poi, isSelected, setSelectedPoi, isochroneData }) {
+  const map = useMap();
+  const [zoom, setZoom] = useState(map.getZoom());
+
+  useEffect(() => {
+    const updateZoom = () => {
+      setZoom(map.getZoom());
+    };
+
+    map.on("zoomend", updateZoom);
+    map.on("zoom", updateZoom);
+
+    return () => {
+      map.off("zoomend", updateZoom);
+      map.off("zoom", updateZoom);
+    };
+  }, [map]);
+
+  const baseRadius = Math.max(2.5, Math.min(8, 3 + (zoom - 11) * 0.7));
+
+  // Nicht erreichbare POIs etwas kleiner darstellen
+  const scaledRadius = poi.theoreticalReachable
+    ? baseRadius
+    : Math.max(2, baseRadius - 1.5);
+
+  const radius = isSelected ? scaledRadius + 4 : scaledRadius;
+
+  const dimPoi = isochroneData && !poi.theoreticalReachable;
+  return (
+    <CircleMarker
+      center={poi.coords}
+      radius={radius}
+      pathOptions={{
+        color: isSelected
+          ? "#111827"
+          : dimPoi
+            ? "#4b5563"
+            : "#ffffff",
+
+        weight: isSelected ? 3 : 1,
+
+        fillColor: dimPoi
+          ? "#6b7280"
+          : getPoiColor(poi.type),
+
+        fillOpacity: dimPoi
+          ? 0.45
+          : (isSelected ? 1 : 0.85),
+      }}
+      eventHandlers={{
+        click: () => setSelectedPoi(poi),
+      }}
+    />
+  );
+}
+
 export default function Map({
   center,
   label,
   markerCoords,
   pois = [],
+  isochronePois = pois,
+  activeVehicles = ["bike", "scooter"],
+  stationsInRadius = [],
+  selectedPoi = null,
   setSelectedPoi = () => { },
   availability = false,
-  timeSlot = "current",
-  stationsInRadius = [],
-  showStationsInBudgetView = false,
   realRadius = 0,
   theoreticalRadius = 0,
   isochroneData = null,
@@ -174,24 +220,31 @@ export default function Map({
   showGeofencingZones = false,
 }) {
   const startpointIcon = createStartpointIcon();
+
+  function isVehicleTypeActive(vehicleType) {
+    if (vehicleType === "bike") return activeVehicles.includes("bike");
+    if (vehicleType === "e-scooter") return activeVehicles.includes("scooter");
+    return false;
+  }
+
   const isochroneLegendItems = isochroneData?.results
     ? Object.entries(isochroneData.results)
+      .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
       .flatMap(([vehicleType, offers]) =>
-        offers
-          .filter((offer) => offer.provider)
-          .map((offer) => ({
-            provider: offer.provider,
-            vehicleType,
-            color:
-              PROVIDER_COLORS[offer.provider] ||
-              (vehicleType === "bike" ? "#038554" : "#7f00b2"),
-          }))
+        offers.map((offer) => ({
+          provider: offer.provider,
+          vehicleType,
+          color:
+            PROVIDER_COLORS[offer.provider] ||
+            (vehicleType === "bike" ? "#038554" : "#7f00b2"),
+        }))
       )
       .filter(
         (item, index, array) =>
           array.findIndex((x) => x.provider === item.provider) === index
       )
     : [];
+
   return (
     <MapContainer
       center={center}
@@ -201,11 +254,13 @@ export default function Map({
     >
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
-        attribution='&copy; OpenStreetMap &copy; CARTO'
+        attribution="&copy; OpenStreetMap &copy; CARTO"
         subdomains="abcd"
       />
 
       <RecenterMap center={center} />
+      <SelectedPoiPopup selectedPoi={selectedPoi} />
+
       {showGeofencingZones &&
         geofencingZones.flatMap((provider) =>
           provider.geofencing_zones.map((zone, index) => (
@@ -216,6 +271,7 @@ export default function Map({
                 geometry: zone.geometry,
                 properties: {},
               }}
+              interactive={false}
               style={{
                 color: "#7a7a7a",
                 fillColor: "#7a7a7a",
@@ -226,35 +282,40 @@ export default function Map({
             />
           ))
         )}
+
       {!availability &&
         isochroneData?.results &&
-        Object.entries(isochroneData.results).map(([vehicleType, offers]) =>
-          offers.map((offer, index) => {
-            const isOnlyTheoretical = providerHasOnlyTheoreticalPois(
-              offer.provider,
-              pois
-            );
+        Object.entries(isochroneData.results)
+          .filter(([vehicleType]) => isVehicleTypeActive(vehicleType))
+          .map(([vehicleType, offers]) =>
+            offers.map((offer, index) => {
+              const isRealIsochrone = providerHasAvailableVehicle(
+                offer.provider,
+                vehicleType,
+                stationsInRadius
+              );
 
-            return offer.geometry ? (
-              <GeoJSON
-                key={`${vehicleType}-${offer.provider}-${index}`}
-                data={{
-                  type: "Feature",
-                  properties: {
-                    provider: offer.provider,
+              return offer.geometry ? (
+                <GeoJSON
+                  key={`${vehicleType}-${offer.provider}-${index}`}
+                  data={{
+                    type: "Feature",
+                    properties: {
+                      provider: offer.provider,
+                      vehicleType,
+                    },
+                    geometry: offer.geometry,
+                  }}
+                  interactive={false}
+                  style={getIsochroneStyle(
                     vehicleType,
-                  },
-                  geometry: offer.geometry,
-                }}
-                style={getIsochroneStyle(
-                  vehicleType,
-                  isOnlyTheoretical ? "theoretical" : "real",
-                  offer.provider
-                )}
-              />
-            ) : null;
-          })
-        )}
+                    isRealIsochrone ? "real" : "theoretical",
+                    offer.provider
+                  )}
+                />
+              ) : null;
+            })
+          )}
 
       {!availability && !isochroneData && theoreticalRadius > 0 && (
         <Circle
@@ -272,20 +333,6 @@ export default function Map({
         />
       )}
 
-      {availability && (
-        <Circle
-          center={center}
-          radius={10000}
-          pathOptions={{
-            color: "#047857",
-            fillColor: "#047857",
-            fillOpacity: 0.03,
-            weight: 2,
-            dashArray: "8 8",
-          }}
-        />
-      )}
-
       {markerCoords && (
         <Marker position={markerCoords} icon={startpointIcon}>
           <Popup>{label}</Popup>
@@ -294,27 +341,15 @@ export default function Map({
 
       {!availability &&
         pois.map((poi) => (
-          <CircleMarker
+          <ScalablePoiMarker
             key={poi.id}
-            center={poi.coords}
-            radius={6}
-            pathOptions={{
-              color: "#ffffff",
-              weight: 1,
-              fillColor: getPoiColor(poi.type),
-              fillOpacity: 0.85,
-            }}
-            eventHandlers={{
-              click: () => setSelectedPoi(poi),
-            }}
-          >
-            <Popup>
-              <strong>{poi.name}</strong>
-              <br />
-              {poi.type}
-            </Popup>
-          </CircleMarker>
+            poi={poi}
+            isSelected={selectedPoi?.id === poi.id}
+            setSelectedPoi={setSelectedPoi}
+            isochroneData={isochroneData}
+          />
         ))}
+
       {!availability && (
         <div className="map-legend">
           <h4>POIs</h4>
@@ -343,7 +378,7 @@ export default function Map({
               <div className="legend-status-row">
                 <div className="legend-item">
                   <span className="legend-status-line solid"></span>
-                  Real erreichbar
+                  Erreichbar
                 </div>
 
                 <div className="legend-item">
@@ -365,13 +400,6 @@ export default function Map({
                       }}
                     ></span>
 
-                    <span
-                      className="legend-isochrone-shape dashed"
-                      style={{
-                        borderColor: item.color,
-                      }}
-                    ></span>
-
                     <span className="legend-provider-name">
                       {item.provider}
                       <small>
@@ -381,10 +409,6 @@ export default function Map({
                   </div>
                 ))}
               </div>
-
-              <p className="legend-hint">
-                Gefüllt = real erreichbar · gestrichelt = aktuell nicht Verfügbar
-              </p>
             </>
           )}
         </div>

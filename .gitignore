@@ -22,5 +22,5 @@ node_modules
 Thumbs.db
 
 # Umgebungsvariablen
-.env
+
 .env.*
