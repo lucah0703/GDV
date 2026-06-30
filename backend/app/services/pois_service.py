@@ -80,7 +80,7 @@ def load_sporteinrichtungen(path):
     gdf = ensure_column(gdf, "name")
     gdf = ensure_column(gdf, "addr:street")
     gdf = ensure_column(gdf, "addr:housenumber")
-    gdf = ensure_column(gdf, "sportart")
+    gdf = ensure_column(gdf, "sport")
 
     gdf["name"] = (
         gdf["addr:housename"]
@@ -90,6 +90,8 @@ def load_sporteinrichtungen(path):
 
     gdf["address"] = gdf.apply(build_address, axis=1)
 
+    gdf["sportart"] = gdf["sport"]
+    
     return gdf
 
 
