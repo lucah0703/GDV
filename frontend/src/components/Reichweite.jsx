@@ -1,12 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import Map from "./Map";
 
 const API_BASE = "http://localhost:8000";
-
-const SPEED_KMH = {
-  bike: 15,
-  scooter: 15,
-};
 
 function getBackendCity(city) {
   return city.toLowerCase();
@@ -64,25 +59,16 @@ function geoJsonPoisToFrontend(geojson) {
         type,
         icon: getPoiIcon(type),
         coords: [lat, lon],
-        address: props.address || "",
+        sportart: props.sport || props.sportart || props.sports || "",
+        address: props.address || props.adress || props.adresse || "",
         category: props.category,
       };
     })
     .filter(Boolean);
 }
 
-function normalizeGeoJson(data) {
-  if (data?.type === "FeatureCollection") return data;
-  if (data?.zones?.type === "FeatureCollection") return data.zones;
-  if (data?.geofencing_zones?.type === "FeatureCollection") {
-    return data.geofencing_zones;
-  }
-  if (Array.isArray(data?.features)) return data;
-
-  return {
-    type: "FeatureCollection",
-    features: [],
-  };
+function normalizeGeofencingData(data) {
+  return data?.providers || [];
 }
 
 function pointInPolygon(point, polygon) {
@@ -105,82 +91,77 @@ function pointInPolygon(point, polygon) {
   return inside;
 }
 
-function isPoiInForbiddenZone(poi, geofencingZones) {
-  const features = geofencingZones?.features || [];
+function pointInGeometry(point, geometry) {
+  if (!geometry) return false;
 
-  return features.some((feature) => {
-    const geometry = feature.geometry;
-    const props = feature.properties || {};
-    const name = String(props.name || "").toLowerCase();
+  if (geometry.type === "Polygon") {
+    return geometry.coordinates.some((ring) => {
+      const polygon = ring.map(([lon, lat]) => [lat, lon]);
+      return pointInPolygon(point, polygon);
+    });
+  }
 
-    const isForbidden =
-      props.type === "no_parking" ||
-      props.zone_type === "no_parking" ||
-      props.restriction === "no_parking" ||
-      props.parking_allowed === false ||
-      props.allowed === false ||
-      name.includes("verbot") ||
-      name.includes("no parking");
-
-    if (!isForbidden) return false;
-
-    if (geometry?.type === "Polygon") {
-      return geometry.coordinates.some((ring) => {
+  if (geometry.type === "MultiPolygon") {
+    return geometry.coordinates.some((polygonGroup) =>
+      polygonGroup.some((ring) => {
         const polygon = ring.map(([lon, lat]) => [lat, lon]);
-        return pointInPolygon(poi.coords, polygon);
-      });
-    }
+        return pointInPolygon(point, polygon);
+      })
+    );
+  }
 
-    if (geometry?.type === "MultiPolygon") {
-      return geometry.coordinates.some((polygonGroup) =>
-        polygonGroup.some((ring) => {
-          const polygon = ring.map(([lon, lat]) => [lat, lon]);
-          return pointInPolygon(poi.coords, polygon);
-        })
-      );
-    }
-
-    return false;
-  });
+  return false;
+}
+function normalizeProviderName(provider) {
+  return String(provider || "").trim().toLowerCase();
 }
 
-function distanceKm(a, b) {
-  const R = 6371;
-  const dLat = ((b[0] - a[0]) * Math.PI) / 180;
-  const dLng = ((b[1] - a[1]) * Math.PI) / 180;
+function getIsochroneOffers(pricingIsochroneData, activeVehicles) {
+  const offers = [];
 
-  const lat1 = (a[0] * Math.PI) / 180;
-  const lat2 = (b[0] * Math.PI) / 180;
+  if (activeVehicles.includes("scooter")) {
+    offers.push(
+      ...(pricingIsochroneData?.results?.["e-scooter"] || []).map((offer) => ({
+        ...offer,
+        vehicle: "scooter",
+      }))
+    );
+  }
 
-  const x =
-    Math.sin(dLat / 2) ** 2 +
-    Math.sin(dLng / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2);
+  if (activeVehicles.includes("bike")) {
+    offers.push(
+      ...(pricingIsochroneData?.results?.bike || []).map((offer) => ({
+        ...offer,
+        vehicle: "bike",
+      }))
+    );
+  }
 
-  return 2 * R * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+  return offers;
 }
 
-function calculateTravel(start, destination, vehicle) {
-  const km = distanceKm(start, destination);
-  const minutes = (km / SPEED_KMH[vehicle]) * 60;
+function isPoiInProviderGeofence(poi, provider, geofencingZones) {
+  const normalizedProvider = normalizeProviderName(provider);
 
-  return { km, minutes };
-}
+  const providerData = geofencingZones.find(
+    (item) => normalizeProviderName(item.provider) === normalizedProvider
+  );
 
-function getCheapestOffer(pricingIsochroneData, vehicle, requiredMinutes) {
-  const backendKey = vehicle === "scooter" ? "e-scooter" : "bike";
-  const offers = pricingIsochroneData?.results?.[backendKey] || [];
+  if (!providerData) return false;
 
-  return (
-    offers
-      .filter((offer) => offer.max_minutes >= requiredMinutes)
-      .sort((a, b) => a.price - b.price)[0] || null
+  return providerData.geofencing_zones.some((zone) =>
+    pointInGeometry(poi.coords, zone.geometry)
   );
 }
 
 function normalizeAvailabilityToStations(data) {
   const stations = [];
 
-  const bikeItems = Array.isArray(data?.bike) ? data.bike : [];
+  const bikeItems = Array.isArray(data?.bike_200m)
+    ? data.bike_200m
+    : Array.isArray(data?.bike)
+      ? data.bike
+      : [];
   const scooterItems = Array.isArray(data?.["e-scooter"])
     ? data["e-scooter"]
     : [];
@@ -215,11 +196,12 @@ function normalizeAvailabilityToStations(data) {
       ),
       availability: {
         current: Number(
+          item.num_bikes_available ??
           item.num_bicycles_available ??
-            item.bikes_available ??
-            item.available ??
-            item.current ??
-            0
+          item.bikes_available ??
+          item.available ??
+          item.current ??
+          0
         ),
       },
     });
@@ -250,14 +232,21 @@ function normalizeAvailabilityToStations(data) {
 function getCurrentAvailability(station) {
   return station.availability?.current ?? 0;
 }
+function normalizeVehicle(vehicle) {
+  if (vehicle === "e-scooter") return "scooter";
+  return vehicle;
+}
 
-function getAvailabilityStatus(station) {
-  const available = getCurrentAvailability(station);
-  const ratio = available / Math.max(station.capacity || 1, 1);
+function providerHasAvailableVehicle(provider, vehicle, stationsNearStart) {
+  const normalizedProvider = normalizeProviderName(provider);
 
-  if (ratio >= 0.5) return "green";
-  if (ratio >= 0.2) return "yellow";
-  return "red";
+  return stationsNearStart.some((station) => {
+    return (
+      normalizeProviderName(station.provider) === normalizedProvider &&
+      station.vehicle === vehicle &&
+      getCurrentAvailability(station) > 0
+    );
+  });
 }
 
 function getBestIsochroneOffer(pricingIsochroneData, vehicle) {
@@ -267,9 +256,24 @@ function getBestIsochroneOffer(pricingIsochroneData, vehicle) {
   return [...offers].sort((a, b) => b.max_minutes - a.max_minutes)[0] || null;
 }
 
+function distanceKm(a, b) {
+  const R = 6371;
+  const dLat = ((b[0] - a[0]) * Math.PI) / 180;
+  const dLng = ((b[1] - a[1]) * Math.PI) / 180;
+
+  const lat1 = (a[0] * Math.PI) / 180;
+  const lat2 = (b[0] * Math.PI) / 180;
+
+  const x =
+    Math.sin(dLat / 2) ** 2 +
+    Math.sin(dLng / 2) ** 2 * Math.cos(lat1) * Math.cos(lat2);
+
+  return 2 * R * Math.atan2(Math.sqrt(x), Math.sqrt(1 - x));
+}
+
 export default function Reichweite({ city, school }) {
   const [budget, setBudget] = useState(0);
-  const [calculatedBudget, setCalculatedBudget] = useState(null);
+  const [calculation, setCalculation] = useState(null);
 
   const [selectedPoiType, setSelectedPoiType] = useState("Alle");
   const [selectedPoi, setSelectedPoi] = useState(null);
@@ -278,21 +282,34 @@ export default function Reichweite({ city, school }) {
 
   const [backendPois, setBackendPois] = useState([]);
   const [backendStations, setBackendStations] = useState([]);
-  const [geofencingZones, setGeofencingZones] = useState({
-    type: "FeatureCollection",
-    features: [],
-  });
+  const [geofencingZones, setGeofencingZones] = useState([]);
+  const [showGeofencingZones, setShowGeofencingZones] = useState(false);
   const [pricingIsochroneData, setPricingIsochroneData] = useState(null);
   const [loadingBackend, setLoadingBackend] = useState(false);
   const [backendError, setBackendError] = useState("");
 
   const currentAvailabilityKey = "current";
 
+  const selectedPoiRef = useRef(null);
+
   useEffect(() => {
-    setCalculatedBudget(null);
+    if (!selectedPoiRef.current) return;
+
+    setTimeout(() => {
+      selectedPoiRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }, 0);
+  }, [selectedPoi]);
+
+  useEffect(() => {
+    setBudget(0);
+    setSelectedPoi(null);
+    setCalculation(null);
     setPricingIsochroneData(null);
     setBackendError("");
-  }, [city, school.name]);
+  }, [city, school.name, school.coords]);
 
   useEffect(() => {
     async function loadBackendData() {
@@ -306,10 +323,16 @@ export default function Reichweite({ city, school }) {
         const poisUrl = new URL(`${API_BASE}/pois/${backendCity}`);
         poisUrl.searchParams.set("uni", backendUni);
 
-        const pricingIsochroneUrl =
-          calculatedBudget !== null
-            ? `${API_BASE}/pricingisochrone/${backendCity}/${backendUni}/${calculatedBudget}`
-            : null;
+        const canCalculate =
+          calculation &&
+          calculation.city === city &&
+          calculation.schoolName === school.name &&
+          calculation.lat === school.coords[0] &&
+          calculation.lon === school.coords[1];
+
+        const pricingIsochroneUrl = canCalculate
+          ? `${API_BASE}/pricingisochrone/${backendCity}/${backendUni}/${calculation.budget}`
+          : null;
 
         const availabilityUrl = `${API_BASE}/availability/current/${backendCity}/${backendUni}`;
         const geofencingUrl = `${API_BASE}/geofencingzones/${backendCity}`;
@@ -321,7 +344,9 @@ export default function Reichweite({ city, school }) {
           geofencingResult,
         ] = await Promise.allSettled([
           fetch(poisUrl),
-          pricingIsochroneUrl ? fetch(pricingIsochroneUrl) : Promise.resolve(null),
+          pricingIsochroneUrl
+            ? fetch(pricingIsochroneUrl)
+            : Promise.resolve(null),
           fetch(availabilityUrl),
           fetch(geofencingUrl),
         ]);
@@ -340,6 +365,7 @@ export default function Reichweite({ city, school }) {
           ) {
             const pricingIsochroneJson =
               await pricingIsochroneResult.value.json();
+            console.log("ISOCHRONE", pricingIsochroneJson.results);
             setPricingIsochroneData(pricingIsochroneJson);
           } else {
             setPricingIsochroneData(null);
@@ -355,6 +381,7 @@ export default function Reichweite({ city, school }) {
         ) {
           const availabilityJson = await availabilityResult.value.json();
           setBackendStations(normalizeAvailabilityToStations(availabilityJson));
+          console.log("STATIONS", normalizeAvailabilityToStations(availabilityJson));
         } else {
           setBackendStations([]);
         }
@@ -364,21 +391,15 @@ export default function Reichweite({ city, school }) {
           geofencingResult.value.ok
         ) {
           const geofencingJson = await geofencingResult.value.json();
-          setGeofencingZones(normalizeGeoJson(geofencingJson));
+          setGeofencingZones(normalizeGeofencingData(geofencingJson));
         } else {
-          setGeofencingZones({
-            type: "FeatureCollection",
-            features: [],
-          });
+          setGeofencingZones([]);
         }
       } catch (error) {
         console.error("Backend konnte nicht geladen werden:", error);
         setBackendPois([]);
         setBackendStations([]);
-        setGeofencingZones({
-          type: "FeatureCollection",
-          features: [],
-        });
+        setGeofencingZones([]);
         setPricingIsochroneData(null);
         setBackendError("Backend nicht erreichbar oder Route liefert Fehler.");
       } finally {
@@ -387,7 +408,7 @@ export default function Reichweite({ city, school }) {
     }
 
     loadBackendData();
-  }, [city, school.name, calculatedBudget]);
+  }, [city, school.name, school.coords, calculation]);
 
   const activeVehicles = useMemo(() => {
     const vehicles = [];
@@ -405,105 +426,91 @@ export default function Reichweite({ city, school }) {
 
   const stationsNearStart = useMemo(() => {
     return backendStations.filter((station) => {
-      const isNear = distanceKm(school.coords, station.coords) <= 0.2;
-      const vehicleActive = activeVehicles.includes(station.vehicle);
-
-      return isNear && vehicleActive;
+      return distanceKm(school.coords, station.coords) <= 0.2;
     });
-  }, [backendStations, school.coords, activeVehicles]);
+  }, [backendStations, school.coords]);
 
-  const poisWithReachability = useMemo(() => {
-    function getRoutesToPoi(poi, onlyAvailable) {
-      const stationPool = onlyAvailable ? stationsNearStart : backendStations;
+  const allPoisWithReachability = useMemo(() => {
+    const isochroneOffers = getIsochroneOffers(
+      pricingIsochroneData,
+      activeVehicles
 
-      const options = stationPool
-        .filter((station) => {
-          const vehicleActive = activeVehicles.includes(station.vehicle);
-          if (!vehicleActive) return false;
+    );
 
-          if (!onlyAvailable) return true;
-
-          return getCurrentAvailability(station) > 0;
-        })
-        .map((station) => {
-          const vehicle = station.vehicle;
-          const travel = calculateTravel(station.coords, poi.coords, vehicle);
-          const offer = getCheapestOffer(
-            pricingIsochroneData,
-            vehicle,
-            travel.minutes
+    return backendPois.map((poi) => {
+      const theoreticalRoutes = isochroneOffers
+        .filter((offer) => offer.geometry)
+        .filter((offer) => pointInGeometry(poi.coords, offer.geometry))
+        .map((offer) => {
+          const blockedByGeofence = isPoiInProviderGeofence(
+            poi,
+            offer.provider,
+            geofencingZones
           );
 
-          if (!offer) return null;
+          const vehicleAvailable = providerHasAvailableVehicle(
+            offer.provider,
+            offer.vehicle,
+            stationsNearStart
+          );
+
+          const realReachable = vehicleAvailable && !blockedByGeofence;
 
           return {
-            station,
-            vehicle,
-            travel,
             offer,
-            status: getAvailabilityStatus(station),
-            available: getCurrentAvailability(station) > 0,
+            provider: offer.provider,
+            vehicle: offer.vehicle,
             price: offer.price,
+            max_minutes: offer.max_minutes,
+            blockedByGeofence,
+            vehicleAvailable,
+            realReachable,
           };
-        })
-        .filter(Boolean)
-        .sort((a, b) => a.price - b.price);
+        });
 
-      return {
-        best: options[0] || null,
-        all: options,
-      };
-    }
-
-    return filteredBackendPois.map((poi) => {
-      const blockedByGeofence = isPoiInForbiddenZone(poi, geofencingZones);
-
-      const theoreticalRoutes = getRoutesToPoi(poi, false);
-
-      const realRoutes = blockedByGeofence
-        ? { best: null, all: [] }
-        : getRoutesToPoi(poi, true);
-
-      const realProviderKeys = new Set(
-        realRoutes.all.map((route) => route.offer?.provider || route.station.provider)
+      const realRoutes = theoreticalRoutes.filter((route) => route.realReachable);
+      const theoreticalOnlyRoutes = theoreticalRoutes.filter(
+        (route) => !route.realReachable
       );
-
-      const theoreticalOnlyRoutes = theoreticalRoutes.all.filter((route) => {
-        const provider = route.offer?.provider || route.station.provider;
-        return !realProviderKeys.has(provider);
-      });
 
       let theoreticalReason = "";
 
-      if (theoreticalRoutes.best && !realRoutes.best) {
-        if (blockedByGeofence) {
-          theoreticalReason = "Liegt in einer Verbotszone";
-        } else {
-          theoreticalReason = "Aktuell kein Fahrzeug verfügbar";
-        }
+      if (theoreticalOnlyRoutes.length > 0) {
+        const hasGeofence = theoreticalOnlyRoutes.some(
+          (route) => route.blockedByGeofence
+        );
+
+        theoreticalReason = hasGeofence
+          ? "Liegt in einer Verbotszone"
+          : "Aktuell kein Fahrzeug verfügbar";
       }
 
       return {
         ...poi,
-        theoreticalRoute: theoreticalRoutes.best,
-        theoreticalRoutes: theoreticalRoutes.all,
+        theoreticalRoutes,
         theoreticalOnlyRoutes,
-        realRoute: realRoutes.best,
-        realRoutes: realRoutes.all,
-        blockedByGeofence,
+        realRoutes,
+        theoreticalRoute: theoreticalRoutes[0] || null,
+        realRoute: realRoutes[0] || null,
         theoreticalReason,
-        theoreticalReachable: Boolean(theoreticalRoutes.best),
-        realReachable: Boolean(realRoutes.best),
+        theoreticalReachable: theoreticalRoutes.length > 0,
+        realReachable: realRoutes.length > 0,
       };
     });
   }, [
-    filteredBackendPois,
-    stationsNearStart,
-    backendStations,
-    activeVehicles,
+    backendPois,
     pricingIsochroneData,
+    activeVehicles,
+    stationsNearStart,
     geofencingZones,
   ]);
+  const poisWithReachability = useMemo(() => {
+    if (selectedPoiType === "Alle") return allPoisWithReachability;
+
+    return allPoisWithReachability.filter(
+      (poi) => poi.type === selectedPoiType
+    );
+  }, [allPoisWithReachability, selectedPoiType]);
 
   const realReachablePois = poisWithReachability.filter(
     (poi) => poi.realReachable
@@ -524,32 +531,21 @@ export default function Reichweite({ city, school }) {
       const offer = getBestIsochroneOffer(pricingIsochroneData, vehicle);
       if (!offer) return 0;
 
-      return (offer.max_minutes / 60) * SPEED_KMH[vehicle] * 1000;
+      return (offer.max_minutes / 60) * 15 * 1000;
     });
 
     return Math.max(...radii);
   }, [activeVehicles, pricingIsochroneData]);
 
   const maxRealRadius = useMemo(() => {
-    const availableStations = stationsNearStart.filter(
-      (station) => getCurrentAvailability(station) > 0
-    );
+    const realOffers = poisWithReachability
+      .flatMap((poi) => poi.realRoutes)
+      .map((route) => route.max_minutes);
 
-    if (availableStations.length === 0) return 0;
+    if (realOffers.length === 0) return 0;
 
-    const radii = availableStations.map((station) => {
-      const offer = getBestIsochroneOffer(
-        pricingIsochroneData,
-        station.vehicle
-      );
-
-      if (!offer) return 0;
-
-      return (offer.max_minutes / 60) * SPEED_KMH[station.vehicle] * 1000;
-    });
-
-    return Math.max(...radii);
-  }, [stationsNearStart, pricingIsochroneData]);
+    return (Math.max(...realOffers) / 60) * 15 * 1000;
+  }, [poisWithReachability]);
 
   return (
     <main className="main-view new-map-layout">
@@ -559,28 +555,22 @@ export default function Reichweite({ city, school }) {
           <strong>Budget + Live-Verfügbarkeit</strong>
         </div>
 
-        <div className="filter-group">
-          <span className="filter-label">Verkehrsmittel</span>
-          <div className="chip-row">
-            <label className={`filter-chip ${showBikes ? "active" : ""}`}>
-              <input
-                type="checkbox"
-                checked={showBikes}
-                onChange={(e) => setShowBikes(e.target.checked)}
-              />
-              🚲 Bike
-            </label>
+        <div className="divider" />
 
-            <label className={`filter-chip ${showScooters ? "active" : ""}`}>
-              <input
-                type="checkbox"
-                checked={showScooters}
-                onChange={(e) => setShowScooters(e.target.checked)}
-              />
-              🛴 E-Scooter
-            </label>
-          </div>
+        <div className="filter-group">
+          <span className="filter-label">Karte</span>
+
+          <label className={`filter-chip geofence-chip${showGeofencingZones ? "active" : ""}`}>
+            <input
+              type="checkbox"
+              checked={showGeofencingZones}
+              onChange={(e) => setShowGeofencingZones(e.target.checked)}
+            />
+            Abstellverbot Zonen
+          </label>
         </div>
+
+        <div className="divider" />
 
         <div className="filter-group">
           <span className="filter-label">POI-Typen</span>
@@ -588,9 +578,8 @@ export default function Reichweite({ city, school }) {
             {["Alle", "Bahnhof", "Wohnheim", "Sportanlage"].map((type) => (
               <button
                 key={type}
-                className={`filter-chip ${
-                  selectedPoiType === type ? "active" : ""
-                }`}
+                className={`filter-chip ${selectedPoiType === type ? "active" : ""
+                  }`}
                 onClick={() => {
                   setSelectedPoiType(type);
                   setSelectedPoi(null);
@@ -605,51 +594,66 @@ export default function Reichweite({ city, school }) {
           </div>
         </div>
 
+        <div className="divider" />
+
         <div className="filter-group budget-filter">
           <span className="filter-label">Budget</span>
+          <div className="budget-slider">
+            <input
+              type="range"
+              min="0"
+              max="5"
+              step="0.5"
+              value={budget}
+              onChange={(e) => {
+                setBudget(Number(e.target.value));
+                setPricingIsochroneData(null);
+                setSelectedPoi(null);
+              }}
+            />
 
-          <input
-            type="range"
-            min="0"
-            max="5"
-            step="0.5"
-            value={budget}
-            onChange={(e) => setBudget(Number(e.target.value))}
-          />
+            <strong>{budget.toFixed(2)} €</strong>
 
-          <strong>{budget.toFixed(2)} €</strong>
+            <div className="calculate-row">
+              <button
+                className="calculate-button"
+                disabled={budget <= 0}
+                onClick={() =>
+                  setCalculation({
+                    budget,
+                    city,
+                    schoolName: school.name,
+                    lat: school.coords[0],
+                    lon: school.coords[1],
+                  })
+                }
+              >
+                Berechnen
+              </button>
 
-          <div className="calculate-row">
-            <button
-              className="calculate-button"
-              onClick={() => setCalculatedBudget(budget)}
-            >
-              Berechnen
-            </button>
-
-            <span
-              className={`calculate-status ${
-                backendError
+              <span
+                className={`calculate-status ${backendError
                   ? "error"
                   : loadingBackend
-                  ? "loading"
-                  : calculatedBudget === null
-                  ? "waiting"
-                  : calculatedBudget !== budget
-                  ? "changed"
-                  : "success"
-              }`}
-            >
-              {backendError
-                ? "Fehler"
-                : loadingBackend
-                ? "Lädt..."
-                : calculatedBudget === null
-                ? "Noch nicht berechnet"
-                : calculatedBudget !== budget
-                ? "Neu berechnen"
-                : "Berechnet"}
-            </span>
+                    ? "loading"
+                    : calculation === null
+                      ? "waiting"
+                      : calculation?.budget !== budget
+                        ? "changed"
+                        : "success"
+                  }`}
+              >
+                {backendError
+                  ? "Fehler"
+                  : loadingBackend
+                    ? "Lädt..."
+                    : calculation === null
+                      ? "Noch nicht berechnet"
+                      : calculation?.budget !== budget
+                        ? "Neu berechnen"
+                        : "Berechnet"}
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -666,8 +670,8 @@ export default function Reichweite({ city, school }) {
 
           <div className="budget-card">
             <strong>Reichweite</strong>
-            <p>Real: {(maxRealRadius / 1000).toFixed(1)} km</p>
-            <p>Theoretisch: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
+            <p>Erreichbar: {(maxRealRadius / 1000).toFixed(1)} km</p>
+            <p>Aktuell nicht mögliche Erreichbarkeit: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
           </div>
 
           <div className="poi-summary-card">
@@ -676,60 +680,39 @@ export default function Reichweite({ city, school }) {
             </span>
             <strong>{poisWithReachability.length} insgesamt</strong>
             <p>
-              🟢 {realReachablePois.length} real · 🟡{" "}
-              {theoreticalReachablePois.length} theoretisch · 🔴{" "}
+              🟢 {realReachablePois.length} erreichbar · 🟡{" "}
+              {theoreticalReachablePois.length} aktuell nicht erreichbar · 🔴{" "}
               {notReachablePois.length} nicht erreichbar
             </p>
           </div>
 
-          {selectedPoi && (
-            <>
-              <button
-                className="back-button"
-                onClick={() => setSelectedPoi(null)}
-              >
-                ← Auswahl zurücksetzen
-              </button>
-
-              <div className="poi-title">
-                <span>{selectedPoi.icon}</span>
-                <div>
-                  <strong>{selectedPoi.name}</strong>
-                  <small>{selectedPoi.address}</small>
-                </div>
-              </div>
-            </>
-          )}
-
-          <h4>Real erreichbar</h4>
+          <h4>Erreichbar</h4>
 
           {realReachablePois.length === 0 ? (
-            <div className="hint">Aktuell ist kein POI real erreichbar.</div>
+            <div className="hint">Aktuell ist kein POI erreichbar.</div>
           ) : (
-            realReachablePois.map((poi) => (
-              <button
-                key={`real-${poi.id}`}
-                className="poi-list-card real"
-                onClick={() => setSelectedPoi(poi)}
-              >
-                <div>
-                  <strong>
-                    {poi.icon} {poi.name}
-                  </strong>
-                  <small>
-                    {poi.realRoute.station.provider} ·{" "}
-                    {poi.realRoute.vehicle === "bike" ? "Bike" : "Scooter"} ·{" "}
-                    {poi.realRoute.travel.minutes.toFixed(0)} Min
-                  </small>
-                  <small>
-                    {poi.realRoute.offer.label ||
-                      poi.realRoute.offer.provider ||
-                      "Preisplan"}
-                  </small>
-                </div>
-                <span>{poi.realRoute.price.toFixed(2)} €</span>
-              </button>
-            ))
+            realReachablePois.map((poi) =>
+              poi.realRoutes.map((route, index) => (
+                <button
+                  key={`real-${poi.id}-${route.provider}-${index}`}
+                  ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                  className={`poi-list-card real ${selectedPoi?.id === poi.id ? "selected" : ""}`}
+                  onClick={() => setSelectedPoi(poi)}
+                >
+                  <div>
+                    <strong>
+                      {poi.icon} {poi.name}
+                    </strong>
+                    <small>
+                      {route.provider} ·{" "}
+                      {route.vehicle === "bike" ? "Bike" : "Scooter"} · bis{" "}
+                      {route.max_minutes} Min
+                    </small>
+                  </div>
+                  <span>{route.price.toFixed(2)} €</span>
+                </button>
+              ))
+            )
           )}
 
           <h4>Aktuell nicht erreichbar</h4>
@@ -740,8 +723,9 @@ export default function Reichweite({ city, school }) {
             theoreticalReachablePois.map((poi) =>
               poi.theoreticalOnlyRoutes.map((route, index) => (
                 <button
-                  key={`theoretical-${poi.id}-${route.offer.provider}-${index}`}
-                  className="poi-list-card theoretical"
+                  key={`theoretical-${poi.id}-${route.provider}-${index}`}
+                  ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                  className={`poi-list-card theoretical ${selectedPoi?.id === poi.id ? "selected" : ""}`}
                   onClick={() => setSelectedPoi(poi)}
                 >
                   <div>
@@ -750,15 +734,15 @@ export default function Reichweite({ city, school }) {
                     </strong>
 
                     <small>
-                      {poi.blockedByGeofence
+                      {route.blockedByGeofence
                         ? "Liegt in einer Verbotszone"
                         : "Aktuell kein Fahrzeug verfügbar"}
                     </small>
 
                     <small>
-                      {route.offer.provider || route.station.provider} ·{" "}
-                      {route.vehicle === "bike" ? "Bike" : "Scooter"} ·{" "}
-                      {route.travel.minutes.toFixed(0)} Min
+                      {route.provider} ·{" "}
+                      {route.vehicle === "bike" ? "Bike" : "Scooter"} · bis{" "}
+                      {route.max_minutes} Min
                     </small>
                   </div>
 
@@ -778,16 +762,16 @@ export default function Reichweite({ city, school }) {
             notReachablePois.map((poi) => (
               <button
                 key={`not-${poi.id}`}
-                className="poi-list-card not-reachable"
+                ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                className={`poi-list-card not-reachable ${selectedPoi?.id === poi.id ? "selected" : ""
+                  }`}
                 onClick={() => setSelectedPoi(poi)}
               >
                 <div>
                   <strong>
                     {poi.icon} {poi.name}
                   </strong>
-                  <small>
-                    Außerhalb des Budgets oder kein passender Preisplan
-                  </small>
+                  <small>Liegt außerhalb deines Budgets</small>
                 </div>
                 <span>—</span>
               </button>
@@ -797,11 +781,13 @@ export default function Reichweite({ city, school }) {
 
         <div className="map-wrapper">
           <Map
-            key={`${selectedPoiType}-${school.name}`}
+            key={`${school.name}-${school.coords[0]}-${school.coords[1]}`}
             center={school.coords}
             label={school.name}
             markerCoords={school.coords}
             pois={poisWithReachability}
+            isochronePois={allPoisWithReachability}
+            activeVehicles={activeVehicles}
             selectedPoi={selectedPoi}
             setSelectedPoi={setSelectedPoi}
             availability={false}
@@ -811,6 +797,9 @@ export default function Reichweite({ city, school }) {
             realRadius={maxRealRadius}
             theoreticalRadius={maxTheoreticalRadius}
             isochroneData={pricingIsochroneData}
+            geofencingZones={geofencingZones}
+            showGeofencingZones={showGeofencingZones}
+
           />
         </div>
       </section>

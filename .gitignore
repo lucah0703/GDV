@@ -18,6 +18,9 @@ frontend/.vite/
 
 # Betriebssystem
 .DS_Store
+
+node_modules
+=======
 Thumbs.db
 
 # Umgebungsvariablen

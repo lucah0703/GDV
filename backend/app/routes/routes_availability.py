@@ -116,11 +116,12 @@ async def get_current_availability(city: str, uni: str):
     uni_lon = unis[uni]["lon"]
 
     # Daten für Fahrrad und E-Scooter holen
-    bike_data = fetch_bike_availability(bike_gbfs_url, file_name)
+    bike_data, bike_200m_data = fetch_bike_availability(bike_gbfs_url, file_name, uni_lat, uni_lon)
     scooter_data = fetch_scooter_availability(scooter_gbfs_urls, uni_lat, uni_lon)
 
     return {
         "bike": bike_data,
+        "bike_200m": bike_200m_data,
         "e-scooter": scooter_data
     }
     
