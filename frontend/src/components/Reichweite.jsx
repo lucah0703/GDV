@@ -298,6 +298,7 @@ export default function Reichweite({ city, school }) {
   const [backendStations, setBackendStations] = useState([]);
   const [geofencingZones, setGeofencingZones] = useState([]);
   const [showGeofencingZones, setShowGeofencingZones] = useState(false);
+  const [selectedGeofenceProviders, setSelectedGeofenceProviders] = useState([]);
   const [pricingIsochroneData, setPricingIsochroneData] = useState(null);
   const [loadingBackend, setLoadingBackend] = useState(false);
   const [backendError, setBackendError] = useState("");
@@ -323,6 +324,8 @@ export default function Reichweite({ city, school }) {
     setCalculation(null);
     setPricingIsochroneData(null);
     setBackendError("");
+    setShowGeofencingZones(false);
+    setSelectedGeofenceProviders([]);
   }, [city, school.name, school.coords]);
 
   useEffect(() => {
@@ -442,6 +445,16 @@ export default function Reichweite({ city, school }) {
     });
   }, [backendStations, school.coords]);
 
+  const availableGeofenceProviders = geofencingZones.map((item) => item.provider);
+
+  function toggleGeofenceProvider(provider) {
+    setSelectedGeofenceProviders((prev) =>
+      prev.includes(provider)
+        ? prev.filter((p) => p !== provider)
+        : [...prev, provider]
+    );
+  }
+
   const allPoisWithReachability = useMemo(() => {
     const isochroneOffers = getIsochroneOffers(
       pricingIsochroneData,
@@ -463,7 +476,7 @@ export default function Reichweite({ city, school }) {
             offer.vehicle,
             stationsNearStart
           );
-         
+
           const realReachable = vehicleAvailable && !blockedByGeofence;
 
           return {
@@ -520,7 +533,7 @@ export default function Reichweite({ city, school }) {
           ? "Liegt in einer Verbotszone"
           : "Aktuell kein Fahrzeug verfügbar";
       }
-     
+
       return {
         ...poi,
         theoreticalRoutes,
@@ -553,7 +566,7 @@ export default function Reichweite({ city, school }) {
   const realReachablePois = poisWithReachability.filter(
     (poi) => poi.realReachable
   );
- 
+
   const theoreticalReachablePois = poisWithReachability.filter(
     (poi) => poi.theoreticalOnlyRoutes.length > 0
   );
@@ -598,14 +611,36 @@ export default function Reichweite({ city, school }) {
         <div className="filter-group">
           <span className="filter-label">Karte</span>
 
-          <label className={`filter-chip geofence-chip${showGeofencingZones ? "active" : ""}`}>
-            <input
-              type="checkbox"
-              checked={showGeofencingZones}
-              onChange={(e) => setShowGeofencingZones(e.target.checked)}
-            />
-            Abstellverbot Zonen
-          </label>
+          <div className="chip-row geofence-provider-row">
+            <label className={`filter-chip geofence-chip ${showGeofencingZones ? "active" : ""}`}>
+              <input
+                type="checkbox"
+                checked={showGeofencingZones}
+                onChange={(e) => {
+                  const checked = e.target.checked;
+                  setShowGeofencingZones(checked);
+                  if (checked) {
+                    setSelectedGeofenceProviders(availableGeofenceProviders);
+                  } else {
+                    setSelectedGeofenceProviders([]);
+                  }
+                }}
+              />
+              Abstellverbot Zonen
+            </label>
+
+            {showGeofencingZones &&
+              availableGeofenceProviders.map((provider) => (
+                <button
+                  key={provider}
+                  className={`filter-chip geofence-provider-chip ${selectedGeofenceProviders.includes(provider) ? "active" : ""
+                    }`}
+                  onClick={() => toggleGeofenceProvider(provider)}
+                >
+                  {provider}
+                </button>
+              ))}
+          </div>
         </div>
 
         <div className="divider" />
@@ -875,7 +910,7 @@ export default function Reichweite({ city, school }) {
             isochroneData={pricingIsochroneData}
             geofencingZones={geofencingZones}
             showGeofencingZones={showGeofencingZones}
-
+            selectedGeofenceProviders={selectedGeofenceProviders}
           />
         </div>
       </section>
