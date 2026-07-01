@@ -817,7 +817,7 @@ export default function Reichweite({ city, school }) {
                         </strong>
                         <small>
                           {route.provider} ·{" "}
-                          {route.vehicle === "bike" ? "Bike" : "Scooter"} · bis{" "}
+                          {route.vehicle === "bike" ? "🚲 Bike" : "🛴 Scooter"} · bis{" "}
                           {route.max_minutes} Min
                         </small>
                       </div>
