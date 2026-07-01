@@ -95,19 +95,21 @@ function pointInGeometry(point, geometry) {
   if (!geometry) return false;
 
   if (geometry.type === "Polygon") {
-    return geometry.coordinates.some((ring) => {
-      const polygon = ring.map(([lon, lat]) => [lat, lon]);
-      return pointInPolygon(point, polygon);
-    });
+    const outerRing = geometry.coordinates[0];
+    if (!outerRing) return false;
+
+    const polygon = outerRing.map(([lon, lat]) => [lat, lon]);
+    return pointInPolygon(point, polygon);
   }
 
   if (geometry.type === "MultiPolygon") {
-    return geometry.coordinates.some((polygonGroup) =>
-      polygonGroup.some((ring) => {
-        const polygon = ring.map(([lon, lat]) => [lat, lon]);
-        return pointInPolygon(point, polygon);
-      })
-    );
+    return geometry.coordinates.some((polygonGroup) => {
+      const outerRing = polygonGroup[0];
+      if (!outerRing) return false;
+
+      const polygon = outerRing.map(([lon, lat]) => [lat, lon]);
+      return pointInPolygon(point, polygon);
+    });
   }
 
   return false;
@@ -277,6 +279,7 @@ export default function Reichweite({ city, school }) {
 
   const [selectedPoiType, setSelectedPoiType] = useState("Alle");
   const [selectedPoi, setSelectedPoi] = useState(null);
+  const [selectedPoiFocusSection, setSelectedPoiFocusSection] = useState(null);
   const [collapsedSections, setCollapsedSections] = useState({
     real: true,
     theoretical: true,
@@ -289,6 +292,28 @@ export default function Reichweite({ city, school }) {
       [section]: !prev[section],
     }));
   }
+
+  function selectPoiAndOpenCorrectSection(clickedPoi) {
+    const fullPoi =
+      poisWithReachability.find((poi) => poi.id === clickedPoi.id) || clickedPoi;
+
+    let targetSection = "notReachable";
+
+    if (fullPoi.displayRealRoutes?.length > 0) {
+      targetSection = "real";
+    } else if (fullPoi.displayTheoreticalRoutes?.length > 0) {
+      targetSection = "theoretical";
+    }
+
+    setSelectedPoiFocusSection(targetSection);
+    setSelectedPoi(fullPoi);
+
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [targetSection]: false,
+    }));
+  }
+
   const [showBikes, setShowBikes] = useState(true);
   const [showScooters, setShowScooters] = useState(true);
 
@@ -296,31 +321,41 @@ export default function Reichweite({ city, school }) {
   const [backendStations, setBackendStations] = useState([]);
   const [geofencingZones, setGeofencingZones] = useState([]);
   const [showGeofencingZones, setShowGeofencingZones] = useState(false);
+  const [selectedGeofenceProviders, setSelectedGeofenceProviders] = useState([]);
   const [pricingIsochroneData, setPricingIsochroneData] = useState(null);
   const [loadingBackend, setLoadingBackend] = useState(false);
   const [backendError, setBackendError] = useState("");
 
   const currentAvailabilityKey = "current";
 
-  const selectedPoiRef = useRef(null);
+  const resultsPanelRef = useRef(null);
 
   useEffect(() => {
-    if (!selectedPoiRef.current) return;
+    if (!selectedPoi || !selectedPoiFocusSection) return;
 
-    setTimeout(() => {
-      selectedPoiRef.current?.scrollIntoView({
+    const timer = setTimeout(() => {
+      const target = resultsPanelRef.current?.querySelector(
+        `[data-poi-scroll-id="${selectedPoiFocusSection}-${selectedPoi.id}"]`
+      );
+
+      target?.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
-    }, 0);
-  }, [selectedPoi]);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [selectedPoi, selectedPoiFocusSection, collapsedSections]);
 
   useEffect(() => {
     setBudget(0);
     setSelectedPoi(null);
+    setSelectedPoiFocusSection(null);
     setCalculation(null);
     setPricingIsochroneData(null);
     setBackendError("");
+    setShowGeofencingZones(false);
+    setSelectedGeofenceProviders([]);
   }, [city, school.name, school.coords]);
 
   useEffect(() => {
@@ -377,7 +412,6 @@ export default function Reichweite({ city, school }) {
           ) {
             const pricingIsochroneJson =
               await pricingIsochroneResult.value.json();
-            console.log("ISOCHRONE", pricingIsochroneJson.results);
             setPricingIsochroneData(pricingIsochroneJson);
           } else {
             setPricingIsochroneData(null);
@@ -393,7 +427,6 @@ export default function Reichweite({ city, school }) {
         ) {
           const availabilityJson = await availabilityResult.value.json();
           setBackendStations(normalizeAvailabilityToStations(availabilityJson));
-          console.log("STATIONS", normalizeAvailabilityToStations(availabilityJson));
         } else {
           setBackendStations([]);
         }
@@ -442,6 +475,16 @@ export default function Reichweite({ city, school }) {
     });
   }, [backendStations, school.coords]);
 
+  const availableGeofenceProviders = geofencingZones.map((item) => item.provider);
+
+  function toggleGeofenceProvider(provider) {
+    setSelectedGeofenceProviders((prev) =>
+      prev.includes(provider)
+        ? prev.filter((p) => p !== provider)
+        : [...prev, provider]
+    );
+  }
+
   const allPoisWithReachability = useMemo(() => {
     const isochroneOffers = getIsochroneOffers(
       pricingIsochroneData,
@@ -454,11 +497,9 @@ export default function Reichweite({ city, school }) {
         .filter((offer) => offer.geometry)
         .filter((offer) => pointInGeometry(poi.coords, offer.geometry))
         .map((offer) => {
-          const blockedByGeofence = isPoiInProviderGeofence(
-            poi,
-            offer.provider,
-            geofencingZones
-          );
+          const blockedByGeofence =
+            offer.vehicle === "scooter" &&
+            isPoiInProviderGeofence(poi, offer.provider, geofencingZones);
 
           const vehicleAvailable = providerHasAvailableVehicle(
             offer.provider,
@@ -485,6 +526,32 @@ export default function Reichweite({ city, school }) {
         (route) => !route.realReachable
       );
 
+      const cheapestScooterRealRoute =
+        [...realRoutes]
+          .filter((route) => route.vehicle === "scooter")
+          .sort((a, b) => a.price - b.price)[0] || null;
+
+      const bikeRealRoute =
+        realRoutes.find((route) => route.vehicle === "bike") || null;
+
+      const displayRealRoutes = [
+        bikeRealRoute,
+        cheapestScooterRealRoute,
+      ].filter(Boolean);
+
+      const cheapestScooterTheoreticalRoute =
+        [...theoreticalOnlyRoutes]
+          .filter((route) => route.vehicle === "scooter")
+          .sort((a, b) => a.price - b.price)[0] || null;
+
+      const bikeTheoreticalRoute =
+        theoreticalOnlyRoutes.find((route) => route.vehicle === "bike") || null;
+
+      const displayTheoreticalRoutes = [
+        bikeTheoreticalRoute,
+        cheapestScooterTheoreticalRoute,
+      ].filter(Boolean);
+
       let theoreticalReason = "";
 
       if (theoreticalOnlyRoutes.length > 0) {
@@ -502,6 +569,8 @@ export default function Reichweite({ city, school }) {
         theoreticalRoutes,
         theoreticalOnlyRoutes,
         realRoutes,
+        displayRealRoutes,
+        displayTheoreticalRoutes,
         theoreticalRoute: theoreticalRoutes[0] || null,
         realRoute: realRoutes[0] || null,
         theoreticalReason,
@@ -572,14 +641,36 @@ export default function Reichweite({ city, school }) {
         <div className="filter-group">
           <span className="filter-label">Karte</span>
 
-          <label className={`filter-chip geofence-chip${showGeofencingZones ? "active" : ""}`}>
-            <input
-              type="checkbox"
-              checked={showGeofencingZones}
-              onChange={(e) => setShowGeofencingZones(e.target.checked)}
-            />
-            Abstellverbot Zonen
-          </label>
+          <div className="chip-row geofence-provider-row">
+            <label className={`filter-chip geofence-chip ${showGeofencingZones ? "active" : ""}`}>
+              <input
+                type="checkbox"
+                checked={showGeofencingZones}
+                onChange={(e) => {
+                  const checked = e.target.checked;
+                  setShowGeofencingZones(checked);
+                  if (checked) {
+                    setSelectedGeofenceProviders(availableGeofenceProviders);
+                  } else {
+                    setSelectedGeofenceProviders([]);
+                  }
+                }}
+              />
+              Abstellverbot Zonen
+            </label>
+
+            {showGeofencingZones &&
+              availableGeofenceProviders.map((provider) => (
+                <button
+                  key={provider}
+                  className={`filter-chip geofence-provider-chip ${selectedGeofenceProviders.includes(provider) ? "active" : ""
+                    }`}
+                  onClick={() => toggleGeofenceProvider(provider)}
+                >
+                  {provider}
+                </button>
+              ))}
+          </div>
         </div>
 
         <div className="divider" />
@@ -595,6 +686,7 @@ export default function Reichweite({ city, school }) {
                 onClick={() => {
                   setSelectedPoiType(type);
                   setSelectedPoi(null);
+                  setSelectedPoiFocusSection(null);
                 }}
               >
                 {type === "Alle" && "Alle"}
@@ -621,6 +713,7 @@ export default function Reichweite({ city, school }) {
                 setBudget(Number(e.target.value));
                 setPricingIsochroneData(null);
                 setSelectedPoi(null);
+                setSelectedPoiFocusSection(null);
               }}
             />
 
@@ -671,19 +764,13 @@ export default function Reichweite({ city, school }) {
       </section>
 
       <section className="map-workspace">
-        <aside className="results-panel">
+        <aside className="results-panel" ref={resultsPanelRef}>
           <h3>Auswertung</h3>
 
           <div className="school-card">
             <span>Startpunkt</span>
             <strong>{school.name}</strong>
             <small>{school.students} Studierende</small>
-          </div>
-
-          <div className="budget-card">
-            <strong>Reichweite</strong>
-            <p>Erreichbar: {(maxRealRadius / 1000).toFixed(1)} km</p>
-            <p>Aktuell nicht mögliche Erreichbarkeit: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
           </div>
 
           <div className="poi-summary-card">
@@ -717,12 +804,12 @@ export default function Reichweite({ city, school }) {
                 <div className="hint">Aktuell ist kein POI erreichbar.</div>
               ) : (
                 realReachablePois.map((poi) =>
-                  poi.realRoutes.map((route, index) => (
+                  poi.displayRealRoutes.map((route, index) => (
                     <button
                       key={`real-${poi.id}-${route.provider}-${index}`}
-                      ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                      data-poi-scroll-id={`real-${poi.id}`}
                       className={`poi-list-card real ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                      onClick={() => setSelectedPoi(poi)}
+                      onClick={() => selectPoiAndOpenCorrectSection(poi)}
                     >
                       <div>
                         <strong>
@@ -761,12 +848,12 @@ export default function Reichweite({ city, school }) {
                 <div className="hint">Aktuell keine theoretischen POIs.</div>
               ) : (
                 theoreticalReachablePois.map((poi) =>
-                  poi.theoreticalOnlyRoutes.map((route, index) => (
+                  poi.displayTheoreticalRoutes.map((route, index) => (
                     <button
                       key={`theoretical-${poi.id}-${route.provider}-${index}`}
-                      ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                      data-poi-scroll-id={`theoretical-${poi.id}`}
                       className={`poi-list-card theoretical ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                      onClick={() => setSelectedPoi(poi)}
+                      onClick={() => selectPoiAndOpenCorrectSection(poi)}
                     >
                       <div>
                         <strong>
@@ -817,9 +904,9 @@ export default function Reichweite({ city, school }) {
                 notReachablePois.map((poi) => (
                   <button
                     key={`not-${poi.id}`}
-                    ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                    data-poi-scroll-id={`notReachable-${poi.id}`}
                     className={`poi-list-card not-reachable ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                    onClick={() => setSelectedPoi(poi)}
+                    onClick={() => selectPoiAndOpenCorrectSection(poi)}
                   >
                     <div>
                       <strong>
@@ -845,7 +932,7 @@ export default function Reichweite({ city, school }) {
             isochronePois={allPoisWithReachability}
             activeVehicles={activeVehicles}
             selectedPoi={selectedPoi}
-            setSelectedPoi={setSelectedPoi}
+            setSelectedPoi={selectPoiAndOpenCorrectSection}
             availability={false}
             stationsInRadius={stationsNearStart}
             showStationsInBudgetView={false}
@@ -855,7 +942,7 @@ export default function Reichweite({ city, school }) {
             isochroneData={pricingIsochroneData}
             geofencingZones={geofencingZones}
             showGeofencingZones={showGeofencingZones}
-
+            selectedGeofenceProviders={selectedGeofenceProviders}
           />
         </div>
       </section>
