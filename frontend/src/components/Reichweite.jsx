@@ -279,6 +279,7 @@ export default function Reichweite({ city, school }) {
 
   const [selectedPoiType, setSelectedPoiType] = useState("Alle");
   const [selectedPoi, setSelectedPoi] = useState(null);
+  const [selectedPoiFocusSection, setSelectedPoiFocusSection] = useState(null);
   const [collapsedSections, setCollapsedSections] = useState({
     real: true,
     theoretical: true,
@@ -291,6 +292,28 @@ export default function Reichweite({ city, school }) {
       [section]: !prev[section],
     }));
   }
+
+  function selectPoiAndOpenCorrectSection(clickedPoi) {
+    const fullPoi =
+      poisWithReachability.find((poi) => poi.id === clickedPoi.id) || clickedPoi;
+
+    let targetSection = "notReachable";
+
+    if (fullPoi.displayRealRoutes?.length > 0) {
+      targetSection = "real";
+    } else if (fullPoi.displayTheoreticalRoutes?.length > 0) {
+      targetSection = "theoretical";
+    }
+
+    setSelectedPoiFocusSection(targetSection);
+    setSelectedPoi(fullPoi);
+
+    setCollapsedSections((prev) => ({
+      ...prev,
+      [targetSection]: false,
+    }));
+  }
+
   const [showBikes, setShowBikes] = useState(true);
   const [showScooters, setShowScooters] = useState(true);
 
@@ -305,22 +328,29 @@ export default function Reichweite({ city, school }) {
 
   const currentAvailabilityKey = "current";
 
-  const selectedPoiRef = useRef(null);
+  const resultsPanelRef = useRef(null);
 
   useEffect(() => {
-    if (!selectedPoiRef.current) return;
+    if (!selectedPoi || !selectedPoiFocusSection) return;
 
-    setTimeout(() => {
-      selectedPoiRef.current?.scrollIntoView({
+    const timer = setTimeout(() => {
+      const target = resultsPanelRef.current?.querySelector(
+        `[data-poi-scroll-id="${selectedPoiFocusSection}-${selectedPoi.id}"]`
+      );
+
+      target?.scrollIntoView({
         behavior: "smooth",
         block: "center",
       });
-    }, 0);
-  }, [selectedPoi]);
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [selectedPoi, selectedPoiFocusSection, collapsedSections]);
 
   useEffect(() => {
     setBudget(0);
     setSelectedPoi(null);
+    setSelectedPoiFocusSection(null);
     setCalculation(null);
     setPricingIsochroneData(null);
     setBackendError("");
@@ -656,6 +686,7 @@ export default function Reichweite({ city, school }) {
                 onClick={() => {
                   setSelectedPoiType(type);
                   setSelectedPoi(null);
+                  setSelectedPoiFocusSection(null);
                 }}
               >
                 {type === "Alle" && "Alle"}
@@ -682,6 +713,7 @@ export default function Reichweite({ city, school }) {
                 setBudget(Number(e.target.value));
                 setPricingIsochroneData(null);
                 setSelectedPoi(null);
+                setSelectedPoiFocusSection(null);
               }}
             />
 
@@ -732,7 +764,7 @@ export default function Reichweite({ city, school }) {
       </section>
 
       <section className="map-workspace">
-        <aside className="results-panel">
+        <aside className="results-panel" ref={resultsPanelRef}>
           <h3>Auswertung</h3>
 
           <div className="school-card">
@@ -775,9 +807,9 @@ export default function Reichweite({ city, school }) {
                   poi.displayRealRoutes.map((route, index) => (
                     <button
                       key={`real-${poi.id}-${route.provider}-${index}`}
-                      ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                      data-poi-scroll-id={`real-${poi.id}`}
                       className={`poi-list-card real ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                      onClick={() => setSelectedPoi(poi)}
+                      onClick={() => selectPoiAndOpenCorrectSection(poi)}
                     >
                       <div>
                         <strong>
@@ -819,9 +851,9 @@ export default function Reichweite({ city, school }) {
                   poi.displayTheoreticalRoutes.map((route, index) => (
                     <button
                       key={`theoretical-${poi.id}-${route.provider}-${index}`}
-                      ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                      data-poi-scroll-id={`theoretical-${poi.id}`}
                       className={`poi-list-card theoretical ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                      onClick={() => setSelectedPoi(poi)}
+                      onClick={() => selectPoiAndOpenCorrectSection(poi)}
                     >
                       <div>
                         <strong>
@@ -872,9 +904,9 @@ export default function Reichweite({ city, school }) {
                 notReachablePois.map((poi) => (
                   <button
                     key={`not-${poi.id}`}
-                    ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
+                    data-poi-scroll-id={`notReachable-${poi.id}`}
                     className={`poi-list-card not-reachable ${selectedPoi?.id === poi.id ? "selected" : ""}`}
-                    onClick={() => setSelectedPoi(poi)}
+                    onClick={() => selectPoiAndOpenCorrectSection(poi)}
                   >
                     <div>
                       <strong>
@@ -900,7 +932,7 @@ export default function Reichweite({ city, school }) {
             isochronePois={allPoisWithReachability}
             activeVehicles={activeVehicles}
             selectedPoi={selectedPoi}
-            setSelectedPoi={setSelectedPoi}
+            setSelectedPoi={selectPoiAndOpenCorrectSection}
             availability={false}
             stationsInRadius={stationsNearStart}
             showStationsInBudgetView={false}

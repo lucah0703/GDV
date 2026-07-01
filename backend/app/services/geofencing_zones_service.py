@@ -5,18 +5,18 @@ GEOFENCING_ZONES_URLS = {
     "stuttgart": {
         "lime": "https://api.mobidata-bw.de/sharing/gbfs/v3/lime_bw/geofencing_zones",
         "bolt": "https://api.mobidata-bw.de/sharing/gbfs/v3/bolt_stuttgart/geofencing_zones",
-        "voi":  "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/geofencing_zones",
+        "voi": "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/geofencing_zones",
         "dott": "https://gbfs.api.ridedott.com/public/v2/stuttgart/geofencing_zones.json",
     },
 
     "karlsruhe": {
         "bolt": "https://api.mobidata-bw.de/sharing/gbfs/v3/bolt_karlsruhe/geofencing_zones",
-        "voi":  "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/geofencing_zones",
+        "voi": "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/geofencing_zones",
         "dott": "https://gbfs.api.ridedott.com/public/v2/karlsruhe/geofencing_zones.json",
     },
 
     "mannheim": {
-        "voi":  "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/geofencing_zones",
+        "voi": "https://api.mobidata-bw.de/sharing/gbfs/v3/voi_de/geofencing_zones",
         "dott": "https://gbfs.api.ridedott.com/public/v2/mannheim/geofencing_zones.json",
     }
 }
@@ -36,7 +36,7 @@ def get_geofencing_zones(
 
     providers = GEOFENCING_ZONES_URLS[city]
 
-    if provider: # Optionaler Filter für einen bestimmten Anbieter
+    if provider:
         selected_providers = {
             provider: providers[provider]
         }
@@ -49,24 +49,27 @@ def get_geofencing_zones(
     }
 
     for provider_name, url in selected_providers.items():
-        data = fetch_geofencing_zones(url)
-        features = data
+        features = fetch_geofencing_zones(url)
 
         geofencing_zones = []
 
         for feature in features:
             geometry = feature.get("geometry")
 
-            rules = feature.get(
-                "properties"
-            ).get("rules")
+            rules = feature.get("properties", {}).get("rules", [])
 
-            ride_end_forbidden = any(
-                rule.get("ride_end_allowed") is False
-                or rule.get("ride_allowed") is False 
-                # -> berücksichtigt auch die fahrverbotszonen somit kommen oft 0 reale pois raus
-                for rule in rules
-            )
+            # Dott berücksichtigt zusätzlich ride_allowed
+            if provider_name == "dott":
+                ride_end_forbidden = any(
+                    rule.get("ride_end_allowed") is False
+                    or rule.get("ride_allowed") is False
+                    for rule in rules
+                )
+            else:
+                ride_end_forbidden = any(
+                    rule.get("ride_end_allowed") is False
+                    for rule in rules
+                )
 
             if not ride_end_forbidden:
                 continue
