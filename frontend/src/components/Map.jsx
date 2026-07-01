@@ -373,17 +373,17 @@ export default function Map({
             <>
               <div className="legend-divider"></div>
 
-              <h4>Erreichbarkeit / Isochronen</h4>
+              <h4>Fahrzeug verfügbar / Isochronen</h4>
 
               <div className="legend-status-row">
                 <div className="legend-item">
                   <span className="legend-status-line solid"></span>
-                  Erreichbar
+                  Fahrzeug verfügbar
                 </div>
 
                 <div className="legend-item">
                   <span className="legend-status-line dashed"></span>
-                  Aktuell nicht erreichbar
+                  Aktuell kein Fahrzeug verfügbar
                 </div>
               </div>
 

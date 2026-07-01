@@ -63,7 +63,8 @@ def get_geofencing_zones(
 
             ride_end_forbidden = any(
                 rule.get("ride_end_allowed") is False
-                or rule.get("ride_allowed") is False
+                or rule.get("ride_allowed") is False 
+                # -> berücksichtigt auch die fahrverbotszonen somit kommen oft 0 reale pois raus
                 for rule in rules
             )
 

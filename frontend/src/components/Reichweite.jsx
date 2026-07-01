@@ -95,19 +95,21 @@ function pointInGeometry(point, geometry) {
   if (!geometry) return false;
 
   if (geometry.type === "Polygon") {
-    return geometry.coordinates.some((ring) => {
-      const polygon = ring.map(([lon, lat]) => [lat, lon]);
-      return pointInPolygon(point, polygon);
-    });
+    const outerRing = geometry.coordinates[0];
+    if (!outerRing) return false;
+
+    const polygon = outerRing.map(([lon, lat]) => [lat, lon]);
+    return pointInPolygon(point, polygon);
   }
 
   if (geometry.type === "MultiPolygon") {
-    return geometry.coordinates.some((polygonGroup) =>
-      polygonGroup.some((ring) => {
-        const polygon = ring.map(([lon, lat]) => [lat, lon]);
-        return pointInPolygon(point, polygon);
-      })
-    );
+    return geometry.coordinates.some((polygonGroup) => {
+      const outerRing = polygonGroup[0];
+      if (!outerRing) return false;
+
+      const polygon = outerRing.map(([lon, lat]) => [lat, lon]);
+      return pointInPolygon(point, polygon);
+    });
   }
 
   return false;
@@ -377,7 +379,6 @@ export default function Reichweite({ city, school }) {
           ) {
             const pricingIsochroneJson =
               await pricingIsochroneResult.value.json();
-            console.log("ISOCHRONE", pricingIsochroneJson.results);
             setPricingIsochroneData(pricingIsochroneJson);
           } else {
             setPricingIsochroneData(null);
@@ -393,7 +394,6 @@ export default function Reichweite({ city, school }) {
         ) {
           const availabilityJson = await availabilityResult.value.json();
           setBackendStations(normalizeAvailabilityToStations(availabilityJson));
-          console.log("STATIONS", normalizeAvailabilityToStations(availabilityJson));
         } else {
           setBackendStations([]);
         }
@@ -454,18 +454,16 @@ export default function Reichweite({ city, school }) {
         .filter((offer) => offer.geometry)
         .filter((offer) => pointInGeometry(poi.coords, offer.geometry))
         .map((offer) => {
-          const blockedByGeofence = isPoiInProviderGeofence(
-            poi,
-            offer.provider,
-            geofencingZones
-          );
+          const blockedByGeofence =
+            offer.vehicle === "scooter" &&
+            isPoiInProviderGeofence(poi, offer.provider, geofencingZones);
 
           const vehicleAvailable = providerHasAvailableVehicle(
             offer.provider,
             offer.vehicle,
             stationsNearStart
           );
-
+         
           const realReachable = vehicleAvailable && !blockedByGeofence;
 
           return {
@@ -485,6 +483,32 @@ export default function Reichweite({ city, school }) {
         (route) => !route.realReachable
       );
 
+      const cheapestScooterRealRoute =
+        [...realRoutes]
+          .filter((route) => route.vehicle === "scooter")
+          .sort((a, b) => a.price - b.price)[0] || null;
+
+      const bikeRealRoute =
+        realRoutes.find((route) => route.vehicle === "bike") || null;
+
+      const displayRealRoutes = [
+        bikeRealRoute,
+        cheapestScooterRealRoute,
+      ].filter(Boolean);
+
+      const cheapestScooterTheoreticalRoute =
+        [...theoreticalOnlyRoutes]
+          .filter((route) => route.vehicle === "scooter")
+          .sort((a, b) => a.price - b.price)[0] || null;
+
+      const bikeTheoreticalRoute =
+        theoreticalOnlyRoutes.find((route) => route.vehicle === "bike") || null;
+
+      const displayTheoreticalRoutes = [
+        bikeTheoreticalRoute,
+        cheapestScooterTheoreticalRoute,
+      ].filter(Boolean);
+
       let theoreticalReason = "";
 
       if (theoreticalOnlyRoutes.length > 0) {
@@ -496,12 +520,14 @@ export default function Reichweite({ city, school }) {
           ? "Liegt in einer Verbotszone"
           : "Aktuell kein Fahrzeug verfügbar";
       }
-
+     
       return {
         ...poi,
         theoreticalRoutes,
         theoreticalOnlyRoutes,
         realRoutes,
+        displayRealRoutes,
+        displayTheoreticalRoutes,
         theoreticalRoute: theoreticalRoutes[0] || null,
         realRoute: realRoutes[0] || null,
         theoreticalReason,
@@ -527,7 +553,7 @@ export default function Reichweite({ city, school }) {
   const realReachablePois = poisWithReachability.filter(
     (poi) => poi.realReachable
   );
-
+ 
   const theoreticalReachablePois = poisWithReachability.filter(
     (poi) => poi.theoreticalOnlyRoutes.length > 0
   );
@@ -680,12 +706,6 @@ export default function Reichweite({ city, school }) {
             <small>{school.students} Studierende</small>
           </div>
 
-          <div className="budget-card">
-            <strong>Reichweite</strong>
-            <p>Erreichbar: {(maxRealRadius / 1000).toFixed(1)} km</p>
-            <p>Aktuell nicht mögliche Erreichbarkeit: {(maxTheoreticalRadius / 1000).toFixed(1)} km</p>
-          </div>
-
           <div className="poi-summary-card">
             <span>
               {selectedPoiType === "Alle" ? "Alle POIs" : selectedPoiType}
@@ -717,7 +737,7 @@ export default function Reichweite({ city, school }) {
                 <div className="hint">Aktuell ist kein POI erreichbar.</div>
               ) : (
                 realReachablePois.map((poi) =>
-                  poi.realRoutes.map((route, index) => (
+                  poi.displayRealRoutes.map((route, index) => (
                     <button
                       key={`real-${poi.id}-${route.provider}-${index}`}
                       ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
@@ -761,7 +781,7 @@ export default function Reichweite({ city, school }) {
                 <div className="hint">Aktuell keine theoretischen POIs.</div>
               ) : (
                 theoreticalReachablePois.map((poi) =>
-                  poi.theoreticalOnlyRoutes.map((route, index) => (
+                  poi.displayTheoreticalRoutes.map((route, index) => (
                     <button
                       key={`theoretical-${poi.id}-${route.provider}-${index}`}
                       ref={selectedPoi?.id === poi.id ? selectedPoiRef : null}
